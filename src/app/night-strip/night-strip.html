@@ -1,0 +1,29 @@
+<p class="night-strip-label">Night Strip</p>
+<div class="night-strip" [style.background]="gradient()">
+    <div class="strip-dark"
+     [style.left.%]="darkStartPercent()"
+     [style.width.%]="darkEndPercent() - darkStartPercent()">
+    </div>
+    @for (seg of moonBands(); track seg.left) {
+        <div class="moon-strip" [style.left.%]="seg.left" [style.width.%]="seg.width"></div>
+    }
+    <div class="cloud-container">
+        @for (cell of cloudCells(); track cell.left) {
+            <div [class]="'cloud-strip ' + cloudClass(cell.cover)" [style.left.%]="cell.left" [style.width.%]="cell.width"></div>
+        }
+    </div>
+    <div class="strip-timing">
+        @if (showDuskLabel()) {
+            <div class="strip-time" [style.left.%]="duskPercent()">{{ duskDisplay() }}</div>
+        }
+        <div class="strip-time" [style.left.%]="darkStartPercent()">{{ darkStartDisplay() }}</div>
+        <div class="strip-time" [style.right.%]="100-darkEndPercent()">{{ darkEndDisplay() }}</div>
+        @if (showDawnLabel()) {
+            <div class="strip-time" [style.right.%]="100-dawnPercent()" [style.display]="showDawnLabel() ? null : 'none'">{{ dawnDisplay() }}</div>
+        }
+    </div>
+</div>
+
+<!-- The geometry helper in the component class — toPercent(dt): number mapping dusk→0, dawn→100. One function, everything positions through it. Computed signals for the derived positions (darkLeft, darkWidth, segment percent-pairs) so the template binds numbers, not expressions.
+Template layers, inside-out: the axis bar (fixed height ~44px, the gradient shoulders as background), the --truedark span ([style.left.%] / [style.width.%] bindings), @for over segments for the moon bands, labels at the window edges.
+Cloud band last — it needs the hourly series threaded through, which is its own small wiring; get the three astronomy layers rendering first. -->

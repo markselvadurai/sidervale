@@ -1,0 +1,60 @@
+.night-strip-label {
+    font-size: var(--t-desc);
+    color: var(--airglow);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.night-strip {
+    margin-top: var(--s1);
+    margin-bottom: var(--s4);
+    height: 44px;
+    position: relative;
+    overflow-x: clip;
+    .strip-dark {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: inherit;
+        background: var(--truedark);
+        border-left: 1px solid var(--horizon);
+        border-right: 1px solid var(--horizon);
+    }
+}
+
+.strip-timing {
+    height: var(--s3);
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: calc(-1 * var(--s3));
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    color: var(--airglow);
+}
+
+.strip-time {
+    position: absolute;
+}
+
+.moon-strip {
+    // absolute, not relative: relative stacks a second band below the first.
+    position: absolute;
+    top: 0;
+    background: repeating-linear-gradient(45deg, var(--moon-ink, 
+    color-mix(in srgb, var(--caution) 30%, transparent)) 0 var(--hline, 1.5px), transparent var(--hline, 1.5px) var(--hpitch, 5px));
+    height: 8px;
+    border-bottom: 1px solid color-mix(in srgb, var(--caution) 45%, transparent);
+}
+
+.cloud-strip {
+    position: absolute;
+    bottom: 0;
+    height: 9px;          // or 100% if the container owns the 9px
+    border-top: 1px solid color-mix(in srgb, var(--airglow) 45%, transparent);
+    background: repeating-linear-gradient(-45deg,
+    var(--cloud-ink, color-mix(in srgb, var(--airglow) 26%, transparent)) 0 var(--hline, 1.5px), transparent var(--hline, 1.5px) var(--hpitch, 5px));
+}
+.cloud--light { --cloud-ink: color-mix(in srgb, var(--airglow) 20%, transparent); }
+.cloud--mid   { --cloud-ink: color-mix(in srgb, var(--airglow) 40%, transparent); }
+.cloud--heavy { --cloud-ink: color-mix(in srgb, var(--airglow) 65%, transparent); }
