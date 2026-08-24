@@ -46,3 +46,6 @@ Thumbs.db
 # private handoff notes — personal timeline / commercial planning
 docs/HANDOFF.local.md
 *.local.md
+
+# agent instructions — local only
+CLAUDE.md
