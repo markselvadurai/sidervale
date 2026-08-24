@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { computeScore } from './scorer';
+import { computeScore, tierFor } from './scorer';
 
 // ─────────────────────────────────────────────────────────────────
 // Signature under test:
@@ -74,5 +74,16 @@ describe('computeScore — calibration scenarios', () => {
     expect(short.score).toBeLessThan(long.score);
     expect(short.score / long.score).toBeGreaterThanOrEqual(0.7);
     expect(short.score / long.score).toBeLessThanOrEqual(0.8875);
+  });
+});
+
+describe('tierFor', () => {
+  it('pins the shared thresholds from both sides: >=65 clear, >=35 marginal, below poor', () => {
+    expect(tierFor(65)).toBe('clear');
+    expect(tierFor(64)).toBe('marginal');
+    expect(tierFor(35)).toBe('marginal');
+    expect(tierFor(34)).toBe('poor');
+    expect(tierFor(0)).toBe('poor');
+    expect(tierFor(100)).toBe('clear');
   });
 });

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { avgCloudDuring, Forecast } from './weather';
+import { avgCloudDuring, Forecast, forecastUrl, parseForecast } from './weather';
 import { DateTime, Interval } from 'luxon';
 
 // ── Fixture: four hourly readings, midnight–3am, cloud 10/20/30/40 ──
@@ -58,5 +58,38 @@ describe('avgCloudDuring', () => {
     const empty: Forecast = { ...fixtureForecast, hours: [] };
     const result = avgCloudDuring(empty, win('2026-01-15T00:00', '2026-01-15T04:00'));
     expect(result.available).toBe(false);
+  });
+});
+
+describe('forecastUrl', () => {
+  it('encodes the site coordinates and the 8-day hourly cloud request', () => {
+    const site = {
+      id: 't',
+      coordinates: { lat: 45.6621, lng: -81.9679 },
+      timezone: 'America/Toronto',
+    } as never;
+    expect(forecastUrl(site)).toBe(
+      'https://api.open-meteo.com/v1/forecast?latitude=45.6621&longitude=-81.9679&hourly=cloud_cover&forecast_days=8',
+    );
+  });
+});
+
+describe('parseForecast', () => {
+  it('zones each UTC reading to the site timezone and carries savedAt through', () => {
+    const site = { id: 't', coordinates: { lat: 0, lng: 0 }, timezone: 'America/Toronto' } as never;
+    const savedAt = DateTime.fromMillis(Date.UTC(2026, 0, 15, 6), { zone: 'utc' });
+    // 05:00Z on Jan 15 = midnight EST (UTC−5)
+    const f = parseForecast(
+      site,
+      { hourly: { time: ['2026-01-15T05:00', '2026-01-15T06:00'], cloud_cover: [10, 20] } },
+      savedAt,
+    );
+    expect(f.siteId).toBe('t');
+    expect(f.savedAt.toMillis()).toBe(savedAt.toMillis());
+    expect(f.hours).toHaveLength(2);
+    expect(f.hours[0].time.zoneName).toBe('America/Toronto');
+    expect(f.hours[0].time.hour).toBe(0);
+    expect(f.hours[0].cloudCover).toBe(10);
+    expect(f.hours[1].time.hour).toBe(1);
   });
 });

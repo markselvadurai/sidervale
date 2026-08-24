@@ -52,3 +52,6 @@ CLAUDE.md
 
 # downloaded atlas tiles — refetchable, not source data
 tools/dataset/.tile-cache/
+
+# regenerated score artifact — never committed
+tools/precompute/scores.json

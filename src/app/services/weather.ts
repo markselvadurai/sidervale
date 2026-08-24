@@ -1,8 +1,14 @@
 import { Injectable, signal } from '@angular/core';
-import { avgCloudDuring, CloudCoverResult, Forecast, getForecast } from '../engines/weather';
+import {
+  avgCloudDuring,
+  CloudCoverResult,
+  Forecast,
+  ForecastPayload,
+  forecastUrl,
+  parseForecast,
+} from '../engines/weather';
 import { DateTime, Interval } from 'luxon';
 import { Site } from '../models/site';
-import { SITES } from '../data/sites';
 
 // gem updates every 6 hours, 3 hour ttl keeps us within one model run without redundant fetching
 const TTL_HOURS = 3;
@@ -15,11 +21,6 @@ export type StoredForecast = {
 
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
-  constructor() {
-    const site = SITES.find((s) => s.id === 'manitoulin-eco-park')!;
-    const revived = this.loadFromCache(site);
-  }
-
   private _siteForecast = signal<Map<string, Forecast>>(new Map());
   readonly siteForecast = this._siteForecast.asReadonly();
 
@@ -42,12 +43,18 @@ export class WeatherService {
       }
     }
     try {
-      const fresh = await getForecast(site);
+      const fresh = await this.fetchForecast(site);
       localStorage.setItem(this.cacheKey(site.id), JSON.stringify(this.toStorage(fresh)));
       this.storeForecast(site.id, fresh);
     } catch (error) {
       console.warn(`forecast fetch failed for ${site.id}`);
     }
+  }
+
+  private async fetchForecast(site: Site): Promise<Forecast> {
+    const res = await fetch(forecastUrl(site));
+    if (!res.ok) throw new Error(`Open-Meteo ${res.status} for ${site.id}`);
+    return parseForecast(site, (await res.json()) as ForecastPayload, DateTime.now());
   }
 
   private cacheKey(siteId: string): string {

@@ -10,20 +10,23 @@ export type Forecast = {
 export type CloudCoverResult =
   { available: true; avgCloud: number; coverage: number } | { available: false };
 
-export async function getForecast(site: Site): Promise<Forecast> {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${site.coordinates.lat}&longitude=${site.coordinates.lng}&hourly=cloud_cover&forecast_days=8`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Open-Meteo ${res.status} for ${site.id}`);
-  const data = await res.json();
+export type ForecastPayload = { hourly: { time: string[]; cloud_cover: number[] } };
+
+/** The Open-Meteo request for a site — pure so browser and precompute share one URL scheme. */
+export function forecastUrl(site: Site): string {
+  return `https://api.open-meteo.com/v1/forecast?latitude=${site.coordinates.lat}&longitude=${site.coordinates.lng}&hourly=cloud_cover&forecast_days=8`;
+}
+
+/** Decode an Open-Meteo payload into site-zoned hourly readings. */
+export function parseForecast(site: Site, payload: ForecastPayload, savedAt: DateTime): Forecast {
   const hours: Forecast['hours'] = [];
-  for (let i = 0; i < data.hourly.time.length; i++) {
+  for (let i = 0; i < payload.hourly.time.length; i++) {
     hours.push({
-      time: DateTime.fromISO(data.hourly.time[i], { zone: 'utc' }).setZone(site.timezone),
-      cloudCover: data.hourly.cloud_cover[i],
+      time: DateTime.fromISO(payload.hourly.time[i], { zone: 'utc' }).setZone(site.timezone),
+      cloudCover: payload.hourly.cloud_cover[i],
     });
   }
-
-  return { siteId: site.id, savedAt: DateTime.now(), hours };
+  return { siteId: site.id, savedAt, hours };
 }
 
 export function avgCloudDuring(forecast: Forecast, window: Interval): CloudCoverResult {

@@ -37,3 +37,13 @@ export function computeScore(
   const h = Math.pow(1 - clouds.avgCloud / 100, CLOUD_EXPONENT);
   return { score: Math.round(f * g * h * 100), cloudDataAvailable: true };
 }
+
+export type Tier = 'clear' | 'marginal' | 'poor';
+
+// Shared by every consumer — markers, chips, week dots — so the bands can never disagree.
+const TIER_CLEAR = 65;
+const TIER_MARGINAL = 35;
+
+export function tierFor(score: number): Tier {
+  return score >= TIER_CLEAR ? 'clear' : score >= TIER_MARGINAL ? 'marginal' : 'poor';
+}

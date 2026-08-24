@@ -5,7 +5,7 @@ import { currentObservingNight, getDarknessWindow, getMoonOverlap } from '../eng
 import { noonOf, ObservingNight, plusNights } from '../models/observing-night';
 import { DateTime, Duration, Interval } from 'luxon';
 import { WeatherService } from './weather';
-import { computeScore, NightScore } from '../engines/scorer';
+import { computeScore, NightScore, Tier, tierFor } from '../engines/scorer';
 import { avgCloudDuring, CloudCoverResult, Forecast } from '../engines/weather';
 
 type CloudData =
@@ -40,15 +40,6 @@ export type ScoredNight = Extract<NightInfo, { hasTrueDarkness: true }>;
 type TonightScore =
   | { hasTrueDarkness: true; score: number; tier: Tier; cloudDataAvailable: boolean }
   | { hasTrueDarkness: false };
-
-type Tier = 'clear' | 'marginal' | 'poor';
-
-const TIER_CLEAR = 65;
-const TIER_MARGINAL = 35;
-
-function tierFor(score: number): Tier {
-  return score >= TIER_CLEAR ? 'clear' : score >= TIER_MARGINAL ? 'marginal' : 'poor';
-}
 
 type WeekEntry = { night: ObservingNight; label: string } & (
   | { hasTrueDarkness: true; score: number; tier: Tier; cloudDataAvailable: boolean }

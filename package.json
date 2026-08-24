@@ -14,7 +14,8 @@
     "merge": "tsx tools/dataset/merge-sites.ts",
     "enrich": "tsx tools/dataset/enrich-sites.ts",
     "brightness": "tsx tools/dataset/sample-brightness.ts",
-    "emit": "tsx tools/dataset/emit-dataset.ts"
+    "emit": "tsx tools/dataset/emit-dataset.ts",
+    "precompute": "tsx tools/precompute/precompute.ts"
   },
   "private": true,
   "packageManager": "npm@10.9.0",
