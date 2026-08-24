@@ -12,15 +12,27 @@ export function observingNightOf(site: Site, now: DateTime = DateTime.now()): Ob
   return { siteId: site.id, localDate };
 }
 
+/** The night `n` nights after this one (negative steps back). Pure calendar arithmetic. */
+export function plusNights(night: ObservingNight, n: number): ObservingNight {
+  // UTC keeps day-stepping free of DST; only the calendar date survives anyway.
+  const localDate = calendarDate(night.localDate, 'utc').plus({ days: n }).toISODate();
+  if (localDate === null) throw new Error(`invalid localDate '${night.localDate}'`);
+  return { siteId: night.siteId, localDate };
+}
+
+/** Parses strictly 'YYYY-MM-DD' — fromISO alone would accept datetime strings, which are instants. */
+function calendarDate(localDate: string, zone: string): DateTime {
+  return /^\d{4}-\d{2}-\d{2}$/.test(localDate)
+    ? DateTime.fromISO(localDate, { zone })
+    : DateTime.invalid('not a calendar date');
+}
+
 /** Noon at the site on the night's local date — the unambiguous anchor instant. */
 export function noonOf(site: Site, night: ObservingNight): DateTime {
   if (night.siteId !== site.id) {
     throw new Error(`night belongs to site ${night.siteId}, not ${site.id}`);
   }
-  // Shape check first: fromISO also accepts datetime strings, which are instants, not days.
-  const noon = /^\d{4}-\d{2}-\d{2}$/.test(night.localDate)
-    ? DateTime.fromISO(night.localDate, { zone: site.timezone }).set({ hour: 12 })
-    : DateTime.invalid('not a calendar date');
+  const noon = calendarDate(night.localDate, site.timezone).set({ hour: 12 });
   if (!noon.isValid) throw new Error(`invalid localDate '${night.localDate}'`);
   return noon;
 }

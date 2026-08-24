@@ -59,8 +59,8 @@
           }
         </dl>
         <div class="score-strip">
-          @for (day of sitesService.weekScores(); track day.date.getDate()) {
-            <button class="score-item" (click)="sitesService.selectNight(day.date)">
+          @for (day of sitesService.weekScores(); track day.night.localDate) {
+            <button class="score-item" (click)="sitesService.selectNight(day.night)">
               @if (!day.hasTrueDarkness) {
                 <div class="score-dot score-dot--darkless"></div>
                 <div>{{ day.label }}</div>
@@ -71,13 +71,13 @@
                   [class.score-dot--marginal]="day.tier === 'marginal'"
                   [class.score-dot--poor]="day.tier === 'poor'"
                   [class.score-dot--best]="
-                    sitesService.bestNight()?.getTime() === day.date.getTime()
+                    sitesService.bestNight()?.localDate === day.night.localDate
                   "
                 ></div>
                 <div
                   class="score-label"
                   [class.score-label--active]="
-                    sitesService.selectedNight().toDateString() === day.date.toDateString()
+                    sitesService.selectedNight()?.localDate === day.night.localDate
                   "
                 >
                   {{ day.label }}

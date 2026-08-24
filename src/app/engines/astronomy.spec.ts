@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import * as SunCalc from 'suncalc';
-import { getDarknessWindow, getMoonOverlap, siteToday } from './astronomy';
+import { currentObservingNight, getDarknessWindow, getMoonOverlap } from './astronomy';
 import { Site } from '../models/site';
+import { ObservingNight } from '../models/observing-night';
 import { DateTime, Interval } from 'luxon';
 
 // a minimal test site — only the fields the function uses
@@ -14,8 +15,9 @@ const manitoulin: Site = {
   timezone: 'America/Toronto',
   bortle: 2,
 };
-const augNight = new Date(Date.UTC(2026, 7, 12, 12, 0, 0)); // Aug 12 2026, noon UTC
-const augNight5 = new Date(Date.UTC(2026, 7, 5, 12, 0));
+const nightOf = (localDate: string): ObservingNight => ({ siteId: manitoulin.id, localDate });
+const augNight = nightOf('2026-08-12');
+const augNight5 = nightOf('2026-08-05');
 describe('getDarknessWindow', () => {
   // ── LAYER 1: property/invariant tests ──
 
@@ -76,8 +78,7 @@ describe('getDarknessWindow', () => {
       coordinates: { lat: 69, lng: 18 },
       timezone: 'Europe/Oslo',
     };
-    const midsummer = new Date(Date.UTC(2026, 5, 21, 12, 0));
-    const w = getDarknessWindow(arcticSite, midsummer);
+    const w = getDarknessWindow(arcticSite, nightOf('2026-06-21'));
     expect(w.hasTrueDarkness).toBe(false);
     expect(w.start).toBeNull();
     expect(w.end).toBeNull();
@@ -87,44 +88,33 @@ describe('getDarknessWindow', () => {
     expect(w.dawn).toBeNull();
   });
 
-  // ── LAYER 3: regression — the UTC day-seam ──
+  // ── LAYER 3: the night is the caller's word, and the window must honor it ──
 
-  // Date.UTC, not a local-time constructor: that means a different instant per
-  // machine and would pass on a UTC runner while the bug was live.
+  // The v1 day-seam regression ("same night from any time of day") is gone as a
+  // test because it is gone as an input: the signature no longer accepts instants.
 
-  it('resolves the same night from any time of day', () => {
-    const noon = new Date(Date.UTC(2026, 7, 22, 16, 0)); // 12:00 EDT Aug 22
-    const evening = new Date(Date.UTC(2026, 7, 23, 1, 0)); // 21:00 EDT Aug 22
-
-    const fromNoon = getDarknessWindow(manitoulin, noon);
-    const fromEvening = getDarknessWindow(manitoulin, evening);
-    if (!fromNoon.hasTrueDarkness || !fromEvening.hasTrueDarkness) {
-      throw new Error('expected darkness');
-    }
-
-    expect(fromEvening.start.toISO()).toBe(fromNoon.start.toISO());
-    expect(fromEvening.dawn.toISO()).toBe(fromNoon.dawn.toISO());
-  });
-
-  // Consistency alone would pass with both answers wrong, so pin the real night.
   it('names the night that begins on the given local date', () => {
-    const evening = new Date(Date.UTC(2026, 7, 23, 1, 0)); // 21:00 EDT Aug 22
-    const w = getDarknessWindow(manitoulin, evening);
+    const w = getDarknessWindow(manitoulin, nightOf('2026-08-22'));
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
 
     expect(w.start.toISODate()).toBe('2026-08-22');
     expect(w.end.toISODate()).toBe('2026-08-23');
   });
 
-  // Toronto springs forward 2027-03-14. Guards the seam on a transition day; it
-  // does not discriminate days:1 from hours:24 (mutation-checked, both pass).
+  // Toronto springs forward 2027-03-14. Guards the seam on a transition day.
   it('resolves the correct night on a DST transition day', () => {
-    const evening = new Date(Date.UTC(2027, 2, 15, 1, 0)); // 21:00 EDT Mar 14
-    const w = getDarknessWindow(manitoulin, evening);
+    const w = getDarknessWindow(manitoulin, nightOf('2027-03-14'));
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
 
     expect(w.start.toISODate()).toBe('2027-03-14');
     expect(w.end.toISODate()).toBe('2027-03-15');
+  });
+
+  // The engine refuses a night constructed for a different site.
+  it('throws on a foreign night', () => {
+    expect(() =>
+      getDarknessWindow(manitoulin, { siteId: 'somewhere-else', localDate: '2026-08-22' }),
+    ).toThrow(/site/i);
   });
 });
 
@@ -234,21 +224,67 @@ describe('getMoonOverlap', () => {
   });
 });
 
-describe('siteToday', () => {
-  it('resolves the site calendar day, not the caller clock', () => {
-    // 03:00 UTC on Aug 22 is still Aug 21 in Toronto — 23:00 EDT, mid-session.
-    const now = DateTime.fromISO('2026-08-22T03:00', { zone: 'utc' }) as DateTime<true>;
-    expect(siteToday(manitoulin, now).toISODate()).toBe('2026-08-21');
-    expect(siteToday(manitoulin, now).hour).toBe(12);
+describe('currentObservingNight', () => {
+  const at = (y: number, monthIndex: number, d: number, h: number, min = 0) =>
+    DateTime.fromMillis(Date.UTC(y, monthIndex, d, h, min), { zone: 'utc' });
+
+  // ── LAYER 1: the three regimes of a day, derived from the UTC offset ──
+
+  it('evening belongs to the night beginning that local day', () => {
+    // 01:00Z Aug 23 = 21:00 EDT Aug 22 — sunrise long past, night of Aug 22 beginning
+    expect(currentObservingNight(manitoulin, at(2026, 7, 23, 1, 0)).localDate).toBe('2026-08-22');
   });
 
-  // The week row is built from this, so a reader in Tokyo must get the same
-  // seven Ontario nights as a reader in Toronto.
+  it('pre-dawn still belongs to the night in progress', () => {
+    // 07:00Z = 03:00 EDT Aug 23 — before sunrise, inside the night that began Aug 22
+    expect(currentObservingNight(manitoulin, at(2026, 7, 23, 7, 0)).localDate).toBe('2026-08-22');
+  });
+
+  it('after sunrise it advances to the coming night', () => {
+    // 13:00Z = 09:00 EDT Aug 23 — sunrise (~06:40) has passed; a 9am planner means tonight
+    expect(currentObservingNight(manitoulin, at(2026, 7, 23, 13, 0)).localDate).toBe('2026-08-23');
+  });
+
+  // ── LAYER 2: the boundary is suncalc's own sunrise, not a hand-tuned hour ──
+
+  it('flips exactly at sunrise', () => {
+    const anchor = at(2026, 7, 23, 16, 0); // noon EDT Aug 23
+    const sunrise = SunCalc.getTimes(
+      anchor.toJSDate(),
+      manitoulin.coordinates.lat,
+      manitoulin.coordinates.lng,
+    ).sunrise;
+    if (!sunrise) throw new Error('expected a sunrise');
+    const rise = DateTime.fromJSDate(sunrise, { zone: 'utc' }) as DateTime<true>;
+    expect(currentObservingNight(manitoulin, rise.minus({ minutes: 1 })).localDate).toBe(
+      '2026-08-22',
+    );
+    expect(currentObservingNight(manitoulin, rise.plus({ minutes: 1 })).localDate).toBe(
+      '2026-08-23',
+    );
+  });
+
+  // ── LAYER 3: caller-zone invariance (inherited from siteToday's contract) ──
+
   it.each(['UTC', 'Asia/Tokyo', 'Pacific/Auckland', 'America/Vancouver'])(
-    'gives the same site day when called from %s',
+    'gives the same night when called from %s',
     (callerZone) => {
-      const now = DateTime.fromISO('2026-08-22T16:00Z', { zone: callerZone }) as DateTime<true>;
-      expect(siteToday(manitoulin, now).toISODate()).toBe('2026-08-22');
+      const now = DateTime.fromISO('2026-08-23T16:00Z', { zone: callerZone }) as DateTime<true>;
+      expect(currentObservingNight(manitoulin, now).localDate).toBe('2026-08-23');
     },
   );
+
+  // ── Polar fallback: no sunrise event → the noon rule decides ──
+
+  it('falls back to noon rollover during polar night', () => {
+    const svalbard: Site = {
+      ...manitoulin,
+      coordinates: { lat: 78.2, lng: 15.6 },
+      timezone: 'Arctic/Longyearbyen', // UTC+1 in December
+    };
+    // 09:00Z = 10:00 local Dec 24 — before noon → still the night of Dec 23
+    expect(currentObservingNight(svalbard, at(2026, 11, 24, 9, 0)).localDate).toBe('2026-12-23');
+    // 14:00Z = 15:00 local — past noon → the night of Dec 24
+    expect(currentObservingNight(svalbard, at(2026, 11, 24, 14, 0)).localDate).toBe('2026-12-24');
+  });
 });

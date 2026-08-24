@@ -1,7 +1,8 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Site } from '../models/site';
 import { SITES } from '../data/sites';
-import { getDarknessWindow, getMoonOverlap, siteToday } from '../engines/astronomy';
+import { currentObservingNight, getDarknessWindow, getMoonOverlap } from '../engines/astronomy';
+import { noonOf, ObservingNight, plusNights } from '../models/observing-night';
 import { DateTime, Duration, Interval } from 'luxon';
 import { WeatherService } from './weather';
 import { computeScore, NightScore } from '../engines/scorer';
@@ -49,7 +50,7 @@ function tierFor(score: number): Tier {
   return score >= TIER_CLEAR ? 'clear' : score >= TIER_MARGINAL ? 'marginal' : 'poor';
 }
 
-type WeekEntry = { date: Date; label: string } & (
+type WeekEntry = { night: ObservingNight; label: string } & (
   | { hasTrueDarkness: true; score: number; tier: Tier; cloudDataAvailable: boolean }
   | { hasTrueDarkness: false }
 );
@@ -69,28 +70,27 @@ export class SitesService {
   selectSite(id: string) {
     this._selectedSiteId.set(id);
     const site = this.sites().find((s) => s.id === id);
-    this.selectNight(site ? siteToday(site).toJSDate() : new Date());
+    if (site) this.selectNight(currentObservingNight(site));
   }
-  private _selectedNight = signal<Date>(new Date());
+  private _selectedNight = signal<ObservingNight | null>(null);
   readonly selectedNight = this._selectedNight.asReadonly();
-  selectNight(date: Date) {
-    this._selectedNight.set(date);
+  selectNight(night: ObservingNight) {
+    this._selectedNight.set(night);
   }
 
   readonly weekScores = computed<WeekEntry[]>(() => {
     const site = this.selectedSite();
     const entries: WeekEntry[] = [];
     if (!site) return [];
-    const start = siteToday(site);
+    const start = currentObservingNight(site);
     for (let i = 0; i < 7; i++) {
-      const date = start.plus({ days: i });
-      const d = date.toJSDate();
-      const label = dayLabels[date.weekday - 1];
-      const darkness = getDarknessWindow(site, d);
+      const night = plusNights(start, i);
+      const label = dayLabels[noonOf(site, night).weekday - 1];
+      const darkness = getDarknessWindow(site, night);
 
       if (!darkness.hasTrueDarkness) {
         entries.push({
-          date: d,
+          night,
           label,
           hasTrueDarkness: false,
         });
@@ -110,7 +110,7 @@ export class SitesService {
       );
       const score = result.score;
       entries.push({
-        date: d,
+        night,
         label,
         hasTrueDarkness: true,
         score,
@@ -121,26 +121,26 @@ export class SitesService {
     return entries;
   });
 
-  readonly bestNight = computed<Date | null>(() => {
+  readonly bestNight = computed<ObservingNight | null>(() => {
     const scores = this.weekScores();
 
-    let bestDate: Date | null = null;
+    let best: ObservingNight | null = null;
     let bestScore = -Infinity;
 
     for (const entry of scores) {
       if (!entry.hasTrueDarkness) continue;
       if (entry.score > bestScore) {
         bestScore = entry.score;
-        bestDate = entry.date;
+        best = entry.night;
       }
     }
-    return bestDate;
+    return best;
   });
   // get all sites scores from tonight and mapping them to siteid - order: darkwindow->moon->clouds->score
   readonly tonightScores = computed<Map<string, TonightScore>>(() => {
     const m = new Map<string, TonightScore>();
     for (const site of this.sites()) {
-      const darkness = getDarknessWindow(site, new Date());
+      const darkness = getDarknessWindow(site, currentObservingNight(site));
       if (!darkness.hasTrueDarkness) {
         m.set(site.id, { hasTrueDarkness: false });
         continue;
@@ -170,18 +170,19 @@ export class SitesService {
 
   readonly selectedNightLabel = computed<string>(() => {
     const site = this.selectedSite();
-    const dt = DateTime.fromJSDate(this.selectedNight());
-    return (site ? dt.setZone(site.timezone) : dt).toFormat('ccc · LLL d');
+    const night = this.selectedNight();
+    if (!site || !night) return '';
+    return noonOf(site, night).toFormat('ccc · LLL d');
   });
 
   readonly nightInfo = computed<NightInfo | null>(() => {
     const site = this.selectedSite();
-    if (!site) return null;
+    const night = this.selectedNight();
+    if (!site || !night) return null;
 
     const forecast = this.weather.siteForecast().get(site.id);
 
-    const date = this.selectedNight();
-    const darkness = getDarknessWindow(site, date);
+    const darkness = getDarknessWindow(site, night);
 
     if (!darkness.hasTrueDarkness) return { hasTrueDarkness: false };
     const interval = Interval.fromDateTimes(darkness.start, darkness.end) as Interval<true>;

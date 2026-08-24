@@ -1,7 +1,14 @@
 # 0003 — "Tonight" rolls over at site-local noon
 
-**Status:** accepted
+**Status:** amended 2026-08-24 — see below
 **Date:** 2026-08-24
+
+> **Amendment (same day):** Mark revised the boundary after the 10am pushback: the morning dead zone
+> was real, so "tonight" now advances at **sunrise**, not noon — "current night if possible, else
+> next night." This lives in `currentObservingNight` (engines, where SunCalc is allowed), while the
+> model's `observingNightOf` keeps the noon rule as the never-undefined fallback for polar day/night,
+> where suncalc reports no sunrise. The original record below stands as written; only the boundary
+> choice was superseded. The UI-labeling requirement carries over unchanged.
 
 ## Context
 

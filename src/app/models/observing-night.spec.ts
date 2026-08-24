@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { DateTime } from 'luxon';
 import { Site } from './site';
-import { observingNightOf, noonOf } from './observing-night';
+import { observingNightOf, noonOf, plusNights } from './observing-night';
 
 function makeSite(overrides: Partial<Site> & Pick<Site, 'id' | 'timezone'>): Site {
   return {
@@ -96,5 +96,26 @@ describe('noonOf', () => {
     for (const localDate of ['2026-8-3', '2026-02-30', 'tonight', '2026-08-22T23:00']) {
       expect(() => noonOf(toronto, { siteId: 'toronto-test', localDate })).toThrow(/localDate/);
     }
+  });
+});
+
+describe('plusNights', () => {
+  it('crosses a month boundary: Aug 30 + 3 = Sep 2', () => {
+    expect(plusNights({ siteId: 's', localDate: '2026-08-30' }, 3)).toEqual({
+      siteId: 's',
+      localDate: '2026-09-02',
+    });
+  });
+
+  it('steps backward: Dec 13 − 1 = Dec 12', () => {
+    expect(plusNights({ siteId: 's', localDate: '2026-12-13' }, -1).localDate).toBe('2026-12-12');
+  });
+
+  it('respects leap years: Feb 28 2028 + 1 = Feb 29', () => {
+    expect(plusNights({ siteId: 's', localDate: '2028-02-28' }, 1).localDate).toBe('2028-02-29');
+  });
+
+  it('throws on a malformed localDate', () => {
+    expect(() => plusNights({ siteId: 's', localDate: 'tonight' }, 1)).toThrow(/localDate/);
   });
 });

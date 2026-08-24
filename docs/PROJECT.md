@@ -37,14 +37,7 @@ The global successor to **Nocturne v1** — a stargazing go/no-go planner. v1 co
 
 **2. Open-Meteo's free tier is non-commercial.** No ads, no subscriptions, no in-app purchases. Free tier is 10,000 calls/day. Measured: client-side fetching at 200 sites caps out around **50 users/day**. A shared server-side cache on a 3-hour TTL makes it ~1,600 calls/day for 200 sites _regardless of user count_ — that inversion is the change that makes global coverage possible at all. The first dollar of revenue requires a licensed feed (Meteosource from ~$9/mo, Open-Meteo Standard ~$29/mo).
 
-**3. An observing night is a local calendar concept, not an instant.** Passing `Date` around is what caused the v1 day-seam bug — twice. `siteToday()` is the v1-sized mitigation; the intended fix is a real domain type:
-
-```ts
-/** The night that BEGINS on this local calendar date at this site. */
-type ObservingNight = { readonly siteId: string; readonly localDate: string }; // 'YYYY-MM-DD'
-```
-
-Make it impossible to construct an ambiguous night rather than relying on callers to remember.
+**3. An observing night is a local calendar concept, not an instant.** Passing `Date` around is what caused the v1 day-seam bug — twice. The fix is built: `ObservingNight` (`src/app/models/observing-night.ts`) carries `{ siteId, localDate }` and no instant; `getDarknessWindow` takes it directly, and `currentObservingNight` (engines) resolves "tonight" — the night in progress until sunrise, else the next to begin, noon-rollover fallback where sunrise doesn't exist (ADR 0003). Construct nights only through those functions; never reintroduce a `Date` parameter that means "which night."
 
 **4. Scale changes which bugs matter.** Rare per-site defects become daily at 300 sites. The moon-probe inversion was roughly one bad night per site per year — invisible at 7 sites, several wrong site-nights per refresh at 300.
 
