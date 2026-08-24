@@ -46,8 +46,16 @@ review pair for a human, never an auto-merge. Where both sources carry coordinat
 canonical, the delta is recorded, and > 5 km quarantines as `coordinate-disagreement`. Current
 result: one auto-merge (Mont-Mégantic, pins 4.57 km apart inside the reserve), zero review pairs.
 
+## Stage 3 — enrich (`npm run enrich`, no network)
+
+Adds each site's IANA timezone via `tz-lookup` on its coordinates — offline, deterministic, never
+inferred. Doubles as a coordinate-error detector: `Etc/*` (open ocean) and `Antarctica/*` zones
+quarantine as `suspicious-timezone`, since a lat/lng swap or sign flip usually lands in water.
+Current result: 293/293 coordinate-bearing sites resolve to real zones across 50 timezones,
+zero suspicious.
+
 ## Later stages (not built yet)
 
-Enrich (timezone via `tz-lookup`, sky brightness from the Lorenz 2024 raster, Wikidata QIDs as
-cross-check) → validate → emit the app dataset. Per `docs/PROJECT.md`: deterministic facts only
-from deterministic sources; LLM judges for prose and arbitration with abstention.
+Sky brightness from the Lorenz 2024 raster, Wikidata QIDs as cross-check → validate → emit the
+app dataset. Per `docs/PROJECT.md`: deterministic facts only from deterministic sources; LLM
+judges for prose and arbitration with abstention.
