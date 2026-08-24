@@ -5,7 +5,7 @@
 
 ## Context
 
-Nocturne v1 is a hand-built Angular 21 stargazing planner for 7 Ontario dark-sky sites, frozen at `v1.0`. Sidervale takes the same product thesis global (~300 certified sites). Two things were in tension: v1's value as *hand-built* proof of authorship, and the desire to move fast on v2 with heavy AI assistance.
+Nocturne v1 is a hand-built Angular 21 stargazing planner for 7 Ontario dark-sky sites, frozen at `v1.0`. Sidervale takes the same product thesis global (~300 certified sites). Two things were in tension: v1's value as _hand-built_ proof of authorship, and the desire to move fast on v2 with heavy AI assistance.
 
 ## Options
 

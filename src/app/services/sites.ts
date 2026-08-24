@@ -31,50 +31,51 @@ export type NightInfo =
       moonOverlapDisplay: string;
       score: number;
       tier: Tier;
-      cloudHours : { time: DateTime; cloudCover: number }[]
+      cloudHours: { time: DateTime; cloudCover: number }[];
     } & CloudData);
 
-  export type ScoredNight = Extract<NightInfo, { hasTrueDarkness: true }>;
+export type ScoredNight = Extract<NightInfo, { hasTrueDarkness: true }>;
 
-  type TonightScore =
+type TonightScore =
   | { hasTrueDarkness: true; score: number; tier: Tier; cloudDataAvailable: boolean }
   | { hasTrueDarkness: false };
 
-  type Tier = 'clear' | 'marginal' | 'poor';
-  
-  const TIER_CLEAR = 65;
-  const TIER_MARGINAL = 35;
+type Tier = 'clear' | 'marginal' | 'poor';
 
+const TIER_CLEAR = 65;
+const TIER_MARGINAL = 35;
 
-  function tierFor(score: number) : Tier {
-    return(score >= TIER_CLEAR ? 'clear' : score >= TIER_MARGINAL ? 'marginal' : 'poor');
-  }
+function tierFor(score: number): Tier {
+  return score >= TIER_CLEAR ? 'clear' : score >= TIER_MARGINAL ? 'marginal' : 'poor';
+}
 
-  type WeekEntry = { date: Date; label: string } & (
-    | { hasTrueDarkness: true; score: number; tier: Tier; cloudDataAvailable: boolean }
-    | { hasTrueDarkness: false }
-  );
+type WeekEntry = { date: Date; label: string } & (
+  | { hasTrueDarkness: true; score: number; tier: Tier; cloudDataAvailable: boolean }
+  | { hasTrueDarkness: false }
+);
 
-  const dayLabels = ["M", "T", "W", "TH", "F", "S", "S"];
+const dayLabels = ['M', 'T', 'W', 'TH', 'F', 'S', 'S'];
 
 @Injectable({ providedIn: 'root' })
 export class SitesService {
   readonly sites = signal<Site[]>(SITES);
-  private weather = inject(WeatherService)
+  private weather = inject(WeatherService);
   private _selectedSiteId = signal<string | null>(null);
   readonly selectedSiteId = this._selectedSiteId.asReadonly();
-  readonly selectedSite = computed(() => 
-    this.sites().find(s => s.id === this.selectedSiteId()) ?? null
+  readonly selectedSite = computed(
+    () => this.sites().find((s) => s.id === this.selectedSiteId()) ?? null,
   );
-  
+
   selectSite(id: string) {
     this._selectedSiteId.set(id);
-    const site = this.sites().find(s => s.id === id);
+    const site = this.sites().find((s) => s.id === id);
     this.selectNight(site ? siteToday(site).toJSDate() : new Date());
   }
   private _selectedNight = signal<Date>(new Date());
   readonly selectedNight = this._selectedNight.asReadonly();
-  selectNight(date: Date) { this._selectedNight.set(date);}
+  selectNight(date: Date) {
+    this._selectedNight.set(date);
+  }
 
   readonly weekScores = computed<WeekEntry[]>(() => {
     const site = this.selectedSite();
@@ -89,9 +90,9 @@ export class SitesService {
 
       if (!darkness.hasTrueDarkness) {
         entries.push({
-            date: d,
-            label,
-            hasTrueDarkness: false
+          date: d,
+          label,
+          hasTrueDarkness: false,
         });
         continue;
       }
@@ -101,7 +102,12 @@ export class SitesService {
 
       const clouds = this.weather.cloudsFor(site, interval);
 
-      const result = computeScore(interval.length('hours'), moon.overlapFraction, moon.illuminationFraction, clouds);
+      const result = computeScore(
+        interval.length('hours'),
+        moon.overlapFraction,
+        moon.illuminationFraction,
+        clouds,
+      );
       const score = result.score;
       entries.push({
         date: d,
@@ -109,50 +115,55 @@ export class SitesService {
         hasTrueDarkness: true,
         score,
         tier: tierFor(score),
-        cloudDataAvailable: clouds.available
+        cloudDataAvailable: clouds.available,
       });
     }
     return entries;
-  })
+  });
 
   readonly bestNight = computed<Date | null>(() => {
-  const scores = this.weekScores();
+    const scores = this.weekScores();
 
-  let bestDate: Date | null = null;
-  let bestScore = -Infinity;
+    let bestDate: Date | null = null;
+    let bestScore = -Infinity;
 
-  for (const entry of scores) {
-    if (!entry.hasTrueDarkness) continue;
-    if (entry.score > bestScore) {
-      bestScore = entry.score;
-      bestDate = entry.date;
+    for (const entry of scores) {
+      if (!entry.hasTrueDarkness) continue;
+      if (entry.score > bestScore) {
+        bestScore = entry.score;
+        bestDate = entry.date;
+      }
     }
-  }
-  return bestDate;
-});
-// get all sites scores from tonight and mapping them to siteid - order: darkwindow->moon->clouds->score
-  readonly tonightScores = computed<Map<string, TonightScore>>(() => { 
+    return bestDate;
+  });
+  // get all sites scores from tonight and mapping them to siteid - order: darkwindow->moon->clouds->score
+  readonly tonightScores = computed<Map<string, TonightScore>>(() => {
     const m = new Map<string, TonightScore>();
     for (const site of this.sites()) {
       const darkness = getDarknessWindow(site, new Date());
       if (!darkness.hasTrueDarkness) {
-        m.set(site.id, {hasTrueDarkness: false})
+        m.set(site.id, { hasTrueDarkness: false });
         continue;
-      };
+      }
       const interval = Interval.fromDateTimes(darkness.start, darkness.end) as Interval<true>;
       const moon = getMoonOverlap(site, interval);
 
       const clouds = this.weather.cloudsFor(site, interval);
 
-      const result = computeScore(interval.length('hours'), moon.overlapFraction, moon.illuminationFraction, clouds);
+      const result = computeScore(
+        interval.length('hours'),
+        moon.overlapFraction,
+        moon.illuminationFraction,
+        clouds,
+      );
       const score = result.score;
 
       m.set(site.id, {
         hasTrueDarkness: true,
         score,
         tier: tierFor(score),
-        cloudDataAvailable: clouds.available
-      })
+        cloudDataAvailable: clouds.available,
+      });
     }
     return m;
   });
@@ -178,12 +189,22 @@ export class SitesService {
 
     const clouds = this.weather.cloudsFor(site, interval);
     // scratch — Wednesday diagnosis, in nightInfo right after the cloudsFor call:
-    const cloudData: CloudData = clouds.available ? { cloudDataAvailable: true, cloudAvg: Math.round(clouds.avgCloud) } : { cloudDataAvailable: false, cloudAvg: null };
+    const cloudData: CloudData = clouds.available
+      ? { cloudDataAvailable: true, cloudAvg: Math.round(clouds.avgCloud) }
+      : { cloudDataAvailable: false, cloudAvg: null };
 
     const moon = getMoonOverlap(site, interval);
     const moonDisplay = getMoonOverlap(site, civilInterval);
-    const moonOverlapDisplay = moon.overlapMinutes > 0 ? Duration.fromObject({ minutes: moon.overlapMinutes }).toFormat("h'h' m'm'") : 'Out of the way ✅';
-    const result = computeScore(interval.length('hours'), moon.overlapFraction, moon.illuminationFraction, clouds);
+    const moonOverlapDisplay =
+      moon.overlapMinutes > 0
+        ? Duration.fromObject({ minutes: moon.overlapMinutes }).toFormat("h'h' m'm'")
+        : 'Out of the way ✅';
+    const result = computeScore(
+      interval.length('hours'),
+      moon.overlapFraction,
+      moon.illuminationFraction,
+      clouds,
+    );
     const score = result.score;
 
     return {
@@ -197,8 +218,8 @@ export class SitesService {
       moonOverlapDisplay,
       score,
       tier: tierFor(score),
-       cloudHours: forecast?.hours.filter(h => civilInterval.contains(h.time)) ?? [],
-      ...cloudData
+      cloudHours: forecast?.hours.filter((h) => civilInterval.contains(h.time)) ?? [],
+      ...cloudData,
     };
   });
 }

@@ -1,10 +1,21 @@
 <div #mapContainer class="map-container"></div>
-<button type="button" [class]="'overlay-toggle ' + (overlayOn() ? 'overlay-toggle--on' : 'overlay-toggle--off')" (click)="overlayOn.set(!overlayOn())">
-  light-pollution overlay{{ overlayOn() ? ' Toggle On' : ' Toggle Off'}}  ⬒
+<button
+  type="button"
+  [class]="'overlay-toggle ' + (overlayOn() ? 'overlay-toggle--on' : 'overlay-toggle--off')"
+  (click)="overlayOn.set(!overlayOn())"
+>
+  light-pollution overlay{{ overlayOn() ? ' Toggle On' : ' Toggle Off' }} ⬒
 </button>
 @if (sitesService.selectedSite(); as site) {
   <aside class="panel" [class.panel--expanded]="sheetExpanded()">
-    <button type="button" class="panel__handle" (click)="sheetExpanded.set(!sheetExpanded())" aria-label="Expand panel">&macr;&macr;</button>
+    <button
+      type="button"
+      class="panel__handle"
+      (click)="sheetExpanded.set(!sheetExpanded())"
+      aria-label="Expand panel"
+    >
+      &macr;&macr;
+    </button>
     <div class="header">
       <h2>{{ site.name }}</h2>
       <p class="subtitle">Bortle {{ site.bortle }} &middot; RASC DARK-SKY PRESERVE</p>
@@ -19,8 +30,13 @@
             [class.score--poor]="night.tier === 'poor' && night.cloudDataAvailable"
             [class.score--clear]="night.tier === 'clear' && night.cloudDataAvailable"
             [class.score--caveat]="!night.cloudDataAvailable"
-            >{{ night.score }} @if(!night.cloudDataAvailable) { ASTRONOMY ONLY } @else { {{ night.tier.toUpperCase() }} } </span
-          >
+            >{{ night.score }}
+            @if (!night.cloudDataAvailable) {
+              ASTRONOMY ONLY
+            } @else {
+              {{ night.tier.toUpperCase() }}
+            }
+          </span>
         </div>
         <app-night-strip [night]="night" />
         <dl>

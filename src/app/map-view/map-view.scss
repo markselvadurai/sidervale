@@ -182,7 +182,9 @@
     padding-top: var(--s3);
 
     .score-item {
-      background: none; border: none; padding: 0
+      background: none;
+      border: none;
+      padding: 0;
     }
 
     .score-label {
@@ -220,9 +222,8 @@
         border: 2px solid var(--clear);
       }
       &--best {
-        box-shadow: 0 0 0 3px #7FD1A826;
+        box-shadow: 0 0 0 3px #7fd1a826;
       }
-      
     }
   }
 }
@@ -235,32 +236,31 @@
     right: 0;
     width: auto;
     overflow-y: auto;
-    transition: height .2s ease;
+    transition: height 0.2s ease;
     height: 40dvh;
   }
-  .panel--expanded { 
+  .panel--expanded {
     top: auto;
     bottom: 0;
     left: 0;
     right: 0;
     width: auto;
     overflow-y: auto;
-    transition: height .2s ease;
-    height: 75dvh ;
-   }
-   .panel__handle {
+    transition: height 0.2s ease;
+    height: 75dvh;
+  }
+  .panel__handle {
     display: block;
     background: none;
     border: 1px solid var(--nadir);
     color: var(--airglow);
     font-size: larger;
     letter-spacing: 0;
-   }
+  }
   :host ::ng-deep .leaflet-control-zoom {
     display: none;
   }
 }
-
 
 :host ::ng-deep .site-marker {
   border-radius: 50%;

@@ -1,42 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --truedark: #000;
-    --zenith: #070B14;
-    --nadir: #0D1526;
-    --horizon: #1C2B45;
-    --starlight: #E8EDF7;
-    --airglow: #8FA3C4;
-    --redshift: #E14B44;
-    --clear: #7FD1A8;
-    --caution: #E2B857;
-    --poor: #A0524D;
+  --truedark: #000;
+  --zenith: #070b14;
+  --nadir: #0d1526;
+  --horizon: #1c2b45;
+  --starlight: #e8edf7;
+  --airglow: #8fa3c4;
+  --redshift: #e14b44;
+  --clear: #7fd1a8;
+  --caution: #e2b857;
+  --poor: #a0524d;
 
-    --s1: 0.25rem; //  4px
-    --s2: 0.5rem; 
-    --s3: 0.75rem;
-    --s4: 1rem;   
-    --s5: 1.5rem; 
-    --s6: 2rem;  // 32px
+  --s1: 0.25rem; //  4px
+  --s2: 0.5rem;
+  --s3: 0.75rem;
+  --s4: 1rem;
+  --s5: 1.5rem;
+  --s6: 2rem; // 32px
 
-    --mono: 'IBM Plex Mono', ui-monospace, monospace;
-    --sans: 'Archivo', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: 'Archivo', system-ui, sans-serif;
 
-    --t-label: 0.65rem;   // 10.5px — mono row labels, uppercase
-    --t-desc: 0.75rem;
-    --t-body:  0.875rem;  // 14px
-    --t-read:  1rem;      // 16px — computed numbers, the panel's voice
-    --t-head:  1.375rem;  // 22px — site name
+  --t-label: 0.65rem; // 10.5px — mono row labels, uppercase
+  --t-desc: 0.75rem;
+  --t-body: 0.875rem; // 14px
+  --t-read: 1rem; // 16px — computed numbers, the panel's voice
+  --t-head: 1.375rem; // 22px — site name
 }
 
 * {
-    box-sizing:border-box;
+  box-sizing: border-box;
 }
 
-body { 
-    background: var(--zenith); 
-    color: var(--starlight);
-    font-family: var(--sans); 
-    overflow: hidden;
-    margin:0;
+body {
+  background: var(--zenith);
+  color: var(--starlight);
+  font-family: var(--sans);
+  overflow: hidden;
+  margin: 0;
 }
-

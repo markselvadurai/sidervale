@@ -15,15 +15,19 @@ Nocturne v1 kept these as a numbered list in its README. That worked at seven si
 **Date:** YYYY-MM-DD
 
 ## Context
+
 What forced a decision. The constraint, the bug, the measurement.
 
 ## Options
+
 What was actually considered, including the one a reasonable person would assume.
 
 ## Decision
+
 What was chosen, and the specific reason the alternatives lost.
 
 ## Consequences
+
 What this costs, what it rules out, what to watch for.
 ```
 

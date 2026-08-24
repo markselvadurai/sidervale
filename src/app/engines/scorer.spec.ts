@@ -23,7 +23,6 @@ const clouds = (avgCloud: number) => ({
 const noClouds = { available: false as const };
 
 describe('computeScore — calibration scenarios', () => {
-
   it('S1: ceiling night — long darkness, no moon, clear sky → 90s', () => {
     // 7h+ saturates f; overlap 0 → g = 1 regardless of illumination; clear → h ≈ 1.
     const s = computeScore(7.5, 0, 0.02, clouds(3));
@@ -73,7 +72,7 @@ describe('computeScore — calibration scenarios', () => {
     const short = computeScore(4, 0, 0.02, clouds(3));
     const long = computeScore(7.5, 0, 0.02, clouds(3));
     expect(short.score).toBeLessThan(long.score);
-    expect(short.score / long.score).toBeGreaterThanOrEqual(0.70);
+    expect(short.score / long.score).toBeGreaterThanOrEqual(0.7);
     expect(short.score / long.score).toBeLessThanOrEqual(0.8875);
   });
 });

@@ -7,7 +7,7 @@ import { WeatherService } from './services/weather';
   selector: 'app-root',
   imports: [MapView],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   private weather = inject(WeatherService);

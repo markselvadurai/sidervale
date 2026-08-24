@@ -14,12 +14,11 @@ const manitoulin: Site = {
   timezone: 'America/Toronto',
   bortle: 2,
 };
-  const augNight = new Date(Date.UTC(2026, 7, 12, 12, 0, 0)); // Aug 12 2026, noon UTC
-  const augNight5 = new Date(Date.UTC(2026, 7, 5, 12, 0));
+const augNight = new Date(Date.UTC(2026, 7, 12, 12, 0, 0)); // Aug 12 2026, noon UTC
+const augNight5 = new Date(Date.UTC(2026, 7, 5, 12, 0));
 describe('getDarknessWindow', () => {
- 
   // ── LAYER 1: property/invariant tests ──
- 
+
   it('returns times in the site timezone', () => {
     const w = getDarknessWindow(manitoulin, augNight);
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
@@ -28,13 +27,13 @@ describe('getDarknessWindow', () => {
     expect(w.dusk.zoneName).toBe('America/Toronto');
     expect(w.dawn.zoneName).toBe('America/Toronto');
   });
- 
+
   it('darkness ends after it starts', () => {
     const w = getDarknessWindow(manitoulin, augNight);
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
     expect(w.end > w.start).toBe(true);
   });
- 
+
   // Civil twilight brackets true darkness: the sun passes −6° before −18°
   // in the evening, and −18° before −6° at dawn. This ordering is the axis
   // contract the Night Strip renders against.
@@ -44,35 +43,39 @@ describe('getDarknessWindow', () => {
     expect(w.dusk < w.start).toBe(true);
     expect(w.end < w.dawn).toBe(true);
   });
- 
+
   it('darkness starts in the evening and ends before dawn', () => {
     const w = getDarknessWindow(manitoulin, augNight);
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
     expect(w.start.hour).toBeGreaterThanOrEqual(21); // after 9pm site time
-    expect(w.end.hour).toBeLessThanOrEqual(6);       // before 6am site time
+    expect(w.end.hour).toBeLessThanOrEqual(6); // before 6am site time
   });
- 
+
   // ── LAYER 2: accuracy against independent sources ──
- 
+
   it('matches known astronomical twilight times for Manitoulin', () => {
     const w = getDarknessWindow(manitoulin, augNight5);
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
- 
+
     // From dqydj astronomical twilight calc for 45.6621,-81.9679 on Aug 5:
     //   night begins (PM astronomical band ENDS): ~10:58 PM
     //   night ends   (AM astronomical band STARTS): ~4:12 AM
     // Assert within a few minutes to absorb differing constants between tools.
     const expectedStart = DateTime.fromISO('2026-08-05T22:58', { zone: 'America/Toronto' });
     const expectedEnd = DateTime.fromISO('2026-08-06T04:14', { zone: 'America/Toronto' });
- 
+
     expect(Math.abs(w.start.diff(expectedStart, 'minutes').minutes)).toBeLessThanOrEqual(5);
     expect(Math.abs(w.end.diff(expectedEnd, 'minutes').minutes)).toBeLessThanOrEqual(5);
   });
- 
+
   // ── No-true-darkness branch ──
- 
+
   it('reports no true darkness at high latitude in the summer', () => {
-    const arcticSite: Site = { ...manitoulin, coordinates: { lat: 69, lng: 18 }, timezone: 'Europe/Oslo' };
+    const arcticSite: Site = {
+      ...manitoulin,
+      coordinates: { lat: 69, lng: 18 },
+      timezone: 'Europe/Oslo',
+    };
     const midsummer = new Date(Date.UTC(2026, 5, 21, 12, 0));
     const w = getDarknessWindow(arcticSite, midsummer);
     expect(w.hasTrueDarkness).toBe(false);
@@ -129,9 +132,9 @@ describe('getDarknessWindow', () => {
 const nightWindow = (isoStart: string, isoEnd: string) =>
   Interval.fromDateTimes(
     DateTime.fromISO(isoStart, { zone: manitoulin.timezone }) as DateTime<true>,
-    DateTime.fromISO(isoEnd, { zone: manitoulin.timezone }) as DateTime<true>
+    DateTime.fromISO(isoEnd, { zone: manitoulin.timezone }) as DateTime<true>,
   ) as Interval<true>;
- 
+
 // Six windows across a lunar month — same spread as before, but the bounds are
 // ours, not the darkness engine's. Roughly plausible summer dark windows.
 const testWindows = [
@@ -144,43 +147,42 @@ const testWindows = [
 ];
 
 describe('getMoonOverlap', () => {
- 
   // ── LAYER 1: invariants — hold for ANY window ──
- 
+
   it.each(testWindows)('overlapFraction is a valid fraction for %s', (window) => {
     const w = getMoonOverlap(manitoulin, window);
     expect(w.overlapFraction).toBeGreaterThanOrEqual(0);
     expect(w.overlapFraction).toBeLessThanOrEqual(1);
   });
- 
+
   it.each(testWindows)('overlapMinutes stays within the window for %s', (window) => {
     const w = getMoonOverlap(manitoulin, window);
     expect(w.overlapMinutes).toBeGreaterThanOrEqual(0);
     expect(w.overlapMinutes).toBeLessThanOrEqual(window.length('minutes'));
   });
- 
+
   it.each(testWindows)('illuminationFraction is a valid fraction for %s', (window) => {
     const w = getMoonOverlap(manitoulin, window);
     expect(w.illuminationFraction).toBeGreaterThanOrEqual(0);
     expect(w.illuminationFraction).toBeLessThanOrEqual(1);
   });
- 
+
   it.each(testWindows)('minutes and fraction agree for %s', (window) => {
     const w = getMoonOverlap(manitoulin, window);
     expect(w.overlapMinutes).toBeCloseTo(w.overlapFraction * window.length('minutes'), 5);
   });
- 
+
   // ── Decoupling proof: nothing about this window is astronomical ──
- 
+
   it('works on an arbitrary window that is not a darkness window', () => {
     const w = getMoonOverlap(manitoulin, nightWindow('2026-08-12T13:00', '2026-08-12T19:00'));
     expect(w.overlapFraction).toBeGreaterThanOrEqual(0);
     expect(w.overlapFraction).toBeLessThanOrEqual(1);
     expect(w.overlapMinutes).toBeCloseTo(w.overlapFraction * 360, 5); // 6h window
   });
- 
+
   // ── LAYER 2: precision, against independent sources ──
- 
+
   it('matches known moon overlap for Manitoulin, Apr 13 2027', () => {
     // Darkness window 22:00 → 03:41(+1) per dqydj; bounds hardcoded so this
     // test does not depend on the darkness engine.
@@ -233,7 +235,6 @@ describe('getMoonOverlap', () => {
 });
 
 describe('siteToday', () => {
-
   it('resolves the site calendar day, not the caller clock', () => {
     // 03:00 UTC on Aug 22 is still Aug 21 in Toronto — 23:00 EDT, mid-session.
     const now = DateTime.fromISO('2026-08-22T03:00', { zone: 'utc' }) as DateTime<true>;
