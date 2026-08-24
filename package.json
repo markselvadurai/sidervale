@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "harvest": "tsx tools/dataset/harvest-darksky.ts && tsx tools/dataset/harvest-rasc.ts",
+    "test:tools": "vitest run tools/dataset"
   },
   "private": true,
   "packageManager": "npm@10.9.0",
@@ -34,6 +36,7 @@
     "@types/suncalc": "^1.9.2",
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
+    "tsx": "^4.23.12",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
   },

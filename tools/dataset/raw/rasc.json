@@ -1,0 +1,597 @@
+{
+  "source": "rasc.ca",
+  "harvestedAt": "2026-08-24T22:24:37.911Z",
+  "sites": [
+    {
+      "name": "Johns Family Nature Conservancy Regional Park",
+      "orgUrl": null,
+      "provinces": ["BC"],
+      "year": 2023,
+      "program": "nocturnal-preserve",
+      "typeText": "Nocturnal Preserve",
+      "rascUrl": "https://rasc.ca/lpa/johns-family-park",
+      "parcels": [
+        {
+          "name": "Johns Family Nature Conservancy Regional Park",
+          "lat": 49.7740787,
+          "lng": -119.5214161
+        }
+      ],
+      "coordinates": {
+        "lat": 49.7740787,
+        "lng": -119.5214161
+      }
+    },
+    {
+      "name": "Ann and Sandy Cross Conservation Area",
+      "orgUrl": "https://www.crossconservation.org/",
+      "provinces": ["AB"],
+      "year": 2015,
+      "program": "nocturnal-preserve",
+      "typeText": "Nocturnal Preserve",
+      "rascUrl": "https://rasc.ca/lpa/ann-sandy-cross-conservation-area",
+      "parcels": [
+        {
+          "name": "Ann & Sandy Cross Conservation Area",
+          "lat": 50.876035,
+          "lng": -114.234151
+        }
+      ],
+      "coordinates": {
+        "lat": 50.876035,
+        "lng": -114.234151
+      }
+    },
+    {
+      "name": "Au Diable Vert",
+      "orgUrl": "https://audiablevert.com/en/",
+      "provinces": ["QC"],
+      "year": 2018,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/au-diable-vert",
+      "parcels": [
+        {
+          "name": "Au Diable Vert Outdoor Centre",
+          "lat": 45.041667,
+          "lng": -72.565278
+        }
+      ],
+      "coordinates": {
+        "lat": 45.041667,
+        "lng": -72.565278
+      }
+    },
+    {
+      "name": "Beaver Hills (Elk Island National Park, Miquelon Lake Provincial Park, Cooking Lake-Blackfoot Provincial Recreation Area, Strathcona Wilderness Centre)",
+      "orgUrl": "https://parks.canada.ca/pn-np/ab/elkisland",
+      "provinces": ["AB"],
+      "year": 2006,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://www.rasc.ca/lpa/beaver-hills",
+      "parcels": [
+        {
+          "name": "Beaver Hills- Elk Island National Park",
+          "lat": 53.607625,
+          "lng": -112.861948
+        },
+        {
+          "name": "Beaver Hills- Cooking Lake-Blackfoot Provincial Recreation Area",
+          "lat": 53.4871399,
+          "lng": -112.8406705
+        },
+        {
+          "name": "Beaver Hills- Miquelon Lake Provincial Park",
+          "lat": 53.2359375,
+          "lng": -112.9071583
+        }
+      ],
+      "coordinates": null
+    },
+    {
+      "name": "Bluewater Outdoor Education Centre",
+      "orgUrl": "https://bluewaterastronomy.com/",
+      "provinces": ["ON"],
+      "year": 2012,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/bluewater-outdoor-education-centre",
+      "parcels": [
+        {
+          "name": "Bluewater Outdoor Education Centre",
+          "lat": 44.741231,
+          "lng": -81.232836
+        }
+      ],
+      "coordinates": {
+        "lat": 44.741231,
+        "lng": -81.232836
+      }
+    },
+    {
+      "name": "Bruce Peninsula National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/on/bruce",
+      "provinces": ["ON"],
+      "year": 2009,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/bruce-peninsula-national-park",
+      "parcels": [
+        {
+          "name": "Bruce Peninsula National Park",
+          "lat": 45.189066,
+          "lng": -81.529767
+        }
+      ],
+      "coordinates": {
+        "lat": 45.189066,
+        "lng": -81.529767
+      }
+    },
+    {
+      "name": "Cattle Point",
+      "orgUrl": "https://oakbaytourism.com/",
+      "provinces": ["BC"],
+      "year": 2013,
+      "program": "urban-star-park",
+      "typeText": "Urban Star Park",
+      "rascUrl": "https://rasc.ca/lpa/cattle-point",
+      "parcels": [
+        {
+          "name": "Cattle Point",
+          "lat": 48.438312,
+          "lng": -123.294668
+        }
+      ],
+      "coordinates": {
+        "lat": 48.438312,
+        "lng": -123.294668
+      }
+    },
+    {
+      "name": "Cypress Hills (Cypress Hills Interprovincial Park, Fort Walsh National Historic Site)",
+      "orgUrl": "https://www.sandyhookrideonwashington.com/",
+      "provinces": ["AB", "SK"],
+      "year": 2004,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/cypress-hills-interprovincial-park",
+      "parcels": [
+        {
+          "name": "Cypress Hills- Cypress Hills Interprovincial Park Centre Block",
+          "lat": 49.659225,
+          "lng": -109.49825
+        },
+        {
+          "name": "Cypress Hills- Cypress Hills Interprovincial Park- Alberta",
+          "lat": 49.660323,
+          "lng": -110.286913
+        },
+        {
+          "name": "Cypress Hills- Fort Walsh National Historic Site",
+          "lat": 49.5729338,
+          "lng": -109.8819655
+        },
+        {
+          "name": "Cypress Hills- Cypress Hills Interprovincial Park West Block Wilderness Area",
+          "lat": 49.604735,
+          "lng": -109.9186487
+        }
+      ],
+      "coordinates": null
+    },
+    {
+      "name": "Fundy National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/nb/fundy",
+      "provinces": ["NB"],
+      "year": 2011,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/fundy-national-park",
+      "parcels": [
+        {
+          "name": "Fundy National Park",
+          "lat": 45.613777,
+          "lng": -65.031631
+        }
+      ],
+      "coordinates": {
+        "lat": 45.613777,
+        "lng": -65.031631
+      }
+    },
+    {
+      "name": "Grasslands National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/sk/grasslands/nature/environnement-environment/etoile-sky",
+      "provinces": ["SK"],
+      "year": 2009,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/grasslands-national-park",
+      "parcels": [
+        {
+          "name": "Grasslands National Park West Block",
+          "lat": 49.15094,
+          "lng": -107.509738
+        },
+        {
+          "name": "Grasslands National Park East Block",
+          "lat": 49.0769755,
+          "lng": -106.530842
+        }
+      ],
+      "coordinates": null
+    },
+    {
+      "name": "Irving Nature Park",
+      "orgUrl": "https://www.jdirving.com/en/sustainability/parks/irving-nature-park/",
+      "provinces": ["NB"],
+      "year": 2011,
+      "program": "urban-star-park",
+      "typeText": "Urban Star Park",
+      "rascUrl": "https://rasc.ca/lpa/irving-nature-park",
+      "parcels": [
+        {
+          "name": "Irving Nature Park",
+          "lat": 45.221606,
+          "lng": -66.129799
+        }
+      ],
+      "coordinates": {
+        "lat": 45.221606,
+        "lng": -66.129799
+      }
+    },
+    {
+      "name": "Jasper National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/ab/jasper/info/designation/cieletoile-darksky",
+      "provinces": ["AB"],
+      "year": 2011,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/jasper-national-park",
+      "parcels": [
+        {
+          "name": "Jasper National Park",
+          "lat": 52.869405,
+          "lng": -118.075993
+        }
+      ],
+      "coordinates": {
+        "lat": 52.869405,
+        "lng": -118.075993
+      }
+    },
+    {
+      "name": "Kejimkujik National Park and National Historic Site",
+      "orgUrl": "https://parks.canada.ca/pn-np/ns/kejimkujik/activ/reserve-etoile-sky-preserve",
+      "provinces": ["NS"],
+      "year": 2010,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/kejimkujik-national-park",
+      "parcels": [
+        {
+          "name": "Kejimkujik National Park and National Historic Site",
+          "lat": 44.435209,
+          "lng": -65.213655
+        }
+      ],
+      "coordinates": {
+        "lat": 44.435209,
+        "lng": -65.213655
+      }
+    },
+    {
+      "name": "Killarney Provincial Park",
+      "orgUrl": "https://www.ontarioparks.ca/park/killarney",
+      "provinces": ["ON"],
+      "year": 2018,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/killarney-provincial-park",
+      "parcels": [
+        {
+          "name": "Killarney Provincial Park",
+          "lat": 46.013046,
+          "lng": -81.401749
+        }
+      ],
+      "coordinates": {
+        "lat": 46.013046,
+        "lng": -81.401749
+      }
+    },
+    {
+      "name": "Kouchibouguac National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/nb/kouchibouguac/nature/ciel-sky",
+      "provinces": ["NB"],
+      "year": 2009,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/kouchibouguac-national-park",
+      "parcels": [
+        {
+          "name": "Kouchibouguac National Park",
+          "lat": 46.810339,
+          "lng": -64.961154
+        }
+      ],
+      "coordinates": {
+        "lat": 46.810339,
+        "lng": -64.961154
+      }
+    },
+    {
+      "name": "Lake Superior Provincial Park",
+      "orgUrl": "https://www.ontarioparks.ca/park/lakesuperior",
+      "provinces": ["ON"],
+      "year": 2018,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/lake-superior",
+      "parcels": [
+        {
+          "name": "Lake Superior Provincial Park",
+          "lat": 47.751068,
+          "lng": -84.835911
+        }
+      ],
+      "coordinates": {
+        "lat": 47.751068,
+        "lng": -84.835911
+      }
+    },
+    {
+      "name": "Lakeland Provincial Park and Recreation Area (Lakeland Provincial Park, Lakeland Provincial Recreation Area)",
+      "orgUrl": "https://www.albertaparks.ca/parks/north/lakeland-pp/",
+      "provinces": ["AB"],
+      "year": 2016,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/lakeland-provincial-park",
+      "parcels": [
+        {
+          "name": "Lakeland Provincial Park and Recreation Area",
+          "lat": 54.7096657,
+          "lng": -111.4768359
+        }
+      ],
+      "coordinates": {
+        "lat": 54.7096657,
+        "lng": -111.4768359
+      }
+    },
+    {
+      "name": "LeTerrain",
+      "orgUrl": "https://www.leterrain.land/",
+      "provinces": ["QC"],
+      "year": 2025,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/leterrain",
+      "parcels": [],
+      "coordinates": null
+    },
+    {
+      "name": "Manitoulin Eco Park (formerly Gordon's Park)",
+      "orgUrl": "https://www.manitoulinecopark.com/",
+      "provinces": ["ON"],
+      "year": 2008,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/manitoulin-eco-park",
+      "parcels": [
+        {
+          "name": "Manitoulin Eco Park (formerly Gordon's Park)",
+          "lat": 45.661827,
+          "lng": -81.96786
+        }
+      ],
+      "coordinates": {
+        "lat": 45.661827,
+        "lng": -81.96786
+      }
+    },
+    {
+      "name": "Mont-Mégantic",
+      "orgUrl": "https://en.cieletoilemontmegantic.org/",
+      "provinces": ["QC"],
+      "year": 2007,
+      "program": "other",
+      "typeText": "IDA International Dark Sky Reserve & RASC Certificate of Merit",
+      "rascUrl": "https://rasc.ca/lpa/mont-m%C3%A9gantic-national-park",
+      "parcels": [
+        {
+          "name": "Mont-Mégantic National Park",
+          "lat": 45.423978,
+          "lng": -71.124764
+        }
+      ],
+      "coordinates": {
+        "lat": 45.423978,
+        "lng": -71.124764
+      }
+    },
+    {
+      "name": "Mount Carleton Provincial Park",
+      "orgUrl": "https://www.parcsnbparks.ca/en/parks/mount-carleton-provincial-park-2020156",
+      "provinces": ["NB"],
+      "year": 2009,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/mount-carleton",
+      "parcels": [
+        {
+          "name": "Mount Carleton Provincial Park",
+          "lat": 47.429514,
+          "lng": -66.947218
+        }
+      ],
+      "coordinates": {
+        "lat": 47.429514,
+        "lng": -66.947218
+      }
+    },
+    {
+      "name": "North Frontenac",
+      "orgUrl": "https://www.northfrontenac.com/en/open-for-business/dark-sky-preserve.aspx",
+      "provinces": ["ON"],
+      "year": 2013,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/north-frontenac",
+      "parcels": [
+        {
+          "name": "North Frontenac Township",
+          "lat": 44.91818,
+          "lng": -76.939563
+        }
+      ],
+      "coordinates": {
+        "lat": 44.91818,
+        "lng": -76.939563
+      }
+    },
+    {
+      "name": "Old Man on His Back Prairie and Heritage Conservation Area",
+      "orgUrl": "https://www.natureconservancy.ca/en/where-we-work/google-trekker/omb.html",
+      "provinces": ["SK"],
+      "year": 2015,
+      "program": "nocturnal-preserve",
+      "typeText": "Nocturnal Preserve",
+      "rascUrl": "https://www.rasc.ca/lpa/omb",
+      "parcels": [
+        {
+          "name": "Old Man on His Back Prairie and Heritage Conservation Area",
+          "lat": 49.201795,
+          "lng": -109.10903
+        }
+      ],
+      "coordinates": {
+        "lat": 49.201795,
+        "lng": -109.10903
+      }
+    },
+    {
+      "name": "Point Pelee National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/on/pelee/activ/sky-ciel",
+      "provinces": ["ON"],
+      "year": 2006,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/point-pelee-national-park",
+      "parcels": [
+        {
+          "name": "Point Pelee National Park",
+          "lat": 41.962772,
+          "lng": -82.51844
+        }
+      ],
+      "coordinates": {
+        "lat": 41.962772,
+        "lng": -82.51844
+      }
+    },
+    {
+      "name": "Spruce Woods Provincial Park",
+      "orgUrl": "https://www.gov.mb.ca/sd/parks/park-maps-and-locations/western/spruce.html",
+      "provinces": ["MB"],
+      "year": 2022,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/spruce-woods",
+      "parcels": [
+        {
+          "name": "Spruce Woods Provincial Park",
+          "lat": 49.6621328,
+          "lng": -99.2658881
+        }
+      ],
+      "coordinates": {
+        "lat": 49.6621328,
+        "lng": -99.2658881
+      }
+    },
+    {
+      "name": "Terra Nova National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/nl/terranova/nature/ciel-sky",
+      "provinces": ["NL"],
+      "year": 2018,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/terra-nova-national-park",
+      "parcels": [
+        {
+          "name": "Terra Nova National Park",
+          "lat": 48.525265,
+          "lng": -53.965517
+        }
+      ],
+      "coordinates": {
+        "lat": 48.525265,
+        "lng": -53.965517
+      }
+    },
+    {
+      "name": "Torrance Barrens Conservation Reserve",
+      "orgUrl": "https://www.torrancebarrens.com/",
+      "provinces": ["ON"],
+      "year": 1999,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/torrance-barrens-conservation-area",
+      "parcels": [
+        {
+          "name": "Torrance Barrens Conservation Reserve",
+          "lat": 44.941487,
+          "lng": -79.513354
+        }
+      ],
+      "coordinates": {
+        "lat": 44.941487,
+        "lng": -79.513354
+      }
+    },
+    {
+      "name": "Wood Buffalo National Park",
+      "orgUrl": "https://parks.canada.ca/pn-np/nt/woodbuffalo/activ/star",
+      "provinces": ["AB", "NWT"],
+      "year": 2013,
+      "program": "dark-sky-preserve",
+      "typeText": "Dark-Sky Preserve",
+      "rascUrl": "https://rasc.ca/lpa/wood-buffalo-national-park",
+      "parcels": [
+        {
+          "name": "Wood Buffalo National Park",
+          "lat": 59.439503,
+          "lng": -112.876402
+        }
+      ],
+      "coordinates": {
+        "lat": 59.439503,
+        "lng": -112.876402
+      }
+    }
+  ],
+  "unmatchedPins": [],
+  "quarantine": [
+    {
+      "name": "Beaver Hills (Elk Island National Park, Miquelon Lake Provincial Park, Cooking Lake-Blackfoot Provincial Recreation Area, Strathcona Wilderness Centre)",
+      "reason": "multi-parcel"
+    },
+    {
+      "name": "Cypress Hills (Cypress Hills Interprovincial Park, Fort Walsh National Historic Site)",
+      "reason": "multi-parcel"
+    },
+    {
+      "name": "Grasslands National Park",
+      "reason": "multi-parcel"
+    },
+    {
+      "name": "LeTerrain",
+      "reason": "no-coordinates"
+    }
+  ]
+}
