@@ -49,3 +49,6 @@ docs/HANDOFF.local.md
 
 # agent instructions — local only
 CLAUDE.md
+
+# downloaded atlas tiles — refetchable, not source data
+tools/dataset/.tile-cache/

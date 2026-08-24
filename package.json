@@ -12,7 +12,8 @@
     "harvest": "tsx tools/dataset/harvest-darksky.ts && tsx tools/dataset/harvest-rasc.ts",
     "test:tools": "vitest run tools/dataset",
     "merge": "tsx tools/dataset/merge-sites.ts",
-    "enrich": "tsx tools/dataset/enrich-sites.ts"
+    "enrich": "tsx tools/dataset/enrich-sites.ts",
+    "brightness": "tsx tools/dataset/sample-brightness.ts"
   },
   "private": true,
   "packageManager": "npm@10.9.0",

@@ -54,8 +54,18 @@ quarantine as `suspicious-timezone`, since a lat/lng swap or sign flip usually l
 Current result: 293/293 coordinate-bearing sites resolve to real zones across 50 timezones,
 zero suspicious.
 
+## Stage 4 — brightness (`npm run brightness`, fetches atlas tiles once, then cached)
+
+Samples zenith sky brightness for every located site from the **Lorenz 2024 atlas binary tiles**
+(`binary_tiles/2024/…dat.gz`) at the atlas's native 30″ grid — his own delta-compression format,
+constants and zone table verbatim from his overlay page. Output per site: artificial/natural
+brightness `ratio`, total `mpsas` (natural sky = 22.0), and his LP `zone` (0–7b). Year 2024 keeps
+the numbers consistent with the overlay tiles the app displays; a 2025 atlas exists — upgrade both
+together. Current result: 293/293 sampled from 96 tiles; the two bright-zone alarms are an urban
+star park and a nocturnal preserve, bright by design.
+
 ## Later stages (not built yet)
 
-Sky brightness from the Lorenz 2024 raster, Wikidata QIDs as cross-check → validate → emit the
-app dataset. Per `docs/PROJECT.md`: deterministic facts only from deterministic sources; LLM
-judges for prose and arbitration with abstention.
+Wikidata QIDs as cross-check → validate → emit the app dataset. Per `docs/PROJECT.md`:
+deterministic facts only from deterministic sources; LLM judges for prose and arbitration with
+abstention.

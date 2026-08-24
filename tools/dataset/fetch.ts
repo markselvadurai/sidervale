@@ -14,3 +14,9 @@ export async function fetchJson<T>(url: string): Promise<T> {
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`);
   return res.json() as Promise<T>;
 }
+
+export async function fetchBytes(url: string): Promise<Buffer> {
+  const res = await fetch(url, { headers: { 'User-Agent': UA } });
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url}`);
+  return Buffer.from(await res.arrayBuffer());
+}

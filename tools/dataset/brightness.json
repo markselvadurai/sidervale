@@ -1,0 +1,1764 @@
+{
+  "sampledAt": "2026-08-24T23:11:43.435Z",
+  "brightness": {
+    "aehai-kalahari-heritage-park-dark-sky-sanctuary": {
+      "ratio": 0.0005,
+      "mpsas": 22,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "aenos-national-park-dark-sky-park": {
+      "ratio": 1.1012,
+      "mpsas": 21.19,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "albanya-dark-sky-park": {
+      "ratio": 1.0167,
+      "mpsas": 21.24,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "alnufud-itba": {
+      "ratio": 0.0397,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "alpes-azur-mercantour-dark-sky-reserve": {
+      "ratio": 0.3994,
+      "mpsas": 21.64,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "alula-manara-and-algharameel-nature-reserves": {
+      "ratio": 0.0538,
+      "mpsas": 21.94,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "amc-maine-woods-dark-sky-park": {
+      "ratio": 0.0423,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "ann-and-sandy-cross-conservation-area": {
+      "ratio": 5.66,
+      "mpsas": 19.94,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "antelope-island-dark-sky-park": {
+      "ratio": 1.8821,
+      "mpsas": 20.85,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "antelope-oregon": {
+      "ratio": 0.0917,
+      "mpsas": 21.9,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "anza-borrego-dark-sky-park": {
+      "ratio": 0.3994,
+      "mpsas": 21.64,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "aoraki-mackenzie-dark-sky-reserve": {
+      "ratio": 0.1892,
+      "mpsas": 21.81,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "aotea-great-barrier-island-dark-sky-sanctuary": {
+      "ratio": 0.0241,
+      "mpsas": 21.97,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "apache-junction-municipal-complex": {
+      "ratio": 18.2934,
+      "mpsas": 18.79,
+      "zone": "6b",
+      "atlasYear": 2024
+    },
+    "arches-national-park-dark-sky-park": {
+      "ratio": 0.3994,
+      "mpsas": 21.64,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "arkaroola-wilderness-sanctuary-dark-sky-sanctuary": {
+      "ratio": 0.0043,
+      "mpsas": 22,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "artis-park": {
+      "ratio": 30.9883,
+      "mpsas": 18.24,
+      "zone": "7a",
+      "atlasYear": 2024
+    },
+    "au-diable-vert": {
+      "ratio": 0.6145,
+      "mpsas": 21.48,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "bavarian-forest-national-park": {
+      "ratio": 0.3675,
+      "mpsas": 21.66,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "beaver-island-state-wildlife-research-area": {
+      "ratio": 0.0523,
+      "mpsas": 21.94,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "bee-cave-dark-sky-community": {
+      "ratio": 10.18,
+      "mpsas": 19.38,
+      "zone": "6a",
+      "atlasYear": 2024
+    },
+    "beverly-shores-indiana-dark-sky-community": {
+      "ratio": 4.8387,
+      "mpsas": 20.08,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "big-bend-national-park-dark-sky-park": {
+      "ratio": 0.0068,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "big-bend-ranch-dark-sky-park": {
+      "ratio": 0.0292,
+      "mpsas": 21.97,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "big-cypress-dark-sky-park": {
+      "ratio": 0.5011,
+      "mpsas": 21.56,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "big-park-village-of-oak-creek-dark-sky-community": {
+      "ratio": 1.5751,
+      "mpsas": 20.97,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "bisbee-arizona": {
+      "ratio": 1.2915,
+      "mpsas": 21.1,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "bisei-town-ibara-city-dark-sky-community": {
+      "ratio": 1.0795,
+      "mpsas": 21.21,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "black-canyon-of-the-gunnison-national-park-dark-sky-park": {
+      "ratio": 0.185,
+      "mpsas": 21.82,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "black-gap-dark-sky-sanctuary": {
+      "ratio": 0.0094,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "black-mesa-state-park": {
+      "ratio": 0.0169,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "bluewater-outdoor-education-centre": {
+      "ratio": 0.2254,
+      "mpsas": 21.78,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "bluff-utah": {
+      "ratio": 0.2736,
+      "mpsas": 21.74,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "bodmin-moor-dark-sky-park": {
+      "ratio": 0.3107,
+      "mpsas": 21.71,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "bon-accord-dark-sky-community": {
+      "ratio": 4.7448,
+      "mpsas": 20.1,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "borrego-springs-dark-sky-community": {
+      "ratio": 0.9574,
+      "mpsas": 21.27,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "boundary-waters-canoe-area-dark-sky-sanctuary": {
+      "ratio": 0.0261,
+      "mpsas": 21.97,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "brecon-beacons-national-park-dark-sky-reserve": {
+      "ratio": 0.59,
+      "mpsas": 21.5,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "browns-canyon-national-monument": {
+      "ratio": 0.4429,
+      "mpsas": 21.6,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "bruce-peninsula-national-park": {
+      "ratio": 0.0348,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "bryce-canyon-national-park-dark-sky-park": {
+      "ratio": 0.0691,
+      "mpsas": 21.93,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "buffalo-national-river-dark-sky-park": {
+      "ratio": 0.3753,
+      "mpsas": 21.65,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "bukk-national-park-dark-sky-park": {
+      "ratio": 0.6801,
+      "mpsas": 21.44,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "camp-verde-dark-sky-park": {
+      "ratio": 2.3386,
+      "mpsas": 20.69,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "canyonlands-national-park-dark-sky-park": {
+      "ratio": 0.0108,
+      "mpsas": 21.99,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "cape-lookout-national-seashore-dark-sky-park": {
+      "ratio": 0.331,
+      "mpsas": 21.69,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "capitol-reef-national-park-dark-sky-park": {
+      "ratio": 0.0213,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "caprock-canyons-state-park-texas": {
+      "ratio": 0.1037,
+      "mpsas": 21.89,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "capulin-volcano-national-monument-dark-sky-park": {
+      "ratio": 0.0303,
+      "mpsas": 21.97,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "castle_valley": {
+      "ratio": 0.1256,
+      "mpsas": 21.87,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "cattle-point": {
+      "ratio": 7.0202,
+      "mpsas": 19.74,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "cedar-breaks-national-monument-dark-sky-park": {
+      "ratio": 0.2021,
+      "mpsas": 21.8,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "central-idaho-dark-sky-reserve": {
+      "ratio": 0.0204,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "cevennes-dark-sky-reserve": {
+      "ratio": 0.1809,
+      "mpsas": 21.82,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "chaco-culture-national-historic-park-dark-sky-park": {
+      "ratio": 0.0637,
+      "mpsas": 21.93,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "cherry-springs-state-park-dark-sky-park": {
+      "ratio": 0.1378,
+      "mpsas": 21.86,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "chimney-rock-national-monument": {
+      "ratio": 0.057,
+      "mpsas": 21.94,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "chiricahua-national-monument-dark-sky-park": {
+      "ratio": 0.0397,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "city-of-blanco-texas-dark-sky-community": {
+      "ratio": 2.1189,
+      "mpsas": 20.76,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "city-of-rocks-dark-sky-park": {
+      "ratio": 0.0748,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "clayton-lake-state-park-dark-sky-park": {
+      "ratio": 0.0348,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "coll-dark-sky-community": {
+      "ratio": 0.0423,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "copper-breaks-state-park-dark-sky-park": {
+      "ratio": 0.1115,
+      "mpsas": 21.89,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "cosmic-campground-dark-sky-place": {
+      "ratio": 0.0195,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "cottonwood-arizona-dark-sky-community": {
+      "ratio": 2.8476,
+      "mpsas": 20.54,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "cottonwood-canyon-state-park": {
+      "ratio": 0.3599,
+      "mpsas": 21.67,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "cranborne-chase-dark-sky-reserve": {
+      "ratio": 0.64,
+      "mpsas": 21.46,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "craters-of-the-moon-national-monument-dark-sky-park": {
+      "ratio": 0.0385,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "crestone-colorado-dark-sky-community": {
+      "ratio": 0.1443,
+      "mpsas": 21.85,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "curecanti-national-recreation-area-dark-sky-park": {
+      "ratio": 0.0988,
+      "mpsas": 21.9,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "dark-sky-park-bulbjerg": {
+      "ratio": 0.1378,
+      "mpsas": 21.86,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "de-boschplaat-dark-sky-park": {
+      "ratio": 0.2354,
+      "mpsas": 21.77,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "dead-horse-point-state-park-dark-sky-park": {
+      "ratio": 0.0808,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "death-valley-national-park-dark-sky-park": {
+      "ratio": 0.057,
+      "mpsas": 21.94,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "desengano-dark-sky-park": {
+      "ratio": 0.4339,
+      "mpsas": 21.61,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "devils-river-state-natural-area-dark-sky-sanctuary": {
+      "ratio": 0.0493,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "dinosaur-national-monument-dark-sky-park": {
+      "ratio": 0.0385,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "dr-lawless-dark-sky-park": {
+      "ratio": 2.2929,
+      "mpsas": 20.71,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "dripping-springs-dark-sky-community": {
+      "ratio": 4.7448,
+      "mpsas": 20.1,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "east-canyon-state-park-dark-sky-park": {
+      "ratio": 1.5138,
+      "mpsas": 21,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "eifel-national-park-dark-sky-park": {
+      "ratio": 1.4264,
+      "mpsas": 21.04,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "eiweiler-star-village": {
+      "ratio": 1.6715,
+      "mpsas": 20.93,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "el-morro-national-monument-dark-sky-park": {
+      "ratio": 0.1089,
+      "mpsas": 21.89,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "elan-valley-dark-sky-park": {
+      "ratio": 0.173,
+      "mpsas": 21.83,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "enchanted-rock-state-natural-area-dark-sky-park": {
+      "ratio": 0.2678,
+      "mpsas": 21.74,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "exmoor-national-park-dark-sky-place": {
+      "ratio": 0.3042,
+      "mpsas": 21.71,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "flagstaff-area-national-monuments-dark-sky-park": {
+      "ratio": 0.6801,
+      "mpsas": 21.44,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "flagstaff-arizona-dark-sky-community": {
+      "ratio": 6.4915,
+      "mpsas": 19.81,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "florissant-fossil-beds-national-monument-dark-sky-park": {
+      "ratio": 0.6664,
+      "mpsas": 21.45,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "fort-union-national-monument-dark-sky-park": {
+      "ratio": 0.0385,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "fountain-hills-arizona-dark-sky-community": {
+      "ratio": 12.6216,
+      "mpsas": 19.16,
+      "zone": "6a",
+      "atlasYear": 2024
+    },
+    "fredericksburg-texas-dark-sky-community": {
+      "ratio": 6.0025,
+      "mpsas": 19.89,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "fremont-indian-state-park-dark-sky-park": {
+      "ratio": 0.0808,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "frisco-colorado": {
+      "ratio": 3.1418,
+      "mpsas": 20.46,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "fry-family-park-urban-night-sky-place": {
+      "ratio": 5.2333,
+      "mpsas": 20.01,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "fulda-dark-sky-community": {
+      "ratio": 5.2333,
+      "mpsas": 20.01,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "fundy-national-park": {
+      "ratio": 0.1256,
+      "mpsas": 21.87,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "gabriela-mistral-dark-sky-sanctuary": {
+      "ratio": 0.1654,
+      "mpsas": 21.83,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "galloway-forest-park-dark-sky-park": {
+      "ratio": 0.1443,
+      "mpsas": 21.85,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "gantrisch-dark-sky-zone-switzerland": {
+      "ratio": 0.7833,
+      "mpsas": 21.37,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "geauga-observatory-park-dark-sky-park": {
+      "ratio": 2.9619,
+      "mpsas": 20.51,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "goblin-valley-state-park-dark-sky-park": {
+      "ratio": 0.0108,
+      "mpsas": 21.99,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "goosenecks-state-park-dark-sky-park": {
+      "ratio": 0.041,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "gower-national-landscape-wales": {
+      "ratio": 0.9965,
+      "mpsas": 21.25,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "grand-canyon-national-park-dark-sky-park": {
+      "ratio": 0.0385,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "grand-canyon-parashant-national-monument-dark-sky-park": {
+      "ratio": 0.0508,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "great-basin-national-park-dark-sky-park": {
+      "ratio": 0.0115,
+      "mpsas": 21.99,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "great-sand-dunes-national-park-dark-sky-park": {
+      "ratio": 0.0493,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "greater-big-bend-international-dark-sky-reserve": {
+      "ratio": 0.0872,
+      "mpsas": 21.91,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "groveland-florida-dark-sky-community": {
+      "ratio": 7.4447,
+      "mpsas": 19.68,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "gunnison-gorge-national-conservation-area": {
+      "ratio": 0.1546,
+      "mpsas": 21.84,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "hawthorn-woods-illinois-dark-sky-community": {
+      "ratio": 18.2934,
+      "mpsas": 18.79,
+      "zone": "6b",
+      "atlasYear": 2024
+    },
+    "headlands-dark-sky-park": {
+      "ratio": 0.5781,
+      "mpsas": 21.5,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "hehuan-mountain-dark-sky-park": {
+      "ratio": 0.6531,
+      "mpsas": 21.45,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "helper-utah-dark-sky-community": {
+      "ratio": 2.5303,
+      "mpsas": 20.63,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "homer-glen-illinois-dark-sky-community": {
+      "ratio": 25.9963,
+      "mpsas": 18.42,
+      "zone": "6b",
+      "atlasYear": 2024
+    },
+    "horseshoe-bay-texas-dark-sky-community": {
+      "ratio": 2.481,
+      "mpsas": 20.65,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "hortobagy-national-park-dark-sky-park": {
+      "ratio": 0.4163,
+      "mpsas": 21.62,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "hovenweep-national-monument-dark-sky-park": {
+      "ratio": 0.0808,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "huanglong-international-dark-sky-park": {
+      "ratio": 0.0767,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "iriomote-ishigaki-national-park-dark-sky-park": {
+      "ratio": 0.0204,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "irving-nature-park": {
+      "ratio": 3.3988,
+      "mpsas": 20.39,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "island-of-anholt": {
+      "ratio": 0.1012,
+      "mpsas": 21.9,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "isle-of-rum": {
+      "ratio": 0.0748,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "jackson-hole-airport": {
+      "ratio": 0.7677,
+      "mpsas": 21.38,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "jackson-lake-state-park-dark-sky-park": {
+      "ratio": 0.4616,
+      "mpsas": 21.59,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "james-river-state-park-dark-sky-park": {
+      "ratio": 0.4522,
+      "mpsas": 21.59,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "jasper-national-park": {
+      "ratio": 2.2042,
+      "mpsas": 20.74,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "johns-family-nature-conservancy-regional-park": {
+      "ratio": 2.632,
+      "mpsas": 20.6,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "jonestown-texas": {
+      "ratio": 7.7418,
+      "mpsas": 19.65,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "jordanelle-state-park-dark-sky-park": {
+      "ratio": 2.2481,
+      "mpsas": 20.72,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "joshua-tree-national-park-dark-sky-park": {
+      "ratio": 0.3107,
+      "mpsas": 21.71,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "joya-la-barreta-ecological-park": {
+      "ratio": 20.5671,
+      "mpsas": 18.67,
+      "zone": "6b",
+      "atlasYear": 2024
+    },
+    "julian-dark-sky-community": {
+      "ratio": 0.9965,
+      "mpsas": 21.25,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "kaibab-paiute-indian-reservation-dark-sky-community": {
+      "ratio": 0.0788,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "kaikoura-international-dark-sky-sanctuary": {
+      "ratio": 0.5011,
+      "mpsas": 21.56,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "karlu-karlu-australia": {
+      "ratio": 0.0005,
+      "mpsas": 22,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "kartchner-caverns-state-park-dark-sky-park": {
+      "ratio": 0.338,
+      "mpsas": 21.68,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "katahdin-woods-and-waters-dark-sky-sanctuary": {
+      "ratio": 0.0372,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "kawarau-gibbston-dark-sky-park": {
+      "ratio": 0.1286,
+      "mpsas": 21.87,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "kejimkujik-national-park-and-national-historic-site": {
+      "ratio": 0.1316,
+      "mpsas": 21.87,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "kerry-dark-sky-reserve": {
+      "ratio": 0.0894,
+      "mpsas": 21.91,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "ketchum-dark-sky-community": {
+      "ratio": 1.2915,
+      "mpsas": 21.1,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "keweenaw-michigan-dark-sky-park": {
+      "ratio": 0.0385,
+      "mpsas": 21.96,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "killarney-provincial-park": {
+      "ratio": 0.0479,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "kissimmee-prairie-preserve-dark-sky-park": {
+      "ratio": 0.5115,
+      "mpsas": 21.55,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "kouchibouguac-national-park": {
+      "ratio": 0.2405,
+      "mpsas": 21.77,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "kozushima-island-dark-sky-park": {
+      "ratio": 0.3994,
+      "mpsas": 21.64,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "kyrtiz-ruppiner-heath": {
+      "ratio": 0.3525,
+      "mpsas": 21.67,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "lake-fork-earth-and-sky-center-dark-sky-park": {
+      "ratio": 0.1115,
+      "mpsas": 21.89,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "lake-superior-provincial-park": {
+      "ratio": 0.008,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "lakeland-provincial-park-and-recreation-area-lakeland-provincial-park-lakeland-provincial-recreation-area": {
+      "ratio": 0.0709,
+      "mpsas": 21.93,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "lakewood-village-texas-dark-sky-community": {
+      "ratio": 25.4937,
+      "mpsas": 18.44,
+      "zone": "6b",
+      "atlasYear": 2024
+    },
+    "landes-de-gascogne-regional-natural-park": {
+      "ratio": 1.1012,
+      "mpsas": 21.19,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "lapalala-wilderness-nature-reserve": {
+      "ratio": 0.0637,
+      "mpsas": 21.93,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "lauwersmeer-national-park-dark-sky-park": {
+      "ratio": 0.6801,
+      "mpsas": 21.44,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "liberty-hill-texas": {
+      "ratio": 6.8841,
+      "mpsas": 19.76,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "lost-trail-national-wildlife-refuge-dark-sky-sanctuary": {
+      "ratio": 0.0437,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "lyndon-b-johnson-national-historical-park-dark-sky-park": {
+      "ratio": 0.6531,
+      "mpsas": 21.45,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "mammoth-cave-national-park-dark-sky-park": {
+      "ratio": 0.9965,
+      "mpsas": 21.25,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "mando": {
+      "ratio": 0.3241,
+      "mpsas": 21.7,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "manitoulin-eco-park-formerly-gordon-s-park": {
+      "ratio": 0.0508,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "massacre-rim-wilderness-study-area-dark-sky-sanctuary": {
+      "ratio": 0.0049,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "mayland-earth-to-sky-park-dark-sky-park": {
+      "ratio": 0.9768,
+      "mpsas": 21.26,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "mayo-dark-sky-park": {
+      "ratio": 0.1286,
+      "mpsas": 21.87,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "medicine-rocks-state-park-dark-sky-sanctuary": {
+      "ratio": 0.1581,
+      "mpsas": 21.84,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "merritt-reservoir-dark-sky-park": {
+      "ratio": 0.0137,
+      "mpsas": 21.99,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "mesa-verde-national-park-dark-sky-park": {
+      "ratio": 0.1692,
+      "mpsas": 21.83,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "middle-fork-river-forest-preserve-dark-sky-park": {
+      "ratio": 0.832,
+      "mpsas": 21.34,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "milton-reimers-ranch-park-dark-sky-park": {
+      "ratio": 1.958,
+      "mpsas": 20.82,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "minami-rokuroshi": {
+      "ratio": 0.5011,
+      "mpsas": 21.56,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "moffat-dark-sky-community": {
+      "ratio": 0.5665,
+      "mpsas": 21.51,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "mon-and-nyord-dark-sky-community": {
+      "ratio": 0.2066,
+      "mpsas": 21.8,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "mon-and-nyord-dark-sky-park": {
+      "ratio": 0.2066,
+      "mpsas": 21.8,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "mont-megantic-dark-sky-reserve": {
+      "ratio": 0.1692,
+      "mpsas": 21.83,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "moores-reserve-south-downs-dark-sky-reserve": {
+      "ratio": 1.4841,
+      "mpsas": 21.01,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "mount-carleton-provincial-park": {
+      "ratio": 0.0748,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "namibrand-dark-sky-reserve": {
+      "ratio": 0.0005,
+      "mpsas": 22,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "naseby-new-zealand": {
+      "ratio": 0.0748,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "natur-und-sternenpark-nossentiner-schwinzer-heide": {
+      "ratio": 0.3173,
+      "mpsas": 21.7,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "natural-bridge-state-park-dark-sky-park": {
+      "ratio": 0.7373,
+      "mpsas": 21.4,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "natural-bridges-national-monument-dark-sky-park": {
+      "ratio": 0.0087,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "naturpark-attersee-traunsee-dark-sky-park": {
+      "ratio": 0.5781,
+      "mpsas": 21.5,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "newport-state-park-dark-sky-park": {
+      "ratio": 0.1378,
+      "mpsas": 21.86,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "niue-dark-sky-community": {
+      "ratio": 0.1546,
+      "mpsas": 21.84,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "niue-dark-sky-sanctuary": {
+      "ratio": 0.1286,
+      "mpsas": 21.87,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "north-fork-park-dark-sky-park": {
+      "ratio": 2.3386,
+      "mpsas": 20.69,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "north-frontenac": {
+      "ratio": 0.1347,
+      "mpsas": 21.86,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "north-ronaldsay-island-dark-sky-community": {
+      "ratio": 0.0325,
+      "mpsas": 21.97,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "north-york-moors-national-park-dark-sky-reserve": {
+      "ratio": 0.7833,
+      "mpsas": 21.37,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "northumberland-national-park-and-kielder-water-forest-dark-sky-park": {
+      "ratio": 0.2066,
+      "mpsas": 21.8,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "norwood-colorado-dark-sky-community": {
+      "ratio": 0.2511,
+      "mpsas": 21.76,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "nucla-and-naturita-colorado-dark-sky-community": {
+      "ratio": 0.2566,
+      "mpsas": 21.75,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "obed-wild-and-scenic-river-dark-sky-park": {
+      "ratio": 0.9016,
+      "mpsas": 21.3,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "observatory-park-at-turner-farm": {
+      "ratio": 18.2934,
+      "mpsas": 18.79,
+      "zone": "6b",
+      "atlasYear": 2024
+    },
+    "old-man-on-his-back-prairie-and-heritage-conservation-area": {
+      "ratio": 0.0145,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "old-snowmass-colorado": {
+      "ratio": 0.4078,
+      "mpsas": 21.63,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "om-dark-sky-park-and-observatory-dark-sky-park": {
+      "ratio": 0.5011,
+      "mpsas": 21.56,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "oracle-state-park-dark-sky-park": {
+      "ratio": 0.6664,
+      "mpsas": 21.45,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "oregon-caves-national-monument-and-preserve": {
+      "ratio": 0.1198,
+      "mpsas": 21.88,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "oregon-outback-international-dark-sky-sanctuary-oregon": {
+      "ratio": 2.2042,
+      "mpsas": 20.74,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "organ-pipe-cactus-national-monument": {
+      "ratio": 0.2621,
+      "mpsas": 21.75,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "ovre-pasvik-national-park": {
+      "ratio": 0.0464,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "oxford-forest-conservation-area-new-zealand": {
+      "ratio": 0.3912,
+      "mpsas": 21.64,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "palm-beach-headland": {
+      "ratio": 1.8453,
+      "mpsas": 20.86,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "palos-preserves-urban-night-sky-place": {
+      "ratio": 33.5043,
+      "mpsas": 18.16,
+      "zone": "7a",
+      "atlasYear": 2024
+    },
+    "paonia-colorado": {
+      "ratio": 0.4339,
+      "mpsas": 21.61,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "parc-du-mont-bellevue-urban-night-sky-place": {
+      "ratio": 15.6473,
+      "mpsas": 18.95,
+      "zone": "6b",
+      "atlasYear": 2024
+    },
+    "parc-national-du-mont-tremblant": {
+      "ratio": 0.2021,
+      "mpsas": 21.8,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "pellworm-star-island-dark-sky-community": {
+      "ratio": 0.2304,
+      "mpsas": 21.77,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "petrified-forest-national-park-dark-sky-park": {
+      "ratio": 0.1477,
+      "mpsas": 21.85,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "petrova-gora-biljeg-dark-sky-park": {
+      "ratio": 0.6021,
+      "mpsas": 21.49,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "pic-du-midi-dark-sky-reserve": {
+      "ratio": 0.2566,
+      "mpsas": 21.75,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "pickett-memorial-and-pogue-creek-canyon-dark-sky-park": {
+      "ratio": 0.425,
+      "mpsas": 21.62,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "pipe-spring-national-monument-dark-sky-park": {
+      "ratio": 0.1809,
+      "mpsas": 21.82,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "pisgah-astronomical-research-institute-dark-sky-park": {
+      "ratio": 0.7833,
+      "mpsas": 21.37,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "pitcairn-islands-dark-sky-sanctuary": {
+      "ratio": 0,
+      "mpsas": 22,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "point-pelee-national-park": {
+      "ratio": 4.4737,
+      "mpsas": 20.15,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "presteigne-norton-dark-sky-community-wales": {
+      "ratio": 0.3831,
+      "mpsas": 21.65,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "prineville-reservoir-state-park-dark-sky-park": {
+      "ratio": 0.2021,
+      "mpsas": 21.8,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "quetico-provincial-park-dark-sky-park": {
+      "ratio": 0.008,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "rainbow-bridge-national-monument-dark-sky-sanctuary": {
+      "ratio": 0.0178,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "ramon-crater-nature-reserve-dark-sky-park": {
+      "ratio": 1.0795,
+      "mpsas": 21.21,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "rappahannock-county-park-dark-sky-park": {
+      "ratio": 0.9198,
+      "mpsas": 21.29,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "regional-natural-park-of-millevaches-dark-sky-reserve": {
+      "ratio": 0.0829,
+      "mpsas": 21.91,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "regional-natural-park-of-morvan": {
+      "ratio": 0.0829,
+      "mpsas": 21.91,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "regional-natural-park-of-vercors": {
+      "ratio": 0.3525,
+      "mpsas": 21.67,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "rhon-dark-sky-reserve": {
+      "ratio": 0.5438,
+      "mpsas": 21.53,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "ridgway-colorado-dark-sky-community": {
+      "ratio": 0.3675,
+      "mpsas": 21.66,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "rio-hurtado-chile": {
+      "ratio": 0.1477,
+      "mpsas": 21.85,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "river-murray-dark-sky-reserve": {
+      "ratio": 0.062,
+      "mpsas": 21.93,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "rockport-state-park-dark-sky-park": {
+      "ratio": 1.2166,
+      "mpsas": 21.14,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "saguaro-national-park": {
+      "ratio": 2.2042,
+      "mpsas": 20.74,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "salinas-pueblo-missions-national-monument-dark-sky-park": {
+      "ratio": 0.045,
+      "mpsas": 21.95,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "sark-dark-sky-community": {
+      "ratio": 0.1063,
+      "mpsas": 21.89,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "sedona-arizona-dark-sky-community": {
+      "ratio": 2.1612,
+      "mpsas": 20.75,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "sinks-canyon-state-park": {
+      "ratio": 0.1511,
+      "mpsas": 21.85,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "sisters-oregon": {
+      "ratio": 1.4549,
+      "mpsas": 21.02,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "sky-meadows-state-park-dark-sky-park": {
+      "ratio": 1.4841,
+      "mpsas": 21.01,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "snow-canyon-state-park": {
+      "ratio": 2.2042,
+      "mpsas": 20.74,
+      "zone": "4b",
+      "atlasYear": 2024
+    },
+    "snowdonia-national-park-dark-sky-reserve": {
+      "ratio": 0.2678,
+      "mpsas": 21.74,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "sopotnia-wielka": {
+      "ratio": 1.4549,
+      "mpsas": 21.02,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "south-llano-river-state-park-dark-sky-park": {
+      "ratio": 0.2405,
+      "mpsas": 21.77,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "spiekeroog-star-island-dark-sky-community": {
+      "ratio": 0.3599,
+      "mpsas": 21.67,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "springdale-utah-dark-sky-community": {
+      "ratio": 0.6021,
+      "mpsas": 21.49,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "spruce-woods-provincial-park": {
+      "ratio": 0.1142,
+      "mpsas": 21.88,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "stacy-park-urban-night-sky-place": {
+      "ratio": 38.4082,
+      "mpsas": 18.01,
+      "zone": "7a",
+      "atlasYear": 2024
+    },
+    "starepark-petschent-putscheid-luxembourg": {
+      "ratio": 1.2411,
+      "mpsas": 21.12,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "staunton-river-state-park-dark-sky-park": {
+      "ratio": 0.7226,
+      "mpsas": 21.41,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "steinaker-state-park-dark-sky-park": {
+      "ratio": 1.4264,
+      "mpsas": 21.04,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "stephen-c-foster-state-park-dark-sky-park": {
+      "ratio": 0.2158,
+      "mpsas": 21.79,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "stewart-island-rakiura-dark-sky-sanctuary": {
+      "ratio": 0.0222,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "sunshine-coast": {
+      "ratio": 0.8154,
+      "mpsas": 21.35,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "syrjavaara-finland": {
+      "ratio": 0.2158,
+      "mpsas": 21.79,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "tahuna-glenorchy": {
+      "ratio": 0.0094,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "terra-nova-national-park": {
+      "ratio": 0.1316,
+      "mpsas": 21.87,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "teton-county": {
+      "ratio": 3.7495,
+      "mpsas": 20.31,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "the-city-of-moab": {
+      "ratio": 3.7495,
+      "mpsas": 20.31,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "the-jump-up-dark-sky-sanctuary": {
+      "ratio": 0.0061,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "thorington-street-suffolk": {
+      "ratio": 1.6715,
+      "mpsas": 20.93,
+      "zone": "4a",
+      "atlasYear": 2024
+    },
+    "thousand-hills-state-park": {
+      "ratio": 0.2736,
+      "mpsas": 21.74,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "timpanogos-cave-national-monument-urban-night-sky-place": {
+      "ratio": 7.3004,
+      "mpsas": 19.7,
+      "zone": "5b",
+      "atlasYear": 2024
+    },
+    "tomintoul-glenlivet-cairngorms-dark-sky-park": {
+      "ratio": 0.2158,
+      "mpsas": 21.79,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "top-of-the-pines-dark-sky-park": {
+      "ratio": 0.0808,
+      "mpsas": 21.92,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "torrance-barrens-conservation-reserve": {
+      "ratio": 0.3599,
+      "mpsas": 21.67,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "torrey-utah-dark-sky-community": {
+      "ratio": 0.2736,
+      "mpsas": 21.74,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "town-of-breckenridge-colorado": {
+      "ratio": 3.3988,
+      "mpsas": 20.39,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "tubac": {
+      "ratio": 0.8837,
+      "mpsas": 21.31,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "tumacacori-national-historical-park-dark-sky-park": {
+      "ratio": 0.8489,
+      "mpsas": 21.33,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "ubaru-camp-and-retreat-center-dark-sky-park": {
+      "ratio": 0.4522,
+      "mpsas": 21.59,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "valle-de-oro-national-wildlife-refuge-urban-night-sky-place": {
+      "ratio": 11.2251,
+      "mpsas": 19.28,
+      "zone": "6a",
+      "atlasYear": 2024
+    },
+    "valles-caldera-national-preserve-dark-sky-park": {
+      "ratio": 0.185,
+      "mpsas": 21.82,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "voyageurs-national-park-dark-sky-park": {
+      "ratio": 0.0213,
+      "mpsas": 21.98,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "vrani-kamen-dark-sky-park": {
+      "ratio": 0.3525,
+      "mpsas": 21.67,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "wai-iti-dark-sky-park": {
+      "ratio": 0.1511,
+      "mpsas": 21.85,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "wairarapa-dark-sky-reserve": {
+      "ratio": 0.0586,
+      "mpsas": 21.94,
+      "zone": "1a",
+      "atlasYear": 2024
+    },
+    "warrumbungle-dark-sky-park": {
+      "ratio": 0.0061,
+      "mpsas": 21.99,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "waterton-glacier-international-peace-park-dark-sky-park": {
+      "ratio": 0.2736,
+      "mpsas": 21.74,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "watoga-state-park-dark-sky-park": {
+      "ratio": 0.2158,
+      "mpsas": 21.79,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "weisbach-nature-park-and-municipality": {
+      "ratio": 0.5115,
+      "mpsas": 21.55,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "west-penwith-dark-sky-park": {
+      "ratio": 0.3173,
+      "mpsas": 21.7,
+      "zone": "2b",
+      "atlasYear": 2024
+    },
+    "westcliffe-and-silver-cliff-dark-sky-community": {
+      "ratio": 0.8837,
+      "mpsas": 21.31,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "westhavelland-dark-sky-reserve": {
+      "ratio": 0.6021,
+      "mpsas": 21.49,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "wimberley-valley-texas-dark-sky-community": {
+      "ratio": 3.535,
+      "mpsas": 20.36,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "winklmoosalm-dark-sky-park": {
+      "ratio": 0.4163,
+      "mpsas": 21.62,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "winton-dark-sky-community": {
+      "ratio": 0.5781,
+      "mpsas": 21.5,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "wood-buffalo-national-park": {
+      "ratio": 0.001,
+      "mpsas": 22,
+      "zone": "0",
+      "atlasYear": 2024
+    },
+    "xichong-shenzhen-dark-sky-community": {
+      "ratio": 4.0558,
+      "mpsas": 20.24,
+      "zone": "5a",
+      "atlasYear": 2024
+    },
+    "yeongyang-firefly-eco-park-dark-sky-park": {
+      "ratio": 0.7226,
+      "mpsas": 21.41,
+      "zone": "3b",
+      "atlasYear": 2024
+    },
+    "ynys-enlli-bardsey-island-dark-sky-sanctuary": {
+      "ratio": 0.0691,
+      "mpsas": 21.93,
+      "zone": "1b",
+      "atlasYear": 2024
+    },
+    "yorkshire-dales-national-park-dark-sky-reserve": {
+      "ratio": 0.4616,
+      "mpsas": 21.59,
+      "zone": "3a",
+      "atlasYear": 2024
+    },
+    "zion-national-park-dark-sky-park": {
+      "ratio": 0.1411,
+      "mpsas": 21.86,
+      "zone": "2a",
+      "atlasYear": 2024
+    },
+    "zselic-national-landscape-protection-area-dark-sky-park": {
+      "ratio": 0.4712,
+      "mpsas": 21.58,
+      "zone": "3a",
+      "atlasYear": 2024
+    }
+  },
+  "quarantine": []
+}
