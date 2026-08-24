@@ -1,0 +1,40 @@
+name: Precompute
+
+on:
+  schedule:
+    # every 3 hours, offset from the top of the hour where scheduled runs queue worst
+    - cron: '17 */3 * * *'
+  workflow_dispatch: # manual runs, and the revival lever after GitHub's 60-day auto-disable
+  push:
+    paths: ['.github/workflows/precompute.yml'] # self-test on changes to this file
+
+permissions:
+  contents: write
+
+concurrency:
+  group: precompute
+  cancel-in-progress: false
+
+jobs:
+  precompute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run precompute
+      - name: Publish scores.json to the orphan data branch
+        # force-push keeps the branch one commit deep — no history growth at 8 runs/day
+        run: |
+          mkdir /tmp/data
+          cp tools/precompute/scores.json /tmp/data/
+          cd /tmp/data
+          git init -q -b data
+          git config user.name "sidervale-precompute"
+          git config user.email "actions@users.noreply.github.com"
+          git add scores.json
+          git commit -qm "precompute $(date -u +%FT%TZ)"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" data
