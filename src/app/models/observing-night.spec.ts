@@ -43,10 +43,16 @@ describe('observingNightOf', () => {
     expect(observingNightOf(toronto, at).localDate).toBe('2026-08-22');
   });
 
-  it('keeps siteToday semantics before dawn: 03:30 local names the night beginning that day', () => {
-    // 2026-08-23T07:30Z − 4h = 03:30 on Aug 23 in Toronto — the upcoming night, not the one in progress
+  it('names the night in progress before dawn: 03:30 local belongs to yesterday evening', () => {
+    // 2026-08-23T07:30Z − 4h = 03:30 on Aug 23 in Toronto — inside the night that began Aug 22
     const night = observingNightOf(toronto, utcInstant(2026, 7, 23, 7, 30));
-    expect(night.localDate).toBe('2026-08-23');
+    expect(night.localDate).toBe('2026-08-22');
+  });
+
+  it('rolls over at site-local noon, like the astronomical Julian day', () => {
+    // 15:59Z − 4h = 11:59 local → still yesterday's night; 16:00Z = 12:00 local → tonight's
+    expect(observingNightOf(toronto, utcInstant(2026, 7, 23, 15, 59)).localDate).toBe('2026-08-22');
+    expect(observingNightOf(toronto, utcInstant(2026, 7, 23, 16, 0)).localDate).toBe('2026-08-23');
   });
 });
 

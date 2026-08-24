@@ -4,9 +4,10 @@ import { Site } from './site';
 /** The night that BEGINS on this local calendar date at this site. */
 export type ObservingNight = { readonly siteId: string; readonly localDate: string }; // 'YYYY-MM-DD'
 
-/** The night beginning on the site-local calendar day containing `now`. */
+/** The night in progress at `now`, or the next to begin — rolls over at site-local noon. */
 export function observingNightOf(site: Site, now: DateTime = DateTime.now()): ObservingNight {
-  const localDate = now.setZone(site.timezone).toISODate();
+  // Observing days run noon-to-noon (why Julian dates roll at noon): pre-noon is yesterday's night.
+  const localDate = now.setZone(site.timezone).minus({ hours: 12 }).toISODate();
   if (localDate === null) throw new Error(`cannot resolve a local date at site ${site.id}`);
   return { siteId: site.id, localDate };
 }
