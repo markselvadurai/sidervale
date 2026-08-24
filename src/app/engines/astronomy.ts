@@ -37,16 +37,30 @@ function isMoonUp(site: Site, at: Date): boolean {
   return p.altitude + semidiameter + REFRACTION_DEG >= 0;
 }
 
+const DAY_MS = 86_400_000;
+
+/** The mean-solar-transit instant nearest the site's civil noon on this night's date. */
+// suncalc resolves "which day" from its Date's UTC calendar day plus the longitude, so
+// the anchor must sit on the night's own solar day. Civil noon is NOT safe: past UTC+12
+// at east longitude (Pacific/Auckland in NZDT) it lands a whole solar day early.
+function solarAnchor(site: Site, night: ObservingNight): Date {
+  const civilNoonMs = noonOf(site, night).toMillis();
+  const transitPhaseMs =
+    ((((12 - site.coordinates.lng / 15) * 3_600_000) % DAY_MS) + DAY_MS) % DAY_MS;
+  const solarDay = Math.round((civilNoonMs - transitPhaseMs) / DAY_MS);
+  return new Date(solarDay * DAY_MS + transitPhaseMs);
+}
+
 /** The night a user means by "tonight": in progress until sunrise, else the next to begin. */
 export function currentObservingNight(site: Site, now: DateTime = DateTime.now()): ObservingNight {
   const local = now.setZone(site.timezone);
   const localDate = local.toISODate();
   if (localDate === null) throw new Error(`cannot resolve a local date at site ${site.id}`);
+  const tonight: ObservingNight = { siteId: site.id, localDate };
 
-  // This morning's sunrise ends the night that began yesterday; anchor to noon as always.
-  const anchor = local.set({ hour: 12, minute: 0, second: 0, millisecond: 0 });
+  // This morning's sunrise ends the night that began yesterday.
   const sunrise = SunCalc.getTimes(
-    anchor.toJSDate(),
+    solarAnchor(site, tonight),
     site.coordinates.lat,
     site.coordinates.lng,
   ).sunrise;
@@ -54,17 +68,14 @@ export function currentObservingNight(site: Site, now: DateTime = DateTime.now()
   // No sunrise event (polar day or night, suncalc returns null): fall back to the noon rule.
   if (!sunrise) return observingNightOf(site, now);
 
-  const tonight: ObservingNight = { siteId: site.id, localDate };
   return now.toMillis() < sunrise.getTime() ? plusNights(tonight, -1) : tonight;
 }
 
 export function getDarknessWindow(site: Site, night: ObservingNight): DarknessWindow {
-  // noonOf anchors to noon at the site: suncalc picks a night by its Date's UTC
-  // day, and noon is the one local hour that never crosses that seam.
-  const anchor = noonOf(site, night);
+  const anchor = solarAnchor(site, night);
 
-  const times = SunCalc.getTimes(anchor.toJSDate(), site.coordinates.lat, site.coordinates.lng);
-  const nextDay = anchor.plus({ days: 1 }).toJSDate();
+  const times = SunCalc.getTimes(anchor, site.coordinates.lat, site.coordinates.lng);
+  const nextDay = solarAnchor(site, plusNights(night, 1));
 
   const nextDayTimes = SunCalc.getTimes(nextDay, site.coordinates.lat, site.coordinates.lng);
   const nightStart = times.night;

@@ -56,6 +56,7 @@ The global successor to **Nocturne v1** — a stargazing go/no-go planner. v1 co
 - **The week strip hardcodes 7 days** and an English-only `dayLabels` array indexed by weekday.
 - **`getMoonOverlap` discards event kind.** All four rise/set events are pushed into one `DateTime[]` and the walk merely toggles — which is _why_ a bad seed inverts the whole window. Carry `{ at, kind: 'rise' | 'set' }` so each event sets absolute state; a bad seed would then only affect the stretch before the first event.
 - **Accessibility** on the mobile sheet: no `aria-expanded`, the label never flips between Expand/Collapse, no focus trap, no Esc-to-close.
+- **`weekScores` re-reads the clock on recompute while `selectedNight` is a snapshot.** A forecast arriving just after sunrise shifts the strip forward and orphans the selection highlight (no active chip). Pre-existing mechanism, narrow window; fix when `MapView` is split — either re-anchor the selection when the strip passes it, or start the strip from the selected night.
 - **`map-view.scss` is 4.79 kB** against a 4.00 kB warn budget. Splitting `MapView` fixes it.
 - **Leaflet is CommonJS**, which costs some build optimization. Expected; nothing to do short of replacing Leaflet.
 

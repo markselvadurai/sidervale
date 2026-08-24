@@ -101,7 +101,9 @@ describe('getDarknessWindow', () => {
     expect(w.end.toISODate()).toBe('2026-08-23');
   });
 
-  // Toronto springs forward 2027-03-14. Guards the seam on a transition day.
+  // Toronto springs forward 2027-03-14. A regression pin on a transition day; it
+  // does not discriminate DST-arithmetic mutations (mutation-checked: none exist
+  // to catch since day-stepping is calendar-based via plusNights).
   it('resolves the correct night on a DST transition day', () => {
     const w = getDarknessWindow(manitoulin, nightOf('2027-03-14'));
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
@@ -286,5 +288,48 @@ describe('currentObservingNight', () => {
     expect(currentObservingNight(svalbard, at(2026, 11, 24, 9, 0)).localDate).toBe('2026-12-23');
     // 14:00Z = 15:00 local — past noon → the night of Dec 24
     expect(currentObservingNight(svalbard, at(2026, 11, 24, 14, 0)).localDate).toBe('2026-12-24');
+  });
+});
+
+// ── The far side of UTC+12: suncalc resolves days by UTC calendar day ──
+
+// Aoraki / Mt Cook, NZ — UTC+13 in southern summer, longitude EAST. Civil noon
+// of local day D is 23:00Z on D−1, so a civil-noon anchor hands suncalc the
+// wrong solar day. Kiritimati (UTC+14, longitude WEST) self-corrects, so it
+// pins the other side of the fix.
+const aoraki: Site = {
+  ...manitoulin,
+  id: 'aoraki-test',
+  coordinates: { lat: -43.73, lng: 170.1 },
+  timezone: 'Pacific/Auckland',
+};
+const kiritimati: Site = {
+  ...manitoulin,
+  id: 'kiritimati-test',
+  coordinates: { lat: 1.87, lng: -157.43 },
+  timezone: 'Pacific/Kiritimati',
+};
+
+describe('solar-day anchoring past UTC+12', () => {
+  it('the window begins on the named date at a UTC+13 east-longitude site', () => {
+    const w = getDarknessWindow(aoraki, { siteId: 'aoraki-test', localDate: '2027-01-10' });
+    if (!w.hasTrueDarkness) throw new Error('expected darkness');
+    expect(w.start.toISODate()).toBe('2027-01-10');
+    expect(w.end.toISODate()).toBe('2027-01-11');
+  });
+
+  it('pre-dawn at a UTC+13 site still names the night in progress', () => {
+    // 2027-01-09T14:00Z = 03:00 NZDT Jan 10; that morning's sunrise is ~06:10 NZDT
+    const now = DateTime.fromMillis(Date.UTC(2027, 0, 9, 14, 0), { zone: 'utc' });
+    expect(currentObservingNight(aoraki, now).localDate).toBe('2027-01-09');
+  });
+
+  it('keeps UTC+14 west-longitude (Kiritimati) on the named date', () => {
+    const w = getDarknessWindow(kiritimati, {
+      siteId: 'kiritimati-test',
+      localDate: '2026-12-13',
+    });
+    if (!w.hasTrueDarkness) throw new Error('expected darkness');
+    expect(w.start.toISODate()).toBe('2026-12-13');
   });
 });

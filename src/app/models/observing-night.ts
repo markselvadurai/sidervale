@@ -6,8 +6,11 @@ export type ObservingNight = { readonly siteId: string; readonly localDate: stri
 
 /** The night in progress at `now`, or the next to begin — rolls over at site-local noon. */
 export function observingNightOf(site: Site, now: DateTime = DateTime.now()): ObservingNight {
-  // Observing days run noon-to-noon (why Julian dates roll at noon): pre-noon is yesterday's night.
-  const localDate = now.setZone(site.timezone).minus({ hours: 12 }).toISODate();
+  // Observing days run noon-to-noon (why Julian dates roll at noon): pre-noon is yesterday's
+  // night. A wall-clock rule, not minus-12-hours — exact-time math drifts on DST days.
+  const local = now.setZone(site.timezone);
+  const day = local.hour < 12 ? local.minus({ days: 1 }) : local;
+  const localDate = day.toISODate();
   if (localDate === null) throw new Error(`cannot resolve a local date at site ${site.id}`);
   return { siteId: site.id, localDate };
 }

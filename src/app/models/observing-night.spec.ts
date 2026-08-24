@@ -119,3 +119,21 @@ describe('plusNights', () => {
     expect(() => plusNights({ siteId: 's', localDate: 'tonight' }, 1)).toThrow(/localDate/);
   });
 });
+
+describe('observingNightOf on DST transition days', () => {
+  // The noon rule is a wall-clock rule: exact-time minus-12h would roll over at
+  // 11:00 on a 25-hour day and 13:00 on a 23-hour day.
+  const iqaluit = makeSite({ id: 'iqaluit-test', timezone: 'America/Iqaluit' });
+
+  it('11:30 local on a fall-back morning is still yesterday night', () => {
+    // 2026-11-01T16:30Z = 11:30 EST after the clocks fell back — before noon
+    const night = observingNightOf(iqaluit, utcInstant(2026, 10, 1, 16, 30));
+    expect(night.localDate).toBe('2026-10-31');
+  });
+
+  it('12:30 local on a spring-forward day is already tonight', () => {
+    // 2027-03-14T16:30Z = 12:30 EDT on the 23-hour day — past noon
+    const night = observingNightOf(toronto, utcInstant(2027, 2, 14, 16, 30));
+    expect(night.localDate).toBe('2027-03-14');
+  });
+});
