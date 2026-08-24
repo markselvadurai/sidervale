@@ -65,4 +65,4 @@ npm run format     # prettier
 
 ## Attribution
 
-Light-pollution overlay tiles from the [David Lorenz 2024 world atlas](https://djlorenz.github.io/astronomy/lp2024/). Weather data from [Open-Meteo](https://open-meteo.com/) (CC BY 4.0). Basemap © OpenStreetMap contributors © CARTO.
+Light-pollution overlay tiles and site sky-brightness data from the [David Lorenz world atlas](https://djlorenz.github.io/astronomy/lp/) (2024 edition). Weather data from [Open-Meteo](https://open-meteo.com/) (CC BY 4.0). Basemap © OpenStreetMap contributors © CARTO.

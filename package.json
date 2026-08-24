@@ -13,7 +13,8 @@
     "test:tools": "vitest run tools/dataset",
     "merge": "tsx tools/dataset/merge-sites.ts",
     "enrich": "tsx tools/dataset/enrich-sites.ts",
-    "brightness": "tsx tools/dataset/sample-brightness.ts"
+    "brightness": "tsx tools/dataset/sample-brightness.ts",
+    "emit": "tsx tools/dataset/emit-dataset.ts"
   },
   "private": true,
   "packageManager": "npm@10.9.0",

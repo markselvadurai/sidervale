@@ -64,8 +64,17 @@ the numbers consistent with the overlay tiles the app displays; a 2025 atlas exi
 together. Current result: 293/293 sampled from 96 tiles; the two bright-zone alarms are an urban
 star park and a nocturnal preserve, bright by design.
 
+## Stage 5 — emit (`npm run emit`, no network)
+
+Validates and writes `sites.json`, the app-facing dataset: 293 sites with id, name, coordinates,
+timezone, designations, regions, brightness, and source URLs. A site missing any requirement is
+**excluded with its reasons listed** — currently the 9 quarantined records. Duplicate ids throw.
+
+Resolving the 9 needs a human: pick destination points for the multi-parcel preserves (also give
+the Beaver Hills / Cypress Hills composites short display names — their auto-slugs are unusable),
+and source coordinates for the five markerless DarkSky places and LeTerrain.
+
 ## Later stages (not built yet)
 
-Wikidata QIDs as cross-check → validate → emit the app dataset. Per `docs/PROJECT.md`:
-deterministic facts only from deterministic sources; LLM judges for prose and arbitration with
-abstention.
+Wikidata QIDs as cross-check; LLM-drafted descriptions with abstention (per `docs/PROJECT.md`);
+nearest-town / drive-distance via a routing API.
