@@ -38,9 +38,16 @@ reproducible without network access.
 
 These need human-chosen destination points before they enter the merged dataset.
 
+## Stage 2 — merge (`npm run merge`, no network)
+
+Merges the raw snapshots into `merged.json` (302 sites). Dedup needs **two independent signals**
+— normalized-name prefix ≥ 8 _and_ distance ≤ 30 km — to auto-merge; either signal alone is a
+review pair for a human, never an auto-merge. Where both sources carry coordinates, DarkSky's is
+canonical, the delta is recorded, and > 5 km quarantines as `coordinate-disagreement`. Current
+result: one auto-merge (Mont-Mégantic, pins 4.57 km apart inside the reserve), zero review pairs.
+
 ## Later stages (not built yet)
 
-Merge + dedup across sources (Mont-Mégantic is in both) → enrich (timezone via `tz-lookup`,
-sky brightness from the Lorenz 2024 raster, Wikidata QIDs as cross-check) → validate → emit the
-app dataset. Per `docs/PROJECT.md`: deterministic facts only from deterministic sources; LLM
-judges for prose and arbitration with abstention.
+Enrich (timezone via `tz-lookup`, sky brightness from the Lorenz 2024 raster, Wikidata QIDs as
+cross-check) → validate → emit the app dataset. Per `docs/PROJECT.md`: deterministic facts only
+from deterministic sources; LLM judges for prose and arbitration with abstention.

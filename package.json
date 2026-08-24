@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "harvest": "tsx tools/dataset/harvest-darksky.ts && tsx tools/dataset/harvest-rasc.ts",
-    "test:tools": "vitest run tools/dataset"
+    "test:tools": "vitest run tools/dataset",
+    "merge": "tsx tools/dataset/merge-sites.ts"
   },
   "private": true,
   "packageManager": "npm@10.9.0",

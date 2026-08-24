@@ -1,7 +1,8 @@
 // Parsers for RASC's dark-sky sites table and the Google My Maps KML it links.
 
 import { LatLng } from './darksky';
-import { decodeEntities, textOf } from './html';
+import { textOf } from './html';
+import { commonPrefixLength, normKey } from './naming';
 
 export type RascSite = {
   name: string;
@@ -75,22 +76,6 @@ export function parseKmlPlacemarks(kml: string): KmlPin[] {
     const name = textOf(rawName.replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, ''));
     return { name, lat, lng };
   });
-}
-
-/** Lowercased, diacritic- and punctuation-free key for prefix matching; & ≡ and. */
-function normKey(s: string): string {
-  return s
-    .replace(/&/g, ' and ')
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, '');
-}
-
-function commonPrefixLength(a: string, b: string): number {
-  let i = 0;
-  while (i < a.length && i < b.length && a[i] === b[i]) i++;
-  return i;
 }
 
 const MIN_MATCH = 8;
