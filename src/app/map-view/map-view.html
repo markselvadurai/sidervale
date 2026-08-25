@@ -1,4 +1,15 @@
 <div #mapContainer class="map-container"></div>
+
+<!-- the canvas has no DOM to focus: this IS the keyboard/screen-reader interface -->
+<ul class="site-index" aria-label="Dark-sky sites on the map">
+  @for (f of features().features; track f.properties.id) {
+    <li>
+      <button type="button" (click)="sitesService.selectSite(f.properties.id)">
+        {{ f.properties.label }}
+      </button>
+    </li>
+  }
+</ul>
 <nav class="rail" aria-label="Map tools">
   <button
     type="button"
@@ -54,6 +65,12 @@
 @if (listOpen()) {
   <div class="rank-panel">
     <app-ranked-list [sites]="visibleSites()" />
+  </div>
+}
+@if (mapUnavailable()) {
+  <div class="map-unavailable">
+    <p>This device can’t display the map (WebGL unavailable).</p>
+    <p>The ranked list below still works — it answers the same question.</p>
   </div>
 }
 @if (sitesService.datasetState() === 'failed') {

@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
-import { MapView } from './map-view/map-view';
-import { SiteDetail } from './site-detail/site-detail';
 
+// lazy: MapLibre is ~800 kB raw, and the router shell exists precisely so it can be a chunk
+// rather than part of the initial bundle
 export const routes: Routes = [
-  { path: '', component: MapView },
-  { path: 'site/:id', component: SiteDetail },
+  { path: '', loadComponent: () => import('./map-view/map-view').then((m) => m.MapView) },
+  {
+    path: 'site/:id',
+    loadComponent: () => import('./site-detail/site-detail').then((m) => m.SiteDetail),
+  },
   // an unknown path lands on the map, never a blank screen
   { path: '**', redirectTo: '' },
 ];

@@ -9,12 +9,6 @@
   inset: 0;
 } // fills
 
-// Leaflet's stock container ground is #ddd — beyond the tile extent (±85° latitude at world
-// zoom) it showed as raw light-grey bands (Mark's screenshot). The void is sky, not paper.
-:host ::ng-deep .leaflet-container {
-  background: var(--zenith);
-}
-
 // ── direction 1b's atmosphere (ADR 0007): two colour glows and a sparse starfield ──
 // z-index 300/310 sits above the tile pane (200) and below markers (600); screen-blend so
 // the glows lift the ground instead of painting over it. pointer-events off: pure decor.
@@ -65,12 +59,19 @@
   }
 }
 
-// CARTO's ground is near-greyscale, so hue-rotate alone does nothing — sepia gives the
-// greys a hue first (~40deg), then the rotation lands it on indigo. Tuned against the
-// mockup's ground, which is a rich navy-violet, not charcoal (side-by-side screenshots).
-// Scoped to the basemap: the light-pollution overlay encodes data in its colours.
-:host ::ng-deep .basemap-tiles {
-  filter: sepia(1) hue-rotate(195deg) saturate(1.8) brightness(1.08);
+.map-unavailable {
+  position: absolute;
+  z-index: 400;
+  inset: auto var(--s3) var(--s3) 88px;
+  background: var(--nadir);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r3);
+  padding: var(--s3) var(--s4);
+  color: var(--airglow);
+  font-size: var(--t-desc);
+  p {
+    margin: 0 0 var(--s1);
+  }
 }
 
 .dataset-error {
@@ -88,9 +89,6 @@
 }
 
 @media screen and (max-width: 640px) {
-  :host ::ng-deep .leaflet-control-zoom {
-    display: none;
-  }
 }
 // ── the left rail (design 2a/3b): one composed toolbar instead of stacked pills ──
 .rail {
@@ -204,123 +202,56 @@
   }
 }
 
-// the rail owns the top-left corner; Leaflet's zoom moves out of its way
-:host ::ng-deep .leaflet-top.leaflet-left {
-  margin-left: 76px;
-}
-
-// ── marker shape-coding (spec 1f, ADR 0007): tier must never be hue-alone ──
-// Leaflet already sets position:absolute here and places the marker with a transform —
-// never set position or transform on .site-marker, only on its pseudo-elements.
-:host ::ng-deep .site-marker {
-  border-radius: 50%;
-  background: var(--zenith);
-  border: 2px solid var(--airglow);
-}
-
-// The ring is always closed. Tier reads as how much of the disc is filled — wide core,
-// small core, hollow — which survives greyscale without ever leaving a partial mark.
-:host ::ng-deep .site-marker::after {
-  content: '';
-  position: absolute;
-  inset: 50%; // collapsed: hollow is the default, tiers open it up
-  border-radius: 50%;
-  background: currentColor;
-}
-
-// clear — a wide core: the most ink for the best night
-:host ::ng-deep .site-marker--clear {
-  border-color: var(--clear);
-  color: var(--clear);
-  // good nights glow — the map's job is "where is it good"
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--clear) 18%, transparent);
-}
-:host ::ng-deep .site-marker--clear::after {
-  inset: 22%; // proportional, so the core survives the zoom-driven diameter
-}
-
-// marginal — same closed ring, visibly less fill
-:host ::ng-deep .site-marker--marginal {
-  border-color: var(--caution);
-  color: var(--caution);
-}
-:host ::ng-deep .site-marker--marginal::after {
-  inset: 34%;
-}
-
-// small diameters get a thinner stroke, or the ring eats the marker
-:host ::ng-deep .site-marker--fine {
-  border-width: 1px;
-}
-
-// poor — ring only, hollow, and FADED: on a moon-dominated night the whole planet is poor,
-// so poor must recede rather than paint the world as an error (spec 1f: "thin, faded")
-:host ::ng-deep .site-marker--poor {
-  border-color: color-mix(in srgb, var(--poor) 45%, transparent);
-}
-
-:host ::ng-deep .site-marker--pending {
-  border-style: dashed;
-}
-:host ::ng-deep .site-marker--darkless {
-  border-style: dashed;
-  border-color: var(--horizon);
-  background: transparent;
-}
-:host ::ng-deep .site-marker--selected {
-  // selection is the accent (1f: "SELECTED — accent halo on any tier"); red is for errors
-  box-shadow:
-    0 0 0 5px var(--accent-soft),
-    0 0 0 2px var(--accent);
-}
-
-// a certified town is not a park — square it off so the map never conflates the two
-:host ::ng-deep .site-marker--community {
-  border-radius: var(--r1);
-}
-:host ::ng-deep .site-marker--community::after {
-  border-radius: 2px;
-}
-
-.rank-panel {
-  position: absolute;
-  z-index: 500;
-  top: var(--s3);
-  left: 88px; // clear of the rail
-  bottom: var(--s3);
-  width: min(340px, calc(100vw - 100px));
-
-  @media screen and (max-width: 640px) {
-    top: 56px; // below the horizontal rail
-    left: var(--s2);
-    width: auto;
-    right: var(--s2);
-    // leave the collapsed bottom sheet reachable when a site is selected
-    bottom: calc(40dvh + var(--s2));
-  }
-}
-
-// Leaflet ships a white zoom control — the loudest element on a dark page (seen in
-// Mark's screenshot). Restyle it to the same chrome family as the pills.
-:host ::ng-deep .leaflet-bar,
-:host ::ng-deep .leaflet-touch .leaflet-bar {
+// MapLibre's own chrome, matched to the rail's family
+:host ::ng-deep .maplibregl-ctrl-group {
+  background: color-mix(in srgb, var(--nadir) 88%, transparent);
   border: 1px solid var(--horizon);
   box-shadow: none;
 }
-:host ::ng-deep .leaflet-bar a,
-:host ::ng-deep .leaflet-touch .leaflet-bar a {
-  background: color-mix(in srgb, var(--nadir) 88%, transparent);
+:host ::ng-deep .maplibregl-ctrl-group button + button {
+  border-top-color: var(--horizon);
+}
+:host ::ng-deep .maplibregl-ctrl-group button span {
+  filter: invert(1) opacity(0.65); // the stock icons are dark-on-light
+}
+:host ::ng-deep .maplibregl-ctrl-attrib {
+  background: color-mix(in srgb, var(--nadir) 82%, transparent);
   color: var(--airglow);
-  border-bottom-color: var(--horizon);
-  &:hover {
-    background: var(--horizon);
-    color: var(--starlight);
+  a {
+    color: var(--airglow);
   }
 }
+:host ::ng-deep .maplibregl-ctrl-top-left {
+  margin-left: 76px; // clear of the rail
+}
 
-// the selection halo at full size overwhelms a 12–18px marker (screenshot: Medicine Rocks)
-:host ::ng-deep .site-marker--fine.site-marker--selected {
-  box-shadow:
-    0 0 0 3px var(--accent-soft),
-    0 0 0 1px var(--accent);
+// the accessible site index: reachable by keyboard and screen reader, invisible to sighted use
+.site-index {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+
+  button:focus-visible {
+    // pull it back into view when focused, so sighted keyboard users see where they are
+    position: fixed;
+    top: var(--s3);
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: auto;
+    clip-path: none;
+    z-index: 900;
+    background: var(--nadir);
+    border: 1px solid var(--accent);
+    border-radius: var(--r2);
+    padding: var(--s2) var(--s3);
+    color: var(--starlight);
+    font-family: var(--sans);
+    font-size: var(--t-desc);
+  }
 }

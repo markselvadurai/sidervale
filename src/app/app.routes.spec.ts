@@ -68,9 +68,15 @@ describe('routing', () => {
     expect(fixture.debugElement.nativeElement.querySelector('app-map-view')).not.toBeNull();
   });
 
-  it('registers the map and the site page against the right components', () => {
-    // the route table is the contract; assert it directly so a typo cannot hide behind a redirect
-    expect(routes.find((r) => r.path === '')?.component).toBe(MapView);
-    expect(routes.find((r) => r.path === 'site/:id')?.component).toBe(SiteDetail);
+  it('lazy-loads both views, and each loader resolves the component it claims', async () => {
+    // lazy is deliberate: MapLibre must not sit in the initial bundle. Resolving the loaders
+    // here means a wrong import path fails the suite rather than only failing at runtime.
+    const load = async (path: string) => {
+      const route = routes.find((r) => r.path === path);
+      if (!route?.loadComponent) throw new Error(`route ${path} is not lazy`);
+      return route.loadComponent();
+    };
+    expect(await load('')).toBe(MapView);
+    expect(await load('site/:id')).toBe(SiteDetail);
   });
 });

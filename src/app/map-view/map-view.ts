@@ -9,12 +9,32 @@ import {
   computed,
   effect,
 } from '@angular/core';
-import * as L from 'leaflet';
+import * as maplibregl from 'maplibre-gl';
 import { SitesService } from '../services/sites';
 import { SitePanel } from '../site-panel/site-panel';
 import { RankedList } from '../ranked-list/ranked-list';
-import { markerIcon, markerSize } from './marker-icon';
 import { siteKind } from '../models/site-kind';
+import { sitesToFeatures } from './map-features';
+import {
+  BASEMAP_STYLE_URL,
+  GROUND,
+  indigoOverrides,
+  labelLayout,
+  selectionPaint,
+  siteCirclePaint,
+} from './map-style';
+
+/** MapLibre requires WebGL2 and reports its absence asynchronously; ask up front instead. */
+function hasWebGl2(): boolean {
+  try {
+    return !!document.createElement('canvas').getContext('webgl2');
+  } catch {
+    return false;
+  }
+}
+
+const SITES_SOURCE = 'sites';
+const OVERLAY_SOURCE = 'light-pollution';
 
 @Component({
   selector: 'app-map-view',
@@ -25,24 +45,16 @@ import { siteKind } from '../models/site-kind';
 export class MapView implements AfterViewInit, OnDestroy {
   protected sitesService = inject(SitesService);
   mapContainer = viewChild.required<ElementRef<HTMLDivElement>>('mapContainer');
-  private map!: L.Map;
-  markers = new Map<string, L.Marker>();
-  // last icon applied per site: setIcon destroys and rebuilds the element, and the clock
-  // ticks the styling effect every minute
-  private iconKeys = new Map<string, string>();
+  private map?: maplibregl.Map;
   mapReady = signal(false);
+  /** WebGL2 is not universal: old devices, disabled GPU acceleration, some remote sessions.
+   *  The canvas is then impossible, but the site index and ranked list still answer the
+   *  question the product exists for — so degrade loudly rather than dying. */
+  mapUnavailable = signal(false);
   overlayOn = signal(false);
-  private overlayLayer = L.tileLayer(
-    'https://djlorenz.github.io/astronomy/image_tiles/tiles2024/tile_{z}_{x}_{y}.png',
-    { opacity: 0.25, tileSize: 1024, maxNativeZoom: 6, zoomOffset: -2 },
-  );
-  private _zoom = signal(2);
 
-  // DarkSky certifies municipalities as well as parks; a town is a different question from a
-  // destination, and 82 of them cluster hard enough to make the world view unreadable.
   markerFilter = signal<'destinations' | 'communities' | 'all'>('destinations');
   listOpen = signal(false);
-  // rail-width display names; the semantic split stays destination/community (site-kind.ts)
   protected readonly filterOptions = [
     { value: 'destinations' as const, label: 'Parks' },
     { value: 'communities' as const, label: 'Towns' },
@@ -54,102 +66,162 @@ export class MapView implements AfterViewInit, OnDestroy {
     const want = mode === 'destinations' ? 'destination' : 'community';
     return this.sitesService.sites().filter((s) => siteKind(s) === want);
   });
-  private makeIcon(classes: string[], size: number): L.DivIcon {
-    // a 2px ring is a quarter of a 12px marker — thin the stroke with the diameter
-    const all = size <= 18 ? [...classes, 'site-marker--fine'] : classes;
-    return L.divIcon({
-      className: all.join(' '),
-      iconSize: [size, size],
-      iconAnchor: [size / 2, size / 2],
-    });
-  }
+
+  /** The map's entire source of truth — pure, and what the hidden site list renders from. */
+  protected features = computed(() =>
+    sitesToFeatures(
+      this.visibleSites(),
+      this.sitesService.tonightScores(),
+      this.sitesService.selectedSiteId(),
+    ),
+  );
 
   private fitted = false;
 
   constructor() {
+    // one effect now: setData is a diff, so there is no marker DOM to rebuild or cache
     effect(() => {
+      const data = this.features();
       if (!this.mapReady()) return;
+      const source = this.map?.getSource(SITES_SOURCE) as maplibregl.GeoJSONSource | undefined;
+      // derive the accepted shape from MapLibre rather than naming the GeoJSON namespace,
+      // which tsconfig's `types: []` deliberately keeps out of scope
+      source?.setData(data as unknown as Parameters<maplibregl.GeoJSONSource['setData']>[0]);
 
-      this.markers.forEach((m) => m.remove());
-      this.markers.clear();
-      this.iconKeys.clear(); // stale keys would suppress styling on the fresh markers
-      const sites = this.visibleSites();
-      for (const site of sites) {
-        const latlng = new L.LatLng(site.coordinates.lat, site.coordinates.lng);
-        const siteMark = new L.Marker(latlng, {
-          icon: this.makeIcon(['site-marker'], markerSize(this.map.getZoom())),
-        });
-        this.markers.set(site.id, siteMark);
-        siteMark.addTo(this.map);
-        siteMark.on('click', () => this.sitesService.selectSite(site.id));
-      }
-      // one-shot: frame whatever the dataset spans — Ontario for 7 sites, the world for 293
-      if (sites.length && !this.fitted) {
-        // maxZoom guards the degenerate 1-site bounds (zero area would dive to tile max zoom)
-        this.map.fitBounds(
-          L.latLngBounds(sites.map((s) => [s.coordinates.lat, s.coordinates.lng])),
-          { padding: [24, 24], maxZoom: 8 },
-        );
+      if (data.features.length && !this.fitted) {
+        const bounds = new maplibregl.LngLatBounds();
+        for (const f of data.features) bounds.extend(f.geometry.coordinates);
+        // maxZoom guards the degenerate one-site bounds, as the Leaflet version did
+        this.map?.fitBounds(bounds, { padding: 24, maxZoom: 8, animate: false });
         this.fitted = true;
       }
     });
 
     effect(() => {
+      const on = this.overlayOn();
       if (!this.mapReady()) return;
-      // read BEFORE the loop: when this runs against an empty marker map (sites still
-      // loading), a loop-only read would drop these from the effect's dependency set forever
-      const scores = this.sitesService.tonightScores();
-      const selectedId = this.sitesService.selectedSiteId();
-      const size = markerSize(this._zoom());
-      for (const site of this.visibleSites()) {
-        const marker = this.markers.get(site.id);
-        if (!marker) continue;
-        const icon = markerIcon(site.name, scores.get(site.id), selectedId === site.id);
-        // a town and a national park must not read as the same kind of place
-        if (siteKind(site) === 'community') icon.classes.push('site-marker--community');
-        const key = `${icon.classes.join(' ')}|${icon.label}|${size}`;
-        if (this.iconKeys.get(site.id) === key) continue; // nothing changed — leave the DOM alone
-        this.iconKeys.set(site.id, key);
-        marker.setIcon(this.makeIcon(icon.classes, size));
-        // set on the element, not via options.title: DivIcon reuses its div, so Leaflet's
-        // own title handling (new elements only) never fires on a re-style
-        marker.getElement()?.setAttribute('title', icon.label);
-      }
-    });
-
-    effect(() => {
-      if (!this.mapReady()) return;
-      this.overlayOn() ? this.overlayLayer.addTo(this.map) : this.overlayLayer.remove();
+      this.map?.setLayoutProperty(OVERLAY_SOURCE, 'visibility', on ? 'visible' : 'none');
     });
   }
 
   ngAfterViewInit() {
-    // neutral world view until the dataset arrives; fitBounds takes over from there
-    this.map = new L.Map(this.mapContainer().nativeElement, {
+    // ask BEFORE constructing: MapLibre's WebGL failure surfaces asynchronously, so a
+    // try/catch around the constructor does not catch it (verified — the catch never ran)
+    if (!hasWebGl2()) {
+      this.mapUnavailable.set(true);
+      return;
+    }
+    try {
+      this.buildMap();
+    } catch (error) {
+      this.mapUnavailable.set(true);
+      console.warn('map could not initialise — falling back to the list', error);
+    }
+  }
+
+  private buildMap() {
+    const map = new maplibregl.Map({
+      container: this.mapContainer().nativeElement,
+      style: BASEMAP_STYLE_URL,
+      center: [0, 20],
       zoom: 2,
       minZoom: 2,
-      center: [20, 0],
-      // one world, not a repeating wallpaper of them (side-by-side review)
-      maxBounds: L.latLngBounds([-85, -180], [85, 180]),
-      maxBoundsViscosity: 1.0,
+      renderWorldCopies: false, // one world, not a repeating wallpaper of them
+      attributionControl: { compact: true },
     });
-    const tiles = new L.TileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 20,
-      noWrap: true, // pairs with maxBounds: the world renders once
-      // noWrap stops wrapping but not requesting: without this, panning to the seam asked
-      // CARTO for x=-1 and x=4 tiles at z2 — 32 live 400s (caught in console review)
-      bounds: L.latLngBounds([-85, -180], [85, 180]),
-      className: 'basemap-tiles', // scopes the navy tint; the overlay layer must stay untinted
+    this.map = map;
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
+
+    map.on('load', () => {
+      // maxBounds AFTER load, never in the constructor: MapLibre v6 throws
+      // "Cannot read properties of null" there, because the bounds-to-minzoom calculation
+      // runs before the container has a measured size. Bisected against a minimal config.
+      map.setMaxBounds([
+        [-180, -85],
+        [180, 85],
+      ]);
+      this.paintGround(map);
+
+      // the light-pollution raster. Leaflet needed tileSize 1024 + zoomOffset -2; MapLibre has
+      // no zoomOffset, so the same 1024px tiles are declared directly and capped at their
+      // native zoom instead. Verify visually against a known light-polluted area before trusting.
+      map.addSource(OVERLAY_SOURCE, {
+        type: 'raster',
+        tiles: ['https://djlorenz.github.io/astronomy/image_tiles/tiles2024/tile_{z}_{x}_{y}.png'],
+        tileSize: 1024,
+        maxzoom: 6,
+        attribution: 'Light pollution: D. Lorenz',
+      });
+      map.addLayer({
+        id: OVERLAY_SOURCE,
+        type: 'raster',
+        source: OVERLAY_SOURCE,
+        paint: { 'raster-opacity': 0.25 },
+        layout: { visibility: 'none' },
+      });
+
+      map.addSource(SITES_SOURCE, {
+        type: 'geojson',
+        data: this.features() as unknown as Parameters<maplibregl.GeoJSONSource['setData']>[0],
+      });
+      map.addLayer({
+        id: 'site-selection',
+        type: 'circle',
+        source: SITES_SOURCE,
+        filter: ['==', ['get', 'selected'], true],
+        paint: selectionPaint(),
+      });
+      map.addLayer({
+        id: 'site-circles',
+        type: 'circle',
+        source: SITES_SOURCE,
+        paint: siteCirclePaint(),
+      });
+      map.addLayer({
+        id: 'site-labels',
+        type: 'symbol',
+        source: SITES_SOURCE,
+        minzoom: 5, // zoom-gated, collision-managed — what Leaflet could not do
+        layout: labelLayout(),
+        paint: { 'text-color': '#e8edf7', 'text-halo-color': '#070b14', 'text-halo-width': 1.2 },
+      });
+
+      map.on('click', 'site-circles', (e) => {
+        const id = e.features?.[0]?.properties?.['id'];
+        if (typeof id === 'string') this.sitesService.selectSite(id);
+      });
+      map.on('mouseenter', 'site-circles', () => (map.getCanvas().style.cursor = 'pointer'));
+      map.on('mouseleave', 'site-circles', () => (map.getCanvas().style.cursor = ''));
+
+      this.mapReady.set(true);
     });
-    tiles.addTo(this.map);
-    this._zoom.set(this.map.getZoom());
-    this.map.on('zoomend', () => this._zoom.set(this.map.getZoom()));
-    this.mapReady.set(true);
+    map.on('error', (e) => console.warn('map error', e?.error ?? e));
+  }
+
+  /** Repaint the vendor style's grounds to ours. Paint, not a filter over the canvas. */
+  private paintGround(map: maplibregl.Map) {
+    map.setPaintProperty('background', 'background-color', GROUND);
+    const rules = indigoOverrides();
+    for (const layer of map.getStyle().layers ?? []) {
+      if (layer.type !== 'fill' && layer.type !== 'background') continue;
+      for (const rule of rules) {
+        if (!rule.match.test(layer.id)) continue;
+        try {
+          map.setPaintProperty(layer.id, rule.prop as 'fill-color', rule.value);
+        } catch {
+          // a vendor style may not carry every property; skipping is correct, not an error
+        }
+      }
+    }
   }
 
   ngOnDestroy() {
-    this.map?.remove();
+    try {
+      this.map?.remove();
+    } catch (error) {
+      // a map that failed to initialise can still leave partial state behind; tearing the
+      // component down must never throw on top of the original failure
+      console.warn('map teardown', error);
+    }
   }
 }

@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { computed, signal } from '@angular/core';
-import { vi } from 'vitest';
 
 import { MapView } from './map-view';
 import { RankedList } from '../ranked-list/ranked-list';
@@ -20,13 +19,6 @@ const SITE: Site = {
   urls: {},
 };
 
-const FAR: Site = {
-  ...SITE,
-  id: 'far-site',
-  name: 'Far Site',
-  coordinates: { lat: -43.9, lng: 170.1 }, // other side of the planet
-};
-
 const TOWN: Site = {
   ...SITE,
   id: 'test-town',
@@ -34,35 +26,39 @@ const TOWN: Site = {
   designations: [{ authority: 'darksky', type: 'international-dark-sky-community', year: null }],
 };
 
+// MapLibre needs WebGL, which jsdom has not got, so ngAfterViewInit's map never builds.
+// That is by design: everything decidable lives in pure functions (map-features / map-style),
+// and these tests cover the component's OWN logic — filtering, the feature set it publishes,
+// the accessible index, and the controls. The map wiring is verified in the browser.
 describe('MapView', () => {
   let component: MapView;
   let fixture: ComponentFixture<MapView>;
-  // writable from tests: sites arrive AFTER the first render, like the real async fetch
   let sitesSig: ReturnType<typeof signal<Site[]>>;
-  // stands in for the ClockService minute tick: re-emits identical scores in a new Map
-  let tick: ReturnType<typeof signal<number>>;
+  let selectedSig: ReturnType<typeof signal<string | null>>;
 
-  const className = (marker: { getIcon(): { options: unknown } }): string =>
-    ((marker.getIcon().options as { className?: string }).className ?? '') as string;
+  const texts = (sel: string): string[] =>
+    Array.from(fixture.nativeElement.querySelectorAll(sel)).map((el) =>
+      ((el as HTMLElement).textContent ?? '').replace(/\s+/g, ' ').trim(),
+    );
 
   beforeEach(async () => {
     sitesSig = signal<Site[]>([]);
-    tick = signal(0);
+    selectedSig = signal<string | null>(null);
     const stub = {
       sites: sitesSig.asReadonly(),
-      tonightScores: computed(() => {
-        tick();
-        return new Map(
-          sitesSig().map((s) => [
-            s.id,
-            { hasTrueDarkness: true, score: 47, tier: 'marginal', cloudDataAvailable: false },
-          ]),
-        );
-      }),
-      selectedSiteId: signal<string | null>(null).asReadonly(),
+      tonightScores: computed(
+        () =>
+          new Map(
+            sitesSig().map((s) => [
+              s.id,
+              { hasTrueDarkness: true, score: 47, tier: 'marginal', cloudDataAvailable: false },
+            ]),
+          ),
+      ),
+      selectedSiteId: selectedSig.asReadonly(),
       selectedSite: computed(() => null),
       datasetState: signal<'loading' | 'ready' | 'failed'>('ready').asReadonly(),
-      selectSite: () => {},
+      selectSite: (id: string) => selectedSig.set(id),
     } satisfies Pick<
       SitesService,
       'sites' | 'tonightScores' | 'selectedSiteId' | 'selectedSite' | 'datasetState' | 'selectSite'
@@ -84,63 +80,71 @@ describe('MapView', () => {
     fixture.detectChanges();
   }
 
-  function marker(id = 'test-site') {
-    const m = component.markers.get(id);
-    if (!m) throw new Error(`expected a marker for ${id}`);
-    return m;
-  }
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('styles markers that arrive after the first render (async dataset regression)', async () => {
-    // first render happened with zero sites — now the "fetch" resolves
+  it('says so, and keeps working, when the device cannot render a map', async () => {
+    // jsdom has no WebGL2 — the same condition a real user hits on an old device or with
+    // GPU acceleration off. The canvas is impossible; the product must not be.
     await landSites([SITE]);
-    expect(className(marker())).toContain('site-marker--pending'); // marginal + no cloud data
-    expect(className(marker())).toContain('site-marker--marginal');
+    expect(component.mapUnavailable()).toBe(true);
+    expect(texts('.map-unavailable')[0]).toContain('WebGL unavailable');
+    // the parts that answer the actual question are unaffected
+    expect(component['features']().features).toHaveLength(1);
+    expect(texts('.site-index button')).toHaveLength(1);
   });
 
-  it('gives every marker an accessible name — Leaflet makes them focusable buttons', async () => {
+  it('publishes one feature per visible site, scored and located', async () => {
     await landSites([SITE]);
-    // assert the ATTRIBUTE, not options.title — Leaflet only applies that option to freshly
-    // created elements, and DivIcon reuses its div, so the option can be set and never land
-    // 47 is below the clear band and the fixture has no cloud data, hence the caveat
-    expect(marker().getElement()?.getAttribute('title')).toBe(
-      'Test Site, 47 marginal, astronomy only',
-    );
-  });
-
-  it('leaves marker DOM alone when a clock tick re-emits identical scores', async () => {
-    await landSites([SITE]);
-    const spy = vi.spyOn(marker(), 'setIcon');
-
-    tick.set(tick() + 1); // same content, new Map identity — what the minute tick really does
-    fixture.detectChanges();
-    await fixture.whenStable();
-
-    // setIcon destroys and rebuilds the icon element; 293 of those per minute is the bug
-    expect(spy).not.toHaveBeenCalled();
+    const fc = component['features']();
+    expect(fc.features).toHaveLength(1);
+    expect(fc.features[0].geometry.coordinates).toEqual([-81.97, 45.66]);
+    expect(fc.features[0].properties).toMatchObject({
+      id: 'test-site',
+      tier: 'marginal',
+      pending: true, // the fixture has no cloud data
+    });
   });
 
   it('hides certified municipalities by default and reveals them on request', async () => {
     await landSites([SITE, TOWN]);
-    // a town answers "is tonight good where I live", not "is it worth driving out"
-    expect(component.markers.has('test-town')).toBe(false);
-    expect(component.markers.has('test-site')).toBe(true);
+    const ids = () => component['features']().features.map((f) => f.properties.id);
+    expect(ids()).toEqual(['test-site']);
 
     component.markerFilter.set('all');
     fixture.detectChanges();
     await fixture.whenStable();
 
-    expect(component.markers.has('test-town')).toBe(true);
-    // and it must not read as the same kind of place as a park
-    expect(marker('test-town').getElement()?.classList.contains('site-marker--community')).toBe(
-      true,
+    expect(ids()).toEqual(['test-site', 'test-town']);
+    const kinds = component['features']().features.map((f) => f.properties.kind);
+    expect(kinds).toEqual(['destination', 'community']);
+  });
+
+  it('exposes every site to keyboard and screen reader — the canvas cannot', async () => {
+    await landSites([SITE, TOWN]);
+    component.markerFilter.set('all');
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    // 293 tabbable markers was never a usable keyboard experience; a labelled list is
+    expect(texts('.site-index button')).toEqual([
+      'Test Site, 47 marginal, astronomy only',
+      'Test Town, 47 marginal, astronomy only',
+    ]);
+    expect(fixture.nativeElement.querySelector('.site-index').getAttribute('aria-label')).toBe(
+      'Dark-sky sites on the map',
     );
-    expect(marker('test-site').getElement()?.classList.contains('site-marker--community')).toBe(
-      false,
-    );
+  });
+
+  it('selects a site from the accessible index, and the selection reaches the features', async () => {
+    await landSites([SITE]);
+    (fixture.nativeElement.querySelector('.site-index button') as HTMLButtonElement).click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(component['features']().features[0].properties.selected).toBe(true);
+    expect(texts('.site-index button')[0]).toContain('selected');
   });
 
   it('opens the ranked list on demand, ranking only the sites the map shows', async () => {
@@ -153,24 +157,7 @@ describe('MapView', () => {
 
     const list = fixture.debugElement.query(By.directive(RankedList));
     if (!list) throw new Error('expected the ranked list to render');
-    // the community is filtered off the map, so it must not compete in the ranking either
     expect((list.componentInstance as RankedList).sites().map((s) => s.id)).toEqual(['test-site']);
-  });
-
-  it('resizes markers when the map crosses a zoom bucket', async () => {
-    await landSites([SITE]);
-    const sizeAt = () => (marker().getIcon().options as { iconSize?: [number, number] }).iconSize;
-    // fitBounds on a single site lands at the maxZoom guard (8) → detail size
-    expect(sizeAt()).toEqual([28, 28]);
-
-    // world zoom: 293 markers at 28px fuse, so this must come down
-    const map = (component as unknown as { map: { setZoom(z: number, o?: unknown): void } }).map;
-    map.setZoom(2, { animate: false });
-    fixture.detectChanges();
-    await fixture.whenStable();
-
-    expect(sizeAt()).toEqual([12, 12]);
-    expect(marker().getElement()?.classList.contains('site-marker--fine')).toBe(true);
   });
 
   it('announces the overlay state rather than leaving it to colour', async () => {
@@ -183,13 +170,5 @@ describe('MapView', () => {
 
     expect(btn.getAttribute('aria-pressed')).toBe('true');
     expect(btn.classList.contains('overlay-toggle--on')).toBe(true);
-  });
-
-  it('re-styles rebuilt markers when the dataset itself is replaced', async () => {
-    await landSites([SITE]);
-    // a re-fetch: same id, new objects, so the marker map is torn down and rebuilt. The
-    // icon cache must not remember the old marker and skip styling the new one.
-    await landSites([{ ...SITE }]);
-    expect(className(marker())).toContain('site-marker--marginal');
   });
 });
