@@ -9,6 +9,13 @@
   inset: 0;
 } // fills
 
+// CARTO's ground is near-greyscale, so hue-rotate alone does nothing — sepia gives the
+// greys a hue first (~40deg), then the rotation lands it on the panel's navy.
+// Scoped to the basemap: the light-pollution overlay encodes data in its colours.
+:host ::ng-deep .basemap-tiles {
+  filter: sepia(0.55) hue-rotate(185deg) saturate(1.45) brightness(0.95);
+}
+
 .dataset-error {
   position: absolute;
   z-index: 600;

@@ -111,6 +111,7 @@ export class MapView implements AfterViewInit, OnDestroy {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom: 20,
+      className: 'basemap-tiles', // scopes the navy tint; the overlay layer must stay untinted
     });
     tiles.addTo(this.map);
     this._zoom.set(this.map.getZoom());

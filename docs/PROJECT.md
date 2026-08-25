@@ -87,6 +87,17 @@ Every test written for the v1 fixes was verified by deliberately breaking the co
 4. **Precompute pipeline** — scheduled job runs the pure engines in Node, writes static JSON.
 5. **Client** — viewport queries, canvas markers, split `MapView`.
 
+### Ideas parked, not committed
+
+**Aggregate markers by area, expand on zoom.** (Mark, 2026-08-25.) At world zoom the 293 sites
+read as a populated mass even at 12px, because the sites genuinely cluster — the US Southwest is
+a solid field. Rather than drawing every site at every zoom, draw one mark per region carrying a
+summary (count, best score) and reveal individual sites as the map comes in. Two payoffs, not one:
+it makes the world view legible, and it is also the natural performance lever — the marker path
+currently builds and styles all 293 regardless of what is on screen, so viewport culling and
+aggregation are the same piece of work. Leaflet.markercluster is the obvious library; a
+score-aware custom cluster (colour the cluster by its best night) would say more.
+
 ### On the dataset build
 
 Sources are **structured, not scraped**: Wikidata SPARQL (free, keyless, returns coordinates, designations, official sites), the DarkSky registry, OSM Overpass, RASC's list. HTML scraping is only for the long tail, which is where quality collapses.
