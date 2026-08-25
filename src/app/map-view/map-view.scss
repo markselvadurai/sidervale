@@ -9,6 +9,12 @@
   inset: 0;
 } // fills
 
+// Leaflet's stock container ground is #ddd — beyond the tile extent (±85° latitude at world
+// zoom) it showed as raw light-grey bands (Mark's screenshot). The void is sky, not paper.
+:host ::ng-deep .leaflet-container {
+  background: var(--zenith);
+}
+
 // ── direction 1b's atmosphere (ADR 0007): two colour glows and a sparse starfield ──
 // z-index 300/310 sits above the tile pane (200) and below markers (600); screen-blend so
 // the glows lift the ground instead of painting over it. pointer-events off: pure decor.
@@ -22,12 +28,12 @@
   background:
     radial-gradient(
       42% 55% at 12% 88%,
-      color-mix(in srgb, var(--accent) 14%, transparent),
+      color-mix(in srgb, var(--accent) 20%, transparent),
       transparent 70%
     ),
     radial-gradient(
       38% 50% at 88% 10%,
-      color-mix(in srgb, var(--clear) 9%, transparent),
+      color-mix(in srgb, var(--clear) 13%, transparent),
       transparent 70%
     );
 }
@@ -60,10 +66,11 @@
 }
 
 // CARTO's ground is near-greyscale, so hue-rotate alone does nothing — sepia gives the
-// greys a hue first (~40deg), then the rotation lands it on the panel's navy.
+// greys a hue first (~40deg), then the rotation lands it on indigo. Tuned against the
+// mockup's ground, which is a rich navy-violet, not charcoal (side-by-side screenshots).
 // Scoped to the basemap: the light-pollution overlay encodes data in its colours.
 :host ::ng-deep .basemap-tiles {
-  filter: sepia(0.55) hue-rotate(185deg) saturate(1.45) brightness(0.95);
+  filter: sepia(1) hue-rotate(195deg) saturate(1.8) brightness(1.08);
 }
 
 .dataset-error {
@@ -295,11 +302,13 @@
 
 // Leaflet ships a white zoom control — the loudest element on a dark page (seen in
 // Mark's screenshot). Restyle it to the same chrome family as the pills.
-:host ::ng-deep .leaflet-bar {
+:host ::ng-deep .leaflet-bar,
+:host ::ng-deep .leaflet-touch .leaflet-bar {
   border: 1px solid var(--horizon);
   box-shadow: none;
 }
-:host ::ng-deep .leaflet-bar a {
+:host ::ng-deep .leaflet-bar a,
+:host ::ng-deep .leaflet-touch .leaflet-bar a {
   background: color-mix(in srgb, var(--nadir) 88%, transparent);
   color: var(--airglow);
   border-bottom-color: var(--horizon);
