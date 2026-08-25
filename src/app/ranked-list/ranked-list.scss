@@ -27,6 +27,12 @@
     padding-top: var(--s2);
   }
 
+  &__empty {
+    margin: var(--s3) 0 0;
+    font-size: var(--t-desc);
+    color: var(--airglow);
+  }
+
   &__darkless {
     margin: var(--s3) 0 0;
     font-size: var(--t-desc);

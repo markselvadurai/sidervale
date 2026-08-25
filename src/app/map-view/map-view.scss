@@ -228,3 +228,26 @@
     bottom: calc(40dvh + var(--s2));
   }
 }
+
+// Leaflet ships a white zoom control — the loudest element on a dark page (seen in
+// Mark's screenshot). Restyle it to the same chrome family as the pills.
+:host ::ng-deep .leaflet-bar {
+  border: 1px solid var(--horizon);
+  box-shadow: none;
+}
+:host ::ng-deep .leaflet-bar a {
+  background: color-mix(in srgb, var(--nadir) 88%, transparent);
+  color: var(--airglow);
+  border-bottom-color: var(--horizon);
+  &:hover {
+    background: var(--horizon);
+    color: var(--starlight);
+  }
+}
+
+// the selection halo at full size overwhelms a 12–18px marker (screenshot: Medicine Rocks)
+:host ::ng-deep .site-marker--fine.site-marker--selected {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--redshift) 15%, transparent),
+    0 0 0 1px var(--redshift);
+}

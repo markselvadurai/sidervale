@@ -1,5 +1,9 @@
 <aside class="rank-list" aria-label="Tonight's sites, ranked">
-  <p class="rank-list__title">Tonight · ranked</p>
+  <p class="rank-list__title">Tonight · in view</p>
+
+  @if (!rows().ranked.length && !rows().astro.length && !rows().darkless) {
+    <p class="rank-list__empty">No sites in this view — pan or zoom out</p>
+  }
 
   @for (row of rows().ranked; track row.site.id; let i = $index) {
     <button

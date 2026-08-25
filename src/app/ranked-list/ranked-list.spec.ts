@@ -106,6 +106,17 @@ describe('RankedList', () => {
     expect(texts('.rank-row__name')).toEqual(['Alpha Flats', 'Quiet Valley', 'Zebra Ridge']);
   });
 
+  it('offers a way out of an empty view instead of a blank panel', async () => {
+    fixture.componentRef.setInput('sites', []);
+    await fixture.whenStable();
+    expect(
+      (fixture.nativeElement.querySelector('.rank-list__empty')?.textContent ?? '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    ).toBe('No sites in this view — pan or zoom out');
+    expect(fixture.nativeElement.querySelector('.rank-row')).toBeNull();
+  });
+
   it('selects the site whose row was clicked', () => {
     const rows = fixture.nativeElement.querySelectorAll('.rank-row');
     (rows[1] as HTMLButtonElement).click();

@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { computed, signal } from '@angular/core';
 import { vi } from 'vitest';
 
+import * as L from 'leaflet';
 import { MapView } from './map-view';
 import { RankedList } from '../ranked-list/ranked-list';
 import { SitesService } from '../services/sites';
@@ -18,6 +19,13 @@ const SITE: Site = {
   provinces: [],
   brightness: { ratio: 0.05, mpsas: 21.95, zone: '1a', atlasYear: 2024 },
   urls: {},
+};
+
+const FAR: Site = {
+  ...SITE,
+  id: 'far-site',
+  name: 'Far Site',
+  coordinates: { lat: -43.9, lng: 170.1 }, // other side of the planet
 };
 
 const TOWN: Site = {
@@ -148,6 +156,28 @@ describe('MapView', () => {
     if (!list) throw new Error('expected the ranked list to render');
     // the community is filtered off the map, so it must not compete in the ranking either
     expect((list.componentInstance as RankedList).sites().map((s) => s.id)).toEqual(['test-site']);
+  });
+
+  it('ranks only the sites inside the current view once bounds are known', async () => {
+    await landSites([SITE, FAR]);
+    (fixture.nativeElement.querySelector('.list-toggle') as HTMLButtonElement).click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    // no bounds yet (zero-size container): the filter must stay OFF, not empty the list
+    const list = () => fixture.debugElement.query(By.directive(RankedList));
+    expect((list().componentInstance as RankedList).sites().map((s) => s.id)).toEqual([
+      'test-site',
+      'far-site',
+    ]);
+
+    // the user frames Ontario: only the Ontario site may compete
+    component.viewBounds.set(L.latLngBounds([40, -90], [50, -70]));
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect((list().componentInstance as RankedList).sites().map((s) => s.id)).toEqual([
+      'test-site',
+    ]);
   });
 
   it('resizes markers when the map crosses a zoom bucket', async () => {

@@ -20,7 +20,7 @@
 </button>
 @if (listOpen()) {
   <div class="rank-panel">
-    <app-ranked-list [sites]="visibleSites()" />
+    <app-ranked-list [sites]="sitesInView()" />
   </div>
 }
 <div class="marker-filter" role="group" aria-label="Which sites to show">

@@ -37,6 +37,8 @@ export class MapView implements AfterViewInit, OnDestroy {
     { opacity: 0.25, tileSize: 1024, maxNativeZoom: 6, zoomOffset: -2 },
   );
   private _zoom = signal(2);
+  // the viewport is the user's own statement of reach — the list ranks within it
+  viewBounds = signal<L.LatLngBounds | null>(null);
 
   // DarkSky certifies municipalities as well as parks; a town is a different question from a
   // destination, and 82 of them cluster hard enough to make the world view unreadable.
@@ -52,6 +54,12 @@ export class MapView implements AfterViewInit, OnDestroy {
     if (mode === 'all') return this.sitesService.sites();
     const want = mode === 'destinations' ? 'destination' : 'community';
     return this.sitesService.sites().filter((s) => siteKind(s) === want);
+  });
+  protected sitesInView = computed(() => {
+    const bounds = this.viewBounds();
+    const sites = this.visibleSites();
+    if (!bounds) return sites;
+    return sites.filter((s) => bounds.contains([s.coordinates.lat, s.coordinates.lng]));
   });
   private makeIcon(classes: string[], size: number): L.DivIcon {
     // a 2px ring is a quarter of a 12px marker — thin the stroke with the diameter
@@ -137,6 +145,12 @@ export class MapView implements AfterViewInit, OnDestroy {
     tiles.addTo(this.map);
     this._zoom.set(this.map.getZoom());
     this.map.on('zoomend', () => this._zoom.set(this.map.getZoom()));
+    // a zero-size container (headless tests) has no meaningful bounds — leave the filter off
+    const trackBounds = () => {
+      if (this.map.getSize().x > 0) this.viewBounds.set(this.map.getBounds());
+    };
+    this.map.on('moveend', trackBounds);
+    trackBounds();
     this.mapReady.set(true);
   }
 
