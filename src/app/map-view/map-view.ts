@@ -37,18 +37,29 @@ export class MapView implements AfterViewInit, OnDestroy {
     });
   }
 
+  private fitted = false;
+
   constructor() {
     effect(() => {
       if (!this.mapReady()) return;
 
       this.markers.forEach((m) => m.remove());
       this.markers.clear();
-      for (const site of this.sitesService.sites()) {
+      const sites = this.sitesService.sites();
+      for (const site of sites) {
         const latlng = new L.LatLng(site.coordinates.lat, site.coordinates.lng);
         const siteMark = new L.Marker(latlng, { icon: this.makeIcon(['site-marker']) });
         this.markers.set(site.id, siteMark);
         siteMark.addTo(this.map);
         siteMark.on('click', () => this.sitesService.selectSite(site.id));
+      }
+      // one-shot: frame whatever the dataset spans — Ontario for 7 sites, the world for 293
+      if (sites.length && !this.fitted) {
+        this.map.fitBounds(
+          L.latLngBounds(sites.map((s) => [s.coordinates.lat, s.coordinates.lng])),
+          { padding: [24, 24] },
+        );
+        this.fitted = true;
       }
     });
 
@@ -80,9 +91,10 @@ export class MapView implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
+    // neutral world view until the dataset arrives; fitBounds takes over from there
     this.map = new L.Map(this.mapContainer().nativeElement, {
-      zoom: 8,
-      center: [43.65, -79.38],
+      zoom: 2,
+      center: [20, 0],
     });
     const tiles = new L.TileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
       attribution:
