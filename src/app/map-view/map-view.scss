@@ -50,21 +50,53 @@
     display: none;
   }
 }
+// ── marker shape-coding (spec 1f, ADR 0007): tier must never be hue-alone ──
+// Leaflet already sets position:absolute here and places the marker with a transform —
+// never set position or transform on .site-marker, only on its pseudo-elements.
 :host ::ng-deep .site-marker {
   border-radius: 50%;
   background: var(--zenith);
   border: 2px solid var(--airglow);
 }
+
+// clear — ring plus a solid core: the most ink for the best night
 :host ::ng-deep .site-marker--clear {
   border-color: var(--clear);
 }
+:host ::ng-deep .site-marker--clear::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--clear);
+}
+
+// marginal — half a ring; the parent's border is hidden and redrawn on ::before so the
+// clip cannot touch Leaflet's own box
 :host ::ng-deep .site-marker--marginal {
-  border-color: var(--caution);
+  border-color: transparent;
 }
+:host ::ng-deep .site-marker--marginal::before {
+  content: '';
+  position: absolute;
+  inset: -2px; // padding box → border box, so the arc lands where the border was
+  border: 2px solid var(--caution);
+  border-radius: 50%;
+  clip-path: inset(0 0 50% 0);
+}
+
+// poor — a thin hollow ring: least ink for the least promising night
 :host ::ng-deep .site-marker--poor {
+  border-width: 1px;
   border-color: var(--poor);
+  background: transparent;
 }
+
 :host ::ng-deep .site-marker--pending {
+  border-style: dashed;
+}
+// marginal draws its ring on ::before, so the dash has to follow it there
+:host ::ng-deep .site-marker--marginal.site-marker--pending::before {
   border-style: dashed;
 }
 :host ::ng-deep .site-marker--darkless {
