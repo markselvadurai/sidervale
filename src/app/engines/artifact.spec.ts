@@ -29,6 +29,21 @@ describe('parseScoresArtifact', () => {
     expect(parsed.sites['a'].nights).toHaveLength(1);
   });
 
+  it('rejects a malformed site record at the gate, naming the site', () => {
+    const base = { generatedAt: 't' };
+    expect(() => parseScoresArtifact({ ...base, sites: { bad: {} } })).toThrow(/bad/);
+    expect(() => parseScoresArtifact({ ...base, sites: { bad: { nights: null } } })).toThrow(/bad/);
+    expect(() =>
+      parseScoresArtifact({ ...base, sites: { bad: { nights: [{ dark: true }] } } }),
+    ).toThrow(/bad/);
+    expect(() =>
+      parseScoresArtifact({
+        ...base,
+        sites: { bad: { nights: [{ date: '2026-08-24', dark: true, score: NaN }] } },
+      }),
+    ).toThrow(/bad/);
+  });
+
   it('throws on a document without generatedAt or without a sites object', () => {
     expect(() => parseScoresArtifact({ sites: {} })).toThrow(/generatedAt/);
     expect(() => parseScoresArtifact({ generatedAt: 'x' })).toThrow(/sites/);
@@ -46,6 +61,10 @@ describe('isArtifactFresh', () => {
 
   it('treats small future skew as fresh (absolute difference)', () => {
     expect(isArtifactFresh(artifactAt('2026-08-25T13:00:00.000Z'), NOW)).toBe(true);
+  });
+
+  it('treats a far-future generatedAt as stale — the absolute value cuts both ways', () => {
+    expect(isArtifactFresh(artifactAt('2026-08-26T12:00:00.000Z'), NOW)).toBe(false); // +24h
   });
 
   it('treats an unparseable generatedAt as stale', () => {

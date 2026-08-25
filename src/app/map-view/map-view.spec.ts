@@ -40,7 +40,10 @@ describe('MapView', () => {
       selectedSite: computed(() => null),
       datasetState: signal<'loading' | 'ready' | 'failed'>('ready').asReadonly(),
       selectSite: () => {},
-    };
+    } satisfies Pick<
+      SitesService,
+      'sites' | 'tonightScores' | 'selectedSiteId' | 'selectedSite' | 'datasetState' | 'selectSite'
+    >;
     await TestBed.configureTestingModule({
       imports: [MapView],
       providers: [{ provide: SitesService, useValue: stub }],

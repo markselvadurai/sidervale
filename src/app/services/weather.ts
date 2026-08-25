@@ -44,24 +44,37 @@ export class WeatherService {
     sites.forEach((s) => void this.loadSite(s));
   }
 
-  async loadSite(site: SiteCore) {
+  // one flight per site: overlapping calls (double-click, rapid reselection) share the same
+  // promise, so no duplicate requests and no early pending-clear while a fetch is still live
+  private inFlight = new Map<string, Promise<void>>();
+
+  loadSite(site: SiteCore): Promise<void> {
+    const existing = this.inFlight.get(site.id);
+    if (existing) return existing;
+
     const cached = this.loadFromCache(site);
     if (cached) {
       this.storeForecast(site.id, cached);
       if (this.isFresh(cached)) {
-        return;
+        return Promise.resolve();
       }
     }
+
     this.setPending(site.id, true);
-    try {
-      const fresh = await this.fetchForecast(site);
-      localStorage.setItem(this.cacheKey(site.id), JSON.stringify(this.toStorage(fresh)));
-      this.storeForecast(site.id, fresh);
-    } catch (error) {
-      console.warn(`forecast fetch failed for ${site.id}`);
-    } finally {
-      this.setPending(site.id, false);
-    }
+    const flight = (async () => {
+      try {
+        const fresh = await this.fetchForecast(site);
+        localStorage.setItem(this.cacheKey(site.id), JSON.stringify(this.toStorage(fresh)));
+        this.storeForecast(site.id, fresh);
+      } catch (error) {
+        console.warn(`forecast fetch failed for ${site.id}`);
+      } finally {
+        this.inFlight.delete(site.id);
+        this.setPending(site.id, false);
+      }
+    })();
+    this.inFlight.set(site.id, flight);
+    return flight;
   }
 
   private async fetchForecast(site: SiteCore): Promise<Forecast> {

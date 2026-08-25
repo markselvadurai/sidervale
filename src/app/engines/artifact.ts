@@ -39,6 +39,21 @@ export function parseScoresArtifact(json: unknown): ScoresArtifact {
   if (!doc.sites || typeof doc.sites !== 'object' || Array.isArray(doc.sites)) {
     throw new Error('scores artifact: missing sites object');
   }
+  // per-record validation: one malformed record must reject the artifact at the gate,
+  // not detonate later inside a computed and take all 293 sites down with it
+  for (const [id, record] of Object.entries(doc.sites)) {
+    if (!record || !Array.isArray(record.nights)) {
+      throw new Error(`scores artifact: '${id}' has no nights array`);
+    }
+    for (const night of record.nights) {
+      if (typeof night?.date !== 'string') {
+        throw new Error(`scores artifact: '${id}' has a night without a date`);
+      }
+      if (night.dark && !Number.isFinite(night.score)) {
+        throw new Error(`scores artifact: '${id}' has a dark night without a finite score`);
+      }
+    }
+  }
   return { generatedAt: doc.generatedAt, sites: doc.sites };
 }
 
