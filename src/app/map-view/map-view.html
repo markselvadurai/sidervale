@@ -1,14 +1,4 @@
 <div #mapContainer class="map-container"></div>
-<button
-  type="button"
-  class="overlay-toggle"
-  [class.overlay-toggle--on]="overlayOn()"
-  [attr.aria-pressed]="overlayOn()"
-  (click)="overlayOn.set(!overlayOn())"
->
-  <span class="overlay-toggle__dot" aria-hidden="true"></span>
-  Light pollution
-</button>
 <nav class="rail" aria-label="Map tools">
   <button
     type="button"

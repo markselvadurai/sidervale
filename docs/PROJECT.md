@@ -52,13 +52,13 @@ The global successor to **Nocturne v1** — a stargazing go/no-go planner. v1 co
 - ~~`MapView` does four jobs~~ **Split done (Phase 5):** `site-panel` owns the panel; `map-view` keeps Leaflet + markers. The fully input-driven `map-canvas` remains a possible later refinement.
 - ~~`WeatherService`'s dead constructor~~ **Deleted (Phase 4).**
 - ~~Map viewport hardcoded to Toronto~~ **Derived (Phase 5):** world init + one-shot `fitBounds` (maxZoom-capped).
-- **Design tokens** — `--hline`, `--hpitch`, `--moon-ink` are used only as inline fallbacks and never declared; `--cloud-ink` is only set by the density classes. Declare all four in `:root`. Also a tier-colour collision: markers and the score chip use `--poor`, but the week-dot uses `--redshift`, which is simultaneously the selection accent. Pick one.
+- **Design tokens** — `--hline`, `--hpitch`, `--moon-ink` are used only as inline fallbacks and never declared; `--cloud-ink` is only set by the density classes. Declare all four in `:root`. ~~Tier-colour collision on `--redshift`~~ **Resolved (2026-08-25):** the week-dot now uses `--poor` like everything else, and selection moved to `--accent`, so red no longer means both "selected" and "bad".
 - **The week strip hardcodes 7 days** and an English-only `dayLabels` array indexed by weekday.
 - **`getMoonOverlap` discards event kind.** All four rise/set events are pushed into one `DateTime[]` and the walk merely toggles — which is _why_ a bad seed inverts the whole window. Carry `{ at, kind: 'rise' | 'set' }` so each event sets absolute state; a bad seed would then only affect the stretch before the first event.
-- **Accessibility** on the mobile sheet: no `aria-expanded`, the label never flips between Expand/Collapse, no focus trap, no Esc-to-close.
+- **Accessibility** on the mobile sheet: ~~no `aria-expanded`, the label never flips~~ **both fixed (2026-08-25)** — still missing a focus trap and Esc-to-close.
 - **`weekScores` re-reads the clock on recompute while `selectedNight` is a snapshot.** A forecast arriving just after sunrise shifts the strip forward and orphans the selection highlight (no active chip). Pre-existing mechanism, narrow window; fix when `MapView` is split — either re-anchor the selection when the strip passes it, or start the strip from the selected night.
-- **`map-view.scss` is 4.79 kB** against a 4.00 kB warn budget. Splitting `MapView` fixes it.
-- **Leaflet is CommonJS**, which costs some build optimization. Expected; nothing to do short of replacing Leaflet.
+- ~~`map-view.scss` over the style budget~~ **Superseded (2026-08-25):** budgets raised deliberately to 550 kB initial / 6 kB component styles to fit the shipped feature set; error ceilings unchanged.
+- **Leaflet is CommonJS**, which costs some build optimization. Being addressed: the MapLibre GL migration is ESM and retires this.
 
 ---
 
