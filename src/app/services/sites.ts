@@ -30,6 +30,7 @@ export type NightInfo =
       civilDusk: DateTime;
       civilDawn: DateTime;
       moonSegments: Interval<true>[];
+      moonDarkSegments: Interval<true>[];
       darkDuration: string;
       moonIllumination: number;
       moonOverlapDisplay: string;
@@ -250,6 +251,7 @@ export class SitesService {
       civilDusk: darkness.dusk,
       civilDawn: darkness.dawn,
       moonSegments: moonDisplay.segments,
+      moonDarkSegments: moon.segments,
       darkDuration: darkness.end.diff(darkness.start).toFormat("h'h' m'm'"),
       moonIllumination: Math.round(moon.illuminationFraction * 100),
       moonOverlapDisplay,

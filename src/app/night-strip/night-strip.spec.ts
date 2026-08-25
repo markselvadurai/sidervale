@@ -29,6 +29,7 @@ const nightWith = (opts: {
   ),
   cloudHours: (opts.clouds ?? []).map((c) => ({ time: t(c.at), cloudCover: c.cover })),
   // Required by ScoredNight, never read by this component:
+  moonDarkSegments: [],
   darkDuration: '6h 0m',
   moonIllumination: 42,
   moonOverlapDisplay: '2h 0m',

@@ -32,6 +32,15 @@
           </div>
         </div>
         <app-night-strip [night]="night" />
+        <div class="windows">
+          @for (w of tonightWindows(night); track w.range) {
+            <div class="windows__row">
+              <span class="windows__range">{{ w.range }}</span>
+              <span class="windows__label">{{ w.label }}</span>
+              <span class="windows__tag">{{ w.tag }}</span>
+            </div>
+          }
+        </div>
         <dl>
           <dt>Darkness</dt>
           <dd>

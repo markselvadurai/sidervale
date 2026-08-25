@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
-import { DateTime } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 import { vi } from 'vitest';
 
 import { SitePanel } from './site-panel';
@@ -41,6 +41,8 @@ const NIGHT_CORE = {
   civilDusk: CIVIL_DUSK,
   civilDawn: CIVIL_DAWN,
   moonSegments: [],
+  // moon up for the last two dark hours: 02:00–04:00
+  moonDarkSegments: [Interval.fromDateTimes(utc(26, 2), DARK_END) as Interval<true>],
   darkDuration: '6h 0m', // 22:00 → 04:00
   moonIllumination: 43,
   moonOverlapDisplay: '2h 10m',
@@ -220,6 +222,16 @@ describe('SitePanel rendering', () => {
     expect(fixture.nativeElement.querySelector('.score-strip')).toBeNull();
     // the footer survives — it describes the site, not the night
     expect(text('.footer')).toBe('ON · America/Toronto');
+  });
+
+  it('says the night out loud: moonless dark, moon up, then pack up', () => {
+    expect(texts('.windows__range')).toEqual(['22:00 – 02:00', '02:00 – 04:00', '04:00 – 05:00']);
+    expect(texts('.windows__label')).toEqual([
+      'Moonless dark',
+      'Moon up · 43%',
+      'Astronomical twilight',
+    ]);
+    expect(texts('.windows__tag')).toEqual(['BEST', 'BRIGHT TARGETS', 'PACK UP']);
   });
 
   it('states the darkness window, the moon and the cloud average', () => {

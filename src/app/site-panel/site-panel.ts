@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { SitesService } from '../services/sites';
 import { NightStrip } from '../night-strip/night-strip';
 import { designationsLabel, regionLabel, verdictWord } from './site-display';
+import { tonightWindows } from './night-windows';
 
 @Component({
   selector: 'app-site-panel',
@@ -15,4 +16,5 @@ export class SitePanel {
   protected designationsLabel = designationsLabel;
   protected regionLabel = regionLabel;
   protected verdictWord = verdictWord;
+  protected tonightWindows = tonightWindows;
 }

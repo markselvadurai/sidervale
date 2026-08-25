@@ -239,3 +239,36 @@
     letter-spacing: 0;
   }
 }
+
+.windows {
+  margin-bottom: var(--s3);
+
+  &__row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: var(--s3);
+    padding: var(--s1) 0;
+  }
+
+  &__range {
+    font-family: var(--mono);
+    font-size: var(--t-desc);
+    color: var(--starlight);
+  }
+
+  &__label {
+    font-size: var(--t-desc);
+    color: var(--airglow);
+  }
+
+  &__tag {
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    letter-spacing: 0.08em;
+    color: var(--airglow);
+    border: 1px solid var(--horizon);
+    border-radius: var(--r-pill);
+    padding: 1px var(--s2);
+  }
+}
