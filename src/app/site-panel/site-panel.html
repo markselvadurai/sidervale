@@ -59,7 +59,14 @@
             <button class="score-item" (click)="sitesService.selectNight(day.night)">
               @if (!day.hasTrueDarkness) {
                 <div class="score-dot score-dot--darkless"></div>
-                <div>{{ day.label }}</div>
+                <div
+                  class="score-label"
+                  [class.score-label--active]="
+                    sitesService.selectedNight()?.localDate === day.night.localDate
+                  "
+                >
+                  {{ day.label }}
+                </div>
               } @else {
                 <div
                   class="score-dot"
