@@ -44,9 +44,10 @@ export class MapView implements AfterViewInit, OnDestroy {
   // destination, and 82 of them cluster hard enough to make the world view unreadable.
   markerFilter = signal<'destinations' | 'communities' | 'all'>('destinations');
   listOpen = signal(false);
+  // rail-width display names; the semantic split stays destination/community (site-kind.ts)
   protected readonly filterOptions = [
-    { value: 'destinations' as const, label: 'Destinations' },
-    { value: 'communities' as const, label: 'Communities' },
+    { value: 'destinations' as const, label: 'Parks' },
+    { value: 'communities' as const, label: 'Towns' },
     { value: 'all' as const, label: 'All' },
   ];
   protected visibleSites = computed(() => {

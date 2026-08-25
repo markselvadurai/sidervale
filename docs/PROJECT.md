@@ -98,6 +98,13 @@ currently builds and styles all 293 regardless of what is on screen, so viewport
 aggregation are the same piece of work. Leaflet.markercluster is the obvious library; a
 score-aware custom cluster (colour the cluster by its best night) would say more.
 
+**Localize-first, global-on-request.** (Mark, 2026-08-25.) Lead the experience with the user's
+own region (viewport ranking is step one; a remembered home region and a "near me" default are the
+natural next), while keeping global exploration one gesture away — likely a search field over site
+names/regions. Related: rethink the map-as-100%-of-screen assumption — either a scrollable page
+where the map is one section, or keep full-bleed and invest in a real GUI overlay system instead.
+Layout-level decisions; sketch before building.
+
 ### On the dataset build
 
 Sources are **structured, not scraped**: Wikidata SPARQL (free, keyless, returns coordinates, designations, official sites), the DarkSky registry, OSM Overpass, RASC's list. HTML scraping is only for the long tail, which is where quality collapses.

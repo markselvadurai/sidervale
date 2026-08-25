@@ -9,33 +9,63 @@
   <span class="overlay-toggle__dot" aria-hidden="true"></span>
   Light pollution
 </button>
-<button
-  type="button"
-  class="list-toggle"
-  [class.list-toggle--on]="listOpen()"
-  [attr.aria-pressed]="listOpen()"
-  (click)="listOpen.set(!listOpen())"
->
-  Ranked list
-</button>
+<nav class="rail" aria-label="Map tools">
+  <button
+    type="button"
+    class="rail__item list-toggle"
+    [class.list-toggle--on]="listOpen()"
+    [attr.aria-pressed]="listOpen()"
+    (click)="listOpen.set(!listOpen())"
+  >
+    <svg class="rail__icon" viewBox="0 0 20 20" aria-hidden="true">
+      <path
+        d="M3 5h14M3 10h14M3 15h9"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        fill="none"
+      />
+    </svg>
+    <span class="rail__label">Ranked</span>
+  </button>
+  <button
+    type="button"
+    class="rail__item overlay-toggle"
+    [class.overlay-toggle--on]="overlayOn()"
+    [attr.aria-pressed]="overlayOn()"
+    (click)="overlayOn.set(!overlayOn())"
+  >
+    <svg class="rail__icon" viewBox="0 0 20 20" aria-hidden="true">
+      <path
+        d="M10 3l7 4-7 4-7-4 7-4Zm-7 8l7 4 7-4"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linejoin="round"
+        fill="none"
+      />
+    </svg>
+    <span class="rail__label">Overlay</span>
+  </button>
+  <div class="rail__divider" aria-hidden="true"></div>
+  <div class="marker-filter" role="group" aria-label="Which sites to show">
+    @for (opt of filterOptions; track opt.value) {
+      <button
+        type="button"
+        class="marker-filter__opt"
+        [class.marker-filter__opt--on]="markerFilter() === opt.value"
+        [attr.aria-pressed]="markerFilter() === opt.value"
+        (click)="markerFilter.set(opt.value)"
+      >
+        {{ opt.label }}
+      </button>
+    }
+  </div>
+</nav>
 @if (listOpen()) {
   <div class="rank-panel">
     <app-ranked-list [sites]="sitesInView()" />
   </div>
 }
-<div class="marker-filter" role="group" aria-label="Which sites to show">
-  @for (opt of filterOptions; track opt.value) {
-    <button
-      type="button"
-      class="marker-filter__opt"
-      [class.marker-filter__opt--on]="markerFilter() === opt.value"
-      [attr.aria-pressed]="markerFilter() === opt.value"
-      (click)="markerFilter.set(opt.value)"
-    >
-      {{ opt.label }}
-    </button>
-  }
-</div>
 @if (sitesService.datasetState() === 'failed') {
   <div class="dataset-error">Site data failed to load — refresh to retry</div>
 }

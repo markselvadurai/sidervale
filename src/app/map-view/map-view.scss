@@ -9,6 +9,56 @@
   inset: 0;
 } // fills
 
+// ── direction 1b's atmosphere (ADR 0007): two colour glows and a sparse starfield ──
+// z-index 300/310 sits above the tile pane (200) and below markers (600); screen-blend so
+// the glows lift the ground instead of painting over it. pointer-events off: pure decor.
+.map-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(
+      42% 55% at 12% 88%,
+      color-mix(in srgb, var(--accent) 14%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      38% 50% at 88% 10%,
+      color-mix(in srgb, var(--clear) 9%, transparent),
+      transparent 70%
+    );
+}
+.map-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 310;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 8% 12%, #e8edf7cc, transparent 100%),
+    radial-gradient(1px 1px at 21% 78%, #e8edf788, transparent 100%),
+    radial-gradient(2px 2px at 33% 28%, #e8edf7aa, transparent 100%),
+    radial-gradient(1px 1px at 47% 64%, #e8edf777, transparent 100%),
+    radial-gradient(1px 1px at 58% 15%, #e8edf7bb, transparent 100%),
+    radial-gradient(2px 2px at 69% 82%, #e8edf766, transparent 100%),
+    radial-gradient(1px 1px at 77% 41%, #e8edf7aa, transparent 100%),
+    radial-gradient(1px 1px at 86% 68%, #e8edf788, transparent 100%),
+    radial-gradient(2px 2px at 93% 23%, #e8edf799, transparent 100%),
+    radial-gradient(1px 1px at 39% 91%, #e8edf788, transparent 100%);
+  animation: twinkle 5s ease-in-out infinite alternate; // reduced-motion guard zeroes this
+}
+@keyframes twinkle {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
 // CARTO's ground is near-greyscale, so hue-rotate alone does nothing — sepia gives the
 // greys a hue first (~40deg), then the rotation lands it on the panel's navy.
 // Scoped to the basemap: the light-pollution overlay encodes data in its colours.
@@ -30,54 +80,128 @@
   font-size: var(--t-desc);
 }
 
-.overlay-toggle {
-  position: absolute;
-  z-index: 500;
-  top: 80px; // clears Leaflet's zoom control, which owns the top-left corner
-  left: var(--s3);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s2);
-  height: 30px;
-  padding: 0 var(--s3);
-  background-color: color-mix(in srgb, var(--nadir) 88%, transparent);
-  border: 1px solid var(--horizon);
-  border-radius: var(--r-pill);
-  color: var(--airglow);
-  font-family: var(--sans);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-  cursor: pointer;
-
-  &__dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    border: 1px solid currentColor;
-  }
-
-  &--on {
-    color: var(--starlight);
-    border-color: var(--airglow);
-    .overlay-toggle__dot {
-      background: var(--caution);
-      border-color: var(--caution);
-    }
-  }
-
-  @media screen and (max-width: 640px) {
-    top: var(--s2); // the zoom control is hidden here, so the corner is free
-    left: var(--s2);
-  }
-}
-
 @media screen and (max-width: 640px) {
   :host ::ng-deep .leaflet-control-zoom {
     display: none;
   }
 }
+// ── the left rail (design 2a/3b): one composed toolbar instead of stacked pills ──
+.rail {
+  position: absolute;
+  z-index: 500;
+  top: var(--s3);
+  left: var(--s3);
+  display: flex;
+  flex-direction: column;
+  width: 64px;
+  padding: var(--s2) 0;
+  background-color: color-mix(in srgb, var(--nadir) 90%, transparent);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r3);
+  box-shadow: var(--shadow-md);
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: var(--s2) 0;
+    background: none;
+    border: 0;
+    border-left: 2px solid transparent;
+    color: var(--airglow);
+    cursor: pointer;
+
+    // one rule states every control: pressed = accent line + bright ink (the DS way)
+    &[aria-pressed='true'] {
+      border-left-color: var(--accent);
+      color: var(--starlight);
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__label {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__divider {
+    height: 1px;
+    margin: var(--s2) var(--s3);
+    background: var(--horizon);
+  }
+
+  .marker-filter {
+    display: flex;
+    flex-direction: column;
+  }
+  .marker-filter__opt {
+    padding: var(--s1) 0;
+    background: none;
+    border: 0;
+    border-left: 2px solid transparent;
+    color: var(--airglow);
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    &[aria-pressed='true'] {
+      border-left-color: var(--accent);
+      color: var(--starlight);
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    top: var(--s2);
+    left: var(--s2);
+    right: var(--s2);
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 var(--s2);
+
+    &__item {
+      flex-direction: row;
+      gap: var(--s1);
+      padding: var(--s2);
+      border-left: 0;
+      border-bottom: 2px solid transparent;
+      &[aria-pressed='true'] {
+        border-bottom-color: var(--accent);
+      }
+    }
+    &__divider {
+      width: 1px;
+      height: 20px;
+      margin: 0;
+    }
+    .marker-filter {
+      flex-direction: row;
+    }
+    .marker-filter__opt {
+      padding: var(--s2);
+      border-left: 0;
+      border-bottom: 2px solid transparent;
+      &[aria-pressed='true'] {
+        border-bottom-color: var(--accent);
+      }
+    }
+  }
+}
+
+// the rail owns the top-left corner; Leaflet's zoom moves out of its way
+:host ::ng-deep .leaflet-top.leaflet-left {
+  margin-left: 76px;
+}
+
 // ── marker shape-coding (spec 1f, ADR 0007): tier must never be hue-alone ──
 // Leaflet already sets position:absolute here and places the marker with a transform —
 // never set position or transform on .site-marker, only on its pseudo-elements.
@@ -101,6 +225,8 @@
 :host ::ng-deep .site-marker--clear {
   border-color: var(--clear);
   color: var(--clear);
+  // good nights glow — the map's job is "where is it good"
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--clear) 18%, transparent);
 }
 :host ::ng-deep .site-marker--clear::after {
   inset: 22%; // proportional, so the core survives the zoom-driven diameter
@@ -120,9 +246,10 @@
   border-width: 1px;
 }
 
-// poor — ring only, hollow
+// poor — ring only, hollow, and FADED: on a moon-dominated night the whole planet is poor,
+// so poor must recede rather than paint the world as an error (spec 1f: "thin, faded")
 :host ::ng-deep .site-marker--poor {
-  border-color: var(--poor);
+  border-color: color-mix(in srgb, var(--poor) 45%, transparent);
 }
 
 :host ::ng-deep .site-marker--pending {
@@ -134,46 +261,10 @@
   background: transparent;
 }
 :host ::ng-deep .site-marker--selected {
+  // selection is the accent (1f: "SELECTED — accent halo on any tier"); red is for errors
   box-shadow:
-    0 0 0 5px color-mix(in srgb, var(--redshift) 15%, transparent),
-    0 0 0 2px var(--redshift);
-}
-
-.marker-filter {
-  position: absolute;
-  z-index: 500;
-  top: 118px; // sits under the overlay pill
-  left: var(--s3);
-  display: inline-flex;
-  background-color: color-mix(in srgb, var(--nadir) 88%, transparent);
-  border: 1px solid var(--horizon);
-  border-radius: var(--r-pill);
-  overflow: hidden;
-
-  &__opt {
-    appearance: none;
-    background: none;
-    border: 0;
-    height: 28px;
-    padding: 0 var(--s3);
-    color: var(--airglow);
-    font-family: var(--sans);
-    font-size: var(--t-label);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    white-space: nowrap;
-    cursor: pointer;
-
-    &--on {
-      background: var(--horizon);
-      color: var(--starlight);
-    }
-  }
-
-  @media screen and (max-width: 640px) {
-    top: 46px;
-    left: var(--s2);
-  }
+    0 0 0 5px var(--accent-soft),
+    0 0 0 2px var(--accent);
 }
 
 // a certified town is not a park — square it off so the map never conflates the two
@@ -184,46 +275,19 @@
   border-radius: 2px;
 }
 
-.list-toggle {
-  position: absolute;
-  z-index: 500;
-  top: 158px; // under the marker filter
-  left: var(--s3);
-  height: 28px;
-  padding: 0 var(--s3);
-  background-color: color-mix(in srgb, var(--nadir) 88%, transparent);
-  border: 1px solid var(--horizon);
-  border-radius: var(--r-pill);
-  color: var(--airglow);
-  font-family: var(--sans);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-  cursor: pointer;
-
-  &--on {
-    background: var(--horizon);
-    color: var(--starlight);
-  }
-
-  @media screen and (max-width: 640px) {
-    top: 82px;
-    left: var(--s2);
-  }
-}
-
 .rank-panel {
   position: absolute;
   z-index: 500;
-  top: 196px;
-  left: var(--s3);
+  top: var(--s3);
+  left: 88px; // clear of the rail
   bottom: var(--s3);
-  width: min(340px, calc(100vw - 2 * var(--s3)));
+  width: min(340px, calc(100vw - 100px));
 
   @media screen and (max-width: 640px) {
-    top: 118px;
+    top: 56px; // below the horizontal rail
     left: var(--s2);
+    width: auto;
+    right: var(--s2);
     // leave the collapsed bottom sheet reachable when a site is selected
     bottom: calc(40dvh + var(--s2));
   }
@@ -248,6 +312,6 @@
 // the selection halo at full size overwhelms a 12–18px marker (screenshot: Medicine Rocks)
 :host ::ng-deep .site-marker--fine.site-marker--selected {
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--redshift) 15%, transparent),
-    0 0 0 1px var(--redshift);
+    0 0 0 3px var(--accent-soft),
+    0 0 0 1px var(--accent);
 }

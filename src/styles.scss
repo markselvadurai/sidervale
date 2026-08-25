@@ -24,6 +24,11 @@
   --r3: 14px;
   --r-pill: 999px;
 
+  // from the Nocturne design system (ADR 0007): the accent is a line and a glow, never a flood
+  --accent: #9184d9;
+  --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
+  --shadow-md: 0 0 0 1px var(--horizon), 0 6px 18px rgba(0, 0, 0, 0.55);
+
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
   --sans: 'Archivo', system-ui, sans-serif;
 
@@ -46,9 +51,9 @@ body {
   margin: 0;
 }
 
-// keyboard focus was invisible app-wide; --redshift on --nadir measures 4.59:1
+// keyboard focus per the design system: the accent carries it (5.7:1 on --nadir)
 :focus-visible {
-  outline: 2px solid var(--redshift);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 

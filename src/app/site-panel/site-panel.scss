@@ -11,6 +11,10 @@
   border: 1px solid var(--horizon);
   border-radius: var(--r3);
   padding: var(--s4);
+  // 1b: the panel carries a quiet accent glow instead of a hard cut-out edge
+  box-shadow:
+    var(--shadow-md),
+    0 0 48px color-mix(in srgb, var(--accent) 10%, transparent);
   &__handle {
     display: none;
   }
@@ -215,7 +219,8 @@
         background: transparent;
       }
       &--poor {
-        border-color: var(--poor); // was --redshift, which is the SELECTION colour
+        // faded like the map's poor markers — bad nights recede everywhere
+        border-color: color-mix(in srgb, var(--poor) 55%, transparent);
       }
       &--marginal {
         border-color: var(--caution);
@@ -232,7 +237,8 @@
         }
       }
       &--best {
-        box-shadow: 0 0 0 3px #7fd1a826;
+        // the crown is the accent, so "best" and "clear-tier" stop sharing a colour
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
       }
     }
   }
