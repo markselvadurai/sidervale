@@ -28,6 +28,39 @@
     padding-top: var(--s2);
   }
 
+  &__home {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    margin-bottom: var(--s2);
+  }
+  &__from {
+    font-size: var(--t-desc);
+    color: var(--starlight);
+    margin-right: auto;
+  }
+  &__loc {
+    background: none;
+    border: 1px solid var(--horizon);
+    border-radius: var(--r-pill);
+    padding: 2px var(--s2);
+    color: var(--airglow);
+    font-family: var(--sans);
+    font-size: var(--t-label);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    &:hover {
+      color: var(--starlight);
+      border-color: var(--airglow);
+    }
+  }
+  &__beyond {
+    margin: var(--s2) 0 0;
+    font-size: var(--t-label);
+    color: var(--airglow);
+  }
+
   &__empty {
     margin: var(--s3) 0 0;
     font-size: var(--t-desc);

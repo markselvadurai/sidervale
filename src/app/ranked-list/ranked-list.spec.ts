@@ -4,6 +4,7 @@ import { vi } from 'vitest';
 
 import { RankedList } from './ranked-list';
 import { SitesService, TonightScore } from '../services/sites';
+import { HomeService } from '../services/home';
 import { Site } from '../models/site';
 
 const site = (id: string, name: string): Site => ({
@@ -33,6 +34,16 @@ const TOP = site('top', 'Quiet Valley');
 const ASTRO = site('astro', 'Cloudless Gap');
 const DARK = site('dark', 'Midnight Sun Bay');
 
+// controlled-distance fixtures: pure latitude offsets from Toronto, 1° = 111.19 km
+const NEAR = {
+  ...site('near', 'Near Meadow'),
+  coordinates: { lat: 44.6532, lng: -79.3832 }, // 111 km
+};
+const OUTSIDE = {
+  ...site('outside', 'Outer Banks Dark Park'),
+  coordinates: { lat: 43.6532, lng: 100 }, // most of a hemisphere away
+};
+
 describe('RankedList', () => {
   let fixture: ComponentFixture<RankedList>;
   const scores = signal(new Map<string, TonightScore>());
@@ -45,6 +56,7 @@ describe('RankedList', () => {
     );
 
   beforeEach(async () => {
+    localStorage.clear(); // HomeService is real — every test starts from the Toronto default
     scores.set(
       new Map([
         ['alpha', scored(55)],
@@ -106,15 +118,51 @@ describe('RankedList', () => {
     expect(texts('.rank-row__name')).toEqual(['Alpha Flats', 'Quiet Valley', 'Zebra Ridge']);
   });
 
-  it('offers a way out of an empty view instead of a blank panel', async () => {
+  it('offers a way out of an empty reach instead of a blank panel', async () => {
     fixture.componentRef.setInput('sites', []);
     await fixture.whenStable();
     expect(
       (fixture.nativeElement.querySelector('.rank-list__empty')?.textContent ?? '')
         .replace(/\s+/g, ' ')
         .trim(),
-    ).toBe('No sites in this view — pan or zoom out');
+    ).toBe('No sites within 500 km of Toronto, ON');
     expect(fixture.nativeElement.querySelector('.rank-row')).toBeNull();
+  });
+
+  it('is anchored to home: shows the from-label and each site distance', async () => {
+    scores.set(new Map([['near', scored(70)]]));
+    fixture.componentRef.setInput('sites', [NEAR]);
+    await fixture.whenStable();
+    expect(texts('.rank-list__from')).toEqual(['from Toronto, ON']);
+    // 1° of latitude from Toronto — 111 km by the fixture's own arithmetic
+    expect(texts('.rank-row__meta')).toEqual(['111 km']);
+  });
+
+  it('excludes sites beyond reach and says how many it hid', async () => {
+    scores.set(
+      new Map([
+        ['near', scored(70)],
+        ['outside', scored(95)], // best score on the planet — still not an answer for tonight
+      ]),
+    );
+    fixture.componentRef.setInput('sites', [NEAR, OUTSIDE]);
+    await fixture.whenStable();
+    expect(texts('.rank-row__name')).toEqual(['Near Meadow']);
+    expect(texts('.rank-list__beyond')).toEqual(['1 beyond 500 km']);
+  });
+
+  it('re-ranks around a new home when it changes', async () => {
+    scores.set(
+      new Map([
+        ['near', scored(70)],
+        ['outside', scored(95)],
+      ]),
+    );
+    fixture.componentRef.setInput('sites', [NEAR, OUTSIDE]);
+    TestBed.inject(HomeService).set({ label: 'Somewhere East', lat: 43.6532, lng: 100 });
+    await fixture.whenStable();
+    expect(texts('.rank-row__name')).toEqual(['Outer Banks Dark Park']);
+    expect(texts('.rank-list__from')).toEqual(['from Somewhere East']);
   });
 
   it('selects the site whose row was clicked', () => {

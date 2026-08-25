@@ -37,8 +37,6 @@ export class MapView implements AfterViewInit, OnDestroy {
     { opacity: 0.25, tileSize: 1024, maxNativeZoom: 6, zoomOffset: -2 },
   );
   private _zoom = signal(2);
-  // the viewport is the user's own statement of reach — the list ranks within it
-  viewBounds = signal<L.LatLngBounds | null>(null);
 
   // DarkSky certifies municipalities as well as parks; a town is a different question from a
   // destination, and 82 of them cluster hard enough to make the world view unreadable.
@@ -55,12 +53,6 @@ export class MapView implements AfterViewInit, OnDestroy {
     if (mode === 'all') return this.sitesService.sites();
     const want = mode === 'destinations' ? 'destination' : 'community';
     return this.sitesService.sites().filter((s) => siteKind(s) === want);
-  });
-  protected sitesInView = computed(() => {
-    const bounds = this.viewBounds();
-    const sites = this.visibleSites();
-    if (!bounds) return sites;
-    return sites.filter((s) => bounds.contains([s.coordinates.lat, s.coordinates.lng]));
   });
   private makeIcon(classes: string[], size: number): L.DivIcon {
     // a 2px ring is a quarter of a 12px marker — thin the stroke with the diameter
@@ -135,23 +127,25 @@ export class MapView implements AfterViewInit, OnDestroy {
     // neutral world view until the dataset arrives; fitBounds takes over from there
     this.map = new L.Map(this.mapContainer().nativeElement, {
       zoom: 2,
+      minZoom: 2,
       center: [20, 0],
+      // one world, not a repeating wallpaper of them (side-by-side review)
+      maxBounds: L.latLngBounds([-85, -180], [85, 180]),
+      maxBoundsViscosity: 1.0,
     });
     const tiles = new L.TileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom: 20,
+      noWrap: true, // pairs with maxBounds: the world renders once
+      // noWrap stops wrapping but not requesting: without this, panning to the seam asked
+      // CARTO for x=-1 and x=4 tiles at z2 — 32 live 400s (caught in console review)
+      bounds: L.latLngBounds([-85, -180], [85, 180]),
       className: 'basemap-tiles', // scopes the navy tint; the overlay layer must stay untinted
     });
     tiles.addTo(this.map);
     this._zoom.set(this.map.getZoom());
     this.map.on('zoomend', () => this._zoom.set(this.map.getZoom()));
-    // a zero-size container (headless tests) has no meaningful bounds — leave the filter off
-    const trackBounds = () => {
-      if (this.map.getSize().x > 0) this.viewBounds.set(this.map.getBounds());
-    };
-    this.map.on('moveend', trackBounds);
-    trackBounds();
     this.mapReady.set(true);
   }
 

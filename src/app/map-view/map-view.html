@@ -63,7 +63,7 @@
 </nav>
 @if (listOpen()) {
   <div class="rank-panel">
-    <app-ranked-list [sites]="sitesInView()" />
+    <app-ranked-list [sites]="visibleSites()" />
   </div>
 }
 @if (sitesService.datasetState() === 'failed') {

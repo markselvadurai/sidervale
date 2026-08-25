@@ -1,8 +1,17 @@
 <aside class="rank-list" aria-label="Tonight's sites, ranked">
-  <p class="rank-list__title">Tonight · in view</p>
+  <p class="rank-list__title">Tonight · within {{ reachKm }} km</p>
+  <div class="rank-list__home">
+    <span class="rank-list__from">from {{ homeService.home().label }}</span>
+    <button type="button" class="rank-list__loc" (click)="useMyLocation()">My location</button>
+    @if (homeService.home().label !== 'Toronto, ON') {
+      <button type="button" class="rank-list__loc" (click)="homeService.reset()">Reset</button>
+    }
+  </div>
 
   @if (!rows().ranked.length && !rows().astro.length && !rows().darkless) {
-    <p class="rank-list__empty">No sites in this view — pan or zoom out</p>
+    <p class="rank-list__empty">
+      No sites within {{ reachKm }} km of {{ homeService.home().label }}
+    </p>
   }
 
   @for (row of rows().ranked; track row.site.id; let i = $index) {
@@ -21,7 +30,7 @@
         >{{ row.score }}</span
       >
       <span class="rank-row__name">{{ row.site.name }}</span>
-      <span class="rank-row__meta">{{ row.site.brightness.mpsas }} MPSAS</span>
+      <span class="rank-row__meta">{{ row.km.toFixed(0) }} km</span>
     </button>
   }
 
@@ -37,11 +46,14 @@
         <span class="astro-row__rank">–</span>
         <span class="astro-row__score">{{ row.score }}</span>
         <span class="astro-row__name">{{ row.site.name }}</span>
-        <span class="rank-row__meta">{{ row.site.brightness.mpsas }} MPSAS</span>
+        <span class="rank-row__meta">{{ row.km.toFixed(0) }} km</span>
       </button>
     }
   }
 
+  @if (rows().beyond) {
+    <p class="rank-list__beyond">{{ rows().beyond }} beyond {{ reachKm }} km</p>
+  }
   @if (rows().darkless) {
     <p class="rank-list__darkless">
       {{ rows().darkless }} site{{ rows().darkless === 1 ? '' : 's' }} without astronomical darkness
