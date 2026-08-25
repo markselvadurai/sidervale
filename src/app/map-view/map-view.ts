@@ -12,12 +12,13 @@ import {
 import * as L from 'leaflet';
 import { SitesService } from '../services/sites';
 import { SitePanel } from '../site-panel/site-panel';
+import { RankedList } from '../ranked-list/ranked-list';
 import { markerIcon, markerSize } from './marker-icon';
 import { siteKind } from '../models/site-kind';
 
 @Component({
   selector: 'app-map-view',
-  imports: [SitePanel],
+  imports: [SitePanel, RankedList],
   templateUrl: './map-view.html',
   styleUrl: './map-view.scss',
 })
@@ -40,6 +41,7 @@ export class MapView implements AfterViewInit, OnDestroy {
   // DarkSky certifies municipalities as well as parks; a town is a different question from a
   // destination, and 82 of them cluster hard enough to make the world view unreadable.
   markerFilter = signal<'destinations' | 'communities' | 'all'>('destinations');
+  listOpen = signal(false);
   protected readonly filterOptions = [
     { value: 'destinations' as const, label: 'Destinations' },
     { value: 'communities' as const, label: 'Communities' },

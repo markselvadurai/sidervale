@@ -9,6 +9,20 @@
   <span class="overlay-toggle__dot" aria-hidden="true"></span>
   Light pollution
 </button>
+<button
+  type="button"
+  class="list-toggle"
+  [class.list-toggle--on]="listOpen()"
+  [attr.aria-pressed]="listOpen()"
+  (click)="listOpen.set(!listOpen())"
+>
+  Ranked list
+</button>
+@if (listOpen()) {
+  <div class="rank-panel">
+    <app-ranked-list [sites]="visibleSites()" />
+  </div>
+}
 <div class="marker-filter" role="group" aria-label="Which sites to show">
   @for (opt of filterOptions; track opt.value) {
     <button

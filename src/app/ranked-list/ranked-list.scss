@@ -1,0 +1,127 @@
+.rank-list {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--nadir) 94%, transparent);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r3);
+  padding: var(--s3);
+
+  &__title {
+    margin: 0 0 var(--s2);
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--airglow);
+  }
+
+  &__subhead {
+    margin: var(--s3) 0 var(--s1);
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--airglow);
+    border-top: 1px solid var(--horizon);
+    padding-top: var(--s2);
+  }
+
+  &__darkless {
+    margin: var(--s3) 0 0;
+    font-size: var(--t-desc);
+    color: var(--airglow);
+    border-top: 1px solid var(--horizon);
+    padding-top: var(--s2);
+  }
+}
+
+.rank-row {
+  display: grid;
+  grid-template-columns: 1.4rem 2.2rem 1fr auto;
+  align-items: center;
+  gap: var(--s2);
+  width: 100%;
+  padding: var(--s2);
+  background: none;
+  border: 0;
+  border-radius: var(--r1);
+  color: var(--starlight);
+  font-family: var(--sans);
+  font-size: var(--t-body);
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background: color-mix(in srgb, var(--horizon) 55%, transparent);
+  }
+  &--active {
+    background: var(--horizon);
+  }
+
+  &__rank {
+    font-family: var(--mono);
+    font-size: var(--t-desc);
+    color: var(--airglow);
+  }
+
+  &__score {
+    font-family: var(--mono);
+    font-size: var(--t-desc);
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid;
+    border-radius: var(--r-pill);
+    padding: 2px 0;
+
+    &--clear {
+      color: var(--clear);
+    }
+    &--marginal {
+      color: var(--caution);
+    }
+    &--poor {
+      color: var(--poor);
+    }
+    &--caveat {
+      color: var(--airglow);
+      border-style: dashed;
+    }
+  }
+
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__meta {
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    color: var(--airglow);
+  }
+}
+
+// astro rows share the grid but not the identity of ranked rows — meta stays shared
+.astro-row {
+  &__rank {
+    font-family: var(--mono);
+    font-size: var(--t-desc);
+    color: var(--airglow);
+  }
+  &__score {
+    font-family: var(--mono);
+    font-size: var(--t-desc);
+    font-weight: 600;
+    text-align: center;
+    border: 1px dashed;
+    border-radius: var(--r-pill);
+    padding: 2px 0;
+    color: var(--airglow);
+  }
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

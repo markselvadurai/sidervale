@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { computed, signal } from '@angular/core';
 import { vi } from 'vitest';
 
 import { MapView } from './map-view';
+import { RankedList } from '../ranked-list/ranked-list';
 import { SitesService } from '../services/sites';
 import { Site } from '../models/site';
 
@@ -132,6 +134,20 @@ describe('MapView', () => {
     expect(marker('test-site').getElement()?.classList.contains('site-marker--community')).toBe(
       false,
     );
+  });
+
+  it('opens the ranked list on demand, ranking only the sites the map shows', async () => {
+    await landSites([SITE, TOWN]);
+    expect(fixture.nativeElement.querySelector('app-ranked-list')).toBeNull();
+
+    (fixture.nativeElement.querySelector('.list-toggle') as HTMLButtonElement).click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const list = fixture.debugElement.query(By.directive(RankedList));
+    if (!list) throw new Error('expected the ranked list to render');
+    // the community is filtered off the map, so it must not compete in the ranking either
+    expect((list.componentInstance as RankedList).sites().map((s) => s.id)).toEqual(['test-site']);
   });
 
   it('resizes markers when the map crosses a zoom bucket', async () => {

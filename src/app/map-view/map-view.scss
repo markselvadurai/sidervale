@@ -183,3 +183,48 @@
 :host ::ng-deep .site-marker--community::after {
   border-radius: 2px;
 }
+
+.list-toggle {
+  position: absolute;
+  z-index: 500;
+  top: 158px; // under the marker filter
+  left: var(--s3);
+  height: 28px;
+  padding: 0 var(--s3);
+  background-color: color-mix(in srgb, var(--nadir) 88%, transparent);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r-pill);
+  color: var(--airglow);
+  font-family: var(--sans);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &--on {
+    background: var(--horizon);
+    color: var(--starlight);
+  }
+
+  @media screen and (max-width: 640px) {
+    top: 82px;
+    left: var(--s2);
+  }
+}
+
+.rank-panel {
+  position: absolute;
+  z-index: 500;
+  top: 196px;
+  left: var(--s3);
+  bottom: var(--s3);
+  width: min(340px, calc(100vw - 2 * var(--s3)));
+
+  @media screen and (max-width: 640px) {
+    top: 118px;
+    left: var(--s2);
+    // leave the collapsed bottom sheet reachable when a site is selected
+    bottom: calc(40dvh + var(--s2));
+  }
+}
