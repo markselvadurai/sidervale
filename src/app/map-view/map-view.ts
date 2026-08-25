@@ -11,6 +11,7 @@ import {
 import * as L from 'leaflet';
 import { SitesService } from '../services/sites';
 import { SitePanel } from '../site-panel/site-panel';
+import { markerIcon } from './marker-icon';
 
 @Component({
   selector: 'app-map-view',
@@ -23,6 +24,9 @@ export class MapView implements AfterViewInit, OnDestroy {
   mapContainer = viewChild.required<ElementRef<HTMLDivElement>>('mapContainer');
   private map!: L.Map;
   markers = new Map<string, L.Marker>();
+  // last icon applied per site: setIcon destroys and rebuilds the element, and the clock
+  // ticks the styling effect every minute
+  private iconKeys = new Map<string, string>();
   mapReady = signal(false);
   overlayOn = signal(false);
   private overlayLayer = L.tileLayer(
@@ -45,6 +49,7 @@ export class MapView implements AfterViewInit, OnDestroy {
 
       this.markers.forEach((m) => m.remove());
       this.markers.clear();
+      this.iconKeys.clear(); // stale keys would suppress styling on the fresh markers
       const sites = this.sitesService.sites();
       for (const site of sites) {
         const latlng = new L.LatLng(site.coordinates.lat, site.coordinates.lng);
@@ -70,22 +75,17 @@ export class MapView implements AfterViewInit, OnDestroy {
       // loading), a loop-only read would drop these from the effect's dependency set forever
       const scores = this.sitesService.tonightScores();
       const selectedId = this.sitesService.selectedSiteId();
-      for (const [id, marker] of this.markers) {
-        const tonightScore = scores.get(id);
-        if (!tonightScore) continue;
-        if (!tonightScore.hasTrueDarkness) {
-          marker.setIcon(this.makeIcon(['site-marker', 'site-marker--darkless']));
-        } else {
-          const pending = !tonightScore.cloudDataAvailable;
-          const tier = tonightScore.tier;
-          const selected = selectedId === id;
-
-          // array composition — every branch appends, nothing can overwrite:
-          const classes = ['site-marker', `site-marker--${tier}`];
-          if (pending) classes.push('site-marker--pending');
-          if (selected) classes.push('site-marker--selected');
-          marker.setIcon(this.makeIcon(classes));
-        }
+      for (const site of this.sitesService.sites()) {
+        const marker = this.markers.get(site.id);
+        if (!marker) continue;
+        const icon = markerIcon(site.name, scores.get(site.id), selectedId === site.id);
+        const key = `${icon.classes.join(' ')}|${icon.label}`;
+        if (this.iconKeys.get(site.id) === key) continue; // nothing changed — leave the DOM alone
+        this.iconKeys.set(site.id, key);
+        marker.setIcon(this.makeIcon(icon.classes));
+        // set on the element, not via options.title: DivIcon reuses its div, so Leaflet's
+        // own title handling (new elements only) never fires on a re-style
+        marker.getElement()?.setAttribute('title', icon.label);
       }
     });
 

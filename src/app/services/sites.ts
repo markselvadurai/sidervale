@@ -40,7 +40,7 @@ export type NightInfo =
 
 export type ScoredNight = Extract<NightInfo, { hasTrueDarkness: true }>;
 
-type TonightScore =
+export type TonightScore =
   | { hasTrueDarkness: true; score: number; tier: Tier; cloudDataAvailable: boolean }
   | { hasTrueDarkness: false };
 
