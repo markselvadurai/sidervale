@@ -70,7 +70,7 @@ deeper reason the open engines were the only legally viable choice.
 ## Consequences
 
 - **Amendment — the library shipped at v5.24.0, not v6.** v6.6.0 produced two structural
-  failures. First, `maxBounds` threw `Cannot read properties of null` from the constructor *and*
+  failures. First, `maxBounds` threw `Cannot read properties of null` from the constructor _and_
   as the first statement of the `load` handler — where it silently aborted every `addSource`/
   `addLayer` after it (a blank map with working chrome). The original text of this record claimed
   moving it after `load` fixed it; that was wrong — the call was dropped entirely, since
