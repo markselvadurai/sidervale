@@ -46,6 +46,7 @@ export class MapView implements AfterViewInit, OnDestroy {
   protected sitesService = inject(SitesService);
   mapContainer = viewChild.required<ElementRef<HTMLDivElement>>('mapContainer');
   private map?: maplibregl.Map;
+  private resizeObserver?: ResizeObserver;
   mapReady = signal(false);
   /** WebGL2 is not universal: old devices, disabled GPU acceleration, some remote sessions.
    *  The canvas is then impossible, but the site index and ranked list still answer the
@@ -132,14 +133,17 @@ export class MapView implements AfterViewInit, OnDestroy {
     this.map = map;
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
 
+    // lazy-loading moved ngAfterViewInit ahead of the host having layout, so the container can
+    // measure 0 and MapLibre silently falls back to a 400x300 canvas. Watch and re-measure.
+    this.resizeObserver = new ResizeObserver(() => map.resize());
+    this.resizeObserver.observe(this.mapContainer().nativeElement);
+
     map.on('load', () => {
-      // maxBounds AFTER load, never in the constructor: MapLibre v6 throws
-      // "Cannot read properties of null" there, because the bounds-to-minzoom calculation
-      // runs before the container has a measured size. Bisected against a minimal config.
-      map.setMaxBounds([
-        [-180, -85],
-        [180, 85],
-      ]);
+      map.resize();
+      // NO setMaxBounds here. It throws "Cannot read properties of null" until the transform
+      // has settled after a first render — and as the load handler's first statement it
+      // silently skipped every addSource/addLayer below it, which is what made the map blank.
+      // renderWorldCopies: false already gives the one-world behaviour maxBounds was added for.
       this.paintGround(map);
 
       // the light-pollution raster. Leaflet needed tileSize 1024 + zoomOffset -2; MapLibre has
@@ -216,6 +220,7 @@ export class MapView implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.resizeObserver?.disconnect();
     try {
       this.map?.remove();
     } catch (error) {
