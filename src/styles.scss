@@ -18,6 +18,12 @@
   --s5: 1.5rem;
   --s6: 2rem; // 32px
 
+  // radius scale from the 1f component spec sheet (ADR 0007); 50% circles are not on it
+  --r1: 6px;
+  --r2: 10px;
+  --r3: 14px;
+  --r-pill: 999px;
+
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
   --sans: 'Archivo', system-ui, sans-serif;
 
@@ -38,4 +44,21 @@ body {
   font-family: var(--sans);
   overflow: hidden;
   margin: 0;
+}
+
+// keyboard focus was invisible app-wide; --redshift on --nadir measures 4.59:1
+:focus-visible {
+  outline: 2px solid var(--redshift);
+  outline-offset: 2px;
+}
+
+// direction 1b adds motion in four places — honour the OS opt-out before any of it lands
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

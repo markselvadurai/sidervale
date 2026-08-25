@@ -9,7 +9,7 @@
   z-index: 500; // above Leaflet's panes
   background: var(--nadir);
   border: 1px solid var(--horizon);
-  border-radius: var(--s3);
+  border-radius: var(--r3);
   padding: var(--s4);
   &__handle {
     display: none;
@@ -53,10 +53,10 @@
     }
     .score {
       border: 1px solid;
-      border-radius: 99px;
+      border-radius: var(--r-pill);
       padding: var(--s1) var(--s3);
       font-family: var(--mono);
-      font-weight: 700;
+      font-weight: 600;
     }
     .score--clear {
       border-color: var(--clear);
