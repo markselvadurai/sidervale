@@ -10,7 +10,9 @@
     </button>
     <div class="header">
       <h2>{{ site.name }}</h2>
-      <p class="subtitle">Bortle {{ site.bortle }} &middot; RASC DARK-SKY PRESERVE</p>
+      <p class="subtitle">
+        {{ site.brightness.mpsas }} MPSAS &middot; {{ designationsLabel(site.designations) }}
+      </p>
     </div>
     @if (sitesService.nightInfo(); as night) {
       @if (night.hasTrueDarkness) {
@@ -81,15 +83,18 @@
       } @else {
         <div class="darkless">No astronomical darkness tonight</div>
       }
-      <div class="footer">
-        Getting there &middot; {{ site.nearestTown.driveDistanceKm }} KM from
-        {{ site.nearestTown.name }} &middot; {{ site.timezone }}
-      </div>
+      <div class="footer">{{ regionLabel(site) }} &middot; {{ site.timezone }}</div>
       <details class="more">
         <summary>About this site</summary>
-        <p class="note">{{ site.description }}</p>
-        @if (site.bortleNote) {
-          <p class="note">{{ site.bortleNote }}</p>
+        <p class="note">
+          Sky brightness zone {{ site.brightness.zone }} &middot;
+          {{ site.brightness.atlasYear }} world atlas
+        </p>
+        @if (site.urls.darksky) {
+          <p class="note"><a [href]="site.urls.darksky" target="_blank">DarkSky listing</a></p>
+        }
+        @if (site.urls.rasc) {
+          <p class="note"><a [href]="site.urls.rasc" target="_blank">RASC listing</a></p>
         }
       </details>
     }

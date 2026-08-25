@@ -1,3 +1,6 @@
+export type Designation = { authority: 'darksky' | 'rasc'; type: string; year: number | null };
+export type Brightness = { ratio: number; mpsas: number; zone: string; atlasYear: number };
+
 /** What the engines consume — everything beyond this is presentation. */
 export interface SiteCore {
   id: string;
@@ -8,17 +11,12 @@ export interface SiteCore {
   timezone: string;
 }
 
+/** A dataset site — exactly the shape the pipeline emits (tools/dataset/emit.ts aliases this). */
 export interface Site extends SiteCore {
   name: string;
-  description: string;
-  nearestTown: {
-    driveDistanceKm: number;
-    name: string;
-  };
-  bortle: number;
-  bortleNote?: string;
-  elevationRange?: {
-    min: number;
-    max: number;
-  };
+  designations: Designation[];
+  countries: string[];
+  provinces: string[];
+  brightness: Brightness;
+  urls: { darksky?: string; rasc?: string };
 }

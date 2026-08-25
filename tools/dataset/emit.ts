@@ -3,8 +3,7 @@
 
 import { EnrichedDataset, EnrichedSite } from './enrich';
 import { isSuspiciousZone } from './enrich';
-import { LatLng } from './darksky';
-import { Designation } from './merge';
+import { Site } from '../../src/app/models/site';
 
 export type BrightnessDoc = {
   sampledAt: string;
@@ -12,17 +11,8 @@ export type BrightnessDoc = {
   quarantine: { id: string; reason: string }[];
 };
 
-export type DatasetSite = {
-  id: string;
-  name: string;
-  coordinates: LatLng;
-  timezone: string;
-  designations: Designation[];
-  countries: string[];
-  provinces: string[];
-  brightness: { ratio: number; mpsas: number; zone: string; atlasYear: number };
-  urls: { darksky?: string; rasc?: string };
-};
+// The app model IS the emitted shape — pipeline/app drift becomes a compile error here.
+export type DatasetSite = Site;
 
 export type AppDataset = {
   generatedAt: string;

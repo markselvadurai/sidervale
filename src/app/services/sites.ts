@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Site } from '../models/site';
-import { SITES } from '../data/sites';
+import { parseSitesDataset } from '../data/parse-sites';
 import { currentObservingNight, getDarknessWindow, getMoonOverlap } from '../engines/astronomy';
 import { noonOf, ObservingNight, plusNights } from '../models/observing-night';
 import { DateTime, Duration, Interval } from 'luxon';
@@ -50,8 +50,19 @@ const dayLabels = ['M', 'T', 'W', 'TH', 'F', 'S', 'S'];
 
 @Injectable({ providedIn: 'root' })
 export class SitesService {
-  readonly sites = signal<Site[]>(SITES);
+  private _sites = signal<Site[]>([]);
+  readonly sites = this._sites.asReadonly();
   private weather = inject(WeatherService);
+
+  async load() {
+    try {
+      const res = await fetch('data/sites.json');
+      if (!res.ok) throw new Error(`sites.json ${res.status}`);
+      this._sites.set(parseSitesDataset(await res.json()));
+    } catch (error) {
+      console.warn('sites dataset failed to load', error);
+    }
+  }
   private _selectedSiteId = signal<string | null>(null);
   readonly selectedSiteId = this._selectedSiteId.asReadonly();
   readonly selectedSite = computed(
@@ -61,7 +72,10 @@ export class SitesService {
   selectSite(id: string) {
     this._selectedSiteId.set(id);
     const site = this.sites().find((s) => s.id === id);
-    if (site) this.selectNight(currentObservingNight(site));
+    if (site) {
+      this.selectNight(currentObservingNight(site));
+      void this.weather.loadSite(site); // the only weather trigger — one site, on demand
+    }
   }
   private _selectedNight = signal<ObservingNight | null>(null);
   readonly selectedNight = this._selectedNight.asReadonly();

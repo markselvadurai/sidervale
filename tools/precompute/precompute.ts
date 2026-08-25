@@ -18,17 +18,10 @@ import {
 } from '../../src/app/engines/weather';
 import { computeScore, tierFor } from '../../src/app/engines/scorer';
 import { ObservingNight, plusNights } from '../../src/app/models/observing-night';
-import { Site } from '../../src/app/models/site';
+import { Site, SiteCore } from '../../src/app/models/site';
 
 const UA = 'SidervalePrecompute/0.1 (github.com/markselvadurai/sidervale)';
 const NIGHTS = 7;
-
-type DatasetSite = {
-  id: string;
-  name: string;
-  coordinates: { lat: number; lng: number };
-  timezone: string;
-};
 
 type NightRecord =
   | { date: string; dark: false }
@@ -45,19 +38,7 @@ type NightRecord =
       darkEnd: string;
     };
 
-function toEngineSite(s: DatasetSite): Site {
-  return {
-    id: s.id,
-    name: s.name,
-    description: '',
-    coordinates: s.coordinates,
-    nearestTown: { driveDistanceKm: 0, name: '' },
-    timezone: s.timezone,
-    bortle: 0,
-  };
-}
-
-function scoreNight(site: Site, night: ObservingNight, forecast: Forecast | null): NightRecord {
+function scoreNight(site: SiteCore, night: ObservingNight, forecast: Forecast | null): NightRecord {
   const darkness = getDarknessWindow(site, night);
   if (!darkness.hasTrueDarkness) return { date: night.localDate, dark: false };
 
@@ -89,9 +70,9 @@ function scoreNight(site: Site, night: ObservingNight, forecast: Forecast | null
 async function main() {
   const dataset = JSON.parse(
     readFileSync(join(import.meta.dirname, '..', '..', 'public', 'data', 'sites.json'), 'utf8'),
-  ) as { sites: DatasetSite[] };
+  ) as { sites: Site[] };
   const limit = process.env['LIMIT'] ? Number(process.env['LIMIT']) : Infinity;
-  const sites = dataset.sites.slice(0, limit).map(toEngineSite);
+  const sites = dataset.sites.slice(0, limit);
 
   const now = DateTime.now();
   const out: Record<string, { nights: NightRecord[] }> = {};
