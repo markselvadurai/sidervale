@@ -1,0 +1,97 @@
+@if (sitesService.selectedSite(); as site) {
+  <aside class="panel" [class.panel--expanded]="sheetExpanded()">
+    <button
+      type="button"
+      class="panel__handle"
+      (click)="sheetExpanded.set(!sheetExpanded())"
+      aria-label="Expand panel"
+    >
+      &macr;&macr;
+    </button>
+    <div class="header">
+      <h2>{{ site.name }}</h2>
+      <p class="subtitle">Bortle {{ site.bortle }} &middot; RASC DARK-SKY PRESERVE</p>
+    </div>
+    @if (sitesService.nightInfo(); as night) {
+      @if (night.hasTrueDarkness) {
+        <div class="scoring">
+          <p>{{ sitesService.selectedNightLabel().toUpperCase() }}</p>
+          <span
+            class="score"
+            [class.score--marginal]="night.tier === 'marginal' && night.cloudDataAvailable"
+            [class.score--poor]="night.tier === 'poor' && night.cloudDataAvailable"
+            [class.score--clear]="night.tier === 'clear' && night.cloudDataAvailable"
+            [class.score--caveat]="!night.cloudDataAvailable"
+            >{{ night.score }}
+            @if (!night.cloudDataAvailable) {
+              ASTRONOMY ONLY
+            } @else {
+              {{ night.tier.toUpperCase() }}
+            }
+          </span>
+        </div>
+        <app-night-strip [night]="night" />
+        <dl>
+          <dt>Darkness</dt>
+          <dd>
+            {{ night.darknessWindow.start.toFormat('HH:mm') }} -
+            {{ night.darknessWindow.end.toFormat('HH:mm') }} &middot;
+            <span class="subtext">{{ night.darkDuration }} true dark</span>
+          </dd>
+          <dt>Moon</dt>
+          <dd>
+            {{ night.moonIllumination }}% illum &middot; {{ night.moonOverlapDisplay }}
+            <span class="subtext"> in the dark window</span>
+          </dd>
+          <dt>Cloud</dt>
+          @if (night.cloudDataAvailable) {
+            <dd>{{ night.cloudAvg }}% <span class="subtext">avg during dark window</span></dd>
+          } @else {
+            <dd><span class="subtext">forecast unavailable — astronomy only</span></dd>
+          }
+        </dl>
+        <div class="score-strip">
+          @for (day of sitesService.weekScores(); track day.night.localDate) {
+            <button class="score-item" (click)="sitesService.selectNight(day.night)">
+              @if (!day.hasTrueDarkness) {
+                <div class="score-dot score-dot--darkless"></div>
+                <div>{{ day.label }}</div>
+              } @else {
+                <div
+                  class="score-dot"
+                  [class.score-dot--clear]="day.tier === 'clear'"
+                  [class.score-dot--marginal]="day.tier === 'marginal'"
+                  [class.score-dot--poor]="day.tier === 'poor'"
+                  [class.score-dot--best]="
+                    sitesService.bestNight()?.localDate === day.night.localDate
+                  "
+                ></div>
+                <div
+                  class="score-label"
+                  [class.score-label--active]="
+                    sitesService.selectedNight()?.localDate === day.night.localDate
+                  "
+                >
+                  {{ day.label }}
+                </div>
+              }
+            </button>
+          }
+        </div>
+      } @else {
+        <div class="darkless">No astronomical darkness tonight</div>
+      }
+      <div class="footer">
+        Getting there &middot; {{ site.nearestTown.driveDistanceKm }} KM from
+        {{ site.nearestTown.name }} &middot; {{ site.timezone }}
+      </div>
+      <details class="more">
+        <summary>About this site</summary>
+        <p class="note">{{ site.description }}</p>
+        @if (site.bortleNote) {
+          <p class="note">{{ site.bortleNote }}</p>
+        }
+      </details>
+    }
+  </aside>
+}

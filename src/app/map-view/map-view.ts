@@ -9,14 +9,12 @@ import {
   effect,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { ScoredNight, SitesService } from '../services/sites';
-import { WeatherService } from '../services/weather';
-import { NightStrip } from '../night-strip/night-strip';
-import { DateTime } from 'luxon';
+import { SitesService } from '../services/sites';
+import { SitePanel } from '../site-panel/site-panel';
 
 @Component({
   selector: 'app-map-view',
-  imports: [NightStrip],
+  imports: [SitePanel],
   templateUrl: './map-view.html',
   styleUrl: './map-view.scss',
 })
@@ -27,7 +25,6 @@ export class MapView implements AfterViewInit, OnDestroy {
   markers = new Map<string, L.Marker>();
   mapReady = signal(false);
   overlayOn = signal(false);
-  sheetExpanded = signal(false);
   private overlayLayer = L.tileLayer(
     'https://djlorenz.github.io/astronomy/image_tiles/tiles2024/tile_{z}_{x}_{y}.png',
     { opacity: 0.25, tileSize: 1024, maxNativeZoom: 6, zoomOffset: -2 },
