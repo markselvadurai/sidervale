@@ -6,12 +6,14 @@ import {
   OnDestroy,
   inject,
   signal,
+  computed,
   effect,
 } from '@angular/core';
 import * as L from 'leaflet';
 import { SitesService } from '../services/sites';
 import { SitePanel } from '../site-panel/site-panel';
 import { markerIcon, markerSize } from './marker-icon';
+import { siteKind } from '../models/site-kind';
 
 @Component({
   selector: 'app-map-view',
@@ -34,6 +36,21 @@ export class MapView implements AfterViewInit, OnDestroy {
     { opacity: 0.25, tileSize: 1024, maxNativeZoom: 6, zoomOffset: -2 },
   );
   private _zoom = signal(2);
+
+  // DarkSky certifies municipalities as well as parks; a town is a different question from a
+  // destination, and 82 of them cluster hard enough to make the world view unreadable.
+  markerFilter = signal<'destinations' | 'communities' | 'all'>('destinations');
+  protected readonly filterOptions = [
+    { value: 'destinations' as const, label: 'Destinations' },
+    { value: 'communities' as const, label: 'Communities' },
+    { value: 'all' as const, label: 'All' },
+  ];
+  protected visibleSites = computed(() => {
+    const mode = this.markerFilter();
+    if (mode === 'all') return this.sitesService.sites();
+    const want = mode === 'destinations' ? 'destination' : 'community';
+    return this.sitesService.sites().filter((s) => siteKind(s) === want);
+  });
   private makeIcon(classes: string[], size: number): L.DivIcon {
     // a 2px ring is a quarter of a 12px marker — thin the stroke with the diameter
     const all = size <= 18 ? [...classes, 'site-marker--fine'] : classes;
@@ -53,7 +70,7 @@ export class MapView implements AfterViewInit, OnDestroy {
       this.markers.forEach((m) => m.remove());
       this.markers.clear();
       this.iconKeys.clear(); // stale keys would suppress styling on the fresh markers
-      const sites = this.sitesService.sites();
+      const sites = this.visibleSites();
       for (const site of sites) {
         const latlng = new L.LatLng(site.coordinates.lat, site.coordinates.lng);
         const siteMark = new L.Marker(latlng, {
@@ -81,10 +98,12 @@ export class MapView implements AfterViewInit, OnDestroy {
       const scores = this.sitesService.tonightScores();
       const selectedId = this.sitesService.selectedSiteId();
       const size = markerSize(this._zoom());
-      for (const site of this.sitesService.sites()) {
+      for (const site of this.visibleSites()) {
         const marker = this.markers.get(site.id);
         if (!marker) continue;
         const icon = markerIcon(site.name, scores.get(site.id), selectedId === site.id);
+        // a town and a national park must not read as the same kind of place
+        if (siteKind(site) === 'community') icon.classes.push('site-marker--community');
         const key = `${icon.classes.join(' ')}|${icon.label}|${size}`;
         if (this.iconKeys.get(site.id) === key) continue; // nothing changed — leave the DOM alone
         this.iconKeys.set(site.id, key);

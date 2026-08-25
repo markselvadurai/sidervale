@@ -138,3 +138,48 @@
     0 0 0 5px color-mix(in srgb, var(--redshift) 15%, transparent),
     0 0 0 2px var(--redshift);
 }
+
+.marker-filter {
+  position: absolute;
+  z-index: 500;
+  top: 118px; // sits under the overlay pill
+  left: var(--s3);
+  display: inline-flex;
+  background-color: color-mix(in srgb, var(--nadir) 88%, transparent);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+
+  &__opt {
+    appearance: none;
+    background: none;
+    border: 0;
+    height: 28px;
+    padding: 0 var(--s3);
+    color: var(--airglow);
+    font-family: var(--sans);
+    font-size: var(--t-label);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &--on {
+      background: var(--horizon);
+      color: var(--starlight);
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    top: 46px;
+    left: var(--s2);
+  }
+}
+
+// a certified town is not a park — square it off so the map never conflates the two
+:host ::ng-deep .site-marker--community {
+  border-radius: var(--r1);
+}
+:host ::ng-deep .site-marker--community::after {
+  border-radius: 2px;
+}

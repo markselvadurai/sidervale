@@ -9,6 +9,19 @@
   <span class="overlay-toggle__dot" aria-hidden="true"></span>
   Light pollution
 </button>
+<div class="marker-filter" role="group" aria-label="Which sites to show">
+  @for (opt of filterOptions; track opt.value) {
+    <button
+      type="button"
+      class="marker-filter__opt"
+      [class.marker-filter__opt--on]="markerFilter() === opt.value"
+      [attr.aria-pressed]="markerFilter() === opt.value"
+      (click)="markerFilter.set(opt.value)"
+    >
+      {{ opt.label }}
+    </button>
+  }
+</div>
 @if (sitesService.datasetState() === 'failed') {
   <div class="dataset-error">Site data failed to load — refresh to retry</div>
 }

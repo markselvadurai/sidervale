@@ -18,6 +18,13 @@ const SITE: Site = {
   urls: {},
 };
 
+const TOWN: Site = {
+  ...SITE,
+  id: 'test-town',
+  name: 'Test Town',
+  designations: [{ authority: 'darksky', type: 'international-dark-sky-community', year: null }],
+};
+
 describe('MapView', () => {
   let component: MapView;
   let fixture: ComponentFixture<MapView>;
@@ -105,6 +112,26 @@ describe('MapView', () => {
 
     // setIcon destroys and rebuilds the icon element; 293 of those per minute is the bug
     expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('hides certified municipalities by default and reveals them on request', async () => {
+    await landSites([SITE, TOWN]);
+    // a town answers "is tonight good where I live", not "is it worth driving out"
+    expect(component.markers.has('test-town')).toBe(false);
+    expect(component.markers.has('test-site')).toBe(true);
+
+    component.markerFilter.set('all');
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(component.markers.has('test-town')).toBe(true);
+    // and it must not read as the same kind of place as a park
+    expect(marker('test-town').getElement()?.classList.contains('site-marker--community')).toBe(
+      true,
+    );
+    expect(marker('test-site').getElement()?.classList.contains('site-marker--community')).toBe(
+      false,
+    );
   });
 
   it('resizes markers when the map crosses a zoom bucket', async () => {
