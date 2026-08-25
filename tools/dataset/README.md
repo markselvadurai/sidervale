@@ -66,7 +66,7 @@ star park and a nocturnal preserve, bright by design.
 
 ## Stage 5 — emit (`npm run emit`, no network)
 
-Validates and writes `sites.json`, the app-facing dataset: 293 sites with id, name, coordinates,
+Validates and writes `public/data/sites.json`, the app-facing dataset: 293 sites with id, name, coordinates,
 timezone, designations, regions, brightness, and source URLs. A site missing any requirement is
 **excluded with its reasons listed** — currently the 9 quarantined records. Duplicate ids throw.
 

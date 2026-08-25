@@ -88,7 +88,7 @@ function scoreNight(site: Site, night: ObservingNight, forecast: Forecast | null
 
 async function main() {
   const dataset = JSON.parse(
-    readFileSync(join(import.meta.dirname, '..', 'dataset', 'sites.json'), 'utf8'),
+    readFileSync(join(import.meta.dirname, '..', '..', 'public', 'data', 'sites.json'), 'utf8'),
   ) as { sites: DatasetSite[] };
   const limit = process.env['LIMIT'] ? Number(process.env['LIMIT']) : Infinity;
   const sites = dataset.sites.slice(0, limit).map(toEngineSite);

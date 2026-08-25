@@ -1,7 +1,7 @@
 # Precompute
 
 Runs the browser's pure engines (imported from `src/app/engines/` — unchanged, see ADR 0005)
-over `tools/dataset/sites.json`, fetching Open-Meteo cloud cover once per site, and writes
+over `public/data/sites.json`, fetching Open-Meteo cloud cover once per site, and writes
 `scores.json`: 7 scored nights per site, each night resolved per-site by `currentObservingNight`.
 
 ```bash
