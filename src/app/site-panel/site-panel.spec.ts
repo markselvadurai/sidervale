@@ -179,6 +179,18 @@ describe('SitePanel rendering', () => {
     await fixture.whenStable();
   });
 
+  it('the sheet handle announces its state and its action', async () => {
+    const handle = fixture.nativeElement.querySelector('.panel__handle') as HTMLButtonElement;
+    expect(handle.getAttribute('aria-expanded')).toBe('false');
+    expect(handle.getAttribute('aria-label')).toBe('Expand panel');
+
+    handle.click();
+    await fixture.whenStable();
+
+    expect(handle.getAttribute('aria-expanded')).toBe('true');
+    expect(handle.getAttribute('aria-label')).toBe('Collapse panel');
+  });
+
   it('renders nothing while no site is selected', async () => {
     selectedSite.set(null);
     await fixture.whenStable();

@@ -168,16 +168,20 @@
     }
   }
   .score-strip {
-    height: 48px;
+    height: 56px;
     border-top: 1px solid var(--horizon);
     display: flex;
     justify-content: space-between;
     padding-top: var(--s3);
 
     .score-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       background: none;
       border: none;
-      padding: 0;
+      padding: var(--s2) var(--s2) 0; // WCAG 2.5.8: the hit area, not the dot, is the target
+      cursor: pointer;
     }
 
     .score-label {
@@ -191,22 +195,41 @@
       }
     }
 
+    // same fill-level code as the map markers: wide core / small core / hollow
     .score-dot {
-      height: var(--s3);
-      width: var(--s3);
+      position: relative;
+      height: 14px;
+      width: 14px;
       border-radius: 50%;
       background: var(--zenith);
+      border: 2px solid var(--airglow);
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 50%;
+        border-radius: 50%;
+        background: currentColor;
+      }
       &--darkless {
-        border: 2px solid var(--airglow);
+        border-style: dashed;
+        background: transparent;
       }
       &--poor {
-        border: 2px solid var(--redshift);
+        border-color: var(--poor); // was --redshift, which is the SELECTION colour
       }
       &--marginal {
-        border: 2px solid var(--caution);
+        border-color: var(--caution);
+        color: var(--caution);
+        &::after {
+          inset: 34%;
+        }
       }
       &--clear {
-        border: 2px solid var(--clear);
+        border-color: var(--clear);
+        color: var(--clear);
+        &::after {
+          inset: 22%;
+        }
       }
       &--best {
         box-shadow: 0 0 0 3px #7fd1a826;
@@ -231,12 +254,20 @@
     height: 75dvh;
   }
   .panel__handle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px; // a thumb target, not a glyph
     background: none;
-    border: 1px solid var(--nadir);
-    color: var(--airglow);
-    font-size: larger;
-    letter-spacing: 0;
+    border: 0;
+    cursor: pointer;
+  }
+  .panel__grabber {
+    width: 36px;
+    height: 4px;
+    border-radius: var(--r-pill);
+    background: var(--airglow);
   }
 }
 

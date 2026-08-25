@@ -4,9 +4,10 @@
       type="button"
       class="panel__handle"
       (click)="sheetExpanded.set(!sheetExpanded())"
-      aria-label="Expand panel"
+      [attr.aria-expanded]="sheetExpanded()"
+      [attr.aria-label]="sheetExpanded() ? 'Collapse panel' : 'Expand panel'"
     >
-      &macr;&macr;
+      <span class="panel__grabber" aria-hidden="true"></span>
     </button>
     <div class="header">
       <h2>{{ site.name }}</h2>

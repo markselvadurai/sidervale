@@ -235,7 +235,7 @@ export class SitesService {
     const moonOverlapDisplay =
       moon.overlapMinutes > 0
         ? Duration.fromObject({ minutes: moon.overlapMinutes }).toFormat("h'h' m'm'")
-        : 'Out of the way ✅';
+        : 'none';
     const result = computeScore(
       interval.length('hours'),
       moon.overlapFraction,
