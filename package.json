@@ -28,7 +28,7 @@
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
     "luxon": "^3.7.2",
-    "maplibre-gl": "^6.6.0",
+    "maplibre-gl": "^5.24.0",
     "rxjs": "~7.8.0",
     "suncalc": "2.0.1",
     "tslib": "^2.3.0"

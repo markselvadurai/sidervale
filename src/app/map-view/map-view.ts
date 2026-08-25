@@ -10,6 +10,7 @@ import {
   effect,
 } from '@angular/core';
 import * as maplibregl from 'maplibre-gl';
+
 import { SitesService } from '../services/sites';
 import { SitePanel } from '../site-panel/site-panel';
 import { RankedList } from '../ranked-list/ranked-list';

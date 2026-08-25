@@ -1,6 +1,6 @@
 # 0008 — MapLibre GL on OpenFreeMap, with markers as data
 
-**Status:** accepted
+**Status:** accepted, amended same day (v6 → v5; see the worker post-mortem below)
 **Date:** 2026-08-25
 
 ## Context
@@ -69,19 +69,31 @@ deeper reason the open engines were the only legally viable choice.
 
 ## Consequences
 
-- **Two things bit during the migration, both recorded so they are not rediscovered.**
-  `maxBounds` passed to the MapLibre v6 constructor throws `Cannot read properties of null` —
-  the bounds-to-minzoom calculation runs before the container has a measured size. It is set
-  after `load` instead, bisected against a minimal config. And MapLibre reports WebGL failure
-  **asynchronously**, so a `try`/`catch` around the constructor never fires; support is now
-  checked up front with a `webgl2` context probe.
+- **Amendment — the library shipped at v5.24.0, not v6.** v6.6.0 produced two structural
+  failures. First, `maxBounds` threw `Cannot read properties of null` from the constructor *and*
+  as the first statement of the `load` handler — where it silently aborted every `addSource`/
+  `addLayer` after it (a blank map with working chrome). The original text of this record claimed
+  moving it after `load` fixed it; that was wrong — the call was dropped entirely, since
+  `renderWorldCopies: false` already provides the one-world behaviour. Second, and decisive:
+  v6's worker RPC **boots and then never replies** — instrumented end-to-end: 14 actor messages
+  posted to the worker (`AT`/`RMT` tile requests), zero responses, zero errors, while the same
+  module demonstrably boots in a hand-made blob worker. Tiles were requested and never arrived,
+  forever, silently. Two structural bugs in one major is a component problem, not a wiring
+  problem; the mature v5 line renders correctly on the first try (verified: `loaded: true`,
+  tiles loaded, 58 circles at world zoom, 7 collision-managed labels over Ontario, selection
+  ring, overlay toggle). Revisit v6 only with a changelog in hand and a rendering smoke test.
+  Also kept from the debugging: MapLibre reports WebGL failure **asynchronously**, so a
+  `try`/`catch` around the constructor never fires; support is checked up front with a `webgl2`
+  context probe, which doubles as the no-WebGL fallback for real users.
 - **A real fallback exists now.** WebGL2 is not universal — old devices, disabled GPU
   acceleration, some remote sessions. The app says so and keeps working: the site index and
   ranked list still answer the question the product exists for.
-- **CSP grew** by `worker-src 'self' blob:` and `child-src 'self' blob:` (MapLibre spawns its
-  tile-decode worker from a blob URL), plus `tiles.openfreemap.org` in **both** `connect-src` and
-  `img-src` — vector assets are `fetch`, not `<img>`, so `img-src` alone does not cover them.
-  This is the failure mode that only appears in production.
+- **CSP grew** by `worker-src 'self' blob:` and `child-src 'self' blob:` (MapLibre's default
+  worker is a blob module that re-imports the library by URL), plus `tiles.openfreemap.org` in
+  **both** `connect-src` and `img-src` — vector assets are `fetch`, not `<img>`, so `img-src`
+  alone does not cover them. The `blob:` entries are load-bearing: dev has no CSP, so a missing
+  `worker-src blob:` would render perfectly locally and ship a blank map to production. Do not
+  "tighten" them away without replacing the worker mechanism first.
 - **The light-pollution overlay is the fragile carry-over.** Leaflet's `tileSize: 1024` +
   `zoomOffset: -2` has no MapLibre equivalent; the source now declares the 1024px tiles directly
   with `maxzoom: 6`. **Verify visually against a known light-polluted area** before trusting it —
