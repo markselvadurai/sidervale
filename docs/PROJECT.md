@@ -49,9 +49,9 @@ The global successor to **Nocturne v1** — a stargazing go/no-go planner. v1 co
 
 ## Known issues carried over from v1
 
-- **`MapView` does four jobs** — Leaflet host, marker manager, overlay toggle, and it owns ~100 lines of detail-panel template, with no input/output boundary. Split into a dumb `map-canvas` and a separate `site-panel`.
-- **`WeatherService`'s constructor** loads `manitoulin-eco-park` into an unused local and discards it. It non-null-asserts a specific site and will **throw at boot** the moment that site leaves the dataset. Delete it.
-- **Map viewport is hardcoded** to Toronto (`center: [43.65, -79.38], zoom: 8`). Derive from the site set's bounds.
+- ~~`MapView` does four jobs~~ **Split done (Phase 5):** `site-panel` owns the panel; `map-view` keeps Leaflet + markers. The fully input-driven `map-canvas` remains a possible later refinement.
+- ~~`WeatherService`'s dead constructor~~ **Deleted (Phase 4).**
+- ~~Map viewport hardcoded to Toronto~~ **Derived (Phase 5):** world init + one-shot `fitBounds` (maxZoom-capped).
 - **Design tokens** — `--hline`, `--hpitch`, `--moon-ink` are used only as inline fallbacks and never declared; `--cloud-ink` is only set by the density classes. Declare all four in `:root`. Also a tier-colour collision: markers and the score chip use `--poor`, but the week-dot uses `--redshift`, which is simultaneously the selection accent. Pick one.
 - **The week strip hardcodes 7 days** and an English-only `dayLabels` array indexed by weekday.
 - **`getMoonOverlap` discards event kind.** All four rise/set events are pushed into one `DateTime[]` and the walk merely toggles — which is _why_ a bad seed inverts the whole window. Carry `{ at, kind: 'rise' | 'set' }` so each event sets absolute state; a bad seed would then only affect the stretch before the first event.

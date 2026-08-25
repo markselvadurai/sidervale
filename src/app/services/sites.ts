@@ -1,7 +1,9 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Site } from '../models/site';
 import { parseSitesDataset } from '../data/parse-sites';
+import { artifactNightFor, toNightScore } from '../engines/artifact';
 import { currentObservingNight, getDarknessWindow, getMoonOverlap } from '../engines/astronomy';
+import { ScoresService } from './scores';
 import { noonOf, ObservingNight, plusNights } from '../models/observing-night';
 import { DateTime, Duration, Interval } from 'luxon';
 import { WeatherService } from './weather';
@@ -56,6 +58,7 @@ export class SitesService {
   private _datasetState = signal<'loading' | 'ready' | 'failed'>('loading');
   readonly datasetState = this._datasetState.asReadonly();
   private weather = inject(WeatherService);
+  private scoresService = inject(ScoresService);
 
   async load() {
     try {
@@ -92,39 +95,43 @@ export class SitesService {
     const site = this.selectedSite();
     const entries: WeekEntry[] = [];
     if (!site) return [];
+    const record = this.scoresService.artifact()?.sites[site.id];
     const start = currentObservingNight(site);
     for (let i = 0; i < 7; i++) {
       const night = plusNights(start, i);
       const label = dayLabels[noonOf(site, night).weekday - 1];
-      const darkness = getDarknessWindow(site, night);
 
-      if (!darkness.hasTrueDarkness) {
-        entries.push({
-          night,
-          label,
-          hasTrueDarkness: false,
-        });
+      const hit = record ? artifactNightFor(record, night.localDate) : null;
+      if (hit) {
+        const ns = toNightScore(hit);
+        entries.push(
+          ns.hasTrueDarkness ? { night, label, ...ns } : { night, label, hasTrueDarkness: false },
+        );
         continue;
       }
 
+      // artifact miss (absent, stale, or a trailing night past its horizon): live compute,
+      // selected site only - its forecast is on demand, so no fan-out is possible here
+      const darkness = getDarknessWindow(site, night);
+      if (!darkness.hasTrueDarkness) {
+        entries.push({ night, label, hasTrueDarkness: false });
+        continue;
+      }
       const interval = Interval.fromDateTimes(darkness.start, darkness.end) as Interval<true>;
       const moon = getMoonOverlap(site, interval);
-
       const clouds = this.weather.cloudsFor(site, interval);
-
       const result = computeScore(
         interval.length('hours'),
         moon.overlapFraction,
         moon.illuminationFraction,
         clouds,
       );
-      const score = result.score;
       entries.push({
         night,
         label,
         hasTrueDarkness: true,
-        score,
-        tier: tierFor(score),
+        score: result.score,
+        tier: tierFor(result.score),
         cloudDataAvailable: clouds.available,
       });
     }
@@ -146,37 +153,34 @@ export class SitesService {
     }
     return best;
   });
-  // get all sites scores from tonight and mapping them to siteid - order: darkwindow->moon->clouds->score
+  // artifact-first: marker tiers come from the precompute; misses degrade to astronomy-only
   readonly tonightScores = computed<Map<string, TonightScore>>(() => {
+    const artifact = this.scoresService.artifact();
     const m = new Map<string, TonightScore>();
     for (const site of this.sites()) {
-      const darkness = getDarknessWindow(site, currentObservingNight(site));
-      if (!darkness.hasTrueDarkness) {
-        m.set(site.id, { hasTrueDarkness: false });
-        continue;
-      }
-      const interval = Interval.fromDateTimes(darkness.start, darkness.end) as Interval<true>;
-      const moon = getMoonOverlap(site, interval);
-
-      const clouds = this.weather.cloudsFor(site, interval);
-
-      const result = computeScore(
-        interval.length('hours'),
-        moon.overlapFraction,
-        moon.illuminationFraction,
-        clouds,
-      );
-      const score = result.score;
-
-      m.set(site.id, {
-        hasTrueDarkness: true,
-        score,
-        tier: tierFor(score),
-        cloudDataAvailable: clouds.available,
-      });
+      const hit = artifact
+        ? artifactNightFor(artifact.sites[site.id], currentObservingNight(site).localDate)
+        : null;
+      m.set(site.id, hit ? toNightScore(hit) : this.astronomyTonight(site));
     }
     return m;
   });
+
+  // deliberately no cloudsFor: with zero forecast-map dependency here, a forecast arriving
+  // for one site can never re-score all 293 - the v1 fan-out is structurally impossible
+  private astronomyTonight(site: Site): TonightScore {
+    const darkness = getDarknessWindow(site, currentObservingNight(site));
+    if (!darkness.hasTrueDarkness) return { hasTrueDarkness: false };
+    const interval = Interval.fromDateTimes(darkness.start, darkness.end) as Interval<true>;
+    const moon = getMoonOverlap(site, interval);
+    const { score } = computeScore(
+      interval.length('hours'),
+      moon.overlapFraction,
+      moon.illuminationFraction,
+      { available: false },
+    );
+    return { hasTrueDarkness: true, score, tier: tierFor(score), cloudDataAvailable: false };
+  }
 
   readonly forecastPending = computed<boolean>(() => {
     const site = this.selectedSite();
