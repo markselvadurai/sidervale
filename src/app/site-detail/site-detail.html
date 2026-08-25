@@ -1,0 +1,18 @@
+<main class="detail">
+  <a class="detail__back" routerLink="/">← Map</a>
+
+  @if (site(); as s) {
+    <h1 class="detail__name">{{ s.name }}</h1>
+    <p class="detail__meta">
+      {{ s.brightness.mpsas }} MPSAS · {{ designationsLabel(s.designations) }}
+    </p>
+    <p class="detail__meta">{{ regionLabel(s) }} · {{ s.timezone }}</p>
+  } @else if (state() === 'loading') {
+    <p class="detail__meta">Loading sites…</p>
+  } @else if (state() === 'failed') {
+    <p class="detail__meta">Site data failed to load — refresh to retry</p>
+  } @else {
+    <h1 class="detail__name">Site not found</h1>
+    <p class="detail__meta">No site with id “{{ id() }}”.</p>
+  }
+</main>
