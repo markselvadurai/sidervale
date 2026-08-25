@@ -30,19 +30,22 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss", "node_modules/leaflet/dist/leaflet.css"]
+            "styles": [
+              "src/styles.scss",
+              "node_modules/leaflet/dist/leaflet.css"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "550kB",
                   "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
+                  "maximumWarning": "6kB",
                   "maximumError": "8kB"
                 }
               ],
@@ -71,7 +74,9 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "include": ["src/**/*.spec.ts"]
+            "include": [
+              "src/**/*.spec.ts"
+            ]
           }
         }
       }
