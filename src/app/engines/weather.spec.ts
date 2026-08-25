@@ -67,7 +67,7 @@ describe('forecastUrl', () => {
       id: 't',
       coordinates: { lat: 45.6621, lng: -81.9679 },
       timezone: 'America/Toronto',
-    } as never;
+    };
     expect(forecastUrl(site)).toBe(
       'https://api.open-meteo.com/v1/forecast?latitude=45.6621&longitude=-81.9679&hourly=cloud_cover&forecast_days=8',
     );
@@ -76,7 +76,7 @@ describe('forecastUrl', () => {
 
 describe('parseForecast', () => {
   it('zones each UTC reading to the site timezone and carries savedAt through', () => {
-    const site = { id: 't', coordinates: { lat: 0, lng: 0 }, timezone: 'America/Toronto' } as never;
+    const site = { id: 't', coordinates: { lat: 0, lng: 0 }, timezone: 'America/Toronto' };
     const savedAt = DateTime.fromMillis(Date.UTC(2026, 0, 15, 6), { zone: 'utc' });
     // 05:00Z on Jan 15 = midnight EST (UTC−5)
     const f = parseForecast(

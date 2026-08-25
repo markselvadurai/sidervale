@@ -8,7 +8,7 @@ import {
   parseForecast,
 } from '../engines/weather';
 import { DateTime, Interval } from 'luxon';
-import { Site } from '../models/site';
+import { SiteCore } from '../models/site';
 
 // gem updates every 6 hours, 3 hour ttl keeps us within one model run without redundant fetching
 const TTL_HOURS = 3;
@@ -30,11 +30,11 @@ export class WeatherService {
     this._siteForecast.set(next);
   }
 
-  loadAll(sites: Site[]) {
+  loadAll(sites: SiteCore[]) {
     sites.forEach((s) => void this.loadSite(s));
   }
 
-  async loadSite(site: Site) {
+  async loadSite(site: SiteCore) {
     const cached = this.loadFromCache(site);
     if (cached) {
       this.storeForecast(site.id, cached);
@@ -51,7 +51,7 @@ export class WeatherService {
     }
   }
 
-  private async fetchForecast(site: Site): Promise<Forecast> {
+  private async fetchForecast(site: SiteCore): Promise<Forecast> {
     const res = await fetch(forecastUrl(site));
     if (!res.ok) throw new Error(`Open-Meteo ${res.status} for ${site.id}`);
     return parseForecast(site, (await res.json()) as ForecastPayload, DateTime.now());
@@ -65,7 +65,7 @@ export class WeatherService {
     return Math.abs(forecast.savedAt.diffNow('hours').as('hours')) < TTL_HOURS;
   }
 
-  loadFromCache(site: Site): Forecast | null {
+  loadFromCache(site: SiteCore): Forecast | null {
     const cachedSiteJSON = localStorage.getItem(this.cacheKey(site.id));
     if (!cachedSiteJSON) return null;
     try {
@@ -94,7 +94,7 @@ export class WeatherService {
     return { siteId: forecast.siteId, savedAt, hours };
   }
 
-  cloudsFor(site: Site, window: Interval): CloudCoverResult {
+  cloudsFor(site: SiteCore, window: Interval): CloudCoverResult {
     const forecast = this._siteForecast().get(site.id);
     if (!forecast) return { available: false };
     return avgCloudDuring(forecast, window);

@@ -1,5 +1,5 @@
 import { DateTime, Interval } from 'luxon';
-import { Site } from '../models/site';
+import { SiteCore } from '../models/site';
 
 export type Forecast = {
   siteId: string;
@@ -13,12 +13,16 @@ export type CloudCoverResult =
 export type ForecastPayload = { hourly: { time: string[]; cloud_cover: number[] } };
 
 /** The Open-Meteo request for a site — pure so browser and precompute share one URL scheme. */
-export function forecastUrl(site: Site): string {
+export function forecastUrl(site: SiteCore): string {
   return `https://api.open-meteo.com/v1/forecast?latitude=${site.coordinates.lat}&longitude=${site.coordinates.lng}&hourly=cloud_cover&forecast_days=8`;
 }
 
 /** Decode an Open-Meteo payload into site-zoned hourly readings. */
-export function parseForecast(site: Site, payload: ForecastPayload, savedAt: DateTime): Forecast {
+export function parseForecast(
+  site: SiteCore,
+  payload: ForecastPayload,
+  savedAt: DateTime,
+): Forecast {
   const hours: Forecast['hours'] = [];
   for (let i = 0; i < payload.hourly.time.length; i++) {
     hours.push({

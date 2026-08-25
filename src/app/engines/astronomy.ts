@@ -1,6 +1,6 @@
 import * as SunCalc from 'suncalc';
 import { DateTime, Interval } from 'luxon';
-import { Site } from '../models/site';
+import { SiteCore } from '../models/site';
 import { noonOf, ObservingNight, observingNightOf, plusNights } from '../models/observing-night';
 
 export type DarknessWindow =
@@ -31,7 +31,7 @@ const EARTH_RADIUS_KM = 6378.14;
 const REFRACTION_DEG = 0.09;
 
 /** The moon is up once its upper limb clears the horizon — centre altitude ≈ −0.35°. */
-function isMoonUp(site: Site, at: Date): boolean {
+function isMoonUp(site: SiteCore, at: Date): boolean {
   const p = SunCalc.getMoonPosition(at, site.coordinates.lat, site.coordinates.lng);
   const semidiameter = 0.2725 * Math.asin(EARTH_RADIUS_KM / p.distance) * (180 / Math.PI);
   return p.altitude + semidiameter + REFRACTION_DEG >= 0;
@@ -43,7 +43,7 @@ const DAY_MS = 86_400_000;
 // suncalc resolves "which day" from its Date's UTC calendar day plus the longitude, so
 // the anchor must sit on the night's own solar day. Civil noon is NOT safe: past UTC+12
 // at east longitude (Pacific/Auckland in NZDT) it lands a whole solar day early.
-function solarAnchor(site: Site, night: ObservingNight): Date {
+function solarAnchor(site: SiteCore, night: ObservingNight): Date {
   const civilNoonMs = noonOf(site, night).toMillis();
   const transitPhaseMs =
     ((((12 - site.coordinates.lng / 15) * 3_600_000) % DAY_MS) + DAY_MS) % DAY_MS;
@@ -52,7 +52,10 @@ function solarAnchor(site: Site, night: ObservingNight): Date {
 }
 
 /** The night a user means by "tonight": in progress until sunrise, else the next to begin. */
-export function currentObservingNight(site: Site, now: DateTime = DateTime.now()): ObservingNight {
+export function currentObservingNight(
+  site: SiteCore,
+  now: DateTime = DateTime.now(),
+): ObservingNight {
   const local = now.setZone(site.timezone);
   const localDate = local.toISODate();
   if (localDate === null) throw new Error(`cannot resolve a local date at site ${site.id}`);
@@ -71,7 +74,7 @@ export function currentObservingNight(site: Site, now: DateTime = DateTime.now()
   return now.toMillis() < sunrise.getTime() ? plusNights(tonight, -1) : tonight;
 }
 
-export function getDarknessWindow(site: Site, night: ObservingNight): DarknessWindow {
+export function getDarknessWindow(site: SiteCore, night: ObservingNight): DarknessWindow {
   const anchor = solarAnchor(site, night);
 
   const times = SunCalc.getTimes(anchor, site.coordinates.lat, site.coordinates.lng);
@@ -97,7 +100,7 @@ export function getDarknessWindow(site: Site, night: ObservingNight): DarknessWi
   };
 }
 
-export function getMoonOverlap(site: Site, window: Interval<true>): MoonOverlap {
+export function getMoonOverlap(site: SiteCore, window: Interval<true>): MoonOverlap {
   let isUp = isMoonUp(site, window.start.toJSDate());
   let segmentStart = window.start;
   let overlapValue = 0;

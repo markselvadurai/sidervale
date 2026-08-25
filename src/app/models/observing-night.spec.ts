@@ -1,15 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { DateTime } from 'luxon';
-import { Site } from './site';
+import { SiteCore } from './site';
 import { observingNightOf, noonOf, plusNights } from './observing-night';
 
-function makeSite(overrides: Partial<Site> & Pick<Site, 'id' | 'timezone'>): Site {
+function makeSite(overrides: Partial<SiteCore> & Pick<SiteCore, 'id' | 'timezone'>): SiteCore {
   return {
-    name: overrides.id,
-    description: '',
     coordinates: { lat: 43.65, lng: -79.38 },
-    nearestTown: { driveDistanceKm: 0, name: '' },
-    bortle: 4,
     ...overrides,
   };
 }

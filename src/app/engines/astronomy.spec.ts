@@ -1,19 +1,15 @@
 import { describe, it, expect } from 'vitest';
 import * as SunCalc from 'suncalc';
 import { currentObservingNight, getDarknessWindow, getMoonOverlap } from './astronomy';
-import { Site } from '../models/site';
+import { SiteCore } from '../models/site';
 import { ObservingNight } from '../models/observing-night';
 import { DateTime, Interval } from 'luxon';
 
-// a minimal test site — only the fields the function uses
-const manitoulin: Site = {
+// a minimal test site — only the fields the engines use
+const manitoulin: SiteCore = {
   id: 'manitoulin-eco-park',
-  name: 'Manitoulin Eco Park',
-  description: '',
   coordinates: { lat: 45.6621, lng: -81.9679 },
-  nearestTown: { driveDistanceKm: 16, name: 'Manitowaning' },
   timezone: 'America/Toronto',
-  bortle: 2,
 };
 const nightOf = (localDate: string): ObservingNight => ({ siteId: manitoulin.id, localDate });
 const augNight = nightOf('2026-08-12');
@@ -73,7 +69,7 @@ describe('getDarknessWindow', () => {
   // ── No-true-darkness branch ──
 
   it('reports no true darkness at high latitude in the summer', () => {
-    const arcticSite: Site = {
+    const arcticSite: SiteCore = {
       ...manitoulin,
       coordinates: { lat: 69, lng: 18 },
       timezone: 'Europe/Oslo',
@@ -279,7 +275,7 @@ describe('currentObservingNight', () => {
   // ── Polar fallback: no sunrise event → the noon rule decides ──
 
   it('falls back to noon rollover during polar night', () => {
-    const svalbard: Site = {
+    const svalbard: SiteCore = {
       ...manitoulin,
       coordinates: { lat: 78.2, lng: 15.6 },
       timezone: 'Arctic/Longyearbyen', // UTC+1 in December
@@ -297,13 +293,13 @@ describe('currentObservingNight', () => {
 // of local day D is 23:00Z on D−1, so a civil-noon anchor hands suncalc the
 // wrong solar day. Kiritimati (UTC+14, longitude WEST) self-corrects, so it
 // pins the other side of the fix.
-const aoraki: Site = {
+const aoraki: SiteCore = {
   ...manitoulin,
   id: 'aoraki-test',
   coordinates: { lat: -43.73, lng: 170.1 },
   timezone: 'Pacific/Auckland',
 };
-const kiritimati: Site = {
+const kiritimati: SiteCore = {
   ...manitoulin,
   id: 'kiritimati-test',
   coordinates: { lat: 1.87, lng: -157.43 },

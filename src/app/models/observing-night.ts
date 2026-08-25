@@ -1,11 +1,11 @@
 import { DateTime } from 'luxon';
-import { Site } from './site';
+import { SiteCore } from './site';
 
 /** The night that BEGINS on this local calendar date at this site. */
 export type ObservingNight = { readonly siteId: string; readonly localDate: string }; // 'YYYY-MM-DD'
 
 /** The night in progress at `now`, or the next to begin — rolls over at site-local noon. */
-export function observingNightOf(site: Site, now: DateTime = DateTime.now()): ObservingNight {
+export function observingNightOf(site: SiteCore, now: DateTime = DateTime.now()): ObservingNight {
   // Observing days run noon-to-noon (why Julian dates roll at noon): pre-noon is yesterday's
   // night. A wall-clock rule, not minus-12-hours — exact-time math drifts on DST days.
   const local = now.setZone(site.timezone);
@@ -31,7 +31,7 @@ function calendarDate(localDate: string, zone: string): DateTime {
 }
 
 /** Noon at the site on the night's local date — the unambiguous anchor instant. */
-export function noonOf(site: Site, night: ObservingNight): DateTime {
+export function noonOf(site: SiteCore, night: ObservingNight): DateTime {
   if (night.siteId !== site.id) {
     throw new Error(`night belongs to site ${night.siteId}, not ${site.id}`);
   }
