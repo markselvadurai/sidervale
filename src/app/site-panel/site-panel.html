@@ -16,21 +16,20 @@
     </div>
     @if (sitesService.nightInfo(); as night) {
       @if (night.hasTrueDarkness) {
-        <div class="scoring">
-          <p>{{ sitesService.selectedNightLabel().toUpperCase() }}</p>
-          <span
-            class="score"
-            [class.score--marginal]="night.tier === 'marginal' && night.cloudDataAvailable"
-            [class.score--poor]="night.tier === 'poor' && night.cloudDataAvailable"
-            [class.score--clear]="night.tier === 'clear' && night.cloudDataAvailable"
-            [class.score--caveat]="!night.cloudDataAvailable"
-            >{{ night.score }}
-            @if (!night.cloudDataAvailable) {
-              ASTRONOMY ONLY
-            } @else {
-              {{ night.tier.toUpperCase() }}
-            }
-          </span>
+        <div
+          class="scoring"
+          [class.scoring--clear]="night.tier === 'clear' && night.cloudDataAvailable"
+          [class.scoring--marginal]="night.tier === 'marginal' && night.cloudDataAvailable"
+          [class.scoring--poor]="night.tier === 'poor' && night.cloudDataAvailable"
+          [class.scoring--caveat]="!night.cloudDataAvailable"
+        >
+          <div class="dial" [style.--fill]="night.score">
+            <span class="dial__score">{{ night.score }}</span>
+          </div>
+          <div class="verdict">
+            <p class="verdict__when">{{ sitesService.selectedNightLabel().toUpperCase() }}</p>
+            <p class="verdict__tier">{{ verdictWord(night.tier, night.cloudDataAvailable) }}</p>
+          </div>
         </div>
         <app-night-strip [night]="night" />
         <dl>

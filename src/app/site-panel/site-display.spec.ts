@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Site } from '../models/site';
-import { designationsLabel, regionLabel } from './site-display';
+import { designationsLabel, regionLabel, verdictWord } from './site-display';
 
 function site(overrides: Partial<Site>): Site {
   return {
@@ -66,5 +66,19 @@ describe('regionLabel', () => {
 
   it('is empty when no region data exists', () => {
     expect(regionLabel(site({}))).toBe('');
+  });
+});
+
+describe('verdictWord', () => {
+  it('names the tier in words, so the dial never carries the verdict in hue alone', () => {
+    expect(verdictWord('clear', true)).toBe('Clear');
+    expect(verdictWord('marginal', true)).toBe('Marginal');
+    expect(verdictWord('poor', true)).toBe('Poor');
+  });
+
+  it('says astronomy-only instead of a tier when the score has no cloud data behind it', () => {
+    // the tier is still computed, but naming it would overstate what the number knows
+    expect(verdictWord('clear', false)).toBe('Astronomy only');
+    expect(verdictWord('poor', false)).toBe('Astronomy only');
   });
 });

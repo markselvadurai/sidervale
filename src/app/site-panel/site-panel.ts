@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { SitesService } from '../services/sites';
 import { NightStrip } from '../night-strip/night-strip';
-import { designationsLabel, regionLabel } from './site-display';
+import { designationsLabel, regionLabel, verdictWord } from './site-display';
 
 @Component({
   selector: 'app-site-panel',
@@ -14,4 +14,5 @@ export class SitePanel {
   sheetExpanded = signal(false);
   protected designationsLabel = designationsLabel;
   protected regionLabel = regionLabel;
+  protected verdictWord = verdictWord;
 }

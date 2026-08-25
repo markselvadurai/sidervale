@@ -189,21 +189,26 @@ describe('SitePanel rendering', () => {
     expect(text('.header .subtitle')).toBe('21.95 MPSAS · Dark Sky Preserve');
   });
 
-  it('shows the score with its tier word and tier class', () => {
-    expect(text('.scoring p')).toBe('TUE · AUG 25');
-    expect(text('.scoring .score')).toBe('74 CLEAR');
-    const pill = fixture.nativeElement.querySelector('.score') as HTMLElement;
-    expect(pill.classList.contains('score--clear')).toBe(true);
-    expect(pill.classList.contains('score--caveat')).toBe(false);
+  it('renders the score as a dial filled in proportion to it, with the verdict in words', () => {
+    expect(text('.verdict__when')).toBe('TUE · AUG 25');
+    expect(text('.dial__score')).toBe('74');
+    // the arc length is data, not decoration: --fill drives the conic sweep
+    const dial = fixture.nativeElement.querySelector('.dial') as HTMLElement;
+    expect(dial.style.getPropertyValue('--fill')).toBe('74');
+    const scoring = fixture.nativeElement.querySelector('.scoring') as HTMLElement;
+    expect(scoring.classList.contains('scoring--clear')).toBe(true);
+    // the word is the colour-blind-safe channel — it must survive alongside the hue
+    expect(text('.verdict__tier')).toBe('Clear');
   });
 
   it('marks a cloudless score as astronomy-only rather than naming a tier', async () => {
     nightInfo.set(ASTRONOMY_ONLY);
     await fixture.whenStable();
-    expect(text('.scoring .score')).toBe('58 ASTRONOMY ONLY');
-    const pill = fixture.nativeElement.querySelector('.score') as HTMLElement;
-    expect(pill.classList.contains('score--caveat')).toBe(true);
-    expect(pill.classList.contains('score--marginal')).toBe(false);
+    expect(text('.dial__score')).toBe('58');
+    const scoring = fixture.nativeElement.querySelector('.scoring') as HTMLElement;
+    expect(scoring.classList.contains('scoring--caveat')).toBe(true);
+    expect(scoring.classList.contains('scoring--marginal')).toBe(false);
+    expect(text('.verdict__tier')).toBe('Astronomy only');
   });
 
   it('replaces the whole scoring block on a darkless night', async () => {

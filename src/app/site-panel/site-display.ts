@@ -1,4 +1,5 @@
 import { Designation, Site } from '../models/site';
+import { Tier } from '../engines/scorer';
 
 function titlecaseSlug(slug: string): string {
   return slug
@@ -24,4 +25,10 @@ export function regionLabel(site: Site): string {
   const country = site.countries[0]?.replace(/-\d+$/, '');
   if (!country) return '';
   return country.length <= 3 ? country.toUpperCase() : titlecaseSlug(country);
+}
+
+/** The word beside the dial. Hue alone cannot carry the verdict, so this is never dropped. */
+export function verdictWord(tier: Tier, cloudDataAvailable: boolean): string {
+  if (!cloudDataAvailable) return 'Astronomy only';
+  return tier[0].toUpperCase() + tier.slice(1);
 }
