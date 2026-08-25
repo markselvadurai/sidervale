@@ -107,6 +107,34 @@ describe('MapView', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
+  it('resizes markers when the map crosses a zoom bucket', async () => {
+    await landSites([SITE]);
+    const sizeAt = () => (marker().getIcon().options as { iconSize?: [number, number] }).iconSize;
+    // fitBounds on a single site lands at the maxZoom guard (8) → detail size
+    expect(sizeAt()).toEqual([28, 28]);
+
+    // world zoom: 293 markers at 28px fuse, so this must come down
+    const map = (component as unknown as { map: { setZoom(z: number, o?: unknown): void } }).map;
+    map.setZoom(2, { animate: false });
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(sizeAt()).toEqual([12, 12]);
+    expect(marker().getElement()?.classList.contains('site-marker--fine')).toBe(true);
+  });
+
+  it('announces the overlay state rather than leaving it to colour', async () => {
+    const btn = fixture.nativeElement.querySelector('.overlay-toggle') as HTMLButtonElement;
+    expect(btn.getAttribute('aria-pressed')).toBe('false');
+
+    btn.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(btn.getAttribute('aria-pressed')).toBe('true');
+    expect(btn.classList.contains('overlay-toggle--on')).toBe(true);
+  });
+
   it('re-styles rebuilt markers when the dataset itself is replaced', async () => {
     await landSites([SITE]);
     // a re-fetch: same id, new objects, so the marker map is torn down and rebuilt. The

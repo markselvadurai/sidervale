@@ -11,7 +11,7 @@ import {
 import * as L from 'leaflet';
 import { SitesService } from '../services/sites';
 import { SitePanel } from '../site-panel/site-panel';
-import { markerIcon } from './marker-icon';
+import { markerIcon, markerSize } from './marker-icon';
 
 @Component({
   selector: 'app-map-view',
@@ -33,11 +33,14 @@ export class MapView implements AfterViewInit, OnDestroy {
     'https://djlorenz.github.io/astronomy/image_tiles/tiles2024/tile_{z}_{x}_{y}.png',
     { opacity: 0.25, tileSize: 1024, maxNativeZoom: 6, zoomOffset: -2 },
   );
-  private makeIcon(classes: string[]): L.DivIcon {
+  private _zoom = signal(2);
+  private makeIcon(classes: string[], size: number): L.DivIcon {
+    // a 2px ring is a quarter of a 12px marker — thin the stroke with the diameter
+    const all = size <= 18 ? [...classes, 'site-marker--fine'] : classes;
     return L.divIcon({
-      className: classes.join(' '),
-      iconSize: [28, 28],
-      iconAnchor: [14, 14],
+      className: all.join(' '),
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
     });
   }
 
@@ -53,7 +56,9 @@ export class MapView implements AfterViewInit, OnDestroy {
       const sites = this.sitesService.sites();
       for (const site of sites) {
         const latlng = new L.LatLng(site.coordinates.lat, site.coordinates.lng);
-        const siteMark = new L.Marker(latlng, { icon: this.makeIcon(['site-marker']) });
+        const siteMark = new L.Marker(latlng, {
+          icon: this.makeIcon(['site-marker'], markerSize(this.map.getZoom())),
+        });
         this.markers.set(site.id, siteMark);
         siteMark.addTo(this.map);
         siteMark.on('click', () => this.sitesService.selectSite(site.id));
@@ -75,14 +80,15 @@ export class MapView implements AfterViewInit, OnDestroy {
       // loading), a loop-only read would drop these from the effect's dependency set forever
       const scores = this.sitesService.tonightScores();
       const selectedId = this.sitesService.selectedSiteId();
+      const size = markerSize(this._zoom());
       for (const site of this.sitesService.sites()) {
         const marker = this.markers.get(site.id);
         if (!marker) continue;
         const icon = markerIcon(site.name, scores.get(site.id), selectedId === site.id);
-        const key = `${icon.classes.join(' ')}|${icon.label}`;
+        const key = `${icon.classes.join(' ')}|${icon.label}|${size}`;
         if (this.iconKeys.get(site.id) === key) continue; // nothing changed — leave the DOM alone
         this.iconKeys.set(site.id, key);
-        marker.setIcon(this.makeIcon(icon.classes));
+        marker.setIcon(this.makeIcon(icon.classes, size));
         // set on the element, not via options.title: DivIcon reuses its div, so Leaflet's
         // own title handling (new elements only) never fires on a re-style
         marker.getElement()?.setAttribute('title', icon.label);
@@ -107,6 +113,8 @@ export class MapView implements AfterViewInit, OnDestroy {
       maxZoom: 20,
     });
     tiles.addTo(this.map);
+    this._zoom.set(this.map.getZoom());
+    this.map.on('zoomend', () => this._zoom.set(this.map.getZoom()));
     this.mapReady.set(true);
   }
 

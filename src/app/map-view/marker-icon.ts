@@ -33,3 +33,11 @@ export function markerIcon(
   }
   return { classes, label };
 }
+
+/** Marker diameter by zoom: 293 markers at detail size fuse into a mass at world zoom. */
+export function markerSize(zoom: number): number {
+  if (zoom <= 3) return 12;
+  if (zoom <= 5) return 18;
+  if (zoom <= 7) return 24;
+  return 28;
+}

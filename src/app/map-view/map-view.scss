@@ -25,23 +25,44 @@
 
 .overlay-toggle {
   position: absolute;
-  background-color: var(--nadir);
   z-index: 500;
-  top: 80px;
-  height: 46px;
-  width: 188px;
-  font-size: var(--t-desc);
+  top: 80px; // clears Leaflet's zoom control, which owns the top-left corner
+  left: var(--s3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  height: 30px;
+  padding: 0 var(--s3);
+  background-color: color-mix(in srgb, var(--nadir) 88%, transparent);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r-pill);
+  color: var(--airglow);
+  font-family: var(--sans);
+  font-size: var(--t-label);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border: 1px solid var(--horizon);
-  color: var(--airglow);
-  border-radius: var(--r2);
-  margin-left: 10px;
-  text-align: left;
-  padding-top: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+  }
+
+  &--on {
+    color: var(--starlight);
+    border-color: var(--airglow);
+    .overlay-toggle__dot {
+      background: var(--caution);
+      border-color: var(--caution);
+    }
+  }
+
   @media screen and (max-width: 640px) {
-    top: 0px;
-    margin: 10px;
+    top: var(--s2); // the zoom control is hidden here, so the corner is free
+    left: var(--s2);
   }
 }
 
@@ -59,44 +80,45 @@
   border: 2px solid var(--airglow);
 }
 
-// clear — ring plus a solid core: the most ink for the best night
+// The ring is always closed. Tier reads as how much of the disc is filled — wide core,
+// small core, hollow — which survives greyscale without ever leaving a partial mark.
+:host ::ng-deep .site-marker::after {
+  content: '';
+  position: absolute;
+  inset: 50%; // collapsed: hollow is the default, tiers open it up
+  border-radius: 50%;
+  background: currentColor;
+}
+
+// clear — a wide core: the most ink for the best night
 :host ::ng-deep .site-marker--clear {
   border-color: var(--clear);
+  color: var(--clear);
 }
 :host ::ng-deep .site-marker--clear::after {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  background: var(--clear);
+  inset: 22%; // proportional, so the core survives the zoom-driven diameter
 }
 
-// marginal — half a ring; the parent's border is hidden and redrawn on ::before so the
-// clip cannot touch Leaflet's own box
+// marginal — same closed ring, visibly less fill
 :host ::ng-deep .site-marker--marginal {
-  border-color: transparent;
+  border-color: var(--caution);
+  color: var(--caution);
 }
-:host ::ng-deep .site-marker--marginal::before {
-  content: '';
-  position: absolute;
-  inset: -2px; // padding box → border box, so the arc lands where the border was
-  border: 2px solid var(--caution);
-  border-radius: 50%;
-  clip-path: inset(0 0 50% 0);
+:host ::ng-deep .site-marker--marginal::after {
+  inset: 34%;
 }
 
-// poor — a thin hollow ring: least ink for the least promising night
-:host ::ng-deep .site-marker--poor {
+// small diameters get a thinner stroke, or the ring eats the marker
+:host ::ng-deep .site-marker--fine {
   border-width: 1px;
+}
+
+// poor — ring only, hollow
+:host ::ng-deep .site-marker--poor {
   border-color: var(--poor);
-  background: transparent;
 }
 
 :host ::ng-deep .site-marker--pending {
-  border-style: dashed;
-}
-// marginal draws its ring on ::before, so the dash has to follow it there
-:host ::ng-deep .site-marker--marginal.site-marker--pending::before {
   border-style: dashed;
 }
 :host ::ng-deep .site-marker--darkless {

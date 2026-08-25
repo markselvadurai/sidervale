@@ -1,4 +1,4 @@
-import { markerIcon } from './marker-icon';
+import { markerIcon, markerSize } from './marker-icon';
 import { TonightScore } from '../services/sites';
 
 const NAME = 'Torrance Barrens';
@@ -67,5 +67,27 @@ describe('markerIcon', () => {
     expect(markerIcon('Ann & Sandy Cross', dark(), false).label).toBe(
       'Ann & Sandy Cross, 74 clear',
     );
+  });
+});
+
+describe('markerSize', () => {
+  it('shrinks markers at world zoom, where 293 of them would otherwise fuse', () => {
+    expect(markerSize(2)).toBe(12);
+    expect(markerSize(3)).toBe(12);
+  });
+
+  it('grows in steps as the map zooms in, up to the detail size', () => {
+    expect(markerSize(4)).toBe(18);
+    expect(markerSize(5)).toBe(18);
+    expect(markerSize(6)).toBe(24);
+    expect(markerSize(7)).toBe(24);
+    expect(markerSize(8)).toBe(28);
+  });
+
+  it('never shrinks as zoom increases, at any zoom Leaflet can report', () => {
+    // maxZoom is 20 on the basemap; guard the whole range rather than the sampled steps
+    const sizes = Array.from({ length: 21 }, (_, z) => markerSize(z));
+    expect(sizes).toEqual([...sizes].sort((a, b) => a - b));
+    expect(sizes.at(-1)).toBe(28);
   });
 });
