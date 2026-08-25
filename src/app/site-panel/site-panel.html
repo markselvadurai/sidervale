@@ -48,6 +48,8 @@
           <dt>Cloud</dt>
           @if (night.cloudDataAvailable) {
             <dd>{{ night.cloudAvg }}% <span class="subtext">avg during dark window</span></dd>
+          } @else if (sitesService.forecastPending()) {
+            <dd><span class="subtext">forecast loading…</span></dd>
           } @else {
             <dd><span class="subtext">forecast unavailable — astronomy only</span></dd>
           }

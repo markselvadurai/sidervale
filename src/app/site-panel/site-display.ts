@@ -7,16 +7,21 @@ function titlecaseSlug(slug: string): string {
     .join(' ');
 }
 
-/** 'international-dark-sky-reserve' → 'International Dark Sky Reserve', joined with ' · '. */
+/** 'international-dark-sky-reserve' → 'International Dark Sky Reserve', joined with ' · '.
+ *  The sentinel type 'other' is omitted — a meaningless label is worse than a shorter one. */
 export function designationsLabel(designations: Designation[]): string {
-  return designations.map((d) => titlecaseSlug(d.type)).join(' · ');
+  return designations
+    .filter((d) => d.type !== 'other')
+    .map((d) => titlecaseSlug(d.type))
+    .join(' · ');
 }
 
 /** Where the site is, from the data we have: province code, else titlecased country slug. */
 export function regionLabel(site: Site): string {
   const province = site.provinces[0];
   if (province) return province.toUpperCase();
-  const country = site.countries[0];
+  // strip WordPress disambiguation suffixes ('niue-2' → 'niue') before rendering
+  const country = site.countries[0]?.replace(/-\d+$/, '');
   if (!country) return '';
   return country.length <= 3 ? country.toUpperCase() : titlecaseSlug(country);
 }

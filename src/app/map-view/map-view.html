@@ -6,4 +6,7 @@
 >
   light-pollution overlay{{ overlayOn() ? ' Toggle On' : ' Toggle Off' }} ⬒
 </button>
+@if (sitesService.datasetState() === 'failed') {
+  <div class="dataset-error">Site data failed to load — refresh to retry</div>
+}
 <app-site-panel />

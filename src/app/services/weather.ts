@@ -23,6 +23,16 @@ export type StoredForecast = {
 export class WeatherService {
   private _siteForecast = signal<Map<string, Forecast>>(new Map());
   readonly siteForecast = this._siteForecast.asReadonly();
+  // in-flight is not "unavailable": the panel must never claim a failure that is merely pending
+  private _pending = signal<ReadonlySet<string>>(new Set());
+  readonly pending = this._pending.asReadonly();
+
+  private setPending(siteId: string, isPending: boolean) {
+    const next = new Set(this._pending());
+    if (isPending) next.add(siteId);
+    else next.delete(siteId);
+    this._pending.set(next);
+  }
 
   private storeForecast(siteId: string, forecast: Forecast) {
     const next = new Map(this._siteForecast());
@@ -42,12 +52,15 @@ export class WeatherService {
         return;
       }
     }
+    this.setPending(site.id, true);
     try {
       const fresh = await this.fetchForecast(site);
       localStorage.setItem(this.cacheKey(site.id), JSON.stringify(this.toStorage(fresh)));
       this.storeForecast(site.id, fresh);
     } catch (error) {
       console.warn(`forecast fetch failed for ${site.id}`);
+    } finally {
+      this.setPending(site.id, false);
     }
   }
 

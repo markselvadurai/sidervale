@@ -26,6 +26,15 @@ describe('designationsLabel', () => {
     ).toBe('International Dark Sky Reserve');
   });
 
+  it("omits the sentinel 'other' type instead of rendering a meaningless label", () => {
+    expect(
+      designationsLabel([
+        { authority: 'darksky', type: 'international-dark-sky-reserve', year: 2007 },
+        { authority: 'rasc', type: 'other', year: 2007 },
+      ]),
+    ).toBe('International Dark Sky Reserve');
+  });
+
   it('joins multiple designations with a middle dot', () => {
     expect(
       designationsLabel([
@@ -38,7 +47,8 @@ describe('designationsLabel', () => {
 
 describe('regionLabel', () => {
   it('prefers the province code, uppercased', () => {
-    expect(regionLabel(site({ provinces: ['ON'], countries: ['canada'] }))).toBe('ON');
+    // lowercase fixture on purpose: an already-uppercase one cannot catch a dropped toUpperCase
+    expect(regionLabel(site({ provinces: ['on'], countries: ['canada'] }))).toBe('ON');
   });
 
   it('falls back to the titlecased country slug', () => {
@@ -47,6 +57,11 @@ describe('regionLabel', () => {
 
   it('uppercases acronym-length country slugs', () => {
     expect(regionLabel(site({ countries: ['usa'] }))).toBe('USA');
+  });
+
+  it('strips WordPress disambiguation suffixes from country slugs', () => {
+    // the dataset really contains countries: ['niue-2'] — must render 'Niue', never 'Niue 2'
+    expect(regionLabel(site({ countries: ['niue-2'] }))).toBe('Niue');
   });
 
   it('is empty when no region data exists', () => {

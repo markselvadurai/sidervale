@@ -55,9 +55,10 @@ export class MapView implements AfterViewInit, OnDestroy {
       }
       // one-shot: frame whatever the dataset spans — Ontario for 7 sites, the world for 293
       if (sites.length && !this.fitted) {
+        // maxZoom guards the degenerate 1-site bounds (zero area would dive to tile max zoom)
         this.map.fitBounds(
           L.latLngBounds(sites.map((s) => [s.coordinates.lat, s.coordinates.lng])),
-          { padding: [24, 24] },
+          { padding: [24, 24], maxZoom: 8 },
         );
         this.fitted = true;
       }
@@ -65,15 +66,19 @@ export class MapView implements AfterViewInit, OnDestroy {
 
     effect(() => {
       if (!this.mapReady()) return;
+      // read BEFORE the loop: when this runs against an empty marker map (sites still
+      // loading), a loop-only read would drop these from the effect's dependency set forever
+      const scores = this.sitesService.tonightScores();
+      const selectedId = this.sitesService.selectedSiteId();
       for (const [id, marker] of this.markers) {
-        const tonightScore = this.sitesService.tonightScores().get(id);
+        const tonightScore = scores.get(id);
         if (!tonightScore) continue;
         if (!tonightScore.hasTrueDarkness) {
           marker.setIcon(this.makeIcon(['site-marker', 'site-marker--darkless']));
         } else {
           const pending = !tonightScore.cloudDataAvailable;
           const tier = tonightScore.tier;
-          const selected = this.sitesService.selectedSiteId() === id;
+          const selected = selectedId === id;
 
           // array composition — every branch appends, nothing can overwrite:
           const classes = ['site-marker', `site-marker--${tier}`];

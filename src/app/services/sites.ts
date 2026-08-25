@@ -52,6 +52,9 @@ const dayLabels = ['M', 'T', 'W', 'TH', 'F', 'S', 'S'];
 export class SitesService {
   private _sites = signal<Site[]>([]);
   readonly sites = this._sites.asReadonly();
+  // the dataset IS the app: its failure must be visible state, not a devtools whisper
+  private _datasetState = signal<'loading' | 'ready' | 'failed'>('loading');
+  readonly datasetState = this._datasetState.asReadonly();
   private weather = inject(WeatherService);
 
   async load() {
@@ -59,7 +62,9 @@ export class SitesService {
       const res = await fetch('data/sites.json');
       if (!res.ok) throw new Error(`sites.json ${res.status}`);
       this._sites.set(parseSitesDataset(await res.json()));
+      this._datasetState.set('ready');
     } catch (error) {
+      this._datasetState.set('failed');
       console.warn('sites dataset failed to load', error);
     }
   }
@@ -171,6 +176,11 @@ export class SitesService {
       });
     }
     return m;
+  });
+
+  readonly forecastPending = computed<boolean>(() => {
+    const site = this.selectedSite();
+    return !!site && this.weather.pending().has(site.id);
   });
 
   readonly selectedNightLabel = computed<string>(() => {

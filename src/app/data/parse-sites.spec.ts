@@ -24,8 +24,10 @@ describe('parseSitesDataset', () => {
   });
 
   it('throws when the document has no sites array', () => {
-    expect(() => parseSitesDataset({})).toThrow(/sites/);
-    expect(() => parseSitesDataset(null)).toThrow(/sites/);
+    // anchored to the document-level message: a bare /sites/ also matches the incidental
+    // TypeError this call raises when the guard is deleted
+    expect(() => parseSitesDataset({})).toThrow(/no sites array/);
+    expect(() => parseSitesDataset(null)).toThrow(/no sites array/);
   });
 
   it('throws naming the site that lacks a timezone', () => {
@@ -33,8 +35,15 @@ describe('parseSitesDataset', () => {
     expect(() => parseSitesDataset({ sites: [broken] })).toThrow(/aoraki-mackenzie/);
   });
 
-  it('throws on out-of-range coordinates', () => {
-    const broken = { ...VALID_SITE, coordinates: { lat: 91, lng: 0 } };
+  it('throws on out-of-range coordinates, each axis independently', () => {
+    const badLat = { ...VALID_SITE, coordinates: { lat: 91, lng: 0 } };
+    expect(() => parseSitesDataset({ sites: [badLat] })).toThrow(/aoraki-mackenzie/);
+    const badLng = { ...VALID_SITE, coordinates: { lat: 0, lng: 181 } };
+    expect(() => parseSitesDataset({ sites: [badLng] })).toThrow(/aoraki-mackenzie/);
+  });
+
+  it('throws on non-numeric coordinates', () => {
+    const broken = { ...VALID_SITE, coordinates: { lat: '45', lng: 0 } };
     expect(() => parseSitesDataset({ sites: [broken] })).toThrow(/aoraki-mackenzie/);
   });
 });
