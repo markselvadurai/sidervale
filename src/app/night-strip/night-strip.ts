@@ -109,13 +109,14 @@ export class NightStrip {
   gradient = computed(() => {
     const s = this.darkStartPercent();
     const e = this.darkEndPercent();
+    // the strip's own twilight ramp, not the surface palette — see night-strip.scss
     return `linear-gradient(90deg,
-    #1C2B45 0%,
-    #0D1526 ${s * 0.55}%,
-    var(--zenith) ${s}%,
-    var(--zenith) ${e}%,
-    #0D1526 ${e + (100 - e) * 0.45}%,
-    #1C2B45 100%)`;
+    var(--twilight-far) 0%,
+    var(--twilight-near) ${s * 0.55}%,
+    var(--twilight-core) ${s}%,
+    var(--twilight-core) ${e}%,
+    var(--twilight-near) ${e + (100 - e) * 0.45}%,
+    var(--twilight-far) 100%)`;
   });
 
   toPercent(t: DateTime): number {

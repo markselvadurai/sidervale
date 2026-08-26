@@ -1,6 +1,12 @@
 // One source for every band colour: a legend swatch must not drift from the band it names.
 :host {
-  --band-twilight: var(--horizon);
+  // The strip encodes DATA in colour, so its twilight ramp is held here rather than borrowed
+  // from the surface palette — restyling cards must not quietly repaint what dusk looks like.
+  --twilight-far: #1c2b45; // civil twilight at the axis edge
+  --twilight-near: #0d1526; // deepening toward true dark
+  --twilight-core: #070b14; // the floor of the ramp, under the true-dark span
+
+  --band-twilight: var(--twilight-far);
   --band-dark: var(--truedark);
   --band-moon-ink: color-mix(in srgb, var(--caution) 30%, transparent);
   --band-moon-edge: color-mix(in srgb, var(--caution) 45%, transparent);

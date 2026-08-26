@@ -38,16 +38,16 @@
   z-index: 310;
   pointer-events: none;
   background-image:
-    radial-gradient(1px 1px at 8% 12%, #e8edf7cc, transparent 100%),
-    radial-gradient(1px 1px at 21% 78%, #e8edf788, transparent 100%),
-    radial-gradient(2px 2px at 33% 28%, #e8edf7aa, transparent 100%),
-    radial-gradient(1px 1px at 47% 64%, #e8edf777, transparent 100%),
-    radial-gradient(1px 1px at 58% 15%, #e8edf7bb, transparent 100%),
-    radial-gradient(2px 2px at 69% 82%, #e8edf766, transparent 100%),
-    radial-gradient(1px 1px at 77% 41%, #e8edf7aa, transparent 100%),
-    radial-gradient(1px 1px at 86% 68%, #e8edf788, transparent 100%),
-    radial-gradient(2px 2px at 93% 23%, #e8edf799, transparent 100%),
-    radial-gradient(1px 1px at 39% 91%, #e8edf788, transparent 100%);
+    radial-gradient(1px 1px at 8% 12%, #e6ebf3cc, transparent 100%),
+    radial-gradient(1px 1px at 21% 78%, #e6ebf388, transparent 100%),
+    radial-gradient(2px 2px at 33% 28%, #e6ebf3aa, transparent 100%),
+    radial-gradient(1px 1px at 47% 64%, #e6ebf377, transparent 100%),
+    radial-gradient(1px 1px at 58% 15%, #e6ebf3bb, transparent 100%),
+    radial-gradient(2px 2px at 69% 82%, #e6ebf366, transparent 100%),
+    radial-gradient(1px 1px at 77% 41%, #e6ebf3aa, transparent 100%),
+    radial-gradient(1px 1px at 86% 68%, #e6ebf388, transparent 100%),
+    radial-gradient(2px 2px at 93% 23%, #e6ebf399, transparent 100%),
+    radial-gradient(1px 1px at 39% 91%, #e6ebf388, transparent 100%);
   animation: twinkle 5s ease-in-out infinite alternate; // reduced-motion guard zeroes this
 }
 @keyframes twinkle {

@@ -12,6 +12,10 @@ const WATER = '#090d1c';
 
 export const TIER_ORDER = ['clear', 'marginal', 'poor', 'darkless', 'unknown'] as const;
 
+// MapLibre paint expressions are evaluated off the DOM and cannot read a CSS custom property,
+// so the tier hexes below are hand-copies of styles.scss. Change one, change both — a marker
+// that disagrees with the panel beside it is worse than either colour on its own.
+
 /** The overlay's opacity, owned once: the legend composites itself the same way the map does,
  *  so the key cannot drift from the raster it explains. */
 export const OVERLAY_OPACITY = 0.25;
@@ -60,9 +64,9 @@ export function siteCirclePaint(): Record<string, unknown> {
       'match',
       ['get', 'tier'],
       'clear',
-      '#7fd1a8',
+      '#6ee7a7',
       'marginal',
-      '#e2b857',
+      '#f0b429',
       'poor',
       'rgba(0,0,0,0)', // hollow: the least ink for the least promising night
       'darkless',
@@ -92,16 +96,16 @@ export function siteCirclePaint(): Record<string, unknown> {
       'match',
       ['get', 'tier'],
       'clear',
-      '#7fd1a8',
+      '#6ee7a7',
       'marginal',
-      '#e2b857',
+      '#f0b429',
       'poor',
       '#a0524d',
       'darkless',
-      '#1c2b45',
+      '#2a3441',
       'unknown',
-      '#8fa3c4',
-      '#8fa3c4',
+      '#93a1b5',
+      '#93a1b5',
     ],
     'circle-stroke-opacity': [
       'match',
@@ -127,7 +131,7 @@ export function selectionPaint(): Record<string, unknown> {
     'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 9, 8, 18],
     'circle-color': 'rgba(0,0,0,0)',
     'circle-stroke-width': 2,
-    'circle-stroke-color': '#9184d9', // the accent; red stays reserved for errors
+    'circle-stroke-color': '#7aa2f7', // the accent; red stays reserved for errors
     'circle-stroke-opacity': 0.9,
   };
 }

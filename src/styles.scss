@@ -1,14 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+// Surface, text and accent values read off the Nightstrip mockup (2026-08-26). The night
+// strip holds its own twilight ramp — see night-strip.scss — because those encode data and
+// must not move when the furniture is repainted.
 :root {
   --truedark: #000;
-  --zenith: #070b14;
-  --nadir: #0d1526;
-  --horizon: #1c2b45;
-  --starlight: #e8edf7;
-  --airglow: #8fa3c4;
-  --redshift: #e14b44;
-  --clear: #7fd1a8;
-  --caution: #e2b857;
+  --zenith: #080c12; // the void behind everything
+  --nadir: #141b24; // card and panel surface, clearly lifted off the void
+  --raised: #1b232e; // an inset within a card: callouts, wells
+  --horizon: #2a3441; // borders, which the mockup lets you actually see (1.37:1 on --nadir)
+  --starlight: #e6ebf3;
+  --airglow: #93a1b5; // muted text: less blue than before, as in the mockup
+  --redshift: #e8595e; // nudged up from the mockup's red to clear 4.5:1 on --nadir
+  --clear: #6ee7a7; // the mockup's score green — mintier and brighter
+  --caution: #f0b429; // and its amber, more saturated
+  // deliberately NOT brightened to match the mockup: "a bad night must recede" is the whole
+  // visual argument of this design, and the mockup never has to render one.
   --poor: #a0524d;
 
   --s1: 0.25rem; //  4px
@@ -18,14 +24,17 @@
   --s5: 1.5rem;
   --s6: 2rem; // 32px
 
-  // radius scale from the 1f component spec sheet (ADR 0007); 50% circles are not on it
-  --r1: 6px;
-  --r2: 10px;
-  --r3: 14px;
+  // radius scale from the 1f component spec sheet (ADR 0007); 50% circles are not on it.
+  // Opened up one step each to match the mockup's softer cards.
+  --r1: 8px;
+  --r2: 12px;
+  --r3: 16px;
   --r-pill: 999px;
 
-  // from the Nocturne design system (ADR 0007): the accent is a line and a glow, never a flood
-  --accent: #9184d9;
+  // from the Nocturne design system (ADR 0007): the accent is a line and a glow, never a flood.
+  // The mockup's accent is periwinkle rather than violet; it still clears the map's water
+  // (#090d1c) and ground (#0d1226), which is what the selection ring is drawn against.
+  --accent: #7aa2f7;
   --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
   --shadow-md: 0 0 0 1px var(--horizon), 0 6px 18px rgba(0, 0, 0, 0.55);
 
@@ -51,7 +60,8 @@ body {
   margin: 0;
 }
 
-// keyboard focus per the design system: the accent carries it (5.7:1 on --nadir)
+// keyboard focus per the design system: the accent carries it (6.9:1 on --nadir, up
+// from 5.7:1 — the periwinkle sits brighter against the lifted card surface than violet did)
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;

@@ -196,7 +196,7 @@ export class MapView implements AfterViewInit, OnDestroy {
         source: SITES_SOURCE,
         minzoom: 5, // zoom-gated, collision-managed — what Leaflet could not do
         layout: labelLayout(),
-        paint: { 'text-color': '#e8edf7', 'text-halo-color': '#070b14', 'text-halo-width': 1.2 },
+        paint: { 'text-color': '#e6ebf3', 'text-halo-color': '#080c12', 'text-halo-width': 1.2 },
       });
 
       map.on('click', 'site-circles', (e) => {
