@@ -138,8 +138,10 @@
 
 .graph__arc {
   fill: none;
-  stroke: var(--band-moon-edge);
-  stroke-width: 1.5;
+  // brighter than the band it belongs to: a 30-degree peak is a third of the box, and at the
+  // band's own 45% mix that curve is nearly invisible. Same hue, so the legend still reads.
+  stroke: color-mix(in srgb, var(--caution) 85%, transparent);
+  stroke-width: 1.75;
   // the viewBox is stretched hard on x; without this the stroke stretches with it
   vector-effect: non-scaling-stroke;
 }

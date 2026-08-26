@@ -64,15 +64,26 @@
     }
   }
 
-  // four headline numbers, wrapping rather than shrinking below legibility
+  // Four across. 5.5rem wanted 388px of track, the 420px panel offers 388 after padding, and
+  // auto-fit therefore kept three and orphaned Darkness onto a row of its own. 4.5rem needs
+  // 324 and still fits four at a 375px sheet (measured: 76.25px columns); it folds only below
+  // roughly 356px, where the labels would be unreadable in one line anyway.
   .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr));
     gap: var(--s2) var(--s3);
     margin: 0 0 var(--s3);
     padding: var(--s3) 0;
     border-top: 1px solid var(--horizon);
     border-bottom: 1px solid var(--horizon);
+  }
+
+  // the panel's generic dt/dd carry a rule and padding for the detail list below; the stat
+  // cells sit inside their own bordered band and must not draw a second line each
+  .stat__label,
+  .stat__value {
+    border-top: 0;
+    padding: 0;
   }
 
   .stat__label {
