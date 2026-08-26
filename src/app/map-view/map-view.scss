@@ -255,3 +255,53 @@
     font-size: var(--t-desc);
   }
 }
+
+// bottom-left, clear of the rail and the attribution control
+.lp-legend {
+  position: absolute;
+  left: var(--s4);
+  bottom: var(--s5);
+  z-index: 2;
+  width: 12rem;
+  padding: var(--s2) var(--s3) var(--s3);
+  background: color-mix(in srgb, var(--zenith) 88%, transparent);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r2);
+  box-shadow: var(--shadow-md);
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--airglow);
+}
+
+.lp-legend__title {
+  margin: 0 0 var(--s2);
+  color: var(--starlight);
+}
+
+// the ground beneath is the map's own, so the swatch composites exactly as the raster does
+.lp-legend__bar {
+  height: 10px;
+  border-radius: 2px;
+  background: var(--ground);
+  overflow: hidden;
+}
+
+.lp-legend__ramp {
+  display: block;
+  height: 100%;
+}
+
+.lp-legend__ends {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--s1);
+}
+
+.lp-legend__source {
+  margin: var(--s2) 0 0;
+  text-transform: none;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--airglow) 60%, transparent);
+}

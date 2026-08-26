@@ -5,6 +5,8 @@ import {
   indigoOverrides,
   siteCirclePaint,
   TIER_ORDER,
+  lpGradient,
+  LP_AXIS,
 } from './map-style';
 import { markerSize } from './map-features';
 
@@ -46,5 +48,32 @@ describe('map style', () => {
     const poor = JSON.parse(stroke).indexOf('poor');
     const opacities = JSON.parse(stroke) as unknown[];
     expect(Number(opacities[clear + 1])).toBeGreaterThan(Number(opacities[poor + 1]));
+  });
+});
+
+describe('lpGradient', () => {
+  it('spans the full bar, darkest sky first', () => {
+    const g = lpGradient();
+    expect(g.startsWith('linear-gradient(90deg, #000000 0.0%')).toBe(true);
+    expect(g.endsWith('#a0a0a0 100.0%)')).toBe(true);
+  });
+
+  it('places every sampled colour in ascending order along the axis', () => {
+    // an out-of-order stop renders as a hard band and would misread the raster
+    const percents = [...lpGradient().matchAll(/([\d.]+)%/g)].map((m) => Number(m[1]));
+    expect(percents).toHaveLength(11);
+    for (let i = 1; i < percents.length; i++) {
+      expect(percents[i]).toBeGreaterThan(percents[i - 1]);
+    }
+  });
+
+  it('positions a stop by its measured brightness, not by its index', () => {
+    // 21.5 sits (22.0 − 21.5) / (22.0 − 18.01) = 12.5% along; evenly spaced stops would put
+    // this fourth of eleven colours at 30%
+    expect(lpGradient()).toContain('#1fa12a 12.5%');
+  });
+
+  it('runs the axis from the darkest sky the atlas models to the brightest sampled', () => {
+    expect(LP_AXIS).toEqual([22.0, 18.01]);
   });
 });

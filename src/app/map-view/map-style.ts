@@ -12,6 +12,40 @@ const WATER = '#090d1c';
 
 export const TIER_ORDER = ['clear', 'marginal', 'poor', 'darkless', 'unknown'] as const;
 
+/** The overlay's opacity, owned once: the legend composites itself the same way the map does,
+ *  so the key cannot drift from the raster it explains. */
+export const OVERLAY_OPACITY = 0.25;
+
+// The light-pollution ramp, SAMPLED from the live 2024 atlas tiles rather than eyeballed —
+// a legend that guesses its own key is worse than no legend. Method: for sites whose mpsas
+// the dataset already holds, compute the z6 tile and pixel, read a 7×7 neighbourhood, take
+// the commonest colour. Every stop below agreed 49/49 except 21.92 (46/49). Re-derivable.
+const LP_RAMP: [number, string][] = [
+  [22.0, '#000000'],
+  [21.92, '#424242'],
+  [21.77, '#2154d8'],
+  [21.5, '#1fa12a'],
+  [21.1, '#6e641e'],
+  [20.74, '#b8a625'],
+  [20.24, '#bf641e'],
+  [19.65, '#fd9650'],
+  [18.95, '#fb5a49'],
+  [18.42, '#fb998a'],
+  [18.01, '#a0a0a0'],
+];
+
+/** The mpsas each end of the legend axis represents — darkest sky first. */
+export const LP_AXIS: [number, number] = [LP_RAMP[0][0], LP_RAMP[LP_RAMP.length - 1][0]];
+
+/** The sampled ramp as a CSS gradient, placed on the mpsas axis it was measured against. */
+export function lpGradient(): string {
+  const [dark, bright] = LP_AXIS;
+  const stops = LP_RAMP.map(
+    ([mpsas, hex]) => `${hex} ${(((dark - mpsas) / (dark - bright)) * 100).toFixed(1)}%`,
+  );
+  return `linear-gradient(90deg, ${stops.join(', ')})`;
+}
+
 /** Zoom → radius, derived from markerSize so marker scale has exactly one owner. */
 export function circleRadius(): unknown[] {
   const stops = [2, 4, 6, 8].flatMap((z) => [z, markerSize(z) / 2]);

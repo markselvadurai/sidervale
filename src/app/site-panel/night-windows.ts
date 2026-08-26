@@ -73,6 +73,25 @@ export function bestWindow(night: MoonInput): NightSpan | null {
   return best && isPlannable(best) ? best : null;
 }
 
+type MoonsetInput = {
+  moonSegments: Interval<true>[];
+  civilDusk: DateTime;
+  civilDawn: DateTime;
+};
+
+/** When the moon gets out of the way — or why it never does. Reads the CIVIL-axis segments,
+ *  which getMoonOverlap has already clipped to the axis, so "ends at dawn" means "never set". */
+export function moonsetText(night: MoonsetInput): string {
+  const segments = night.moonSegments;
+  if (!segments.length) return 'Down all night';
+  const last = segments[segments.length - 1];
+  if (last.end < night.civilDawn) return last.end.toFormat('HH:mm');
+  // still up when the axis runs out: distinguish owning the night from merely outlasting it
+  return segments.length === 1 && segments[0].start <= night.civilDusk
+    ? 'Up all night'
+    : 'Up at dawn';
+}
+
 /** The night strip, said out loud: the dark window split at moonrise/set, plus the tail. */
 export function tonightWindows(night: WindowsInput): NightWindowRow[] {
   const { start, end } = night.darknessWindow;

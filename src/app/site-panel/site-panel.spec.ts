@@ -204,6 +204,21 @@ describe('SitePanel rendering', () => {
     expect(text('.header .subtitle')).toBe('21.95 MPSAS · Dark Sky Preserve');
   });
 
+  it('heads the night with four stats, none of them invented', () => {
+    // from the fixture alone: no moon segments on the civil axis; moon owns the dark window
+    // from 02:00 so the best stretch is 22:00–02:00; cloudAvg 18; darkDuration 6h 0m.
+    // Drive time is absent on purpose — the ORS job does not exist, and a stubbed
+    // "2h 45m" would be a fabricated fact.
+    expect(texts('.stat__label')).toEqual(['Moonset', 'Cloud', 'Best window', 'Darkness']);
+    expect(texts('.stat__value')).toEqual(['Down all night', '18%', '22:00', '6h 0m']);
+  });
+
+  it('says the forecast is missing rather than showing a confident zero', async () => {
+    nightInfo.set(ASTRONOMY_ONLY);
+    await fixture.whenStable();
+    expect(texts('.stat__value')[1]).toBe('No forecast');
+  });
+
   it('states the Bortle class beside the exact brightness it was derived from', () => {
     // 21.95 is class 1 under both published mappings, so no range is warranted
     expect(text('.chip--bortle')).toBe('Bortle 1');
@@ -265,7 +280,7 @@ describe('SitePanel rendering', () => {
   });
 
   it('states the darkness window, the moon and the cloud average', () => {
-    const rows = texts('dl dd');
+    const rows = texts('.detail dd');
     expect(rows[0]).toBe('22:00 - 04:00 · 6h 0m true dark');
     expect(rows[1]).toBe('43% illum · 2h 10m in the dark window');
     expect(rows[2]).toBe('18% avg during dark window');
@@ -275,11 +290,11 @@ describe('SitePanel rendering', () => {
     nightInfo.set(ASTRONOMY_ONLY);
     forecastPending.set(true);
     await fixture.whenStable();
-    expect(texts('dl dd')[2]).toBe('forecast loading…');
+    expect(texts('.detail dd')[2]).toBe('forecast loading…');
 
     forecastPending.set(false);
     await fixture.whenStable();
-    expect(texts('dl dd')[2]).toBe('forecast unavailable — astronomy only');
+    expect(texts('.detail dd')[2]).toBe('forecast unavailable — astronomy only');
   });
 
   it('renders one week-strip entry per night, tier-coded in order', () => {

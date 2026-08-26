@@ -62,6 +62,23 @@
     }
   </div>
 </nav>
+@if (overlayOn()) {
+  <div class="lp-legend" role="group" aria-label="Light pollution scale">
+    <p class="lp-legend__title">Light pollution</p>
+    <div class="lp-legend__bar">
+      <span
+        class="lp-legend__ramp"
+        [style.backgroundImage]="lpGradient"
+        [style.opacity]="overlayOpacity"
+      ></span>
+    </div>
+    <div class="lp-legend__ends">
+      <span>{{ lpEnds[0] }}</span>
+      <span>{{ lpEnds[1] }}</span>
+    </div>
+    <p class="lp-legend__source">D. Lorenz world atlas 2024</p>
+  </div>
+}
 @if (listOpen()) {
   <div class="rank-panel">
     <app-ranked-list [sites]="visibleSites()" />

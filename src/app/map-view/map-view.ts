@@ -21,9 +21,13 @@ import {
   GROUND,
   indigoOverrides,
   labelLayout,
+  LP_AXIS,
+  lpGradient,
+  OVERLAY_OPACITY,
   selectionPaint,
   siteCirclePaint,
 } from './map-style';
+import { bortleText } from '../site-panel/site-display';
 
 /** MapLibre requires WebGL2 and reports its absence asynchronously; ask up front instead. */
 function hasWebGl2(): boolean {
@@ -54,6 +58,10 @@ export class MapView implements AfterViewInit, OnDestroy {
    *  question the product exists for — so degrade loudly rather than dying. */
   mapUnavailable = signal(false);
   overlayOn = signal(false);
+  // the key reads from the same constants the layer paints with, so it cannot drift
+  protected readonly lpGradient = lpGradient();
+  protected readonly overlayOpacity = OVERLAY_OPACITY;
+  protected readonly lpEnds = LP_AXIS.map((mpsas) => bortleText(mpsas));
 
   markerFilter = signal<'destinations' | 'communities' | 'all'>('destinations');
   listOpen = signal(false);
@@ -161,7 +169,7 @@ export class MapView implements AfterViewInit, OnDestroy {
         id: OVERLAY_SOURCE,
         type: 'raster',
         source: OVERLAY_SOURCE,
-        paint: { 'raster-opacity': 0.25 },
+        paint: { 'raster-opacity': OVERLAY_OPACITY },
         layout: { visibility: 'none' },
       });
 

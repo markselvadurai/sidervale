@@ -37,6 +37,14 @@
             <p class="verdict__tier">{{ verdictWord(night.tier, night.cloudDataAvailable) }}</p>
           </div>
         </div>
+        <dl class="stats">
+          @for (s of stats(); track s.key) {
+            <div class="stat">
+              <dt class="stat__label">{{ s.label }}</dt>
+              <dd class="stat__value">{{ s.value }}</dd>
+            </div>
+          }
+        </dl>
         <app-night-strip [night]="night" />
         <div class="windows">
           @for (w of tonightWindows(night); track w.range) {
@@ -47,7 +55,7 @@
             </div>
           }
         </div>
-        <dl>
+        <dl class="detail">
           <dt>Darkness</dt>
           <dd>
             {{ night.darknessWindow.start.toFormat('HH:mm') }} -

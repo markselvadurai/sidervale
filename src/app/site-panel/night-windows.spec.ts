@@ -1,5 +1,5 @@
 import { DateTime, Interval } from 'luxon';
-import { bestWindow, tonightWindows } from './night-windows';
+import { bestWindow, moonsetText, tonightWindows } from './night-windows';
 
 // exact-hour UTC fixture: every expected string is derivable by eye
 const utc = (day: number, hour: number, minute = 0, second = 0) =>
@@ -184,5 +184,34 @@ describe('bestWindow', () => {
     // handed over reversed: moonless 22:00–23:00, 00:00–02:00 (longest), 03:00–04:00
     const rows = bestWindow(night([seg(utc(26, 2), utc(26, 3)), seg(utc(25, 23), utc(26, 0))]));
     expect(iso(rows)).toEqual({ start: utc(26, 0).toISO(), end: utc(26, 2).toISO() });
+  });
+});
+
+describe('moonsetText', () => {
+  // the strip's axis: civil dusk 21:00 → civil dawn 05:00
+  const DUSK = utc(25, 21);
+  const axis = (moonSegments: Interval<true>[]) => ({
+    moonSegments,
+    civilDusk: DUSK,
+    civilDawn: DAWN,
+  });
+
+  it('names the time the moon drops below the horizon', () => {
+    expect(moonsetText(axis([seg(DUSK, utc(26, 1))]))).toBe('01:00');
+  });
+
+  it('says the moon never rose rather than printing a blank', () => {
+    expect(moonsetText(axis([]))).toBe('Down all night');
+  });
+
+  it('distinguishes a moon that owns the whole night from one that merely outlasts it', () => {
+    expect(moonsetText(axis([seg(DUSK, DAWN)]))).toBe('Up all night');
+    // rises mid-night and is still up at dawn — there is no moonset to name
+    expect(moonsetText(axis([seg(utc(26, 2), DAWN)]))).toBe('Up at dawn');
+  });
+
+  it('reads the LAST segment, not the first, when the moon sets and rises again', () => {
+    expect(moonsetText(axis([seg(DUSK, utc(25, 23)), seg(utc(26, 3), DAWN)]))).toBe('Up at dawn');
+    expect(moonsetText(axis([seg(DUSK, utc(25, 23)), seg(utc(26, 3), utc(26, 4))]))).toBe('04:00');
   });
 });

@@ -160,6 +160,23 @@ describe('MapView', () => {
     expect((list.componentInstance as RankedList).sites().map((s) => s.id)).toEqual(['test-site']);
   });
 
+  it('keys the overlay only while it is on — colour with no key is not data', async () => {
+    expect(fixture.nativeElement.querySelector('.lp-legend')).toBeNull();
+
+    (fixture.nativeElement.querySelector('.overlay-toggle') as HTMLButtonElement).click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    // ends are named by the same engine that labels the site chips, not by hand
+    expect(texts('.lp-legend__ends span')).toEqual(['Bortle 1', 'Bortle 7']);
+    expect(texts('.lp-legend__source')[0]).toContain('Lorenz');
+    // the swatch composites exactly as the map does, so the key cannot flatter the raster
+    const ramp = fixture.nativeElement.querySelector('.lp-legend__ramp') as HTMLElement;
+    expect(ramp.style.opacity).toBe('0.25');
+    // #1fa12a, the colour the atlas paints at 21.5 mpsas — the DOM reports it as rgb()
+    expect(ramp.style.backgroundImage).toContain('rgb(31, 161, 42) 12.5%');
+  });
+
   it('announces the overlay state rather than leaving it to colour', async () => {
     const btn = fixture.nativeElement.querySelector('.overlay-toggle') as HTMLButtonElement;
     expect(btn.getAttribute('aria-pressed')).toBe('false');
