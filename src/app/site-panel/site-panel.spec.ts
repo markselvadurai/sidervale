@@ -203,6 +203,23 @@ describe('SitePanel rendering', () => {
     expect(text('.header .subtitle')).toBe('21.95 MPSAS · Dark Sky Preserve');
   });
 
+  it('states the Bortle class beside the exact brightness it was derived from', () => {
+    // 21.95 is class 1 under both published mappings, so no range is warranted
+    expect(text('.chip--bortle')).toBe('Bortle 1');
+    expect(fixture.nativeElement.querySelector('.chip--bortle').getAttribute('title')).toBe(
+      'Excellent dark-sky site',
+    );
+  });
+
+  it('widens to a range where the published mappings disagree', async () => {
+    // 21.73 falls between the two tables' class-1 floors — claiming either would be a guess
+    selectedSite.set({ ...SITE, brightness: { ...SITE.brightness, mpsas: 21.73 } });
+    await fixture.whenStable();
+    expect(text('.chip--bortle')).toBe('Bortle 1–2');
+    // the exact modelled value stays on screen, so the chip never has to carry precision
+    expect(text('.header .subtitle')).toBe('21.73 MPSAS · Dark Sky Preserve');
+  });
+
   it('renders the score as a dial filled in proportion to it, with the verdict in words', () => {
     expect(text('.verdict__when')).toBe('TUE · AUG 25');
     expect(text('.dial__score')).toBe('74');

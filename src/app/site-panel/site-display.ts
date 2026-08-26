@@ -1,5 +1,6 @@
 import { Designation, Site } from '../models/site';
 import { Tier } from '../engines/scorer';
+import { bortleFor } from '../engines/bortle';
 
 function titlecaseSlug(slug: string): string {
   return slug
@@ -15,6 +16,12 @@ export function designationsLabel(designations: Designation[]): string {
     .filter((d) => d.type !== 'other')
     .map((d) => titlecaseSlug(d.type))
     .join(' · ');
+}
+
+/** 'Bortle 1', or 'Bortle 1–2' where the published mappings cannot separate the two. */
+export function bortleText(mpsas: number): string {
+  const { low, high } = bortleFor(mpsas);
+  return low === high ? `Bortle ${low}` : `Bortle ${low}–${high}`;
 }
 
 /** Where the site is, from the data we have: province code, else titlecased country slug. */

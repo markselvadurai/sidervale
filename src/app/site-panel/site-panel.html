@@ -14,6 +14,11 @@
       <p class="subtitle">
         {{ site.brightness.mpsas }} MPSAS &middot; {{ designationsLabel(site.designations) }}
       </p>
+      @if (bortle(); as b) {
+        <p class="chips">
+          <span class="chip chip--bortle" [title]="b.label">{{ b.text }}</span>
+        </p>
+      }
     </div>
     @if (sitesService.nightInfo(); as night) {
       @if (night.hasTrueDarkness) {

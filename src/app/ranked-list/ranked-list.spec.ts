@@ -129,13 +129,23 @@ describe('RankedList', () => {
     expect(fixture.nativeElement.querySelector('.rank-row')).toBeNull();
   });
 
+  it('carries sky darkness per row — the one thing the score does not encode', async () => {
+    // computeScore takes darkness hours, moon and cloud. It never sees brightness, so a
+    // high-scoring site can sit under a poor sky; the row has to say so.
+    scores.set(new Map([['near', scored(70)]]));
+    fixture.componentRef.setInput('sites', [NEAR]);
+    await fixture.whenStable();
+    // fixture mpsas 21.5 is class 3 under one published table and 2 under the other
+    expect(texts('.rank-row__bortle')).toEqual(['Bortle 2–3']);
+  });
+
   it('is anchored to home: shows the from-label and each site distance', async () => {
     scores.set(new Map([['near', scored(70)]]));
     fixture.componentRef.setInput('sites', [NEAR]);
     await fixture.whenStable();
     expect(texts('.rank-list__from')).toEqual(['from Toronto, ON']);
     // 1° of latitude from Toronto — 111 km by the fixture's own arithmetic
-    expect(texts('.rank-row__meta')).toEqual(['111 km']);
+    expect(texts('.rank-row__km')).toEqual(['111 km']);
   });
 
   it('excludes sites beyond reach and says how many it hid', async () => {

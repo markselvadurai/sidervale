@@ -4,6 +4,7 @@ import { HomeService } from '../services/home';
 import { Site } from '../models/site';
 import { Tier } from '../engines/scorer';
 import { distanceKm } from '../engines/geo';
+import { bortleText } from '../site-panel/site-display';
 
 type Entry = { site: Site; score: number; tier: Tier; km: number };
 
@@ -22,6 +23,8 @@ export class RankedList {
   /** The caller decides which sites compete — the map passes its filtered set. */
   sites = input.required<Site[]>();
   protected readonly reachKm = REACH_KM;
+  // brightness is the one dimension computeScore never sees — the row states it separately
+  protected bortleText = bortleText;
 
   protected rows = computed(() => {
     const home = this.homeService.home();

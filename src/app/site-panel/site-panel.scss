@@ -43,6 +43,25 @@
       font-size: var(--t-desc);
       color: var(--airglow);
     }
+
+    .chips {
+      margin: var(--s2) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s2);
+    }
+
+    // reads as a fact, not a verdict: no tier hue, which stays reserved for the score
+    .chip {
+      font-family: var(--mono);
+      font-size: var(--t-label);
+      letter-spacing: 0.08em;
+      color: var(--starlight);
+      border: 1px solid var(--horizon);
+      border-radius: var(--r-pill);
+      padding: 2px var(--s2);
+      cursor: help;
+    }
   }
 
   // ── score dial (spec 1f): a 270° gauge, tier in hue AND in words ──

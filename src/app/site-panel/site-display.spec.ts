@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Site } from '../models/site';
-import { designationsLabel, regionLabel, verdictWord } from './site-display';
+import { bortleText, designationsLabel, regionLabel, verdictWord } from './site-display';
 
 function site(overrides: Partial<Site>): Site {
   return {
@@ -16,6 +16,21 @@ function site(overrides: Partial<Site>): Site {
     ...overrides,
   };
 }
+
+describe('bortleText', () => {
+  it('names a single class when the published tables agree', () => {
+    expect(bortleText(21.99)).toBe('Bortle 1');
+  });
+
+  it('spans both classes when they do not, with an en dash', () => {
+    // 21.73 sits between the two tables' class-1 floors — genuinely either
+    expect(bortleText(21.73)).toBe('Bortle 1–2');
+  });
+
+  it('never writes a range when there is nothing to disagree about', () => {
+    expect(bortleText(18.7)).toBe('Bortle 6');
+  });
+});
 
 describe('designationsLabel', () => {
   it('titlecases the slug', () => {
