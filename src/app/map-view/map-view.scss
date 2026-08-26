@@ -339,7 +339,25 @@
 @media screen and (min-width: 641px) {
   :host {
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+    // minmax(0,1fr) not 1fr: the map must be allowed to shrink below its content
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+  }
+
+  // Placed EXPLICITLY, never by source order. .rank-panel only exists while the list is open,
+  // and with implicit placement its absence slid the map onto the auto track beside it — where
+  // it sized to content, found only an absolutely-positioned canvas, and collapsed to 0 wide.
+  // That is a blank map on first load, and it looks exactly like the two blank maps before it.
+  .rail {
+    grid-column: 1;
+  }
+  .rank-panel {
+    grid-column: 2;
+  }
+  .map-area {
+    grid-column: 3;
+  }
+  app-site-panel {
+    grid-column: 4;
   }
 
   .rail {
@@ -351,7 +369,12 @@
     box-shadow: none;
     background: var(--nadir);
   }
+}
 
+// The ranked list docks LAST, and only where the map can spare the width. At 743px with
+// everything open the map was 162px, which is not a map. Below this it keeps its floating
+// card, so opening the list costs an overlay rather than two thirds of the canvas.
+@media screen and (min-width: 1100px) {
   .rank-panel {
     position: static;
     width: 264px;

@@ -313,7 +313,8 @@
   .panel {
     position: static;
     height: 100%;
-    width: min(420px, 34vw);
+    // never below the 320px the stat row needs, never wider than the reading measure
+    width: clamp(320px, 34vw, 420px);
     border: 0;
     border-left: 1px solid var(--horizon);
     border-radius: 0;
