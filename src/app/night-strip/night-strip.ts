@@ -1,6 +1,10 @@
 import { Component, computed, input } from '@angular/core';
 import { DateTime } from 'luxon';
 import { ScoredNight } from '../services/sites';
+import { bestWindow } from '../site-panel/night-windows';
+
+/** Below this share of the axis the bracket cannot hold its own times legibly. */
+const CAPTION_MIN_WIDTH_PERCENT = 25;
 
 @Component({
   selector: 'app-night-strip',
@@ -44,6 +48,32 @@ export class NightStrip {
       width: this.toPercent(s.end) - this.toPercent(s.start),
     })),
   );
+
+  /** The longest moonless stretch, placed on the civil axis. Null when the moon owns the night. */
+  bestWindowBand = computed(() => {
+    const window = bestWindow(this.night());
+    if (!window) return null;
+    const left = this.toPercent(window.start);
+    const width = this.toPercent(window.end) - left;
+    return {
+      left,
+      width,
+      label: `${window.start.toFormat('HH:mm')} – ${window.end.toFormat('HH:mm')}`,
+      showCaption: width >= CAPTION_MIN_WIDTH_PERCENT,
+    };
+  });
+
+  /** Only the bands this night actually paints — a key to an absent colour sends the eye hunting. */
+  legend = computed(() => {
+    const items = [
+      { key: 'twilight', label: 'Twilight' },
+      { key: 'dark', label: 'True dark' },
+    ];
+    if (this.moonBands().length) items.push({ key: 'moon', label: 'Moon up' });
+    if (this.cloudCells().length) items.push({ key: 'cloud', label: 'Cloud' });
+    if (this.bestWindowBand()) items.push({ key: 'best', label: 'Best window' });
+    return items;
+  });
 
   gradient = computed(() => {
     const s = this.darkStartPercent();

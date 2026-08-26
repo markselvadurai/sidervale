@@ -18,6 +18,7 @@ const nightWith = (opts: {
   darkStart: string;
   darkEnd: string;
   moon?: [string, string][];
+  moonDark?: [string, string][];
   clouds?: { at: string; cover: number }[];
 }): ScoredNight => ({
   hasTrueDarkness: true,
@@ -27,9 +28,12 @@ const nightWith = (opts: {
   moonSegments: (opts.moon ?? []).map(
     ([a, b]) => Interval.fromDateTimes(t(a), t(b)) as Interval<true>,
   ),
+  // the dark-window-clipped set: what the best window is measured against
+  moonDarkSegments: (opts.moonDark ?? []).map(
+    ([a, b]) => Interval.fromDateTimes(t(a), t(b)) as Interval<true>,
+  ),
   cloudHours: (opts.clouds ?? []).map((c) => ({ time: t(c.at), cloudCover: c.cover })),
   // Required by ScoredNight, never read by this component:
-  moonDarkSegments: [],
   darkDuration: '6h 0m',
   moonIllumination: 42,
   moonOverlapDisplay: '2h 0m',
@@ -46,6 +50,7 @@ const roomyNight = nightWith({
   darkStart: '2026-08-22T22:00',
   darkEnd: '2026-08-23T04:00',
   moon: [['2026-08-22T23:00', '2026-08-23T01:00']],
+  moonDark: [['2026-08-22T23:00', '2026-08-23T01:00']],
   clouds: [{ at: '2026-08-22T23:00', cover: 80 }],
 });
 
@@ -190,5 +195,78 @@ describe('NightStrip', () => {
     for (let i = 1; i < stops.length; i++) {
       expect(stops[i]).toBeGreaterThanOrEqual(stops[i - 1]);
     }
+  });
+
+  // ── LAYER 6: the best-window bracket ──
+
+  /** Moon segments that fall wholly inside the dark window, so both sets are the same. */
+  const withMoonDark = (moonDark: [string, string][]) =>
+    nightWith({
+      dusk: '2026-08-22T21:00',
+      dawn: '2026-08-23T05:00',
+      darkStart: '2026-08-22T22:00',
+      darkEnd: '2026-08-23T04:00',
+      moon: moonDark,
+      moonDark,
+    });
+
+  it('brackets the longer moonless stretch, on the civil axis', () => {
+    // moonless 22:00–23:00 (1h) and 01:00–04:00 (3h): the longer one wins.
+    // 01:00 is 240 min into a 480 min axis = 50%; 04:00 is 420 min in = 87.5%.
+    const band = component.bestWindowBand();
+    if (!band) throw new Error('expected a best window');
+    expect(band.left).toBeCloseTo(50);
+    expect(band.width).toBeCloseTo(37.5);
+    expect(band.label).toBe('01:00 – 04:00');
+  });
+
+  it('draws no bracket when the moon is up for the whole dark window', async () => {
+    await render(withMoonDark([['2026-08-22T22:00', '2026-08-23T04:00']]));
+    expect(component.bestWindowBand()).toBeNull();
+    expect(fixture.nativeElement.querySelector('.strip-best')).toBeNull();
+  });
+
+  it('drops the caption when the bracket is too narrow to hold it', async () => {
+    // moonless 03:30–04:00 = 30 min of a 480 min axis = 6.25% wide.
+    await render(withMoonDark([['2026-08-22T22:00', '2026-08-23T03:30']]));
+    const band = component.bestWindowBand();
+    if (!band) throw new Error('expected a best window');
+    expect(band.width).toBeCloseTo(6.25);
+    expect(band.showCaption).toBe(false);
+    // the bracket itself still draws — only its text is suppressed
+    expect(fixture.nativeElement.querySelector('.strip-best')).not.toBeNull();
+    expect(fixture.nativeElement.querySelector('.strip-best__caption')).toBeNull();
+  });
+
+  it('renders the bracket with its hours when there is room', () => {
+    const caption = fixture.nativeElement.querySelector('.strip-best__caption');
+    expect(caption?.textContent?.trim()).toBe('01:00 – 04:00');
+  });
+
+  // ── LAYER 7: the legend names only what is drawn ──
+
+  it('names every band the strip actually paints', () => {
+    expect(component.legend().map((l) => l.label)).toEqual([
+      'Twilight',
+      'True dark',
+      'Moon up',
+      'Cloud',
+      'Best window',
+    ]);
+  });
+
+  it('omits bands this night does not have, rather than teaching a colour that is absent', async () => {
+    // no moon, no cloud: naming them would send the eye hunting for stripes that aren't there
+    await render(withMoonDark([]));
+    expect(component.legend().map((l) => l.label)).toEqual([
+      'Twilight',
+      'True dark',
+      'Best window',
+    ]);
+  });
+
+  it('drops the best-window entry when there is no best window', async () => {
+    await render(withMoonDark([['2026-08-22T22:00', '2026-08-23T04:00']]));
+    expect(component.legend().map((l) => l.label)).toEqual(['Twilight', 'True dark', 'Moon up']);
   });
 });

@@ -1,3 +1,24 @@
+// One source for every band colour: a legend swatch must not drift from the band it names.
+:host {
+  --band-twilight: var(--horizon);
+  --band-dark: var(--truedark);
+  --band-moon-ink: color-mix(in srgb, var(--caution) 30%, transparent);
+  --band-moon-edge: color-mix(in srgb, var(--caution) 45%, transparent);
+  --band-cloud-ink: color-mix(in srgb, var(--airglow) 40%, transparent); // the mid density
+  --band-cloud-edge: color-mix(in srgb, var(--airglow) 45%, transparent);
+  --band-best: var(--clear);
+  --band-best-edge: color-mix(in srgb, var(--clear) 55%, transparent);
+}
+
+// the band and its swatch render from the same declaration, not from matching literals
+@mixin hatch($ink, $angle) {
+  background: repeating-linear-gradient(
+    $angle,
+    $ink 0 var(--hline, 1.5px),
+    transparent var(--hline, 1.5px) var(--hpitch, 5px)
+  );
+}
+
 .night-strip-label {
   font-size: var(--t-desc);
   color: var(--airglow);
@@ -41,25 +62,17 @@
   // absolute, not relative: relative stacks a second band below the first.
   position: absolute;
   top: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--moon-ink, color-mix(in srgb, var(--caution) 30%, transparent)) 0 var(--hline, 1.5px),
-    transparent var(--hline, 1.5px) var(--hpitch, 5px)
-  );
+  @include hatch(var(--band-moon-ink), 45deg);
   height: 8px;
-  border-bottom: 1px solid color-mix(in srgb, var(--caution) 45%, transparent);
+  border-bottom: 1px solid var(--band-moon-edge);
 }
 
 .cloud-strip {
   position: absolute;
   bottom: 0;
   height: 9px; // or 100% if the container owns the 9px
-  border-top: 1px solid color-mix(in srgb, var(--airglow) 45%, transparent);
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--cloud-ink, color-mix(in srgb, var(--airglow) 26%, transparent)) 0 var(--hline, 1.5px),
-    transparent var(--hline, 1.5px) var(--hpitch, 5px)
-  );
+  border-top: 1px solid var(--band-cloud-edge);
+  @include hatch(var(--cloud-ink, var(--band-cloud-ink)), -45deg);
 }
 .cloud--light {
   --cloud-ink: color-mix(in srgb, var(--airglow) 20%, transparent);
@@ -69,4 +82,74 @@
 }
 .cloud--heavy {
   --cloud-ink: color-mix(in srgb, var(--airglow) 65%, transparent);
+}
+
+.strip-best {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  border: 1px dashed var(--band-best-edge);
+  border-radius: var(--r1);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.strip-best__caption {
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.04em;
+  color: var(--band-best);
+  white-space: nowrap;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s3);
+  margin: var(--s3) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--airglow);
+}
+
+.legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+}
+
+.legend__swatch {
+  width: 14px;
+  height: 8px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.legend__swatch--twilight {
+  background: var(--band-twilight);
+}
+
+.legend__swatch--dark {
+  background: var(--band-dark);
+  border: 1px solid var(--horizon);
+}
+
+.legend__swatch--moon {
+  @include hatch(var(--band-moon-ink), 45deg);
+  border-bottom: 1px solid var(--band-moon-edge);
+}
+
+.legend__swatch--cloud {
+  @include hatch(var(--band-cloud-ink), -45deg);
+  border-top: 1px solid var(--band-cloud-edge);
+}
+
+.legend__swatch--best {
+  border: 1px dashed var(--band-best-edge);
 }

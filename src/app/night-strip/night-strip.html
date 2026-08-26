@@ -17,6 +17,13 @@
       ></div>
     }
   </div>
+  @if (bestWindowBand(); as best) {
+    <div class="strip-best" [style.left.%]="best.left" [style.width.%]="best.width">
+      @if (best.showCaption) {
+        <span class="strip-best__caption">{{ best.label }}</span>
+      }
+    </div>
+  }
   <div class="strip-timing">
     @if (showDuskLabel()) {
       <div class="strip-time" [style.left.%]="duskPercent()">{{ duskDisplay() }}</div>
@@ -35,6 +42,11 @@
   </div>
 </div>
 
-<!-- The geometry helper in the component class — toPercent(dt): number mapping dusk→0, dawn→100. One function, everything positions through it. Computed signals for the derived positions (darkLeft, darkWidth, segment percent-pairs) so the template binds numbers, not expressions.
-Template layers, inside-out: the axis bar (fixed height ~44px, the gradient shoulders as background), the --truedark span ([style.left.%] / [style.width.%] bindings), @for over segments for the moon bands, labels at the window edges.
-Cloud band last — it needs the hourly series threaded through, which is its own small wiring; get the three astronomy layers rendering first. -->
+<ul class="legend">
+  @for (item of legend(); track item.key) {
+    <li class="legend__item">
+      <span [class]="'legend__swatch legend__swatch--' + item.key" aria-hidden="true"></span>
+      {{ item.label }}
+    </li>
+  }
+</ul>
