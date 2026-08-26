@@ -2,7 +2,13 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { Site } from '../models/site';
 import { parseSitesDataset } from '../data/parse-sites';
 import { artifactNightFor, toNightScore } from '../engines/artifact';
-import { currentObservingNight, getDarknessWindow, getMoonOverlap } from '../engines/astronomy';
+import {
+  currentObservingNight,
+  getDarknessWindow,
+  getMoonOverlap,
+  moonAltitudeSeries,
+  MoonSample,
+} from '../engines/astronomy';
 import { ScoresService } from './scores';
 import { ClockService } from './clock';
 import { noonOf, ObservingNight, plusNights } from '../models/observing-night';
@@ -31,6 +37,7 @@ export type NightInfo =
       civilDawn: DateTime;
       moonSegments: Interval<true>[];
       moonDarkSegments: Interval<true>[];
+      moonAltitude: MoonSample[];
       darkDuration: string;
       moonIllumination: number;
       moonOverlapDisplay: string;
@@ -51,6 +58,9 @@ type WeekEntry = { night: ObservingNight; label: string } & (
 );
 
 const dayLabels = ['M', 'T', 'W', 'TH', 'F', 'S', 'S'];
+
+// ~50-70 samples across a civil night: finer than a pixel at panel width, so no visible gain
+const MOON_ARC_STEP_MINUTES = 10;
 
 @Injectable({ providedIn: 'root' })
 export class SitesService {
@@ -252,6 +262,8 @@ export class SitesService {
       civilDawn: darkness.dawn,
       moonSegments: moonDisplay.segments,
       moonDarkSegments: moon.segments,
+      // sampled on the STRIP's axis (civil dusk→dawn), so the arc and the bands share one span
+      moonAltitude: moonAltitudeSeries(site, civilInterval, MOON_ARC_STEP_MINUTES),
       darkDuration: darkness.end.diff(darkness.start).toFormat("h'h' m'm'"),
       moonIllumination: Math.round(moon.illuminationFraction * 100),
       moonOverlapDisplay,

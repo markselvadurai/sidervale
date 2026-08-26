@@ -42,6 +42,26 @@
   </div>
 </div>
 
+@if (moonArcPath(); as d) {
+  <div class="graph graph--moon">
+    <span class="graph__label">Moon</span>
+    <svg class="graph__plot" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+      <path class="graph__horizon" d="M0,24L100,24" />
+      <path class="graph__arc" [attr.d]="d" />
+    </svg>
+    <span class="graph__scale">90°</span>
+  </div>
+}
+@if (cloudAreaPath(); as d) {
+  <div class="graph graph--cloud">
+    <span class="graph__label">Cloud</span>
+    <svg class="graph__plot" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+      <path class="graph__area" [attr.d]="d" />
+    </svg>
+    <span class="graph__scale">100%</span>
+  </div>
+}
+
 <ul class="legend">
   @for (item of legend(); track item.key) {
     <li class="legend__item">

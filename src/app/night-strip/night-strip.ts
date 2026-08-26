@@ -6,6 +6,13 @@ import { bestWindow } from '../site-panel/night-windows';
 /** Below this share of the axis the bracket cannot hold its own times legibly. */
 const CAPTION_MIN_WIDTH_PERCENT = 25;
 
+/** Plot box in viewBox units: x is the shared 0–100 axis, y runs 0 (top) to PLOT_H (baseline). */
+const PLOT_H = 24;
+
+/** The arc is drawn against a FIXED 0–90° scale, not the night's own range, so that a low
+ *  moon looks low — two nights are only comparable if the axis does not move under them. */
+const MAX_ALTITUDE_DEG = 90;
+
 @Component({
   selector: 'app-night-strip',
   imports: [],
@@ -73,6 +80,30 @@ export class NightStrip {
     if (this.cloudCells().length) items.push({ key: 'cloud', label: 'Cloud' });
     if (this.bestWindowBand()) items.push({ key: 'best', label: 'Best window' });
     return items;
+  });
+
+  /** The moon's altitude across the axis. Below the horizon rests on the baseline — "down"
+   *  is one message, not a range of depths. */
+  moonArcPath = computed(() => {
+    const samples = this.night().moonAltitude;
+    if (!samples.length) return '';
+    const points = samples.map((s) => {
+      const clamped = Math.max(0, Math.min(MAX_ALTITUDE_DEG, s.altitudeDeg));
+      const y = PLOT_H - (clamped / MAX_ALTITUDE_DEG) * PLOT_H;
+      return `${this.toPercent(s.time).toFixed(2)},${y.toFixed(2)}`;
+    });
+    return `M${points.join('L')}`;
+  });
+
+  /** Hourly cover as a filled area. Closed to the baseline at both ends so it reads as fill. */
+  cloudAreaPath = computed(() => {
+    const hours = this.night().cloudHours;
+    if (!hours.length) return '';
+    const x = (i: number) => this.toPercent(hours[i].time).toFixed(2);
+    const points = hours.map(
+      (h, i) => `${x(i)},${(PLOT_H - (h.cloudCover / 100) * PLOT_H).toFixed(2)}`,
+    );
+    return `M${x(0)},${PLOT_H.toFixed(2)}L${points.join('L')}L${x(hours.length - 1)},${PLOT_H.toFixed(2)}Z`;
   });
 
   gradient = computed(() => {

@@ -47,6 +47,7 @@ const NIGHT_CORE = {
   moonIllumination: 43,
   moonOverlapDisplay: '2h 10m',
   cloudHours: [],
+  moonAltitude: [],
 };
 const CLEAR_NIGHT: ScoredNight = {
   ...NIGHT_CORE,

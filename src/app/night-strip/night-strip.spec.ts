@@ -20,6 +20,7 @@ const nightWith = (opts: {
   moon?: [string, string][];
   moonDark?: [string, string][];
   clouds?: { at: string; cover: number }[];
+  moonAlt?: { at: string; deg: number }[];
 }): ScoredNight => ({
   hasTrueDarkness: true,
   civilDusk: t(opts.dusk),
@@ -33,6 +34,7 @@ const nightWith = (opts: {
     ([a, b]) => Interval.fromDateTimes(t(a), t(b)) as Interval<true>,
   ),
   cloudHours: (opts.clouds ?? []).map((c) => ({ time: t(c.at), cloudCover: c.cover })),
+  moonAltitude: (opts.moonAlt ?? []).map((m) => ({ time: t(m.at), altitudeDeg: m.deg })),
   // Required by ScoredNight, never read by this component:
   darkDuration: '6h 0m',
   moonIllumination: 42,
@@ -263,6 +265,64 @@ describe('NightStrip', () => {
       'True dark',
       'Best window',
     ]);
+  });
+
+  // ── LAYER 8: the moon arc and cloud graph, on the strip's own axis ──
+
+  /** The same 8h axis as roomyNight, so every x below is still a clean eighth. */
+  const plotted = (extra: Partial<Parameters<typeof nightWith>[0]>) =>
+    nightWith({
+      dusk: '2026-08-22T21:00',
+      dawn: '2026-08-23T05:00',
+      darkStart: '2026-08-22T22:00',
+      darkEnd: '2026-08-23T04:00',
+      ...extra,
+    } as Parameters<typeof nightWith>[0]);
+
+  it('plots altitude against a fixed 0–90° scale, so two nights compare by eye', async () => {
+    // 21:00 → x 0, 01:00 → x 50, 05:00 → x 100 on the 480-min axis.
+    // 45° of a 90° scale is half the 24-unit box: y = 24 − 12 = 12.
+    await render(
+      plotted({
+        moonAlt: [
+          { at: '2026-08-22T21:00', deg: 0 },
+          { at: '2026-08-23T01:00', deg: 45 },
+          { at: '2026-08-23T05:00', deg: 0 },
+        ],
+      }),
+    );
+    expect(component.moonArcPath()).toBe('M0.00,24.00L50.00,12.00L100.00,24.00');
+  });
+
+  it('rests a below-horizon moon on the baseline instead of drawing underground', async () => {
+    await render(
+      plotted({
+        moonAlt: [
+          { at: '2026-08-22T21:00', deg: -30 },
+          { at: '2026-08-23T01:00', deg: -5 },
+        ],
+      }),
+    );
+    // both clamp to the baseline: "the moon is down" is one message, not two depths
+    expect(component.moonArcPath()).toBe('M0.00,24.00L50.00,24.00');
+  });
+
+  it('draws no arc at all when there is nothing sampled', async () => {
+    await render(plotted({}));
+    expect(component.moonArcPath()).toBe('');
+    expect(fixture.nativeElement.querySelector('.graph--moon')).toBeNull();
+  });
+
+  it('closes the cloud area down to the baseline so it reads as fill, not a line', () => {
+    // the roomy fixture has one hour at 23:00 (x 25) with 80% cover:
+    // y = 24 − 0.8·24 = 4.80, and the path returns to the baseline at both ends
+    expect(component.cloudAreaPath()).toBe('M25.00,24.00L25.00,4.80L25.00,24.00Z');
+  });
+
+  it('hides the cloud graph on an astronomy-only night rather than drawing a flat zero', async () => {
+    await render(plotted({}));
+    expect(component.cloudAreaPath()).toBe('');
+    expect(fixture.nativeElement.querySelector('.graph--cloud')).toBeNull();
   });
 
   it('drops the best-window entry when there is no best window', async () => {

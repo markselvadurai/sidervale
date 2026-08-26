@@ -19,6 +19,9 @@ export type DarknessWindow =
       dawn: null;
     };
 
+/** One altitude reading. Degrees — see moonAltitudeSeries for why that is load-bearing. */
+export type MoonSample = { time: DateTime; altitudeDeg: number };
+
 export type MoonOverlap = {
   overlapMinutes: number;
   overlapFraction: number;
@@ -98,6 +101,30 @@ export function getDarknessWindow(site: SiteCore, night: ObservingNight): Darkne
     dawn: DateTime.fromJSDate(dawn).setZone(site.timezone),
     hasTrueDarkness: true,
   };
+}
+
+/** Moon altitude sampled across a window, in DEGREES — suncalc 2.0.1's unit for `altitude`.
+ *  A radians build would not throw here; it would draw a flat arc, so the unit is tested. */
+export function moonAltitudeSeries(
+  site: SiteCore,
+  window: Interval<true>,
+  stepMinutes: number,
+): MoonSample[] {
+  if (!(stepMinutes > 0))
+    throw new Error(`moonAltitudeSeries needs a positive step: ${stepMinutes}`);
+  const { lat, lng } = site.coordinates;
+  const stepMs = stepMinutes * 60_000;
+  const endMs = window.end.toMillis();
+  const at = (ms: number): MoonSample => ({
+    time: DateTime.fromMillis(ms, { zone: site.timezone }),
+    altitudeDeg: SunCalc.getMoonPosition(new Date(ms), lat, lng).altitude,
+  });
+
+  const samples: MoonSample[] = [];
+  for (let ms = window.start.toMillis(); ms < endMs; ms += stepMs) samples.push(at(ms));
+  // close on the window end itself, so the curve reaches the axis edge rather than stopping short
+  samples.push(at(endMs));
+  return samples;
 }
 
 export function getMoonOverlap(site: SiteCore, window: Interval<true>): MoonOverlap {

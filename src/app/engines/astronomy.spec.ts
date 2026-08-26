@@ -1,6 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import * as SunCalc from 'suncalc';
-import { currentObservingNight, getDarknessWindow, getMoonOverlap } from './astronomy';
+import {
+  currentObservingNight,
+  getDarknessWindow,
+  getMoonOverlap,
+  moonAltitudeSeries,
+} from './astronomy';
 import { SiteCore } from '../models/site';
 import { ObservingNight } from '../models/observing-night';
 import { DateTime, Interval } from 'luxon';
@@ -327,5 +332,83 @@ describe('solar-day anchoring past UTC+12', () => {
     });
     if (!w.hasTrueDarkness) throw new Error('expected darkness');
     expect(w.start.toISODate()).toBe('2026-12-13');
+  });
+});
+
+describe('moonAltitudeSeries', () => {
+  const span = (fromISO: string, hours: number): Interval<true> => {
+    const start = DateTime.fromISO(fromISO, { zone: manitoulin.timezone }) as DateTime<true>;
+    return Interval.fromDateTimes(start, start.plus({ hours })) as Interval<true>;
+  };
+
+  // ── LAYER 1: the unit contract ──
+
+  // The whole curve rests on suncalc 2.0.1 reporting altitude in DEGREES (CLAUDE.md).
+  // A sign test cannot catch a radians regression — the arc would just go flat — so the
+  // magnitude is pinned against physics: lunar declination cannot exceed the obliquity of
+  // the ecliptic (23.44°) plus the moon's orbital inclination (5.145°), so at Manitoulin
+  // (45.6621°N) a transit altitude must fall inside 90 − 45.6621 ∓ 28.585.
+  it('reports altitude in degrees, inside the band the moon can physically reach', () => {
+    const peak = Math.max(
+      ...moonAltitudeSeries(manitoulin, span('2026-08-26T00:00', 24), 10).map((s) => s.altitudeDeg),
+    );
+    expect(peak).toBeGreaterThan(90 - 45.6621 - 28.585);
+    expect(peak).toBeLessThan(90 - 45.6621 + 28.585);
+    // and explicitly: radians would put every reading under 1.6
+    expect(peak).toBeGreaterThan(5);
+  });
+
+  // ── LAYER 2: agreement with the event stream it will be drawn beside ──
+
+  // The parity bug this project already shipped came from a probe that disagreed with
+  // suncalc's own rise/set criterion. The curve must not reopen that gap: suncalc calls the
+  // moon risen when its UPPER LIMB clears the horizon, so the CENTRE altitude this series
+  // reports crosses zero shortly AFTER the reported moonrise — never before it.
+  it('crosses the horizon just after the moonrise suncalc itself reports', () => {
+    const rise = SunCalc.getMoonTimes(
+      new Date(Date.UTC(2026, 7, 26, 12)),
+      manitoulin.coordinates.lat,
+      manitoulin.coordinates.lng,
+    ).rise;
+    if (!rise) throw new Error('expected a moonrise on this date');
+    const riseAt = DateTime.fromJSDate(rise, { zone: manitoulin.timezone }) as DateTime<true>;
+    const window = Interval.fromDateTimes(
+      riseAt.minus({ minutes: 30 }),
+      riseAt.plus({ minutes: 30 }),
+    ) as Interval<true>;
+
+    const series = moonAltitudeSeries(manitoulin, window, 1);
+    const crossing = series.find((s) => s.altitudeDeg >= 0);
+    if (!crossing) throw new Error('expected the moon to clear the horizon in this window');
+    const minutesAfterRise = crossing.time.diff(riseAt, 'minutes').minutes;
+    expect(minutesAfterRise).toBeGreaterThanOrEqual(0);
+    expect(minutesAfterRise).toBeLessThan(20);
+  });
+
+  // ── LAYER 3: the sampling contract the strip positions against ──
+
+  it('starts at the window start and ends exactly at the window end', () => {
+    const window = span('2026-08-26T21:00', 8);
+    const series = moonAltitudeSeries(manitoulin, window, 30);
+    expect(series[0].time.toMillis()).toBe(window.start.toMillis());
+    expect(series.at(-1)!.time.toMillis()).toBe(window.end.toMillis());
+  });
+
+  it('steps at the interval asked for', () => {
+    // an 8h window at 30 min = 16 steps, plus the closing sample on the end itself
+    const series = moonAltitudeSeries(manitoulin, span('2026-08-26T21:00', 8), 30);
+    expect(series).toHaveLength(17);
+    for (let i = 1; i < series.length; i++) {
+      expect(series[i].time.diff(series[i - 1].time, 'minutes').minutes).toBeCloseTo(30);
+    }
+  });
+
+  it('carries the site timezone, like every other instant this engine returns', () => {
+    const series = moonAltitudeSeries(manitoulin, span('2026-08-26T21:00', 8), 60);
+    expect(series[0].time.zoneName).toBe('America/Toronto');
+  });
+
+  it('refuses a step that would never advance', () => {
+    expect(() => moonAltitudeSeries(manitoulin, span('2026-08-26T21:00', 8), 0)).toThrow(/step/i);
   });
 });

@@ -104,6 +104,53 @@
   white-space: nowrap;
 }
 
+// label · plot · scale, with the plot stretched to the same width the strip spans
+.graph {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr 2.2rem;
+  align-items: center;
+  gap: var(--s2);
+  margin-top: var(--s2);
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--airglow);
+}
+
+.graph__plot {
+  width: 100%;
+  height: 24px;
+  display: block;
+  overflow: visible;
+}
+
+.graph__scale {
+  text-align: right;
+  color: color-mix(in srgb, var(--airglow) 60%, transparent);
+}
+
+.graph__horizon {
+  stroke: var(--horizon);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.graph__arc {
+  fill: none;
+  stroke: var(--band-moon-edge);
+  stroke-width: 1.5;
+  // the viewBox is stretched hard on x; without this the stroke stretches with it
+  vector-effect: non-scaling-stroke;
+}
+
+.graph__area {
+  fill: var(--band-cloud-ink);
+  stroke: var(--band-cloud-edge);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
 .legend {
   display: flex;
   flex-wrap: wrap;
