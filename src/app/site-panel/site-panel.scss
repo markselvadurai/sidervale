@@ -7,6 +7,7 @@
   width: min(420px, 40%);
   overflow-y: auto;
   z-index: 500; // above Leaflet's panes
+
   background: var(--nadir);
   border: 1px solid var(--horizon);
   border-radius: var(--r3);
@@ -297,6 +298,26 @@
         box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
       }
     }
+  }
+}
+
+// docked: the panel is a wall of the shell rather than a card floating on the map, so it
+// drops the radius and keeps only the edge that faces the map
+@media screen and (min-width: 641px) {
+  :host {
+    display: block;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .panel {
+    position: static;
+    height: 100%;
+    width: min(420px, 34vw);
+    border: 0;
+    border-left: 1px solid var(--horizon);
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 

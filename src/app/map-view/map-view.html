@@ -1,15 +1,4 @@
-<div #mapContainer class="map-container"></div>
-
-<!-- the canvas has no DOM to focus: this IS the keyboard/screen-reader interface -->
-<ul class="site-index" aria-label="Dark-sky sites on the map">
-  @for (f of features().features; track f.properties.id) {
-    <li>
-      <button type="button" (click)="sitesService.selectSite(f.properties.id)">
-        {{ f.properties.label }}
-      </button>
-    </li>
-  }
-</ul>
+<!-- shell order IS the column order on desktop: rail · ranked · map · panel -->
 <nav class="rail" aria-label="Map tools">
   <button
     type="button"
@@ -62,35 +51,53 @@
     }
   </div>
 </nav>
-@if (overlayOn()) {
-  <div class="lp-legend" role="group" aria-label="Light pollution scale">
-    <p class="lp-legend__title">Light pollution</p>
-    <div class="lp-legend__bar">
-      <span
-        class="lp-legend__ramp"
-        [style.backgroundImage]="lpGradient"
-        [style.opacity]="overlayOpacity"
-      ></span>
-    </div>
-    <div class="lp-legend__ends">
-      <span>{{ lpEnds[0] }}</span>
-      <span>{{ lpEnds[1] }}</span>
-    </div>
-    <p class="lp-legend__source">D. Lorenz world atlas 2024</p>
-  </div>
-}
+
 @if (listOpen()) {
   <div class="rank-panel">
     <app-ranked-list [sites]="visibleSites()" />
   </div>
 }
-@if (mapUnavailable()) {
-  <div class="map-unavailable">
-    <p>This device can’t display the map (WebGL unavailable).</p>
-    <p>The ranked list below still works — it answers the same question.</p>
-  </div>
-}
-@if (sitesService.datasetState() === 'failed') {
-  <div class="dataset-error">Site data failed to load — refresh to retry</div>
-}
+
+<!-- everything that floats over the canvas positions against THIS, not the whole shell -->
+<div class="map-area">
+  <div #mapContainer class="map-container"></div>
+  @if (overlayOn()) {
+    <div class="lp-legend" role="group" aria-label="Light pollution scale">
+      <p class="lp-legend__title">Light pollution</p>
+      <div class="lp-legend__bar">
+        <span
+          class="lp-legend__ramp"
+          [style.backgroundImage]="lpGradient"
+          [style.opacity]="overlayOpacity"
+        ></span>
+      </div>
+      <div class="lp-legend__ends">
+        <span>{{ lpEnds[0] }}</span>
+        <span>{{ lpEnds[1] }}</span>
+      </div>
+      <p class="lp-legend__source">D. Lorenz world atlas 2024</p>
+    </div>
+  }
+  @if (mapUnavailable()) {
+    <div class="map-unavailable">
+      <p>This device can’t display the map (WebGL unavailable).</p>
+      <p>The ranked list below still works — it answers the same question.</p>
+    </div>
+  }
+  @if (sitesService.datasetState() === 'failed') {
+    <div class="dataset-error">Site data failed to load — refresh to retry</div>
+  }
+</div>
+
+<!-- the canvas has no DOM to focus: this IS the keyboard/screen-reader interface -->
+<ul class="site-index" aria-label="Dark-sky sites on the map">
+  @for (f of features().features; track f.properties.id) {
+    <li>
+      <button type="button" (click)="sitesService.selectSite(f.properties.id)">
+        {{ f.properties.label }}
+      </button>
+    </li>
+  }
+</ul>
+
 <app-site-panel />

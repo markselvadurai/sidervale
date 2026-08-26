@@ -1,13 +1,38 @@
 :host {
   display: block;
-  height: 100dvh;
+  height: 100%;
+  min-height: 0;
   position: relative;
+  overflow: hidden;
+}
+
+// the canvas's positioning context, and the 1fr column once the shell becomes a grid
+.map-area {
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .map-container {
   position: absolute;
   inset: 0;
 } // fills
+
+// floating over the map until there is room to dock it (see the shell block below)
+.rank-panel {
+  position: absolute;
+  z-index: 450;
+  top: 76px;
+  left: var(--s2);
+  bottom: var(--s2);
+  width: min(320px, calc(100% - var(--s4)));
+  background: color-mix(in srgb, var(--nadir) 94%, transparent);
+  border: 1px solid var(--horizon);
+  border-radius: var(--r3);
+  box-shadow: var(--shadow-md);
+  overflow-y: auto;
+}
 
 // ── direction 1b's atmosphere (ADR 0007): two colour glows and a sparse starfield ──
 // z-index 300/310 sits above the tile pane (200) and below markers (600); screen-blend so
@@ -62,7 +87,7 @@
 .map-unavailable {
   position: absolute;
   z-index: 400;
-  inset: auto var(--s3) var(--s3) 88px;
+  inset: auto var(--s3) var(--s3) var(--s3);
   background: var(--nadir);
   border: 1px solid var(--horizon);
   border-radius: var(--r3);
@@ -304,4 +329,37 @@
   text-transform: none;
   letter-spacing: 0;
   color: color-mix(in srgb, var(--airglow) 60%, transparent);
+}
+
+// ── the shell: rail · ranked · map · panel, side by side once there is room for them.
+// Lives LAST on purpose: these override the floating rules above at equal specificity,
+// so source order is what makes them win.
+// Below this the rail is a bar, the ranked list an overlay and the panel a sheet, all of
+// which already work — so the columns are opt-in at width rather than the sheet opt-out.
+@media screen and (min-width: 641px) {
+  :host {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+  }
+
+  .rail {
+    position: static;
+    height: 100%;
+    border: 0;
+    border-right: 1px solid var(--horizon);
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--nadir);
+  }
+
+  .rank-panel {
+    position: static;
+    width: 264px;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid var(--horizon);
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--nadir);
+  }
 }

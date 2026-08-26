@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: 0 var(--s4);
+  height: 34px;
+  background: var(--nadir);
+  border-top: 1px solid var(--horizon);
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  color: color-mix(in srgb, var(--airglow) 80%, transparent);
+}
+
+.foot__count {
+  flex: none;
+  color: var(--airglow);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.foot__credits {
+  margin: 0;
+  // attribution is a licence obligation, so it truncates last and never wraps the bar taller
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

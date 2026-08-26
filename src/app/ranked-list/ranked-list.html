@@ -1,12 +1,6 @@
 <aside class="rank-list" aria-label="Tonight's sites, ranked">
   <p class="rank-list__title">Tonight · within {{ reachKm }} km</p>
-  <div class="rank-list__home">
-    <span class="rank-list__from">from {{ homeService.home().label }}</span>
-    <button type="button" class="rank-list__loc" (click)="useMyLocation()">My location</button>
-    @if (homeService.home().label !== 'Toronto, ON') {
-      <button type="button" class="rank-list__loc" (click)="homeService.reset()">Reset</button>
-    }
-  </div>
+  <p class="rank-list__from">from {{ homeService.home().label }}</p>
 
   @if (!rows().ranked.length && !rows().astro.length && !rows().darkless) {
     <p class="rank-list__empty">

@@ -1,12 +1,9 @@
 .rank-list {
   display: block;
+  // surface, border and shadow belong to .rank-panel: docked it is a column, floating it is
+  // a card, and the list should not have to know which
   height: 100%;
-  overflow-y: auto;
-  background: color-mix(in srgb, var(--nadir) 94%, transparent);
-  border: 1px solid var(--horizon);
-  border-radius: var(--r3);
   padding: var(--s3);
-  box-shadow: var(--shadow-md);
 
   &__title {
     margin: 0 0 var(--s2);

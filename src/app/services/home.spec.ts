@@ -64,3 +64,26 @@ describe('HomeService', () => {
     expect(svc.home()).toEqual(TORONTO);
   });
 });
+
+describe('HomeService.isDefault', () => {
+  it('is true before the user has chosen anywhere', () => {
+    localStorage.clear();
+    expect(TestBed.inject(HomeService).isDefault()).toBe(true);
+  });
+
+  it('goes false once home moves, and true again on reset', () => {
+    localStorage.clear();
+    const svc = TestBed.inject(HomeService);
+    svc.set({ label: 'My location', lat: 1, lng: 2 });
+    expect(svc.isDefault()).toBe(false);
+    svc.reset();
+    expect(svc.isDefault()).toBe(true);
+  });
+
+  it('compares the place, not the label a user could coincidentally match', () => {
+    localStorage.clear();
+    const svc = TestBed.inject(HomeService);
+    svc.set({ label: 'Toronto, ON', lat: 51.5, lng: -0.12 });
+    expect(svc.isDefault()).toBe(false);
+  });
+});

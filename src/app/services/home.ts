@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 
 export type Home = { label: string; lat: number; lng: number };
 
@@ -25,6 +25,13 @@ function restore(): Home {
 export class HomeService {
   private _home = signal<Home>(restore());
   readonly home = this._home.asReadonly();
+
+  /** Still on the launch default. Compares the place, not the label — the Reset control must
+   *  not vanish because somebody's own location happens to be named 'Toronto, ON'. */
+  readonly isDefault = computed(() => {
+    const h = this._home();
+    return h.lat === TORONTO.lat && h.lng === TORONTO.lng;
+  });
 
   set(home: Home) {
     this._home.set(home);

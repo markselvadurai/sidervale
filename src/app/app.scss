@@ -1,0 +1,14 @@
+// the shell owns the viewport: chrome top and bottom, the route fills what is left
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+// min-height: 0 or the map's own height pushes the footer off the bottom of the screen
+.shell__main {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}

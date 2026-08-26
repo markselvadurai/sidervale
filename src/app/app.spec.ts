@@ -18,4 +18,14 @@ describe('App', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
+
+  it('frames the route between chrome that persists across it', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const el = fixture.nativeElement as HTMLElement;
+    // nav, then the routed view, then the footer — order is the layout, not decoration
+    const order = [...el.children].map((c) => c.tagName.toLowerCase());
+    expect(order).toEqual(['app-nav-bar', 'main', 'app-site-footer']);
+    expect(el.querySelector('main router-outlet')).not.toBeNull();
+  });
 });

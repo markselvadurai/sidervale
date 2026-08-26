@@ -1,0 +1,84 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  padding: 0 var(--s4);
+  height: 56px;
+  background: var(--nadir);
+  border-bottom: 1px solid var(--horizon);
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex: none;
+}
+
+// a waxing crescent, drawn rather than fetched: one element, no asset, no request
+.nav__mark {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--starlight);
+  box-shadow: inset -5px -1px 0 0 var(--nadir);
+}
+
+.nav__word {
+  font-size: var(--t-read);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--starlight);
+}
+
+.nav__tagline {
+  margin: 0;
+  font-size: var(--t-desc);
+  color: var(--airglow);
+  // the first thing to go when the bar gets tight; the controls matter more
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.nav__home {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  margin-left: auto;
+  flex: none;
+  font-family: var(--mono);
+  font-size: var(--t-label);
+}
+
+.nav__label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--airglow) 75%, transparent);
+}
+
+.nav__place {
+  color: var(--starlight);
+}
+
+.nav__action {
+  background: none;
+  border: 1px solid var(--horizon);
+  border-radius: var(--r-pill);
+  padding: 3px var(--s2);
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  color: var(--airglow);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--starlight);
+    border-color: var(--accent);
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .nav__tagline {
+    display: none;
+  }
+}
