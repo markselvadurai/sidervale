@@ -21,7 +21,7 @@ describe('tonightWindows', () => {
     const rows = tonightWindows(night([seg(utc(26, 2), DARK.end)]));
     expect(rows).toEqual([
       { range: '22:00 – 02:00', label: 'Moonless dark', tag: 'BEST' },
-      { range: '02:00 – 04:00', label: 'Moon up · 43%', tag: 'BRIGHT TARGETS' },
+      { range: '02:00 – 04:00', label: 'Moon up · 43% lit', tag: 'BRIGHT TARGETS' },
       { range: '04:00 – 05:00', label: 'Astronomical twilight', tag: 'PACK UP' },
     ]);
   });
@@ -36,7 +36,7 @@ describe('tonightWindows', () => {
   it('a moon up all night yields no BEST window at all — never invent one', () => {
     const rows = tonightWindows(night([seg(DARK.start, DARK.end)]));
     expect(rows).toEqual([
-      { range: '22:00 – 04:00', label: 'Moon up · 43%', tag: 'BRIGHT TARGETS' },
+      { range: '22:00 – 04:00', label: 'Moon up · 43% lit', tag: 'BRIGHT TARGETS' },
       { range: '04:00 – 05:00', label: 'Astronomical twilight', tag: 'PACK UP' },
     ]);
   });
@@ -45,7 +45,7 @@ describe('tonightWindows', () => {
     // the walk must resume from the segment end, not restart from the window start
     const rows = tonightWindows(night([seg(DARK.start, utc(26, 0))]));
     expect(rows).toEqual([
-      { range: '22:00 – 00:00', label: 'Moon up · 43%', tag: 'BRIGHT TARGETS' },
+      { range: '22:00 – 00:00', label: 'Moon up · 43% lit', tag: 'BRIGHT TARGETS' },
       { range: '00:00 – 04:00', label: 'Moonless dark', tag: 'BEST' },
       { range: '04:00 – 05:00', label: 'Astronomical twilight', tag: 'PACK UP' },
     ]);
@@ -98,7 +98,7 @@ describe('tonightWindows', () => {
       darknessWindow: { start: DARK.start, end: utc(26, 4, 0, 40) },
     });
     expect(rows).toEqual([
-      { range: '22:00 – 04:00', label: 'Moon up · 43%', tag: 'BRIGHT TARGETS' },
+      { range: '22:00 – 04:00', label: 'Moon up · 43% lit', tag: 'BRIGHT TARGETS' },
       { range: '04:00 – 05:00', label: 'Astronomical twilight', tag: 'PACK UP' },
     ]);
   });
@@ -108,7 +108,7 @@ describe('tonightWindows', () => {
     // The row stays and says what it is; only BEST is withheld.
     const rows = tonightWindows(night([seg(DARK.start, utc(26, 3, 52))]));
     expect(rows).toEqual([
-      { range: '22:00 – 03:52', label: 'Moon up · 43%', tag: 'BRIGHT TARGETS' },
+      { range: '22:00 – 03:52', label: 'Moon up · 43% lit', tag: 'BRIGHT TARGETS' },
       { range: '03:52 – 04:00', label: 'Moonless dark', tag: 'TOO SHORT' },
       { range: '04:00 – 05:00', label: 'Astronomical twilight', tag: 'PACK UP' },
     ]);
@@ -118,7 +118,7 @@ describe('tonightWindows', () => {
     // 03:40 – 04:00 is 20 min: short, but long enough to be worth naming
     const rows = tonightWindows(night([seg(DARK.start, utc(26, 3, 40))]));
     expect(rows).toEqual([
-      { range: '22:00 – 03:40', label: 'Moon up · 43%', tag: 'BRIGHT TARGETS' },
+      { range: '22:00 – 03:40', label: 'Moon up · 43% lit', tag: 'BRIGHT TARGETS' },
       { range: '03:40 – 04:00', label: 'Moonless dark', tag: 'BEST' },
       { range: '04:00 – 05:00', label: 'Astronomical twilight', tag: 'PACK UP' },
     ]);

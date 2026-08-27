@@ -56,4 +56,8 @@ export class RankedList {
     astro.sort(byScore);
     return { ranked, astro, darkless, beyond };
   });
+
+  protected async useMyLocation() {
+    await this.homeService.useMyLocation();
+  }
 }

@@ -4,14 +4,3 @@
 </div>
 
 <p class="nav__tagline">Where to go tonight, and when to look up</p>
-
-<div class="nav__home">
-  <span class="nav__label">Near</span>
-  <span class="nav__place">{{ home.home().label }}</span>
-  <button type="button" class="nav__action nav__locate" (click)="useMyLocation()">
-    Use my location
-  </button>
-  @if (!home.isDefault()) {
-    <button type="button" class="nav__action nav__reset" (click)="home.reset()">Reset</button>
-  }
-</div>

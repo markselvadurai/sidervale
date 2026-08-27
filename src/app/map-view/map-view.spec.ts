@@ -147,14 +147,18 @@ describe('MapView', () => {
     expect(texts('.site-index button')[0]).toContain('selected');
   });
 
-  it('opens the ranked list on demand, ranking only the sites the map shows', async () => {
+  it('shows the ranked list by default — it is the answer, not a drawer', async () => {
     await landSites([SITE, TOWN]);
-    expect(fixture.nativeElement.querySelector('app-ranked-list')).toBeNull();
+    expect(fixture.nativeElement.querySelector('app-ranked-list')).not.toBeNull();
 
     (fixture.nativeElement.querySelector('.list-toggle') as HTMLButtonElement).click();
     fixture.detectChanges();
     await fixture.whenStable();
+    expect(fixture.nativeElement.querySelector('app-ranked-list')).toBeNull();
+  });
 
+  it('ranks only the sites the map is showing', async () => {
+    await landSites([SITE, TOWN]);
     const list = fixture.debugElement.query(By.directive(RankedList));
     if (!list) throw new Error('expected the ranked list to render');
     expect((list.componentInstance as RankedList).sites().map((s) => s.id)).toEqual(['test-site']);

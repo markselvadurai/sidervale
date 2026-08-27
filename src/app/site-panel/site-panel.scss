@@ -54,6 +54,7 @@
 
     // reads as a fact, not a verdict: no tier hue, which stays reserved for the score
     .chip {
+      background: var(--raised);
       font-family: var(--mono);
       font-size: var(--t-label);
       letter-spacing: 0.08em;

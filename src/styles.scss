@@ -4,9 +4,11 @@
 // must not move when the furniture is repainted.
 :root {
   --truedark: #000;
-  --zenith: #080c12; // the void behind everything
-  --nadir: #141b24; // card and panel surface, clearly lifted off the void
-  --raised: #1b232e; // an inset within a card: callouts, wells
+  // #030c18 and #101823 are Mark's eyedropper readings off the mockup itself. --zenith is the
+  // one value not measured: it only has to sit under the panel, so it is a shade below it.
+  --zenith: #01070f; // the void behind everything
+  --nadir: #030c18; // card and panel surface — measured
+  --raised: #101823; // buttons, chips, wells — measured
   --horizon: #2a3441; // borders, which the mockup lets you actually see (1.37:1 on --nadir)
   --starlight: #e6ebf3;
   --airglow: #93a1b5; // muted text: less blue than before, as in the mockup

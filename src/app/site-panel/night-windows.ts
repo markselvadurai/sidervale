@@ -95,7 +95,9 @@ export function moonsetText(night: MoonsetInput): string {
 /** The night strip, said out loud: the dark window split at moonrise/set, plus the tail. */
 export function tonightWindows(night: WindowsInput): NightWindowRow[] {
   const { start, end } = night.darknessWindow;
-  const moonLabel = `Moon up · ${night.moonIllumination}%`;
+  // "lit" because the number is the moon's PHASE, not a share of the range beside it — read
+  // without it, "Moon up · 99%" next to 21:53–04:46 says the moon owns 99% of those hours
+  const moonLabel = `Moon up · ${night.moonIllumination}% lit`;
   const rows: NightWindowRow[] = [];
 
   // a dark gap keeps its row so the timeline stays whole; only the BEST verdict is earned

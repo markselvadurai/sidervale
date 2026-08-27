@@ -25,19 +25,33 @@
     padding-top: var(--s2);
   }
 
-  &__home {
+  // the anchor for everything below it, so it reads as a section rather than a caption
+  &__place {
+    display: grid;
+    gap: var(--s1);
+    margin-bottom: var(--s3);
+    padding-bottom: var(--s3);
+    border-bottom: 1px solid var(--horizon);
+  }
+  &__place-label {
+    font-family: var(--mono);
+    font-size: var(--t-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--airglow) 75%, transparent);
+  }
+  &__place-actions {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: var(--s2);
-    margin-bottom: var(--s2);
+    margin-top: var(--s1);
   }
   &__from {
-    font-size: var(--t-desc);
+    font-size: var(--t-read);
     color: var(--starlight);
-    margin-right: auto;
   }
   &__loc {
-    background: none;
+    background: var(--raised);
     border: 1px solid var(--horizon);
     border-radius: var(--r-pill);
     padding: 2px var(--s2);

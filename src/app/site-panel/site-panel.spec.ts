@@ -273,7 +273,7 @@ describe('SitePanel rendering', () => {
     expect(texts('.windows__range')).toEqual(['22:00 – 02:00', '02:00 – 04:00', '04:00 – 05:00']);
     expect(texts('.windows__label')).toEqual([
       'Moonless dark',
-      'Moon up · 43%',
+      'Moon up · 43% lit',
       'Astronomical twilight',
     ]);
     expect(texts('.windows__tag')).toEqual(['BEST', 'BRIGHT TARGETS', 'PACK UP']);

@@ -15,6 +15,7 @@ import { SitesService } from '../services/sites';
 import { SitePanel } from '../site-panel/site-panel';
 import { RankedList } from '../ranked-list/ranked-list';
 import { siteKind } from '../models/site-kind';
+import { HomeService } from '../services/home';
 import { sitesToFeatures } from './map-features';
 import {
   BASEMAP_STYLE_URL,
@@ -38,6 +39,9 @@ function hasWebGl2(): boolean {
   }
 }
 
+/** Close enough to read a region, far enough to keep its neighbours on screen. */
+const HOME_ZOOM = 6;
+
 const SITES_SOURCE = 'sites';
 const OVERLAY_SOURCE = 'light-pollution';
 
@@ -49,6 +53,7 @@ const OVERLAY_SOURCE = 'light-pollution';
 })
 export class MapView implements AfterViewInit, OnDestroy {
   protected sitesService = inject(SitesService);
+  private homeService = inject(HomeService);
   mapContainer = viewChild.required<ElementRef<HTMLDivElement>>('mapContainer');
   private map?: maplibregl.Map;
   private resizeObserver?: ResizeObserver;
@@ -64,7 +69,8 @@ export class MapView implements AfterViewInit, OnDestroy {
   protected readonly lpEnds = LP_AXIS.map((mpsas) => bortleText(mpsas));
 
   markerFilter = signal<'destinations' | 'communities' | 'all'>('destinations');
-  listOpen = signal(false);
+  // open by default: the ranked list IS the answer to "where tonight", not a drawer beside it
+  listOpen = signal(true);
   protected readonly filterOptions = [
     { value: 'destinations' as const, label: 'Parks' },
     { value: 'communities' as const, label: 'Towns' },
@@ -87,6 +93,7 @@ export class MapView implements AfterViewInit, OnDestroy {
   );
 
   private fitted = false;
+  private lastHome: string | null = null;
 
   constructor() {
     // one effect now: setData is a diff, so there is no marker DOM to rebuild or cache
@@ -105,6 +112,31 @@ export class MapView implements AfterViewInit, OnDestroy {
         this.map?.fitBounds(bounds, { padding: 24, maxZoom: 8, animate: false });
         this.fitted = true;
       }
+    });
+
+    // changing home moves the view there: the ranked list re-anchors, and a map still framed
+    // on the old region would silently disagree with the list beside it
+    effect(() => {
+      const home = this.homeService.home();
+      // read for the dependency only: the camera can be commanded the moment the Map exists,
+      // and `load` waits for a first RENDER — which a background tab never performs, so
+      // gating on readiness would strand the map for anyone who changes home before looking
+      this.mapReady();
+      const map = this.map;
+      if (!map) return;
+      const key = `${home.lat},${home.lng}`;
+      // the first read after the map is ready is the CURRENT home, not a change to it
+      if (this.lastHome === null || this.lastHome === key) {
+        this.lastHome = key;
+        return;
+      }
+      this.lastHome = key;
+      map.flyTo({
+        center: [home.lng, home.lat],
+        zoom: Math.max(map.getZoom(), HOME_ZOOM),
+        // the OS opt-out governs a 2s camera flight as much as it governs a CSS transition
+        animate: !matchMedia('(prefers-reduced-motion: reduce)').matches,
+      });
     });
 
     effect(() => {

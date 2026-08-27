@@ -139,11 +139,32 @@ describe('RankedList', () => {
     expect(texts('.rank-row__bortle')).toEqual(['Bortle 2–3']);
   });
 
+  it('offers no Reset while home is the launch default — a dead control is worse than none', async () => {
+    fixture.componentRef.setInput('sites', [NEAR]);
+    await fixture.whenStable();
+    expect(texts('.rank-list__loc')).toEqual(['Use my location']);
+  });
+
+  it('reveals Reset once home has moved, and puts it back', async () => {
+    fixture.componentRef.setInput('sites', [NEAR]);
+    TestBed.inject(HomeService).set({ label: 'Somewhere East', lat: 43.6532, lng: -75 });
+    await fixture.whenStable();
+    expect(texts('.rank-list__loc')).toEqual(['Use my location', 'Reset']);
+
+    const reset = [...fixture.nativeElement.querySelectorAll('.rank-list__loc')].find(
+      (b: HTMLElement) => b.textContent?.trim() === 'Reset',
+    ) as HTMLButtonElement;
+    reset.click();
+    await fixture.whenStable();
+    expect(texts('.rank-list__from')).toEqual(['Toronto, ON']);
+    expect(texts('.rank-list__loc')).toEqual(['Use my location']);
+  });
+
   it('is anchored to home: shows the from-label and each site distance', async () => {
     scores.set(new Map([['near', scored(70)]]));
     fixture.componentRef.setInput('sites', [NEAR]);
     await fixture.whenStable();
-    expect(texts('.rank-list__from')).toEqual(['from Toronto, ON']);
+    expect(texts('.rank-list__from')).toEqual(['Toronto, ON']);
     // 1° of latitude from Toronto — 111 km by the fixture's own arithmetic
     expect(texts('.rank-row__km')).toEqual(['111 km']);
   });
@@ -172,7 +193,7 @@ describe('RankedList', () => {
     TestBed.inject(HomeService).set({ label: 'Somewhere East', lat: 43.6532, lng: 100 });
     await fixture.whenStable();
     expect(texts('.rank-row__name')).toEqual(['Outer Banks Dark Park']);
-    expect(texts('.rank-list__from')).toEqual(['from Somewhere East']);
+    expect(texts('.rank-list__from')).toEqual(['Somewhere East']);
   });
 
   it('selects the site whose row was clicked', () => {
