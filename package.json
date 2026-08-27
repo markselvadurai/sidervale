@@ -16,7 +16,8 @@
     "brightness": "tsx tools/dataset/sample-brightness.ts",
     "emit": "tsx tools/dataset/emit-dataset.ts",
     "precompute": "tsx tools/precompute/precompute.ts",
-    "typecheck:tools": "tsc -p tools"
+    "typecheck:tools": "tsc -p tools",
+    "harvest:images": "tsx tools/dataset/harvest-images.ts"
   },
   "private": true,
   "packageManager": "npm@10.9.0",
