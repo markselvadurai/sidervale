@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  corroboratesName,
   ExtMetadata,
   fileKey,
   isUsableLicence,
@@ -193,5 +194,44 @@ describe('licenceOf artist cleanup', () => {
     expect(licenceOf(meta({ Artist: 'No machine-readable author provided.' })).artist).toBe(
       'Unknown author',
     );
+  });
+});
+
+describe('corroboratesName', () => {
+  // Coordinates prove WHERE a photo was taken, never WHAT it shows. Browns Canyon National
+  // Monument really did match "Nathrop, Colorado" — a town 2.2 km away, correctly located and
+  // useless as a dark-sky thumbnail. A shared distinctive word is the second signal.
+  it('accepts an exact match', () => {
+    expect(corroboratesName('Point Pelee National Park', 'Point Pelee National Park')).toBe(true);
+  });
+
+  it('accepts a partial match on the distinctive part', () => {
+    expect(
+      corroboratesName(
+        'Kejimkujik National Park and National Historic Site',
+        'Kejimkujik National Park',
+      ),
+    ).toBe(true);
+    expect(corroboratesName('Palos Preserves', 'Palos Forest Preserves')).toBe(true);
+  });
+
+  it('rejects a neighbour that shares only the generic words', () => {
+    expect(corroboratesName('Browns Canyon National Monument', 'Nathrop, Colorado')).toBe(false);
+    expect(corroboratesName('Antelope Island State Park', 'Fielding Garr Ranch')).toBe(false);
+    expect(corroboratesName('Homer Glen, Illinois', 'Stone Manor')).toBe(false);
+  });
+
+  it('is not fooled by the words every one of these names contains', () => {
+    // 'National Park' in common is no evidence at all
+    expect(corroboratesName('Bavarian Forest National Park', 'Bohemian National Park')).toBe(false);
+  });
+
+  it('ignores accents and case, which vary between our data and Wikipedia', () => {
+    expect(corroboratesName('Kaikōura', 'Kaikoura')).toBe(true);
+    expect(corroboratesName('Bükk National Park', 'BUKK plateau')).toBe(true);
+  });
+
+  it('ignores short words that collide by accident', () => {
+    expect(corroboratesName('Isle of Rum', 'Kinloch of Castle')).toBe(false);
   });
 });

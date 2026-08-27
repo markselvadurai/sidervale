@@ -1,0 +1,2574 @@
+{
+  "source": "en.wikipedia.org + commons.wikimedia.org",
+  "harvestedAt": "2026-08-27T02:40:29.980Z",
+  "radiusKm": 25,
+  "images": {
+    "albanya-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lliurona_Albany%C3%A0_Catalonia.jpg/500px-Lliurona_Albany%C3%A0_Catalonia.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "ecfont",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Lliurona_Albanyà_Catalonia.jpg",
+      "matchedPage": "Albanyà",
+      "matchedKm": 1.2
+    },
+    "antelope-oregon": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Antelope_Oregon_post_office.jpg/500px-Antelope_Oregon_post_office.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 371,
+      "artist": "Tedder",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Antelope_Oregon_post_office.jpg",
+      "matchedPage": "Antelope, Oregon",
+      "matchedKm": 0.4
+    },
+    "anza-borrego-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/BorregoSprings1.jpg/500px-BorregoSprings1.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Perdelsky at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:BorregoSprings1.jpg",
+      "matchedPage": "Borrego Springs, California",
+      "matchedKm": 18.6
+    },
+    "aoraki-mackenzie-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mackenzie_Country_Typical_Colour.jpg/500px-Mackenzie_Country_Typical_Colour.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Ingolfson at English Wikipedia\n\n(Original text: Uploader.)",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Mackenzie_Country_Typical_Colour.jpg",
+      "matchedPage": "Mackenzie Basin",
+      "matchedKm": 7.3
+    },
+    "aotea-great-barrier-island-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Medlands_Beach_From_High_Up_West.jpg/500px-Medlands_Beach_From_High_Up_West.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Ingolfson",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Medlands_Beach_From_High_Up_West.jpg",
+      "matchedPage": "Great Barrier Island",
+      "matchedKm": 1.1
+    },
+    "arches-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Elephant_Butte_in_Arches_National_Park.jpg/500px-Elephant_Butte_in_Arches_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 337,
+      "artist": "Ron Clausen",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Elephant_Butte_in_Arches_National_Park.jpg",
+      "matchedPage": "Elephant Butte (Arches National Park)",
+      "matchedKm": 8.9
+    },
+    "arkaroola-wilderness-sanctuary-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/ArkaroolaAir.jpg/500px-ArkaroolaAir.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 273,
+      "artist": "Kdliss",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:ArkaroolaAir.jpg",
+      "matchedPage": "Arkaroola",
+      "matchedKm": 2
+    },
+    "artis-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/ArtisIngang.jpg/500px-ArtisIngang.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 276,
+      "artist": "The original uploader was Mtcv at Dutch Wikipedia.",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:ArtisIngang.jpg",
+      "matchedPage": "Artis (zoo)",
+      "matchedKm": 0
+    },
+    "beaver-island-state-wildlife-research-area": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Beaver_Island_satellite_photo.jpg/500px-Beaver_Island_satellite_photo.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 700,
+      "artist": "http://www.terraprints.com",
+      "licence": "CC BY 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Beaver_Island_satellite_photo.jpg",
+      "matchedPage": "Beaver Island (Lake Michigan)",
+      "matchedKm": 3.7
+    },
+    "bee-cave-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Bee_Cave_Texas_City_Hall_South_Elevation.jpg/500px-Bee_Cave_Texas_City_Hall_South_Elevation.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 270,
+      "artist": "Larry D. Moore",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bee_Cave_Texas_City_Hall_South_Elevation.jpg",
+      "matchedPage": "Bee Cave, Texas",
+      "matchedKm": 0.3
+    },
+    "beverly-shores-indiana-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Beverly_Shores_16.jpg/500px-Beverly_Shores_16.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 387,
+      "artist": "Ɱ",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Beverly_Shores_16.jpg",
+      "matchedPage": "Beverly Shores, Indiana",
+      "matchedKm": 0.8
+    },
+    "big-bend-ranch-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Solitario_Peak.jpg/500px-Solitario_Peak.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Surfsupusa at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Solitario_Peak.jpg",
+      "matchedPage": "Big Bend Ranch State Park",
+      "matchedKm": 17.7
+    },
+    "big-cypress-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Big_Cypress_National_Preserve.jpg/500px-Big_Cypress_National_Preserve.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 281,
+      "artist": "Antonio Chaves",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Big_Cypress_National_Preserve.jpg",
+      "matchedPage": "Big Cypress National Preserve",
+      "matchedKm": 13.2
+    },
+    "big-park-village-of-oak-creek-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/OakCreekBigPark_air.jpg/500px-OakCreekBigPark_air.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 354,
+      "artist": "Jstuby at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:OakCreekBigPark_air.jpg",
+      "matchedPage": "Village of Oak Creek, Arizona",
+      "matchedKm": 1.7
+    },
+    "bisbee-arizona": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/TombstoneinTombstone.jpg/500px-TombstoneinTombstone.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 718,
+      "artist": "Russell Lee",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:TombstoneinTombstone.jpg",
+      "matchedPage": "Bisbee massacre",
+      "matchedKm": 0.3
+    },
+    "bisei-town-ibara-city-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/The_street_in_front_of_Ibara_Station.jpg/500px-The_street_in_front_of_Ibara_Station.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "tatushin",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:The_street_in_front_of_Ibara_Station.jpg",
+      "matchedPage": "Ibara",
+      "matchedKm": 10.7
+    },
+    "black-canyon-of-the-gunnison-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Black_Canyon_and_Gunnison_River_2008.jpg/500px-Black_Canyon_and_Gunnison_River_2008.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 280,
+      "artist": "Terry Foote",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Black_Canyon_and_Gunnison_River_2008.jpg",
+      "matchedPage": "Black Canyon of the Gunnison National Park",
+      "matchedKm": 1.1
+    },
+    "black-mesa-state-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Black_Mesa_State_Park.jpg/500px-Black_Mesa_State_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Christopher Gabbard from Tulsa Oklahoma, USA",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Black_Mesa_State_Park.jpg",
+      "matchedPage": "Black Mesa State Park",
+      "matchedKm": 0.5
+    },
+    "bluff-utah": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bluff%2C_Utah_%28from_east%29.jpg/500px-Bluff%2C_Utah_%28from_east%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "François5000",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bluff,_Utah_(from_east).jpg",
+      "matchedPage": "Bluff, Utah",
+      "matchedKm": 0.5
+    },
+    "borrego-springs-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/BorregoSprings1.jpg/500px-BorregoSprings1.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Perdelsky at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:BorregoSprings1.jpg",
+      "matchedPage": "Borrego Springs, California",
+      "matchedKm": 0.3
+    },
+    "brecon-beacons-national-park-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/View_from_Cribyn_to_Pen_Y_Fan_-_geograph.org.uk_-_3447271_%28cropped%29.jpg/500px-View_from_Cribyn_to_Pen_Y_Fan_-_geograph.org.uk_-_3447271_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 290,
+      "artist": "Doug Lee",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:View_from_Cribyn_to_Pen_Y_Fan_-_geograph.org.uk_-_3447271_(cropped).jpg",
+      "matchedPage": "Brecon Beacons",
+      "matchedKm": 2.5
+    },
+    "bruce-peninsula-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Grotto.jpg/500px-Grotto.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Original uploader was Brucegirl at en.wikipedia",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Grotto.jpg",
+      "matchedPage": "Bruce Peninsula National Park",
+      "matchedKm": 8.6
+    },
+    "canyonlands-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Green_River_Overlook_Ekker_Butte.jpg/500px-Green_River_Overlook_Ekker_Butte.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 298,
+      "artist": "au_ears",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Green_River_Overlook_Ekker_Butte.jpg",
+      "matchedPage": "Canyonlands National Park",
+      "matchedKm": 18.1
+    },
+    "cape-lookout-national-seashore-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Cape_Lookout_Lighthouse_-_2013-06_-_07.JPG/500px-Cape_Lookout_Lighthouse_-_2013-06_-_07.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 321,
+      "artist": "Jarek Tuszyński",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cape_Lookout_Lighthouse_-_2013-06_-_07.JPG",
+      "matchedPage": "Cape Lookout National Seashore",
+      "matchedKm": 1.3
+    },
+    "capitol-reef-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Castle%2C_Capitol_Reef_NP.jpg/500px-The_Castle%2C_Capitol_Reef_NP.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "benito roveran",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Castle,_Capitol_Reef_NP.jpg",
+      "matchedPage": "The Castle (Capitol Reef National Park)",
+      "matchedKm": 0.8
+    },
+    "caprock-canyons-state-park-texas": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Caprock_Canyons_Haynes_Ridge_2005.JPG/500px-Caprock_Canyons_Haynes_Ridge_2005.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Leaflet",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Caprock_Canyons_Haynes_Ridge_2005.JPG",
+      "matchedPage": "Caprock Canyons State Park and Trailway",
+      "matchedKm": 3.7
+    },
+    "capulin-volcano-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Capulin_1980_tde00005.jpg/500px-Capulin_1980_tde00005.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 489,
+      "artist": "R.D. Miller, USGS",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Capulin_1980_tde00005.jpg",
+      "matchedPage": "Capulin Volcano National Monument",
+      "matchedKm": 0.4
+    },
+    "castle_valley": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Castle_Valley_and_surroundings.jpg/500px-Castle_Valley_and_surroundings.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Carter Pape",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Castle_Valley_and_surroundings.jpg",
+      "matchedPage": "Castle Valley, Utah",
+      "matchedKm": 2.3
+    },
+    "cedar-breaks-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cedar_Breaks_NM_Caretaker_Cabin_NPS.jpg/500px-Cedar_Breaks_NM_Caretaker_Cabin_NPS.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 260,
+      "artist": "National Park Service",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cedar_Breaks_NM_Caretaker_Cabin_NPS.jpg",
+      "matchedPage": "Cedar Breaks National Monument Caretaker's Cabin",
+      "matchedKm": 0.2
+    },
+    "cevennes-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/La_ferme_caussenarde_-_Hyelzas_--photo_aspheries-00342.jpg/500px-La_ferme_caussenarde_-_Hyelzas_--photo_aspheries-00342.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "HPB48150",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:La_ferme_caussenarde_-_Hyelzas_--photo_aspheries-00342.jpg",
+      "matchedPage": "Cévennes National Park",
+      "matchedKm": 11.6
+    },
+    "chaco-culture-national-historic-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Chaco_Culture_NHP_%288023723138%29.jpg/500px-Chaco_Culture_NHP_%288023723138%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 278,
+      "artist": "Greg Willis from Denver, CO, usa",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Chaco_Culture_NHP_(8023723138).jpg",
+      "matchedPage": "Chaco Culture National Historical Park",
+      "matchedKm": 0.2
+    },
+    "cherry-springs-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/CSSP_Sagittarius_Combine1C.jpg/500px-CSSP_Sagittarius_Combine1C.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 366,
+      "artist": "Kevin Wigell",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:CSSP_Sagittarius_Combine1C.jpg",
+      "matchedPage": "Cherry Springs State Park",
+      "matchedKm": 0.4
+    },
+    "chimney-rock-national-monument": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/View_of_Chimney_Rock_Colorado.JPG/500px-View_of_Chimney_Rock_Colorado.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "000jaw",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:View_of_Chimney_Rock_Colorado.JPG",
+      "matchedPage": "Chimney Rock National Monument",
+      "matchedKm": 3
+    },
+    "chiricahua-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Chiricahua_balanced_rock.jpg/500px-Chiricahua_balanced_rock.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Pretzelpaws",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Chiricahua_balanced_rock.jpg",
+      "matchedPage": "Chiricahua National Monument",
+      "matchedKm": 1.9
+    },
+    "city-of-blanco-texas-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Blancotx2.jpg/500px-Blancotx2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Renelibrary",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Blancotx2.jpg",
+      "matchedPage": "Blanco, Texas",
+      "matchedKm": 0.5
+    },
+    "city-of-rocks-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/City_of_Rocks_NR_view_072617.jpg/500px-City_of_Rocks_NR_view_072617.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 260,
+      "artist": "wilson44691",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:City_of_Rocks_NR_view_072617.jpg",
+      "matchedPage": "City of Rocks National Reserve",
+      "matchedKm": 3.9
+    },
+    "clayton-lake-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ClaytonLakeStateParkDinosaurFootprint.jpg/500px-ClaytonLakeStateParkDinosaurFootprint.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "David Stapleton (Dsmdgold)",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:ClaytonLakeStateParkDinosaurFootprint.jpg",
+      "matchedPage": "Clayton Lake State Park",
+      "matchedKm": 0.1
+    },
+    "coll-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Coll.jpg/500px-Coll.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 233,
+      "artist": "Original uploader was Cannikin13 at en.wikipedia",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Coll.jpg",
+      "matchedPage": "Coll",
+      "matchedKm": 1.2
+    },
+    "copper-breaks-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Copper_Breaks_State_Park_%282016%29.jpg/500px-Copper_Breaks_State_Park_%282016%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Nicolas Henderson from Coppell, Texas",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Copper_Breaks_State_Park_(2016).jpg",
+      "matchedPage": "Copper Breaks State Park",
+      "matchedKm": 0
+    },
+    "cottonwood-arizona-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Commercial_Historic_District_%28Cottonwood%2C_Arizona%29.jpg/500px-Commercial_Historic_District_%28Cottonwood%2C_Arizona%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 289,
+      "artist": "Finetooth",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Commercial_Historic_District_(Cottonwood,_Arizona).jpg",
+      "matchedPage": "Cottonwood, Arizona",
+      "matchedKm": 1.3
+    },
+    "cottonwood-canyon-state-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Cottonwood_Canyon_information_station.jpg/500px-Cottonwood_Canyon_information_station.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 319,
+      "artist": "Finetooth",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cottonwood_Canyon_information_station.jpg",
+      "matchedPage": "Cottonwood Canyon State Park",
+      "matchedKm": 20.5
+    },
+    "cranborne-chase-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Ashmore_pond_-_geograph.org.uk_-_2329373.jpg/500px-Ashmore_pond_-_geograph.org.uk_-_2329373.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 302,
+      "artist": "Mike Searle",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Ashmore_pond_-_geograph.org.uk_-_2329373.jpg",
+      "matchedPage": "Cranborne Chase",
+      "matchedKm": 1.8
+    },
+    "crestone-colorado-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Welcome_to_Crestone_sign.JPG/500px-Welcome_to_Crestone_sign.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 323,
+      "artist": "Jeffrey Beall",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Welcome_to_Crestone_sign.JPG",
+      "matchedPage": "Crestone, Colorado",
+      "matchedKm": 0.2
+    },
+    "curecanti-national-recreation-area-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Dillonpin.JPG/500px-Dillonpin.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "The original uploader was Nationalparks at English Wikipedia.",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Dillonpin.JPG",
+      "matchedPage": "Curecanti National Recreation Area",
+      "matchedKm": 14
+    },
+    "dead-horse-point-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Dead_Horse_Point2.jpg/500px-Dead_Horse_Point2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Mike Nielsen",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Dead_Horse_Point2.jpg",
+      "matchedPage": "Dead Horse Point State Park",
+      "matchedKm": 4.3
+    },
+    "death-valley-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Death_Valley_from_space.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 480,
+      "height": 655,
+      "artist": "NASA",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Death_Valley_from_space.JPG",
+      "matchedPage": "Death Valley",
+      "matchedKm": 1.1
+    },
+    "desengano-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Pedra_do_desengano.jpg/500px-Pedra_do_desengano.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Tiagorck",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pedra_do_desengano.jpg",
+      "matchedPage": "Desengano State Park",
+      "matchedKm": 6.1
+    },
+    "dinosaur-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Dinosaur_National_Monument_Camarasaurus.jpg/500px-Dinosaur_National_Monument_Camarasaurus.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 319,
+      "artist": "Rob Glover from Bradford, UK",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Dinosaur_National_Monument_Camarasaurus.jpg",
+      "matchedPage": "Dinosaur National Monument",
+      "matchedKm": 2.1
+    },
+    "dripping-springs-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Dripping_Springs_Texas_City_Hall_2019.jpg/500px-Dripping_Springs_Texas_City_Hall_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 270,
+      "artist": "Larry D. Moore",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Dripping_Springs_Texas_City_Hall_2019.jpg",
+      "matchedPage": "Dripping Springs, Texas",
+      "matchedKm": 1.4
+    },
+    "east-canyon-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/East_Canyon_Dam_%282017%29.jpg/500px-East_Canyon_Dam_%282017%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 407,
+      "artist": "Bureau of  Reclamation",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:East_Canyon_Dam_(2017).jpg",
+      "matchedPage": "East Canyon State Park",
+      "matchedKm": 0.1
+    },
+    "eifel-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Hautes-Fagnes.jpg/500px-Hautes-Fagnes.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Aline",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Hautes-Fagnes.jpg",
+      "matchedPage": "High Fens – Eifel Nature Park",
+      "matchedKm": 6.2
+    },
+    "el-morro-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/El_morro_view.JPG/500px-El_morro_view.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Joel Mills",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:El_morro_view.JPG",
+      "matchedPage": "El Morro National Monument",
+      "matchedKm": 1.2
+    },
+    "elan-valley-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Cwm_Elan_in_autumn_-_geograph.org.uk_-_1043096.jpg/500px-Cwm_Elan_in_autumn_-_geograph.org.uk_-_1043096.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 321,
+      "artist": "Nigel Brown",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cwm_Elan_in_autumn_-_geograph.org.uk_-_1043096.jpg",
+      "matchedPage": "Elan Valley",
+      "matchedKm": 2.2
+    },
+    "enchanted-rock-state-natural-area-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Aerial_View_of_Enchanted_Rock.jpg/500px-Aerial_View_of_Enchanted_Rock.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Jmbuytaert",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Aerial_View_of_Enchanted_Rock.jpg",
+      "matchedPage": "Enchanted Rock State Natural Area",
+      "matchedKm": 0.3
+    },
+    "exmoor-national-park-dark-sky-place": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Malmsmead_Hill%2C_Exmoor_-_geograph.org.uk_-_80944.jpg/500px-Malmsmead_Hill%2C_Exmoor_-_geograph.org.uk_-_80944.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Kevin Young",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Malmsmead_Hill,_Exmoor_-_geograph.org.uk_-_80944.jpg",
+      "matchedPage": "Exmoor",
+      "matchedKm": 4.6
+    },
+    "flagstaff-arizona-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flagstaff_AZ_-_downtown_hotel.jpg/500px-Flagstaff_AZ_-_downtown_hotel.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "SearchNet Media from Tucson, Arizona, USA",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Flagstaff_AZ_-_downtown_hotel.jpg",
+      "matchedPage": "Downtown Flagstaff, Arizona",
+      "matchedKm": 1.4
+    },
+    "florissant-fossil-beds-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Florissant_Formation.jpg/500px-Florissant_Formation.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Kent G. Budge",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Florissant_Formation.jpg",
+      "matchedPage": "Florissant Formation",
+      "matchedKm": 0.1
+    },
+    "fort-union-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Fortunion.JPG/500px-Fortunion.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "en:User:Nationalparks (Talk)",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Fortunion.JPG",
+      "matchedPage": "Fort Union National Monument",
+      "matchedKm": 0.4
+    },
+    "fountain-hills-arizona-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Maricopa_County_Arizona_Incorporated_and_Unincorporated_areas_Fountain_Hills_Highlighted_0425300.svg/500px-Maricopa_County_Arizona_Incorporated_and_Unincorporated_areas_Fountain_Hills_Highlighted_0425300.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 709,
+      "artist": "DemocraticLuntz",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Maricopa_County_Arizona_Incorporated_and_Unincorporated_areas_Fountain_Hills_Highlighted_0425300.svg",
+      "matchedPage": "Fountain Hills, Arizona",
+      "matchedKm": 0.6
+    },
+    "fredericksburg-texas-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Downtown_Fredericksburg%2C_TX_IMG_0406.JPG/500px-Downtown_Fredericksburg%2C_TX_IMG_0406.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Hot Furnace",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Downtown_Fredericksburg,_TX_IMG_0406.JPG",
+      "matchedPage": "Fredericksburg, Texas",
+      "matchedKm": 1.2
+    },
+    "fremont-indian-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Fremont_State_Park%E2%80%A6Hoodoos_%286294503026%29.jpg/500px-Fremont_State_Park%E2%80%A6Hoodoos_%286294503026%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Murray Foubister",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Fremont_State_Park…Hoodoos_(6294503026).jpg",
+      "matchedPage": "Fremont Indian State Park and Museum",
+      "matchedKm": 0.2
+    },
+    "frisco-colorado": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Frisco_Colorado_roads.jpg/500px-Frisco_Colorado_roads.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 389,
+      "artist": "SunDawn",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Frisco_Colorado_roads.jpg",
+      "matchedPage": "Frisco, Colorado",
+      "matchedKm": 0.7
+    },
+    "fulda-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Flug_-Nordholz-Hammelburg_2015_by-RaBoe_1053_-_Fulda_Innenstadt.jpg/500px-Flug_-Nordholz-Hammelburg_2015_by-RaBoe_1053_-_Fulda_Innenstadt.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 319,
+      "artist": "© Ra Boe / Wikipedia",
+      "licence": "CC BY-SA 3.0 de",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Flug_-Nordholz-Hammelburg_2015_by-RaBoe_1053_-_Fulda_Innenstadt.jpg",
+      "matchedPage": "Fulda",
+      "matchedKm": 0.5
+    },
+    "fundy-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/NB_Fundy3_tango7174.jpg/500px-NB_Fundy3_tango7174.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Tango7174",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:NB_Fundy3_tango7174.jpg",
+      "matchedPage": "Fundy National Park",
+      "matchedKm": 6.4
+    },
+    "galloway-forest-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Rhinns-of-Kells-from-Craignaw.jpg/500px-Rhinns-of-Kells-from-Craignaw.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 337,
+      "artist": "2005biggar at English Wikipedia",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rhinns-of-Kells-from-Craignaw.jpg",
+      "matchedPage": "Galloway Forest Park",
+      "matchedKm": 3.6
+    },
+    "goblin-valley-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Utah_-_North_America_-_Goblin_Valley_State_Park_-_Hoodoos_%284892269801%29.jpg/500px-Utah_-_North_America_-_Goblin_Valley_State_Park_-_Hoodoos_%284892269801%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 319,
+      "artist": "CGP Grey",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Utah_-_North_America_-_Goblin_Valley_State_Park_-_Hoodoos_(4892269801).jpg",
+      "matchedPage": "Goblin Valley State Park",
+      "matchedKm": 0
+    },
+    "goosenecks-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Goosenecks_State_Park%2C_San_Juan_River%2C_Utah.JPG/500px-Goosenecks_State_Park%2C_San_Juan_River%2C_Utah.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Chesley Chen",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Goosenecks_State_Park,_San_Juan_River,_Utah.JPG",
+      "matchedPage": "Goosenecks State Park",
+      "matchedKm": 0
+    },
+    "gower-national-landscape-wales": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Rhossili.beach.arp.750pix.jpg/500px-Rhossili.beach.arp.750pix.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 628,
+      "artist": "The original uploader was Arpingstone at English Wikipedia.",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rhossili.beach.arp.750pix.jpg",
+      "matchedPage": "Gower Peninsula",
+      "matchedKm": 4.9
+    },
+    "grand-canyon-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dawn_on_the_S_rim_of_the_Grand_Canyon_%288645178272%29.jpg/500px-Dawn_on_the_S_rim_of_the_Grand_Canyon_%288645178272%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Murray Foubister",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Dawn_on_the_S_rim_of_the_Grand_Canyon_(8645178272).jpg",
+      "matchedPage": "Grand Canyon National Park",
+      "matchedKm": 5.8
+    },
+    "great-basin-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Prometheus_Wheeler.jpg/500px-Prometheus_Wheeler.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 321,
+      "artist": "James R Bouldin (talk · contribs)",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Prometheus_Wheeler.jpg",
+      "matchedPage": "Great Basin National Park",
+      "matchedKm": 7.5
+    },
+    "great-sand-dunes-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Great_Sand_Dunes_National_Park_and_Preserve%2C_United_States_%28Unsplash%29.jpg/500px-Great_Sand_Dunes_National_Park_and_Preserve%2C_United_States_%28Unsplash%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Lionello DelPiccolo liodp",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Great_Sand_Dunes_National_Park_and_Preserve,_United_States_(Unsplash).jpg",
+      "matchedPage": "Great Sand Dunes National Park and Preserve",
+      "matchedKm": 11.5
+    },
+    "groveland-florida-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Groveland%2C_Florida_OBR-ACL_Station.JPG/500px-Groveland%2C_Florida_OBR-ACL_Station.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "DanTD",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Groveland,_Florida_OBR-ACL_Station.JPG",
+      "matchedPage": "Groveland station",
+      "matchedKm": 1.7
+    },
+    "gunnison-gorge-national-conservation-area": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Gunnison_Gorge_Wilderness.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 480,
+      "height": 323,
+      "artist": "Rich Durnan, Bureau of Land Management",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Gunnison_Gorge_Wilderness.jpg",
+      "matchedPage": "Gunnison Gorge Wilderness",
+      "matchedKm": 5
+    },
+    "hawthorn-woods-illinois-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lake_County_Illinois_Incorporated_and_Unincorporated_areas_Hawthorn_Woods_Highlighted.svg/500px-Lake_County_Illinois_Incorporated_and_Unincorporated_areas_Hawthorn_Woods_Highlighted.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 327,
+      "artist": "DemocraticLuntz",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Lake_County_Illinois_Incorporated_and_Unincorporated_areas_Hawthorn_Woods_Highlighted.svg",
+      "matchedPage": "Hawthorn Woods, Illinois",
+      "matchedKm": 3.1
+    },
+    "headlands-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/The_Headlands_International_Dark_Sky_Park_-_Entrance_Sign.jpg/500px-The_Headlands_International_Dark_Sky_Park_-_Entrance_Sign.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 266,
+      "artist": "John A. Knouse",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Headlands_International_Dark_Sky_Park_-_Entrance_Sign.jpg",
+      "matchedPage": "The Headlands",
+      "matchedKm": 0.9
+    },
+    "helper-utah-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/HelperUtah.jpeg/500px-HelperUtah.jpeg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 640,
+      "artist": "Tricia Simpson",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:HelperUtah.jpeg",
+      "matchedPage": "Helper Historic District",
+      "matchedKm": 0.1
+    },
+    "horseshoe-bay-texas-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Horseshoe_Bay_Texas_City_Hall.jpg/500px-Horseshoe_Bay_Texas_City_Hall.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 286,
+      "artist": "Larry D. Moore",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Horseshoe_Bay_Texas_City_Hall.jpg",
+      "matchedPage": "Horseshoe Bay, Texas",
+      "matchedKm": 2.5
+    },
+    "hovenweep-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Hovenweep_in_snow.jpg/500px-Hovenweep_in_snow.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Larry Lamsa",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Hovenweep_in_snow.jpg",
+      "matchedPage": "Hovenweep National Monument",
+      "matchedKm": 0.4
+    },
+    "iriomote-ishigaki-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Mariyudo_iriomote_2007-04-05.jpg/500px-Mariyudo_iriomote_2007-04-05.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Geomr~commonswiki",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Mariyudo_iriomote_2007-04-05.jpg",
+      "matchedPage": "Iriomote-Ishigaki National Park",
+      "matchedKm": 4.1
+    },
+    "irving-nature-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Irving_Nature_Park.jpg/500px-Irving_Nature_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Enzo Francis Cameli",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Irving_Nature_Park.jpg",
+      "matchedPage": "Irving Nature Park",
+      "matchedKm": 0.2
+    },
+    "island-of-anholt": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Anholt_Island_Denmark.jpg/500px-Anholt_Island_Denmark.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "JialiangGao www.peace-on-earth.org",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Anholt_Island_Denmark.jpg",
+      "matchedPage": "Anholt (island)",
+      "matchedKm": 0.7
+    },
+    "jackson-hole-airport": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Aerial_image_of_the_Jackson_Hole_Airport_airport.jpg/500px-Aerial_image_of_the_Jackson_Hole_Airport_airport.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 361,
+      "artist": "Carsten Steger",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Jackson_Hole_Airport_airport.jpg",
+      "matchedPage": "Jackson Hole Airport",
+      "matchedKm": 0.7
+    },
+    "james-river-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/JamesRiverStateParkRiverfront.png/500px-JamesRiverStateParkRiverfront.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Wikipelli",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:JamesRiverStateParkRiverfront.png",
+      "matchedPage": "James River State Park",
+      "matchedKm": 0.9
+    },
+    "jasper-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Jasper_from_the_Jasper_Tramway_2008.jpg/500px-Jasper_from_the_Jasper_Tramway_2008.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 321,
+      "artist": "Harvey Barrison from Massapequa, NY, USA",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Jasper_from_the_Jasper_Tramway_2008.jpg",
+      "matchedPage": "Jasper, Alberta",
+      "matchedKm": 0.6
+    },
+    "jonestown-texas": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Welcome_to_Jonestown_Texas_%28cropped%29.jpg/500px-Welcome_to_Jonestown_Texas_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 370,
+      "artist": "Daniel Ziegler",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Welcome_to_Jonestown_Texas_(cropped).jpg",
+      "matchedPage": "Jonestown, Texas",
+      "matchedKm": 1.5
+    },
+    "jordanelle-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Jordanelle.JPG/500px-Jordanelle.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 319,
+      "artist": "Unknown author",
+      "licence": "CC BY 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Jordanelle.JPG",
+      "matchedPage": "Jordanelle Reservoir",
+      "matchedKm": 0.7
+    },
+    "julian-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Julian_Californien.JPG/500px-Julian_Californien.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 363,
+      "artist": "--Microsomen 17:11, 31 May 2005 (UTC)",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Julian_Californien.JPG",
+      "matchedPage": "Julian, California",
+      "matchedKm": 1.8
+    },
+    "kaikoura-international-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Kaik%C5%8Dura_seen_from_Kaik%C5%8Dura_Peninsula.jpg/500px-Kaik%C5%8Dura_seen_from_Kaik%C5%8Dura_Peninsula.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Clilly4",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Kaikōura_seen_from_Kaikōura_Peninsula.jpg",
+      "matchedPage": "Kaikōura",
+      "matchedKm": 0.2
+    },
+    "karlu-karlu-australia": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Devils_Marbles.jpg/500px-Devils_Marbles.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Iain Whyte (Iainwhyte)",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Devils_Marbles.jpg",
+      "matchedPage": "Karlu Karlu / Devils Marbles Conservation Reserve",
+      "matchedKm": 1.7
+    },
+    "kartchner-caverns-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kartchner_Big_Room.jpg/500px-Kartchner_Big_Room.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 280,
+      "artist": "Mike Lewis",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Kartchner_Big_Room.jpg",
+      "matchedPage": "Kartchner Caverns State Park",
+      "matchedKm": 0.5
+    },
+    "katahdin-woods-and-waters-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Katahdin.jpg/500px-Katahdin.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Rubyk at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Katahdin.jpg",
+      "matchedPage": "Katahdin",
+      "matchedKm": 15.2
+    },
+    "kawarau-gibbston-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vineyard_in_Gibbston_Valley_in_South_Island%2C_New_Zealand_-_Central_Otago_wine_region.jpg/500px-Vineyard_in_Gibbston_Valley_in_South_Island%2C_New_Zealand_-_Central_Otago_wine_region.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Marek Ślusarczyk (Tupungato) Photo portfolio",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Vineyard_in_Gibbston_Valley_in_South_Island,_New_Zealand_-_Central_Otago_wine_region.jpg",
+      "matchedPage": "Gibbston",
+      "matchedKm": 1.1
+    },
+    "kejimkujik-national-park-and-national-historic-site": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Little_River_in_Fall.jpg/500px-Little_River_in_Fall.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Original uploader was Canoehead at en.wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Little_River_in_Fall.jpg",
+      "matchedPage": "Kejimkujik National Park",
+      "matchedKm": 4
+    },
+    "ketchum-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Bald-Mountain-Sun-Valley-Rd.jpg/500px-Bald-Mountain-Sun-Valley-Rd.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Stephen Marks - (WT-en) StephenM at English Wikivoyage",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bald-Mountain-Sun-Valley-Rd.jpg",
+      "matchedPage": "Ketchum, Idaho",
+      "matchedKm": 0.4
+    },
+    "killarney-provincial-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/KPPO_LOGO_4.jpg/500px-KPPO_LOGO_4.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 455,
+      "artist": "Brucewaters",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:KPPO_LOGO_4.jpg",
+      "matchedPage": "Killarney Provincial Park Observatory",
+      "matchedKm": 0.2
+    },
+    "kouchibouguac-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Kouchibouguac.jpg/500px-Kouchibouguac.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Richtid",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Kouchibouguac.jpg",
+      "matchedPage": "Kouchibouguac National Park",
+      "matchedKm": 4.4
+    },
+    "lake-superior-provincial-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nokomis_Trail.jpg/500px-Nokomis_Trail.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Beckettlc",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Nokomis_Trail.jpg",
+      "matchedPage": "Lake Superior Provincial Park",
+      "matchedKm": 18.6
+    },
+    "lakeland-provincial-park-and-recreation-area-lakeland-provincial-park-lakeland-provincial-recreation-area": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Kinnard_Lake_Alberta.JPG/500px-Kinnard_Lake_Alberta.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Wheateater",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Kinnard_Lake_Alberta.JPG",
+      "matchedPage": "Lakeland Provincial Park and Recreation Area",
+      "matchedKm": 11.4
+    },
+    "lakewood-village-texas-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Denton_County_Texas_Incorporated_Areas_Lakewood_Village_highlighted.svg/500px-Denton_County_Texas_Incorporated_Areas_Lakewood_Village_highlighted.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 240,
+      "artist": "Ixnayonthetimmay",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Denton_County_Texas_Incorporated_Areas_Lakewood_Village_highlighted.svg",
+      "matchedPage": "Lakewood Village, Texas",
+      "matchedKm": 0.7
+    },
+    "landes-de-gascogne-regional-natural-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Pins_des_Landes.jpg/500px-Pins_des_Landes.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Arnaud 25",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pins_des_Landes.jpg",
+      "matchedPage": "Landes de Gascogne Regional Natural Park",
+      "matchedKm": 0.7
+    },
+    "lapalala-wilderness-nature-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Lapalala_Wilderness.jpg/500px-Lapalala_Wilderness.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 319,
+      "artist": "Online Brand Ambassadors",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Lapalala_Wilderness.jpg",
+      "matchedPage": "Lapalala Wilderness",
+      "matchedKm": 6.8
+    },
+    "lauwersmeer-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Satellite_image_of_Lauwersmeer%2C_Netherlands_%286.21E_53.36N%29.png/500px-Satellite_image_of_Lauwersmeer%2C_Netherlands_%286.21E_53.36N%29.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 329,
+      "artist": "Unknown author",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Lauwersmeer,_Netherlands_(6.21E_53.36N).png",
+      "matchedPage": "Lauwersmeer",
+      "matchedKm": 1.8
+    },
+    "liberty-hill-texas": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Liberty_Hill_Texas_Sculpture_Park.jpg/500px-Liberty_Hill_Texas_Sculpture_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 270,
+      "artist": "Larry D. Moore",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Liberty_Hill_Texas_Sculpture_Park.jpg",
+      "matchedPage": "Liberty Hill International Sculpture Park",
+      "matchedKm": 1.7
+    },
+    "lost-trail-national-wildlife-refuge-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Lost_Trail_National_Wildlife_Refuge.jpg/500px-Lost_Trail_National_Wildlife_Refuge.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 205,
+      "artist": "USFWS",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Lost_Trail_National_Wildlife_Refuge.jpg",
+      "matchedPage": "Lost Trail National Wildlife Refuge",
+      "matchedKm": 6.5
+    },
+    "lyndon-b-johnson-national-historical-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Lyndon_B._Johnson_birthplace_NPS.jpg/500px-Lyndon_B._Johnson_birthplace_NPS.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "National Park Service",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Lyndon_B._Johnson_birthplace_NPS.jpg",
+      "matchedPage": "Lyndon B. Johnson National Historical Park",
+      "matchedKm": 1.8
+    },
+    "mammoth-cave-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Mammoth_Cave_Rotunda_%28USGS_Lwt02830%29.jpg/500px-Mammoth_Cave_Rotunda_%28USGS_Lwt02830%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 354,
+      "artist": "Willis Thomas Lee",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Mammoth_Cave_Rotunda_(USGS_Lwt02830).jpg",
+      "matchedPage": "Mammoth Cave National Park",
+      "matchedKm": 0.1
+    },
+    "mando": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Wadden_-_Mando.PNG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 480,
+      "height": 509,
+      "artist": "edited by M.Minderhoud",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Wadden_-_Mando.PNG",
+      "matchedPage": "Mandø",
+      "matchedKm": 1.2
+    },
+    "mayo-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Looking_west_from_Ballycroy_National_Park_Centre_%28geograph_4973049%29.jpg/500px-Looking_west_from_Ballycroy_National_Park_Centre_%28geograph_4973049%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 257,
+      "artist": "Gordon Hatton",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Looking_west_from_Ballycroy_National_Park_Centre_(geograph_4973049).jpg",
+      "matchedPage": "Ballycroy, County Mayo",
+      "matchedKm": 0.6
+    },
+    "medicine-rocks-state-park-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Medicine_Rocks_State_Park.jpg/500px-Medicine_Rocks_State_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "J.B. Chandler",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Medicine_Rocks_State_Park.jpg",
+      "matchedPage": "Medicine Rocks State Park",
+      "matchedKm": 1
+    },
+    "merritt-reservoir-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Merritt_Dam_%28Cherry_County%2C_Nebraska%29_1.JPG/500px-Merritt_Dam_%28Cherry_County%2C_Nebraska%29_1.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 264,
+      "artist": "Ammodramus",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Merritt_Dam_(Cherry_County,_Nebraska)_1.JPG",
+      "matchedPage": "Merritt Dam",
+      "matchedKm": 2.5
+    },
+    "mesa-verde-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cliff_Palace-Colorado-Mesa_Verde_NP.jpg/500px-Cliff_Palace-Colorado-Mesa_Verde_NP.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 273,
+      "artist": "Tobi 87",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cliff_Palace-Colorado-Mesa_Verde_NP.jpg",
+      "matchedPage": "Mesa Verde National Park",
+      "matchedKm": 6.8
+    },
+    "mont-megantic-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Mont-M%C3%A9gantic-2.jpg/500px-Mont-M%C3%A9gantic-2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Neumeier",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Mont-Mégantic-2.jpg",
+      "matchedPage": "Mont-Mégantic National Park",
+      "matchedKm": 0.2
+    },
+    "mount-carleton-provincial-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Mont_Carleton_vue_mont_Head.jpg/500px-Mont_Carleton_vue_mont_Head.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Fralambert",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Mont_Carleton_vue_mont_Head.jpg",
+      "matchedPage": "Mount Carleton",
+      "matchedKm": 7.8
+    },
+    "namibrand-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/NamibDesert01.jpg/500px-NamibDesert01.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 306,
+      "artist": "Marco w at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:NamibDesert01.jpg",
+      "matchedPage": "NamibRand Nature Reserve",
+      "matchedKm": 0
+    },
+    "naseby-new-zealand": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Naseby_Post_Office_%28Former%29_building_along_Derwent_Street.jpg/500px-Naseby_Post_Office_%28Former%29_building_along_Derwent_Street.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 277,
+      "artist": "Pseudopanax at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Naseby_Post_Office_(Former)_building_along_Derwent_Street.jpg",
+      "matchedPage": "Naseby, New Zealand",
+      "matchedKm": 1.4
+    },
+    "natural-bridge-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Natural_Bridge%2C_Rockbridge_County%2C_VA.jpg/500px-Natural_Bridge%2C_Rockbridge_County%2C_VA.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 640,
+      "artist": "The old perfesser",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Natural_Bridge,_Rockbridge_County,_VA.jpg",
+      "matchedPage": "Natural Bridge (Virginia)",
+      "matchedKm": 0.7
+    },
+    "natural-bridges-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Owachomo_laban.jpg/500px-Owachomo_laban.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Laban712 on en",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Owachomo_laban.jpg",
+      "matchedPage": "Natural Bridges National Monument",
+      "matchedKm": 0
+    },
+    "newport-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/NewportStateParkSign.jpg/500px-NewportStateParkSign.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Royalbroil",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:NewportStateParkSign.jpg",
+      "matchedPage": "Newport State Park",
+      "matchedKm": 0.1
+    },
+    "niue-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_Niue.svg/500px-Flag_of_Niue.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 240,
+      "artist": "SKopp",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Flag_of_Niue.svg",
+      "matchedPage": "Niue",
+      "matchedKm": 6.9
+    },
+    "niue-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Niue_International_Airport.jpg/500px-Niue_International_Airport.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 270,
+      "artist": "Pseudopanax at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Niue_International_Airport.jpg",
+      "matchedPage": "Niue International Airport",
+      "matchedKm": 0.6
+    },
+    "north-frontenac": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Plevna_ON.JPG/500px-Plevna_ON.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 358,
+      "artist": "P199",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Plevna_ON.JPG",
+      "matchedPage": "North Frontenac",
+      "matchedKm": 4.7
+    },
+    "north-york-moors-national-park-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Smiddy_Hill_leading_to_Birdgate%2C_Pickering_-_geograph.org.uk_-_7644964.jpg/500px-Smiddy_Hill_leading_to_Birdgate%2C_Pickering_-_geograph.org.uk_-_7644964.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "John Lucas",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Smiddy_Hill_leading_to_Birdgate,_Pickering_-_geograph.org.uk_-_7644964.jpg",
+      "matchedPage": "Pickering, North Yorkshire",
+      "matchedKm": 19.7
+    },
+    "northumberland-national-park-and-kielder-water-forest-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Northumberland_National_Park.jpg/500px-Northumberland_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "The original uploader was Keith Edkins at English Wikipedia.",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Northumberland_National_Park.jpg",
+      "matchedPage": "Northumberland National Park",
+      "matchedKm": 5.9
+    },
+    "norwood-colorado-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Grand_Avenue_in_Norwood%2C_Colorado.JPG/500px-Grand_Avenue_in_Norwood%2C_Colorado.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 271,
+      "artist": "Jeffrey Beall",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Grand_Avenue_in_Norwood,_Colorado.JPG",
+      "matchedPage": "Norwood, Colorado",
+      "matchedKm": 0.5
+    },
+    "nucla-and-naturita-colorado-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Nucla%2C_Colorado_Town_Hall.JPG/500px-Nucla%2C_Colorado_Town_Hall.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 397,
+      "artist": "Jeffrey Beall",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Nucla,_Colorado_Town_Hall.JPG",
+      "matchedPage": "Nucla, Colorado",
+      "matchedKm": 3.1
+    },
+    "obed-wild-and-scenic-river-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Obed_Wild_and_Scenic_River_OBRI4320.jpg/500px-Obed_Wild_and_Scenic_River_OBRI4320.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "National Park Service Digital Image Archives",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Obed_Wild_and_Scenic_River_OBRI4320.jpg",
+      "matchedPage": "Obed River",
+      "matchedKm": 14.2
+    },
+    "old-snowmass-colorado": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Snowmass_Village.JPG/500px-Snowmass_Village.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Werdna",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Snowmass_Village.JPG",
+      "matchedPage": "Snowmass Village, Colorado",
+      "matchedKm": 10.2
+    },
+    "oracle-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Acadia_Ranch_Museum_%28Oracle%2C_AZ%29_center_section_1.JPG/500px-Acadia_Ranch_Museum_%28Oracle%2C_AZ%29_center_section_1.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 585,
+      "artist": "Ammodramus",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Acadia_Ranch_Museum_(Oracle,_AZ)_center_section_1.JPG",
+      "matchedPage": "Oracle, Arizona",
+      "matchedKm": 4.7
+    },
+    "oregon-caves-national-monument-and-preserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Paradise_Lost_%289939473016%29.jpg/500px-Paradise_Lost_%289939473016%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 720,
+      "artist": "Oregon Caves from Cave Junction, USA",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Paradise_Lost_(9939473016).jpg",
+      "matchedPage": "Oregon Caves National Monument and Preserve",
+      "matchedKm": 1.6
+    },
+    "oregon-outback-international-dark-sky-sanctuary-oregon": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Welcome_Sign%2C_Lakeview%2C_Oregon%2C_2014.JPG/500px-Welcome_Sign%2C_Lakeview%2C_Oregon%2C_2014.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Orygun",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Welcome_Sign,_Lakeview,_Oregon,_2014.JPG",
+      "matchedPage": "Lakeview, Oregon",
+      "matchedKm": 0.3
+    },
+    "organ-pipe-cactus-national-monument": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Organ_Pipe_Nat%27l_Monument_-_panoramio.jpg/500px-Organ_Pipe_Nat%27l_Monument_-_panoramio.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Klaus Eltrop",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Organ_Pipe_Nat'l_Monument_-_panoramio.jpg",
+      "matchedPage": "Organ Pipe Cactus National Monument",
+      "matchedKm": 0.8
+    },
+    "ovre-pasvik-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Pasvik_Zapovednik%2C_River_Paz.jpg/500px-Pasvik_Zapovednik%2C_River_Paz.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Andrei Humala (Panoramio)",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pasvik_Zapovednik,_River_Paz.jpg",
+      "matchedPage": "Pasvik Nature Reserve",
+      "matchedKm": 2.7
+    },
+    "oxford-forest-conservation-area-new-zealand": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Oxford_NZ_Main_Street_003.JPG/500px-Oxford_NZ_Main_Street_003.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 326,
+      "artist": "Mattinbgn (talk · contribs)",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Oxford_NZ_Main_Street_003.JPG",
+      "matchedPage": "Oxford, New Zealand",
+      "matchedKm": 2.6
+    },
+    "palm-beach-headland": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Palm_Beach_from_the_Barrenjoey_Lighthouse_b_%28cropped%29.jpg/500px-Palm_Beach_from_the_Barrenjoey_Lighthouse_b_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 312,
+      "artist": "File:Palm Beach from the Barrenjoey Lighthouse.jpg: Kapitan1999\nderivative work: Georgfotoart",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Palm_Beach_from_the_Barrenjoey_Lighthouse_b_(cropped).jpg",
+      "matchedPage": "Palm Beach, New South Wales",
+      "matchedKm": 2.3
+    },
+    "palos-preserves-urban-night-sky-place": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Little_Red_Schoolhouse_Nature_Center.jpg/500px-Little_Red_Schoolhouse_Nature_Center.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 682,
+      "artist": "Crosbiesmith",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Little_Red_Schoolhouse_Nature_Center.jpg",
+      "matchedPage": "Palos Forest Preserves",
+      "matchedKm": 0.1
+    },
+    "paonia-colorado": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Paonia.JPG/500px-Paonia.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 335,
+      "artist": "Cobun Keegan",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Paonia.JPG",
+      "matchedPage": "Paonia, Colorado",
+      "matchedKm": 0.6
+    },
+    "parc-du-mont-bellevue-urban-night-sky-place": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Parc_du_Mont-Bellevue.jpg/500px-Parc_du_Mont-Bellevue.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Libertad-pb",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Parc_du_Mont-Bellevue.jpg",
+      "matchedPage": "Mont Bellevue",
+      "matchedKm": 0.3
+    },
+    "parc-national-du-mont-tremblant": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Paysage_lac_Monroe.jpg/500px-Paysage_lac_Monroe.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 270,
+      "artist": "Fralambert",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Paysage_lac_Monroe.jpg",
+      "matchedPage": "Mont-Tremblant National Park",
+      "matchedKm": 4.2
+    },
+    "petrified-forest-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Jasper_Forest_at_Petrified_Forest_NP_in_AZ_12.jpg/500px-Jasper_Forest_at_Petrified_Forest_NP_in_AZ_12.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Jeffhollett",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Jasper_Forest_at_Petrified_Forest_NP_in_AZ_12.jpg",
+      "matchedPage": "Petrified Forest National Park",
+      "matchedKm": 9.6
+    },
+    "pic-du-midi-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Pic_du_Midi_du_Bigorre.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 480,
+      "height": 360,
+      "artist": "The original uploader was Nathan Hamblen at French Wikipedia.",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pic_du_Midi_du_Bigorre.jpg",
+      "matchedPage": "Pic du Midi de Bigorre",
+      "matchedKm": 23.1
+    },
+    "pickett-memorial-and-pogue-creek-canyon-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Pickett_state_park_2000.jpg/500px-Pickett_state_park_2000.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Ichabod",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pickett_state_park_2000.jpg",
+      "matchedPage": "Pickett CCC Memorial State Park",
+      "matchedKm": 3.2
+    },
+    "pipe-spring-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Pipe_Spring_NM01.jpg/500px-Pipe_Spring_NM01.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 315,
+      "artist": "Nikater",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pipe_Spring_NM01.jpg",
+      "matchedPage": "Pipe Spring National Monument",
+      "matchedKm": 0
+    },
+    "pitcairn-islands-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Henderson_Island_ESA392791.jpg/500px-Henderson_Island_ESA392791.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 356,
+      "artist": "European Space Agency",
+      "licence": "CC BY-SA 3.0 igo",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Henderson_Island_ESA392791.jpg",
+      "matchedPage": "Henderson Island (Pitcairn Islands)",
+      "matchedKm": 2.8
+    },
+    "point-pelee-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Boardwalk_in_Pelee.JPG/500px-Boardwalk_in_Pelee.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 321,
+      "artist": "Quozl (talk)",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Boardwalk_in_Pelee.JPG",
+      "matchedPage": "Point Pelee National Park",
+      "matchedKm": 0.2
+    },
+    "prineville-reservoir-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Calm_Water_and_Reflection_on_Prineville_Reservoir_%28451712417%29.jpg/500px-Calm_Water_and_Reflection_on_Prineville_Reservoir_%28451712417%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Erin from Oregon City, OR",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Calm_Water_and_Reflection_on_Prineville_Reservoir_(451712417).jpg",
+      "matchedPage": "Prineville Reservoir Wildlife Area",
+      "matchedKm": 2
+    },
+    "quetico-provincial-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SarahLake.jpg/500px-SarahLake.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Valerius Tygart",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:SarahLake.jpg",
+      "matchedPage": "Quetico Provincial Park",
+      "matchedKm": 0.3
+    },
+    "rainbow-bridge-national-monument-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Utah_Rainbow_Arch.jpg/500px-Utah_Rainbow_Arch.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Unknown author",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Utah_Rainbow_Arch.jpg",
+      "matchedPage": "Rainbow Bridge National Monument",
+      "matchedKm": 0
+    },
+    "ramon-crater-nature-reserve-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/MakhteshRamonMar262022_01.jpg/500px-MakhteshRamonMar262022_01.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Hagai Agmon-Snir حچاي اچمون-سنير חגי אגמון-שניר",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:MakhteshRamonMar262022_01.jpg",
+      "matchedPage": "Makhtesh Ramon",
+      "matchedKm": 3.7
+    },
+    "rappahannock-county-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Rappahannock_County_Courthouse.jpg/500px-Rappahannock_County_Courthouse.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 640,
+      "artist": "Original uploaded by Ser Amantio di Nicolao",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rappahannock_County_Courthouse.jpg",
+      "matchedPage": "Rappahannock County, Virginia",
+      "matchedKm": 2.8
+    },
+    "regional-natural-park-of-morvan": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Morvan_bourgogne2.jpg/500px-Morvan_bourgogne2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Urban",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Morvan_bourgogne2.jpg",
+      "matchedPage": "Morvan Regional Natural Park",
+      "matchedKm": 7.3
+    },
+    "regional-natural-park-of-vercors": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Vercors_001.jpg/500px-Vercors_001.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Johan N",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Vercors_001.jpg",
+      "matchedPage": "Vercors Massif",
+      "matchedKm": 0.5
+    },
+    "rhon-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Schwarzes_Moor%2C_4.jpg/500px-Schwarzes_Moor%2C_4.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Rainer Lippert",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Schwarzes_Moor,_4.jpg",
+      "matchedPage": "Black Moor (Rhön)",
+      "matchedKm": 5.3
+    },
+    "ridgway-colorado-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Ridgway%2C_Colorado.JPG/500px-Ridgway%2C_Colorado.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 284,
+      "artist": "Jeffrey Beall",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Ridgway,_Colorado.JPG",
+      "matchedPage": "Ridgway, Colorado",
+      "matchedKm": 1.1
+    },
+    "rio-hurtado-chile": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Embalse_Recoleta.jpg/500px-Embalse_Recoleta.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Unknown author",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Embalse_Recoleta.jpg",
+      "matchedPage": "Río Hurtado",
+      "matchedKm": 1
+    },
+    "rockport-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Rockport_Lake_Utah.jpg/500px-Rockport_Lake_Utah.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 338,
+      "artist": "GreenGlass1972",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rockport_Lake_Utah.jpg",
+      "matchedPage": "Rockport Reservoir",
+      "matchedKm": 2
+    },
+    "salinas-pueblo-missions-national-monument-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Salinas_Pueblo_Missions_National_Monument_ruins.jpg/500px-Salinas_Pueblo_Missions_National_Monument_ruins.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 323,
+      "artist": "Unknown author",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Salinas_Pueblo_Missions_National_Monument_ruins.jpg",
+      "matchedPage": "Salinas Pueblo Missions National Monument",
+      "matchedKm": 0.3
+    },
+    "sark-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Flag_of_Sark_%28bordered%29.svg/500px-Flag_of_Sark_%28bordered%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 288,
+      "artist": "Fvasconcellos (talk · contribs)",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Flag_of_Sark_(bordered).svg",
+      "matchedPage": "Sark",
+      "matchedKm": 0.4
+    },
+    "sedona-arizona-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/SedonaAirport.JPG/500px-SedonaAirport.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 321,
+      "artist": "Shane.torgerson",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:SedonaAirport.JPG",
+      "matchedPage": "Sedona Airport",
+      "matchedKm": 1.4
+    },
+    "sinks-canyon-state-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Sinks_Canyon_state_park.jpg/500px-Sinks_Canyon_state_park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "dayvayen",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sinks_Canyon_state_park.jpg",
+      "matchedPage": "Sinks Canyon State Park",
+      "matchedKm": 5.7
+    },
+    "sisters-oregon": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Sisters_main_street.jpg/500px-Sisters_main_street.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 321,
+      "artist": "Finetooth",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sisters_main_street.jpg",
+      "matchedPage": "Sisters, Oregon",
+      "matchedKm": 0.7
+    },
+    "sky-meadows-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Sky_Meadows_State_Park_Virginia.jpg/500px-Sky_Meadows_State_Park_Virginia.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Aneta Kaluzna",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sky_Meadows_State_Park_Virginia.jpg",
+      "matchedPage": "Sky Meadows State Park",
+      "matchedKm": 0.8
+    },
+    "snow-canyon-state-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Snow_Canyon_Utah_March_2019.jpg/500px-Snow_Canyon_Utah_March_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Wilson44691",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Snow_Canyon_Utah_March_2019.jpg",
+      "matchedPage": "Snow Canyon State Park",
+      "matchedKm": 0.1
+    },
+    "snowdonia-national-park-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Snowdon_Ranger_path_on_a_cold_February_day._%2816431627106%29.jpg/500px-Snowdon_Ranger_path_on_a_cold_February_day._%2816431627106%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Scott Wylie from UK",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Snowdon_Ranger_path_on_a_cold_February_day._(16431627106).jpg",
+      "matchedPage": "Snowdonia",
+      "matchedKm": 1
+    },
+    "sopotnia-wielka": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Wodospad_w_Sopotni_Wielkiej_B%C5%BB2.jpg/500px-Wodospad_w_Sopotni_Wielkiej_B%C5%BB2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Jerzy Opioła",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Wodospad_w_Sopotni_Wielkiej_BŻ2.jpg",
+      "matchedPage": "Sopotnia Wielka Falls",
+      "matchedKm": 0.9
+    },
+    "south-llano-river-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/South_Llano_River_at_South_Llano_River_SP_2023.jpg/500px-South_Llano_River_at_South_Llano_River_SP_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 270,
+      "artist": "Larry D. Moore",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:South_Llano_River_at_South_Llano_River_SP_2023.jpg",
+      "matchedPage": "South Llano River State Park",
+      "matchedKm": 2.1
+    },
+    "spruce-woods-provincial-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Spruce_Woods_Provincial_Park.JPG/500px-Spruce_Woods_Provincial_Park.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Classenc",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Spruce_Woods_Provincial_Park.JPG",
+      "matchedPage": "Spruce Woods Provincial Park",
+      "matchedKm": 13.2
+    },
+    "stacy-park-urban-night-sky-place": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Stacy_Park.jpg/500px-Stacy_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Paul Sableman",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Stacy_Park.jpg",
+      "matchedPage": "Stacy Park",
+      "matchedKm": 0.1
+    },
+    "staunton-river-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/StauntonRiverStateParkWW.JPG/500px-StauntonRiverStateParkWW.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Wikipelli",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:StauntonRiverStateParkWW.JPG",
+      "matchedPage": "Staunton River State Park",
+      "matchedKm": 0.8
+    },
+    "steinaker-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Steinaker_Dam_%26_Reservoir.jpg/500px-Steinaker_Dam_%26_Reservoir.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "vicki watkins",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Steinaker_Dam_&_Reservoir.jpg",
+      "matchedPage": "Steinaker State Park",
+      "matchedKm": 1.2
+    },
+    "stephen-c-foster-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Stephen_C._Foster_State_Park_entrance.JPG/500px-Stephen_C._Foster_State_Park_entrance.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Michael Rivera",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Stephen_C._Foster_State_Park_entrance.JPG",
+      "matchedPage": "Stephen C. Foster State Park",
+      "matchedKm": 0.2
+    },
+    "stewart-island-rakiura-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Stewart_Island_map-en.svg/500px-Stewart_Island_map-en.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 351,
+      "artist": "Sémhur (talk)",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Stewart_Island_map-en.svg",
+      "matchedPage": "Stewart Island",
+      "matchedKm": 0.4
+    },
+    "sunshine-coast": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/USC_Sippy_Downs_campus_2019.jpg/500px-USC_Sippy_Downs_campus_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Uscjkirklan",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:USC_Sippy_Downs_campus_2019.jpg",
+      "matchedPage": "University of the Sunshine Coast",
+      "matchedKm": 20.2
+    },
+    "tahuna-glenorchy": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Corrine_Davis-milky_way.webp/500px-Corrine_Davis-milky_way.webp.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "GyCGDavis",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Corrine_Davis-milky_way.webp",
+      "matchedPage": "Tāhuna Glenorchy Dark Sky Sanctuary",
+      "matchedKm": 6.5
+    },
+    "terra-nova-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/NLC_TerraNova2_tango7174.jpg/500px-NLC_TerraNova2_tango7174.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Tango7174",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:NLC_TerraNova2_tango7174.jpg",
+      "matchedPage": "Terra Nova National Park",
+      "matchedKm": 2.8
+    },
+    "the-city-of-moab": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Moab%2C_Utah_downtown.jpg/500px-Moab%2C_Utah_downtown.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Quintin Soloviev",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Moab,_Utah_downtown.jpg",
+      "matchedPage": "Moab, Utah",
+      "matchedKm": 0.3
+    },
+    "thorington-street-suffolk": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Old_Mill_and_Mill_House_at_Thorington_Street%2C_Suffolk_-_geograph.org.uk_-_237917.jpg/500px-Old_Mill_and_Mill_House_at_Thorington_Street%2C_Suffolk_-_geograph.org.uk_-_237917.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Robert Edwards",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Old_Mill_and_Mill_House_at_Thorington_Street,_Suffolk_-_geograph.org.uk_-_237917.jpg",
+      "matchedPage": "Thorington Street",
+      "matchedKm": 0.4
+    },
+    "thousand-hills-state-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ThousandHills1.jpg/500px-ThousandHills1.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 230,
+      "artist": "Sector001 (talk) / Sector001 at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:ThousandHills1.jpg",
+      "matchedPage": "Thousand Hills State Park",
+      "matchedKm": 20.2
+    },
+    "timpanogos-cave-national-monument-urban-night-sky-place": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Timpanogos_superintendent%27s_residence_NPS.jpg/500px-Timpanogos_superintendent%27s_residence_NPS.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "National Park Service",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Timpanogos_superintendent's_residence_NPS.jpg",
+      "matchedPage": "Timpanogos Cave Historic District",
+      "matchedKm": 0.5
+    },
+    "tomintoul-glenlivet-cairngorms-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Tomintoul.jpg/500px-Tomintoul.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 353,
+      "artist": "Original uploader was Paul Hermans at nl.wikipedia",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Tomintoul.jpg",
+      "matchedPage": "Tomintoul",
+      "matchedKm": 0.5
+    },
+    "torrance-barrens-conservation-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Perseid_Light_Trails.jpg/500px-Perseid_Light_Trails.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "John Vetterli from Toronto, Canada",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Perseid_Light_Trails.jpg",
+      "matchedPage": "Torrance Barrens",
+      "matchedKm": 1.4
+    },
+    "town-of-breckenridge-colorado": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Breckenridge_Ski_Area_from_Dercum_Mountain%2C_Keystone_Ski_Area.jpg/500px-Breckenridge_Ski_Area_from_Dercum_Mountain%2C_Keystone_Ski_Area.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Ahodges7",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Breckenridge_Ski_Area_from_Dercum_Mountain,_Keystone_Ski_Area.jpg",
+      "matchedPage": "Breckenridge Ski Resort",
+      "matchedKm": 1.5
+    },
+    "tubac": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Tpshp-entrance.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 480,
+      "height": 318,
+      "artist": "Mosamiazaz",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Tpshp-entrance.jpg",
+      "matchedPage": "Tubac Presidio State Historic Park",
+      "matchedKm": 0.3
+    },
+    "tumacacori-national-historical-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ruins_of_the_Franciscan_church_at_Mission_San_Jos%C3%A9_de_Tumac%C3%A1cori_%286127855296%29.jpg/500px-Ruins_of_the_Franciscan_church_at_Mission_San_Jos%C3%A9_de_Tumac%C3%A1cori_%286127855296%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 347,
+      "artist": "SonoranDesertNPS from Tucson, Arizona",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Ruins_of_the_Franciscan_church_at_Mission_San_José_de_Tumacácori_(6127855296).jpg",
+      "matchedPage": "Mission San José de Tumacácori",
+      "matchedKm": 0.6
+    },
+    "valle-de-oro-national-wildlife-refuge-urban-night-sky-place": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Valle_de_Oro_National_Wildlife_Refuge%2C_South_Valley_NM.jpg/500px-Valle_de_Oro_National_Wildlife_Refuge%2C_South_Valley_NM.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "John Phelan",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Valle_de_Oro_National_Wildlife_Refuge,_South_Valley_NM.jpg",
+      "matchedPage": "Valle de Oro National Wildlife Refuge",
+      "matchedKm": 1.1
+    },
+    "valles-caldera-national-preserve-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Valle_Grande_dome.jpg/500px-Valle_Grande_dome.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 235,
+      "artist": "User Brian0918 on en.wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Valle_Grande_dome.jpg",
+      "matchedPage": "Valles Caldera",
+      "matchedKm": 0.5
+    },
+    "voyageurs-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Voyageurs_National_Park.jpg/500px-Voyageurs_National_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 311,
+      "artist": "Unknown author",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Voyageurs_National_Park.jpg",
+      "matchedPage": "Voyageurs National Park",
+      "matchedKm": 2.3
+    },
+    "waterton-glacier-international-peace-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Watertonlake.jpg/500px-Watertonlake.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 220,
+      "artist": "Gorgo",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Watertonlake.jpg",
+      "matchedPage": "Waterton Lakes National Park",
+      "matchedKm": 1.5
+    },
+    "watoga-state-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Watoga_State_Park.jpg/500px-Watoga_State_Park.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Brian M. Powell (user Bitmapped on en.wikipedia)",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Watoga_State_Park.jpg",
+      "matchedPage": "Watoga State Park",
+      "matchedKm": 2.4
+    },
+    "west-penwith-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/St_Just_Market_Square_Bank_Square_and_Plein_An_Gwarry.png/500px-St_Just_Market_Square_Bank_Square_and_Plein_An_Gwarry.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 270,
+      "artist": "Kernow Skies",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:St_Just_Market_Square_Bank_Square_and_Plein_An_Gwarry.png",
+      "matchedPage": "St Just in Penwith",
+      "matchedKm": 3.1
+    },
+    "westcliffe-and-silver-cliff-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Hornpeak.JPG/500px-Hornpeak.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 311,
+      "artist": "Hogs555",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Hornpeak.JPG",
+      "matchedPage": "Westcliffe, Colorado",
+      "matchedKm": 0.7
+    },
+    "westhavelland-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Karte_Naturpark_Westhavelland.png/500px-Karte_Naturpark_Westhavelland.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 640,
+      "artist": "Lencer",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Karte_Naturpark_Westhavelland.png",
+      "matchedPage": "Westhavelland Nature Park",
+      "matchedKm": 12.3
+    },
+    "wimberley-valley-texas-dark-sky-community": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wimberley_Texas_Downtown_3.JPG/500px-Wimberley_Texas_Downtown_3.JPG?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 320,
+      "artist": "Travis K. Witt",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Wimberley_Texas_Downtown_3.JPG",
+      "matchedPage": "Wimberley, Texas",
+      "matchedKm": 1.6
+    },
+    "wood-buffalo-national-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Wood-Buffalo-NP_Gros_Beak_Lake_2_98-07-02.jpg/500px-Wood-Buffalo-NP_Gros_Beak_Lake_2_98-07-02.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 316,
+      "artist": "Ansgar Walk",
+      "licence": "CC BY-SA 2.5",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Wood-Buffalo-NP_Gros_Beak_Lake_2_98-07-02.jpg",
+      "matchedPage": "Wood Buffalo National Park",
+      "matchedKm": 8.7
+    },
+    "ynys-enlli-bardsey-island-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Bardsey-island.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 480,
+      "height": 180,
+      "artist": "Mynydd Mawr (Nowster)",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bardsey-island.jpg",
+      "matchedPage": "Bardsey Island",
+      "matchedKm": 0.3
+    },
+    "yorkshire-dales-national-park-dark-sky-reserve": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/YorkshireDalesSign.jpg/500px-YorkshireDalesSign.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "LordHarris at English Wikipedia",
+      "licence": "Public domain",
+      "licenceUrl": "",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:YorkshireDalesSign.jpg",
+      "matchedPage": "Yorkshire Dales National Park",
+      "matchedKm": 8.1
+    },
+    "zion-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Zion_angels_landing_view.jpg/500px-Zion_angels_landing_view.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 492,
+      "artist": "Diliff",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Zion_angels_landing_view.jpg",
+      "matchedPage": "Zion National Park",
+      "matchedKm": 3.5
+    },
+    "big-bend-national-park-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Canyon%2C_Rio_Grande%2C_Texas.jpeg/500px-Canyon%2C_Rio_Grande%2C_Texas.jpeg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "Michael from Minnesota (@Michael)",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Canyon,_Rio_Grande,_Texas.jpeg",
+      "matchedPage": "Big Bend National Park",
+      "matchedKm": 0
+    },
+    "boundary-waters-canoe-area-dark-sky-sanctuary": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Pose_lake_Minnesota.jpg/500px-Pose_lake_Minnesota.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 360,
+      "artist": "R27182818 at English Wikipedia\n\n(Original text: Reid Priedhorsky (R27182818))",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pose_lake_Minnesota.jpg",
+      "matchedPage": "Boundary Waters Canoe Area Wilderness",
+      "matchedKm": 22
+    },
+    "camp-verde-dark-sky-park": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Camp_Verde%2C_Arizona.jpg/500px-Camp_Verde%2C_Arizona.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 480,
+      "height": 640,
+      "artist": "Seasider53",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Camp_Verde,_Arizona.jpg",
+      "matchedPage": "Camp Verde, Arizona",
+      "matchedKm": 2.5
+    }
+  },
+  "quarantine": [
+    {
+      "id": "aehai-kalahari-heritage-park-dark-sky-sanctuary",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "alnufud-itba",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "alpes-azur-mercantour-dark-sky-reserve",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "alula-manara-and-algharameel-nature-reserves",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "ann-and-sandy-cross-conservation-area",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "au-diable-vert",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "bluewater-outdoor-education-centre",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "bodmin-moor-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "bon-accord-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "buffalo-national-river-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "cosmic-campground-dark-sky-place",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "craters-of-the-moon-national-monument-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "dark-sky-park-bulbjerg",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "devils-river-state-natural-area-dark-sky-sanctuary",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "dr-lawless-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "eiweiler-star-village",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "fry-family-park-urban-night-sky-place",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "gabriela-mistral-dark-sky-sanctuary",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "gantrisch-dark-sky-zone-switzerland",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "geauga-observatory-park-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "grand-canyon-parashant-national-monument-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "greater-big-bend-international-dark-sky-reserve",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "huanglong-international-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "jackson-lake-state-park-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "johns-family-nature-conservancy-regional-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "joshua-tree-national-park-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "joya-la-barreta-ecological-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "kaibab-paiute-indian-reservation-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "kerry-dark-sky-reserve",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "keweenaw-michigan-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "kissimmee-prairie-preserve-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "kozushima-island-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "lake-fork-earth-and-sky-center-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "manitoulin-eco-park-formerly-gordon-s-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "massacre-rim-wilderness-study-area-dark-sky-sanctuary",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "mayland-earth-to-sky-park-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "middle-fork-river-forest-preserve-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "milton-reimers-ranch-park-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "minami-rokuroshi",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "moffat-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "moores-reserve-south-downs-dark-sky-reserve",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "natur-und-sternenpark-nossentiner-schwinzer-heide",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "north-fork-park-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "north-ronaldsay-island-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "observatory-park-at-turner-farm",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "old-man-on-his-back-prairie-and-heritage-conservation-area",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "om-dark-sky-park-and-observatory-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "pellworm-star-island-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "petrova-gora-biljeg-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "presteigne-norton-dark-sky-community-wales",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "river-murray-dark-sky-reserve",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "spiekeroog-star-island-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "starepark-petschent-putscheid-luxembourg",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "syrjavaara-finland",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "teton-county",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "the-jump-up-dark-sky-sanctuary",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "top-of-the-pines-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "ubaru-camp-and-retreat-center-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "weisbach-nature-park-and-municipality",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "winton-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "xichong-shenzhen-dark-sky-community",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "yeongyang-firefly-eco-park-dark-sky-park",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "bryce-canyon-national-park-dark-sky-park",
+      "reason": "licence not free for commercial use: FAL"
+    },
+    {
+      "id": "pisgah-astronomical-research-institute-dark-sky-park",
+      "reason": "licence not free for commercial use: Cc-by-sa-3.0"
+    },
+    {
+      "id": "saguaro-national-park",
+      "reason": "licence not free for commercial use: Attribution"
+    },
+    {
+      "id": "torrey-utah-dark-sky-community",
+      "reason": "licence not free for commercial use: Attribution"
+    },
+    {
+      "id": "apache-junction-municipal-complex",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "black-gap-dark-sky-sanctuary",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "central-idaho-dark-sky-reserve",
+      "reason": "no candidate within 25 km"
+    },
+    {
+      "id": "aenos-national-park-dark-sky-park",
+      "reason": "name uncorroborated: Mount Ainos"
+    },
+    {
+      "id": "antelope-island-dark-sky-park",
+      "reason": "name uncorroborated: Fielding Garr Ranch"
+    },
+    {
+      "id": "bavarian-forest-national-park",
+      "reason": "name uncorroborated: Bohemian Forest"
+    },
+    {
+      "id": "browns-canyon-national-monument",
+      "reason": "name uncorroborated: Nathrop, Colorado"
+    },
+    {
+      "id": "bukk-national-park-dark-sky-park",
+      "reason": "name uncorroborated: Vöröskő-spring"
+    },
+    {
+      "id": "cattle-point",
+      "reason": "name uncorroborated: Uplands Park"
+    },
+    {
+      "id": "de-boschplaat-dark-sky-park",
+      "reason": "name uncorroborated: Terschelling"
+    },
+    {
+      "id": "flagstaff-area-national-monuments-dark-sky-park",
+      "reason": "name uncorroborated: Walnut Canyon National Monument"
+    },
+    {
+      "id": "hehuan-mountain-dark-sky-park",
+      "reason": "name uncorroborated: Hehuanshan"
+    },
+    {
+      "id": "homer-glen-illinois-dark-sky-community",
+      "reason": "name uncorroborated: Stone Manor"
+    },
+    {
+      "id": "hortobagy-national-park-dark-sky-park",
+      "reason": "name uncorroborated: Puszta"
+    },
+    {
+      "id": "isle-of-rum",
+      "reason": "name uncorroborated: Kinloch Castle"
+    },
+    {
+      "id": "kyrtiz-ruppiner-heath",
+      "reason": "name uncorroborated: North Brandenburg Plateaux and Upland"
+    },
+    {
+      "id": "mon-and-nyord-dark-sky-community",
+      "reason": "name uncorroborated: Møn"
+    },
+    {
+      "id": "mon-and-nyord-dark-sky-park",
+      "reason": "name uncorroborated: Møn"
+    },
+    {
+      "id": "naturpark-attersee-traunsee-dark-sky-park",
+      "reason": "name uncorroborated: Taferlklaussee"
+    },
+    {
+      "id": "regional-natural-park-of-millevaches-dark-sky-reserve",
+      "reason": "name uncorroborated: Lac de Vassivière"
+    },
+    {
+      "id": "springdale-utah-dark-sky-community",
+      "reason": "name uncorroborated: The West Temple"
+    },
+    {
+      "id": "vrani-kamen-dark-sky-park",
+      "reason": "name uncorroborated: Daruvar"
+    },
+    {
+      "id": "wai-iti-dark-sky-park",
+      "reason": "name uncorroborated: Wai-iti River"
+    },
+    {
+      "id": "wairarapa-dark-sky-reserve",
+      "reason": "name uncorroborated: Aorangi Forest Park"
+    },
+    {
+      "id": "warrumbungle-dark-sky-park",
+      "reason": "name uncorroborated: Warrumbungles"
+    },
+    {
+      "id": "winklmoosalm-dark-sky-park",
+      "reason": "name uncorroborated: Reit im Winkl"
+    },
+    {
+      "id": "zselic-national-landscape-protection-area-dark-sky-park",
+      "reason": "name uncorroborated: Szenna"
+    },
+    {
+      "id": "amc-maine-woods-dark-sky-park",
+      "reason": "name uncorroborated: Gulf Hagas"
+    }
+  ]
+}

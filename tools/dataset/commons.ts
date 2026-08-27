@@ -36,6 +36,34 @@ export type SiteImage = {
 const FREE_LICENCE = /^(cc0|public domain|pd(-|$)|cc by(-sa)?[\s-]*\d)/i;
 const UNFREE = /\bn[cd]\b|non[- ]?commercial|no[- ]?deriv/i;
 
+// Words shared by half the registry carry no evidence: "National Park" in common says nothing.
+const GENERIC = new Set(
+  (
+    'national park state dark sky preserve reserve sanctuary community area conservation regional ' +
+    'international place nature provincial forest county municipality city town village the of and ' +
+    'de la du der und monument historic site recreation wilderness heritage'
+  ).split(' '),
+);
+
+/** Coordinates prove where a photo was taken, never what it shows. A page must also share a
+ *  DISTINCTIVE word with the site name, or a neighbouring town's photo passes as the park's. */
+export function corroboratesName(siteName: string, pageTitle: string): boolean {
+  const words = (s: string) =>
+    new Set(
+      s
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9 ]/g, ' ')
+        .split(/\s+/)
+        .filter((w) => w.length > 3 && !GENERIC.has(w)),
+    );
+  const site = words(siteName);
+  const page = words(pageTitle);
+  for (const w of site) if (page.has(w)) return true;
+  return false;
+}
+
 /** MediaWiki accepts underscored titles and answers with spaced ones, so a lookup keyed on
  *  the requested form loses every file with a space in its name. Key both sides through this. */
 export function fileKey(title: string): string {

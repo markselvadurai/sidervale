@@ -11,6 +11,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
+  corroboratesName,
   ExtMetadata,
   fileKey,
   ImageInfo,
@@ -96,17 +97,29 @@ async function imageInfo(
 }
 
 /** Reasons a re-run would only reproduce: the site simply has no verifiable free photo. */
-const PERMANENT = /^(no candidate within|licence not free|no thumbnail)/;
+const PERMANENT = /^(no candidate within|licence not free|no thumbnail|name uncorroborated)/;
 
 type Previous = {
   images: Record<string, SiteImage & { matchedPage: string; matchedKm: number }>;
   quarantine: { id: string; reason: string }[];
 };
 
-function readPrevious(path: string): Previous {
+function readPrevious(path: string, names: Map<string, string>): Previous {
   try {
     const j = JSON.parse(readFileSync(path, 'utf8')) as Partial<Previous>;
-    return { images: j.images ?? {}, quarantine: j.quarantine ?? [] };
+    const images: Previous['images'] = {};
+    const quarantine = [...(j.quarantine ?? [])];
+    // re-gate what an earlier run accepted: matchedPage is stored, so tightening the rule
+    // costs no requests at all
+    for (const [id, v] of Object.entries(j.images ?? {})) {
+      const name = names.get(id);
+      if (name && !corroboratesName(name, v.matchedPage)) {
+        quarantine.push({ id, reason: `name uncorroborated: ${v.matchedPage}` });
+      } else {
+        images[id] = v;
+      }
+    }
+    return { images, quarantine };
   } catch {
     return { images: {}, quarantine: [] };
   }
@@ -123,7 +136,7 @@ async function main() {
   // Resume: a rate-limited run must not throw away what it already resolved. Settled sites —
   // accepted, or rejected for a reason that will not change — are skipped on the next pass.
   const outPath = join(import.meta.dirname, 'raw', 'images.json');
-  const previous = readPrevious(outPath);
+  const previous = readPrevious(outPath, new Map(dataset.sites.map((s) => [s.id, s.name])));
   const settled = new Set([
     ...Object.keys(previous.images),
     ...previous.quarantine.filter((q) => PERMANENT.test(q.reason)).map((q) => q.id),
@@ -141,6 +154,9 @@ async function main() {
       const hit = nearestVerifiedPage(site.coordinates, await candidatesFor(site), MATCH_RADIUS_KM);
       if (!hit) {
         quarantine.push({ id: site.id, reason: `no candidate within ${MATCH_RADIUS_KM} km` });
+      } else if (!corroboratesName(site.name, hit.page.title)) {
+        // located correctly, but of something else: a town, a ranch, a manor house
+        quarantine.push({ id: site.id, reason: `name uncorroborated: ${hit.page.title}` });
       } else {
         matched.push({
           site,
