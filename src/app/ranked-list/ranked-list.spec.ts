@@ -85,6 +85,11 @@ describe('RankedList', () => {
     await fixture.whenStable();
   });
 
+  it('says the verdict in words, not only in the score colour', () => {
+    // same rule the panel dial follows: hue alone cannot carry a verdict
+    expect(texts('.rank-row__tier')).toEqual(['Clear', 'Clear', 'Marginal']);
+  });
+
   it('ranks cloud-aware sites by score, best first', () => {
     expect(texts('.rank-row__name')).toEqual(['Quiet Valley', 'Zebra Ridge', 'Alpha Flats']);
     expect(texts('.rank-row__rank')).toEqual(['1', '2', '3']);
