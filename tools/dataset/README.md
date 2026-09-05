@@ -76,5 +76,5 @@ and source coordinates for the five markerless DarkSky places and LeTerrain.
 
 ## Later stages (not built yet)
 
-Wikidata QIDs as cross-check; LLM-drafted descriptions with abstention (per `docs/PROJECT.md`);
+Wikidata QIDs as cross-check; LLM-drafted descriptions with abstention;
 nearest-town / drive-distance via a routing API.

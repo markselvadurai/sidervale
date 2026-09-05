@@ -43,12 +43,13 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-# private handoff notes — personal timeline / commercial planning
-docs/HANDOFF.local.md
+# internal docs — planning, decision records, commercial notes; never meant to be public
+docs/
 *.local.md
 
-# agent instructions — local only
+# agent instructions and local session permissions — local only
 CLAUDE.md
+.claude/settings.local.json
 
 # downloaded atlas tiles — refetchable, not source data
 tools/dataset/.tile-cache/
